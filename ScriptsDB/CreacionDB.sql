@@ -1,0 +1,31 @@
+-- 1. CREACION DE LA BASE DE DATOS
+USE master;
+GO
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'INTERNACION_NEUMOLOGICA_DB')
+BEGIN
+    CREATE DATABASE INTERNACION_NEUMOLOGICA_DB;
+END
+GO
+USE INTERNACION_NEUMOLOGICA_DB;
+GO
+
+-- 2. CREACION DE LA TABLA PACIENTE
+CREATE TABLE PACIENTE(
+    id_paciente INT IDENTITY(1,1) PRIMARY KEY,
+    dni VARCHAR(20) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    domicilio VARCHAR(200) NULL,
+    telefono VARCHAR(50) NULL,
+    esta_internado BIT NOT NULL DEFAULT 0 -- 0 = No internado, 1 = Internado actualmente
+);
+
+-- 3. CREACION DE LA TABLA USUARIO
+CREATE TABLE USUARIO (
+    id_usuario INT IDENTITY(1,1) PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    pass VARCHAR(256) NOT NULL,
+    tipo_usuario INT NOT NULL   -- Ej: 1 para Admin, 2 para Usuario limitado
+);
+GO
