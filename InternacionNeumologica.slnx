@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Dominio/Dominio.csproj" Id="0febcf55-5f71-45da-92b7-259b5e324ba2" />
   <Project Path="InternacionNeumologica.Web/InternacionNeumologica.Web.csproj" Id="489867e8-910b-4064-82ee-62820559a185" />
 </Solution>
