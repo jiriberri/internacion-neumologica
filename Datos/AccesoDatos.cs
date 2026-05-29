@@ -31,6 +31,11 @@ namespace Datos// puente de comunicacion con la db
             comando.CommandText = consulta;
         }
 
+        public void SetearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
+
         public void EjecutarLectura()
         {
             comando.Connection = conexion;

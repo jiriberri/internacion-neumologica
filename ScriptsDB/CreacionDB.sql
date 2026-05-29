@@ -18,7 +18,7 @@ CREATE TABLE PACIENTE(
     fecha_nacimiento DATE NOT NULL,
     domicilio VARCHAR(200) NULL,
     telefono VARCHAR(50) NULL,
-    esta_internado BIT NOT NULL DEFAULT 0 -- 0 = No internado, 1 = Internado actualmente
+    
 );
 
 -- 3. CREACION DE LA TABLA USUARIO

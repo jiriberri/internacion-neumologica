@@ -15,6 +15,6 @@ namespace Dominio
         public DateTime FechaNacimiento { get; set; }
         public string Domicilio { get; set; }
         public string Telefono { get; set; }
-        public bool EstaInternado { get; set; }
+       
     }
 }

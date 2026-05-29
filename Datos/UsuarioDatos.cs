@@ -9,5 +9,9 @@ namespace Datos
 {
     internal class UsuarioDatos
     {
+        public Usuario Loguear(string usuario, string pass)
+        {
+            return null;
+        }
     }
 }
