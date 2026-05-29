@@ -19,9 +19,11 @@ namespace Datos// puente de comunicacion con la db
             get { return lector; }
         }
 
-        public AccesoDatos()//constructor
+        public AccesoDatos()// constructor
         {
-            conexion = new SqlConnection("Data Source=.\\Initial Catalog=INTERNACION_NEUMOLOGICA_DB;Integrated Security=True");
+            conexion = new SqlConnection(
+                "Data Source=localhost\\SQLEXPRESS;Initial Catalog=INTERNACION_NEUMOLOGICA_DB;Integrated Security=True");
+
             comando = new SqlCommand();
         }
 

@@ -8,13 +8,45 @@ using Dominio;
 
 namespace Datos
 {
-    internal class PacienteDatos
+    public class PacienteDatos
     {
         public List<Paciente> listar()
         {
             List<Paciente> lista = new List<Paciente>();
 
             return lista;
+        }
+
+        public Paciente BuscarPorDni(string dni)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Paciente paciente = null;
+
+            try
+            {
+                datos.SetearConsulta("SELECT * FROM PACIENTE WHERE dni = @dni");
+                datos.SetearParametro("@dni", dni);
+                datos.EjecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    paciente = new Paciente();
+
+                    paciente.IdPaciente = (int)datos.Lector["id_paciente"];
+                    paciente.Dni = datos.Lector["dni"].ToString();
+                    paciente.Nombre = datos.Lector["nombre"].ToString();
+                    paciente.Apellido = datos.Lector["apellido"].ToString();
+                    paciente.FechaNacimiento = (DateTime)datos.Lector["fecha_nacimiento"];
+                    paciente.Domicilio = datos.Lector["domicilio"].ToString();
+                    paciente.Telefono = datos.Lector["telefono"].ToString();
+                }
+
+                return paciente;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
     }
 }
