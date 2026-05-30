@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administracion.aspx" />
+    <Content Include="Antecedentes.aspx" />
     <Content Include="Internacion.aspx" />
     <Content Include="RegistrarPaciente.aspx" />
     <Content Include="Default.aspx" />
@@ -82,6 +83,13 @@
     </Compile>
     <Compile Include="Administracion.aspx.designer.cs">
       <DependentUpon>Administracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Antecedentes.aspx.cs">
+      <DependentUpon>Antecedentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Antecedentes.aspx.designer.cs">
+      <DependentUpon>Antecedentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Internacion.aspx.cs">
       <DependentUpon>Internacion.aspx</DependentUpon>
