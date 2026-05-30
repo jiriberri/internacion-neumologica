@@ -83,7 +83,8 @@
                 runat="server"
                 Text="Registrar Paciente"
                 CssClass="btn btn-warning"
-                Visible="false" />
+                Visible="false"
+                OnClick="btnNuevoPaciente_Click"/>
 
         </div>
 

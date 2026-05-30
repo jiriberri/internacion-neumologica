@@ -44,5 +44,10 @@ namespace InternacionNeumologica.Web
                 btnNuevoPaciente.Visible = true;
             }
         }
+
+        protected void btnNuevoPaciente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegistrarPaciente.aspx");
+        }
     }
 }

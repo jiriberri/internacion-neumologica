@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RegistrarPaciente.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -73,6 +74,13 @@
     <Content Include="BuscarPaciente.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RegistrarPaciente.aspx.cs">
+      <DependentUpon>RegistrarPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarPaciente.aspx.designer.cs">
+      <DependentUpon>RegistrarPaciente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
