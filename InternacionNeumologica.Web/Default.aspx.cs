@@ -13,5 +13,20 @@ namespace InternacionNeumologica.Web
         {
 
         }
+
+        protected void btnPacientes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("BuscarPaciente.aspx");
+        }
+
+        protected void btnEstadisticas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Estadisticas.aspx");
+        }
+
+        protected void btnAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Administracion.aspx");
+        }
     }
 }

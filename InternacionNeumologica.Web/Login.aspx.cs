@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace InternacionNeumologica.Web
 {
@@ -16,7 +18,24 @@ namespace InternacionNeumologica.Web
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            Usuario usuario =
+                negocio.Loguear(
+                    txtUsuario.Text,
+                    txtPassword.Text);
+
+            if (usuario != null)
+            {
+                Session["usuario"] = usuario;
+
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                lblError.Text =
+                    "Usuario o contraseña incorrectos";
+            }
         }
     }
 }

@@ -16,9 +16,25 @@
         <nav class="navbar navbar-dark bg-black shadow">
             <div class="container-fluid">
 
-                <span class="navbar-brand mb-0 h1">
-                    Internación Neumológica
-                </span>
+                <div class="d-flex justify-content-between w-100">
+
+    <asp:HyperLink
+    ID="hlInicio"
+    runat="server"
+    NavigateUrl="~/Default.aspx"
+    CssClass="navbar-brand text-decoration-none">
+    Internación Neumológica
+</asp:HyperLink>
+
+    <asp:LinkButton
+        ID="lnkCerrarSesion"
+        runat="server"
+        CssClass="btn btn-outline-light btn-sm"
+        OnClick="lnkCerrarSesion_Click">
+        Cerrar sesión
+    </asp:LinkButton>
+
+</div>
 
             </div>
         </nav>
