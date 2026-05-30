@@ -26,6 +26,6 @@ CREATE TABLE USUARIO (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
     usuario VARCHAR(50) NOT NULL UNIQUE,
     pass VARCHAR(256) NOT NULL,
-    tipo_usuario INT NOT NULL   -- Ej: 1 para Admin, 2 para Usuario limitado
+    esAdmin BIT NOT NULL   -- Ej: 1 para Admin, 0 para Usuario limitado
 );
 GO

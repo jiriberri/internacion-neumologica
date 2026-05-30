@@ -11,6 +11,6 @@ namespace Dominio
         public int IdUsuario { get; set; }
         public string User { get; set; }
         public string Pass { get; set; }
-        public int TipoUsuario { get; set; }
+        public bool Admin { get; set; }
     }
 }

@@ -40,8 +40,8 @@ namespace Datos
                     user.Pass =
                         datos.Lector["pass"].ToString();
 
-                    user.TipoUsuario =
-                        (int)datos.Lector["tipo_usuario"];
+                    user.Admin =
+                        (bool)datos.Lector["esAdmin"];
                 }
 
                 return user;
