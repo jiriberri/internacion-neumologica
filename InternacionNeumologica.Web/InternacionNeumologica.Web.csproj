@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administracion.aspx" />
+    <Content Include="Internacion.aspx" />
     <Content Include="RegistrarPaciente.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -81,6 +82,13 @@
     </Compile>
     <Compile Include="Administracion.aspx.designer.cs">
       <DependentUpon>Administracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Internacion.aspx.cs">
+      <DependentUpon>Internacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Internacion.aspx.designer.cs">
+      <DependentUpon>Internacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarPaciente.aspx.cs">
       <DependentUpon>RegistrarPaciente.aspx</DependentUpon>
