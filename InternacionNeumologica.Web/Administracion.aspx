@@ -51,6 +51,116 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tab-pane fade" id="pacientes" role="tabpanel" aria-labelledby="pacientes-tab">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h4 class="mb-0">Modificar Datos de Paciente</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row g-3 align-items-end mb-4">
+                            <div class="col-md-8">
+                                <label class="form-label">Ingresar DNI del Paciente a corregir</label>
+                                <asp:TextBox
+                                    ID="txtDniBuscar"
+                                    runat="server"
+                                    TextMode="Number"
+                                    CssClass="form-control"
+                                    Placeholder="Ej: 35123456" />
+                            </div>
+                            <div class="col-md-4">
+                                <asp:Button
+                                    ID="btnBuscarPacienteAdmin"
+                                    runat="server"
+                                    Text="Buscar para Editar"
+                                    CssClass="btn btn-primary w-100" />
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Nombre
+                                </label>
+                                <asp:TextBox
+                                    ID="txtModNombre"
+                                    runat="server"
+                                    CssClass="form-control" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Apellido
+                                </label>
+                                <asp:TextBox
+                                    ID="txtModApellido"
+                                    runat="server"
+                                    CssClass="form-control" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    DNI
+                                </label>
+                                <asp:TextBox
+                                    ID="txtModDni"
+                                    runat="server"
+                                    TextMode="Number"
+                                    CssClass="form-control" />
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label class="form-label">
+                                    Domicilio
+                                </label>
+                                <asp:TextBox
+                                    ID="txtModDomicilio"
+                                    runat="server"
+                                    CssClass="form-control" />
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label class="form-label">
+                                    Teléfono
+                                </label>
+                                <asp:TextBox
+                                    ID="txtModTel"
+                                    runat="server"
+                                    CssClass="form-control" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Fecha de nacimiento
+                                </label>
+                                <asp:TextBox
+                                    ID="txtModDate"
+                                    runat="server"
+                                    TextMode="Date"
+                                    CssClass="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <asp:Button
+                                ID="btnCancelarMod"
+                                runat="server"
+                                Text="Descartar Cambios"
+                                CssClass="btn btn-secondary" />
+                            <asp:Button
+                                ID="btnGuardarMod"
+                                runat="server"
+                                Text="Guardar Modificaciones"
+                                CssClass="btn btn-success" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
