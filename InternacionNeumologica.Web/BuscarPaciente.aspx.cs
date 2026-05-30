@@ -20,31 +20,75 @@ namespace InternacionNeumologica.Web
         {
             PacienteNegocio negocio = new PacienteNegocio();
 
-            Paciente paciente =
-                negocio.BuscarPorDni(txtBusqueda.Text);
-
-            if (paciente != null)
+            if (ddlBusqueda.SelectedValue == "DNI")
             {
-                lblResultado.Text =
-                    "Paciente encontrado: " +
-                    paciente.Apellido + ", " +
-                    paciente.Nombre +
-                    " - DNI: " +
-                    paciente.Dni;
+                Paciente paciente =
+                    negocio.BuscarPorDni(txtBusqueda.Text);
 
-                btnNuevaInternacion.Visible = true;
-                btnNuevoPaciente.Visible = false;
+                if (paciente != null)
+                {
+                    lblResultado.Text =
+                        "Paciente encontrado: " +
+                        paciente.Apellido + ", " +
+                        paciente.Nombre +
+                        " - DNI: " +
+                        paciente.Dni;
+
+                    btnNuevaInternacion.Visible = true;
+                    btnNuevoPaciente.Visible = false;
+                }
+                else
+                {
+                    lblResultado.Text =
+                        "Paciente no encontrado";
+
+                    btnNuevaInternacion.Visible = false;
+                    btnNuevoPaciente.Visible = true;
+                }
             }
             else
             {
-                lblResultado.Text =
-                    "Paciente no encontrado";
+                foreach (char c in txtBusqueda.Text)
+                {
+                    if (char.IsDigit(c))
+                    {
+                        lblResultado.Text =
+                            "El apellido no puede contener números.";
 
-                btnNuevaInternacion.Visible = false;
-                btnNuevoPaciente.Visible = true;
+                        btnNuevaInternacion.Visible = false;
+                        btnNuevoPaciente.Visible = false;
+
+                        return;
+                    }
+                }
+
+                List<Paciente> lista =
+                                 negocio.BuscarPorApellido(txtBusqueda.Text);
+
+                if (lista.Count > 0)
+                {
+                    Paciente paciente = lista[0];
+
+                    lblResultado.Text =
+                        "Paciente encontrado: " +
+                        paciente.Apellido + ", " +
+                        paciente.Nombre +
+                        " - DNI: " +
+                        paciente.Dni;
+
+                    btnNuevaInternacion.Visible = true;
+                    btnNuevoPaciente.Visible = false;
+                }
+                else
+                {
+                    lblResultado.Text =
+                        "Paciente no encontrado";
+
+                    btnNuevoPaciente.Visible = true;
+                    btnNuevaInternacion.Visible = false;
+                }
             }
         }
-
         protected void btnNuevoPaciente_Click(object sender, EventArgs e)
         {
             Response.Redirect("RegistrarPaciente.aspx");
