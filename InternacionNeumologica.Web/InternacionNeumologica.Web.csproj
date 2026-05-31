@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administracion.aspx" />
+    <Content Include="Estadisticas.aspx" />
     <Content Include="Antecedentes.aspx" />
     <Content Include="Internacion.aspx" />
     <Content Include="RegistrarPaciente.aspx" />
@@ -83,6 +84,13 @@
     </Compile>
     <Compile Include="Administracion.aspx.designer.cs">
       <DependentUpon>Administracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Estadisticas.aspx.cs">
+      <DependentUpon>Estadisticas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Estadisticas.aspx.designer.cs">
+      <DependentUpon>Estadisticas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Antecedentes.aspx.cs">
       <DependentUpon>Antecedentes.aspx</DependentUpon>

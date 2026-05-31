@@ -5,11 +5,12 @@
         .nav-tabs .nav-link:not(.active) {
             color: #b6b6b6;
         }
-        .nav-tabs .nav-link:not(.active):hover {
-            color: #ffffff;
-            background-color: #ffffff0e;
-            border-color: transparent;
-        }
+
+            .nav-tabs .nav-link:not(.active):hover {
+                color: #ffffff;
+                background-color: #ffffff0e;
+                border-color: transparent;
+            }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,11 +41,18 @@
                 <div class="card shadow">
                     <div class="card-header d-flex justify-content-between align-items-center bg-light">
                         <h4 class="mb-0">Lista de Usuarios</h4>
-                        <asp:Button ID="btnAgregarUsuario" runat="server" Text="+ Nuevo Usuario" CssClass="btn btn-sm btn-primary" />
+                        <asp:Button
+                            ID="btnAgregarUsuario"
+                            runat="server"
+                            Text="+ Nuevo Usuario"
+                            CssClass="btn btn-sm btn-primary" />
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <asp:GridView ID="dgvUsuarios" runat="server" CssClass="table table-striped table-hover align-middle mb-0">
+                            <asp:GridView
+                                ID="dgvUsuarios"
+                                runat="server"
+                                CssClass="table table-striped table-hover align-middle mb-0">
                                 <%-- Muestra el listado de usuarios --%>
                             </asp:GridView>
                         </div>
