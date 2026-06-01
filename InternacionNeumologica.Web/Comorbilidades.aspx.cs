@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace InternacionNeumologica.Web
 {
-    public partial class Antecedentes : System.Web.UI.Page
+    public partial class Comorbilidades : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,16 +19,16 @@ namespace InternacionNeumologica.Web
         protected void btnAtras_Click(object sender, EventArgs e)
         {
 
-            Response.Redirect("Internacion.aspx");
+            Response.Redirect("Antecedentes.aspx");
 
         }
 
-        protected void btnSiguiente_Click(object sender, EventArgs e)
-        {
 
-            Response.Redirect("Comorbilidades.aspx");
 
-        }
+
+
+
+
 
 
     }

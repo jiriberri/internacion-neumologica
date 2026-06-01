@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administracion.aspx" />
+    <Content Include="Comorbilidades.aspx" />
     <Content Include="Estadisticas.aspx" />
     <Content Include="Antecedentes.aspx" />
     <Content Include="Internacion.aspx" />
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="Administracion.aspx.designer.cs">
       <DependentUpon>Administracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comorbilidades.aspx.cs">
+      <DependentUpon>Comorbilidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comorbilidades.aspx.designer.cs">
+      <DependentUpon>Comorbilidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Estadisticas.aspx.cs">
       <DependentUpon>Estadisticas.aspx</DependentUpon>

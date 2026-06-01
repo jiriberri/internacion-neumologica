@@ -8,18 +8,18 @@
     <h1>Antecedentes</h1>
 </div> 
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-10">
-        <!-- Agregamos p-4 y rounded-3 para mantener tu estilo limpio -->
-        <div class="card bg-light text-black shadow p-4 rounded-3 mb-4">
+<div class="row justify-content-center mt-10">
+    <div class="col-md-6">
+        
+        <div class="card bg-light text-black shadow p-4 rounded-4 mb-3">
             
-            <!-- Título de la sección con un color azul elegante y grosor -->
+           
             <div class="mb-4 text-primary-emphasis fw-semibold fs-5">Antecedentes respiratorios:</div> 
 
-            <!-- FILA PARA DIVIDIR EN COLUMNAS -->
+            
             <div class="row">
                 
-                <!-- COLUMNA 1 (Primeras 4 opciones) -->
+               
                 <div class="col-md-6">
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" id="cbEpoc">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <!-- COLUMNA 2 (Siguientes 4 opciones) -->
+                
                 <div class="col-md-6">
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" id="cbTuberprev">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-            </div> <!-- Cierre del row de columnas -->
+            </div> 
             </div>
 
         <div class="card bg-light text-black shadow p-4 rounded-3 mb-4">
@@ -81,13 +81,13 @@
                 
            
                 <div class="col-md-6">
-    <div class="form-check mb-3">
+      <div class="form-check mb-3">
    <input class="form-check-input" type="checkbox" id="cbSecasdsa">
-   <label class="form-check-label ms-2" for="cbSecPosinfec">Secuela postinfecciosas</label>
+   <label class="form-check-label ms-2" for="cbSecPosinfec">Secuela post-TBC</label>
         </div>
     <div class="form-check mb-3">
     <input class="form-check-input" type="checkbox" id="cbSecPasdas">
-    <label class="form-check-label ms-2" for="cbSecPosTrauma">Secuela postraumática</label>
+    <label class="form-check-label ms-2" for="cbOtraResPulmonar">Otra resección pulmonar</label>
         </div>
        </div>
         </div>
@@ -205,10 +205,10 @@
 </div>
                  <div class="d-flex justify-content-between align-items-center mt-4 mb-5">
    
-    <asp:Button ID="btnAtras" runat="server" Text="Atrás" OnClick="btnAtras_Click" CssClass="btn btn-outline-secondary px-4 fw-semibold"  CausesValidation="false" />
+    <asp:Button ID="btnAtras" runat="server" Text="Atrás" OnClick="btnAtras_Click" CssClass="btn btn-outline-secondary px-4 fw-semibold" CausesValidation="false"/>
     
     
-    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente"  CssClass="btn btn-success px-4 fw-semibold" />
+    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" OnClick="btnSiguiente_Click"  CssClass="btn btn-success px-4 fw-semibold" />
 </div>
         </div>
    

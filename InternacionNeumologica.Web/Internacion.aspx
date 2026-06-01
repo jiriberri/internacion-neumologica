@@ -19,7 +19,7 @@
 
 
         <div class="mb-3">
-        <label for="txtFechaIngreso" class="form-label text-primary-emphasis">Fecha ingreso:</label>
+        <label for="txtFechaIngreso" class="mb-1 text-primary-emphasis fw-semibold fs-6">Fecha ingreso:</label>
         <asp:TextBox runat="server" Id="txtFechaIngreso" TextMode="Date" CssClass="form-control"/> 
         
     
@@ -29,7 +29,7 @@
     
            <div class="mb-4">
             
-              <label for="txtEgreso" class="form-label text-primary-emphasis">Fecha egreso:</label>
+              <label for="txtEgreso" class="mb-1 text-primary-emphasis fw-semibold fs-6">Fecha egreso:</label>
              <asp:TextBox runat="server" Id="txtFechadeEgreso" TextMode="Date" CssClass="form-control"/> 
            
        </div>
@@ -39,7 +39,7 @@
       
            <div class="mb-3">
              
-              <label for="txtOrigen" class="form-label text-primary-emphasis">Origen:</label>
+              <label for="txtOrigen" class="mb-1 text-primary-emphasis fw-semibold fs-6">Origen:</label>
               <asp:DropDownList ID="ddlOrigen" runat="server" CssClass="form-select">
             <asp:ListItem Text="Seleccione una opción." Value="" />
         </asp:DropDownList>
@@ -52,7 +52,7 @@
         
            <div class="mb-3">
              
-              <label for="txtDestinoEgreso" class="form-label text-primary-emphasis">Destino al egreso:</label>
+              <label for="txtDestinoEgreso" class="mb-1 text-primary-emphasis fw-semibold fs-6">Destino al egreso:</label>
               <asp:DropDownList ID="ddlDestinoEgreso" runat="server" CssClass="form-select">
             <asp:ListItem Text="Seleccione una opción." Value="" />
         </asp:DropDownList>
@@ -63,7 +63,7 @@
              
            <div class="mb-3">
             
-              <label for="txtMotivoInternacion" class="form-label text-primary-emphasis">Motivo Principal de Internación:</label>
+              <label for="txtMotivoInternacion" class="mb-1 text-primary-emphasis fw-semibold fs-6">Motivo Principal de Internación:</label>
               <asp:DropDownList ID="ddlMotivoInter" runat="server" CssClass="form-select">
             <asp:ListItem Text="Seleccione una opción." Value="" />
         </asp:DropDownList>
@@ -72,7 +72,7 @@
 
                   <div class="mb-3">
      
-      <label for="txtOrigen" class="form-label text-primary-emphasis">Infecciones:</label>
+      <label for="txtOrigen" class="mb-1 text-primary-emphasis fw-semibold fs-6">Infecciones:</label>
       <asp:DropDownList ID="ddlInfrecciones" runat="server" CssClass="form-select">
     <asp:ListItem Text="Seleccione una opción." Value="" />
 </asp:DropDownList>
@@ -80,7 +80,7 @@
 
                             <div class="mb-3">
       
-       <label for="txtOrigen" class="form-label text-primary-emphasis">Obstrucciones:</label>
+       <label for="txtOrigen" class="mb-1 text-primary-emphasis fw-semibold fs-6">Obstrucciones:</label>
        <asp:DropDownList ID="ddlObtrucciones" runat="server" CssClass="form-select">
      <asp:ListItem Text="Seleccione una opción." Value="" />
  </asp:DropDownList>
@@ -101,7 +101,7 @@
       
            <div class="mb-3">
              
-              <label for="txtOrigen" class="form-label text-primary-emphasis">Intersticiales:</label>
+              <label for="txtOrigen" class="mb-2 text-primary-emphasis fw-semibold fs-6">Intersticiales:</label>
               <asp:DropDownList ID="ddlIntersticiales" runat="server" CssClass="form-select">
             <asp:ListItem Text="Seleccione una opción." Value="" />
         </asp:DropDownList>
@@ -114,7 +114,7 @@
         
            <div class="mb-3">
              
-              <label for="txtDestinoEgreso" class="form-label text-primary-emphasis">Pleura:</label>
+              <label for="txtDestinoEgreso" class="mb-2 text-primary-emphasis fw-semibold fs-6">Pleura:</label>
               <asp:DropDownList ID="ddlPleura" runat="server" CssClass="form-select">
             <asp:ListItem Text="Seleccione una opción." Value=""/>
         </asp:DropDownList>
@@ -125,7 +125,7 @@
              
            <div class="mb-3">
             
-              <label for="txtMotivoInternacion" class="form-label text-primary-emphasis">Vascualares:</label>
+              <label for="txtMotivoInternacion" class="mb-2 text-primary-emphasis fw-semibold fs-6">Vascualares:</label>
               <asp:DropDownList ID="ddlVasculares" runat="server" CssClass="form-select">
             <asp:ListItem Text="Seleccione una opción." Value="" />
         </asp:DropDownList>
@@ -135,7 +135,7 @@
 
     <div class="mb-3">
      
-       <label for="txtMotivoInternacion" class="form-label text-primary-emphasis">Oncológicas:</label>
+       <label for="txtMotivoInternacion" class="mb-2 text-primary-emphasis fw-semibold fs-6">Oncológicas:</label>
        <asp:DropDownList ID="ddlOncologicas" runat="server" CssClass="form-select">
      <asp:ListItem Text="Seleccione una opción." Value="" />
  </asp:DropDownList>
@@ -144,7 +144,7 @@
 
      <div class="mb-3">
      
-       <label for="txtMotivoInternacion" class="form-label text-primary-emphasis">Otros:</label>
+       <label for="txtMotivoInternacion" class="mb-2 text-primary-emphasis fw-semibold fs-6">Otros:</label>
        <asp:DropDownList ID="ddlOtros" runat="server" CssClass="form-select">
      <asp:ListItem Text="Seleccione una opción." Value="" />
  </asp:DropDownList>  
