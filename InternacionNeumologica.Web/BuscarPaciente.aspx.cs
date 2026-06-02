@@ -91,7 +91,16 @@ namespace InternacionNeumologica.Web
         }
         protected void btnNuevoPaciente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("RegistrarPaciente.aspx");
+            string filtro = txtBusqueda.Text;
+
+            if (ddlBusqueda.SelectedValue == "DNI" && filtro != "")
+            {
+                Response.Redirect("RegistrarPaciente.aspx?dni=" + filtro);
+            }
+            else if (ddlBusqueda.SelectedValue == "Apellido" && filtro != "")
+            {
+                Response.Redirect("RegistrarPaciente.aspx?apellido=" + filtro);
+            }
         }
     }
 }

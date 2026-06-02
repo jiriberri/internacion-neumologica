@@ -18,6 +18,17 @@
 
                     <div class="col-md-6">
                         <label class="form-label">
+                            DNI
+                        </label>
+                        <asp:TextBox
+                            ID="txtDni"
+                            runat="server"
+                            TextMode="Number"
+                            CssClass="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">
                             Nombre
                         </label>
                         <asp:TextBox
@@ -33,17 +44,6 @@
                         <asp:TextBox
                             ID="txtApellido"
                             runat="server"
-                            CssClass="form-control" />
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">
-                            DNI
-                        </label>
-                        <asp:TextBox
-                            ID="txtDni"
-                            runat="server"
-                            TextMode="Number"
                             CssClass="form-control" />
                     </div>
 
@@ -87,12 +87,15 @@
                         ID="btnCancelar"
                         runat="server"
                         Text="Cancelar"
-                        CssClass="btn btn-secondary" />
+                        CssClass="btn btn-secondary"
+                        OnClick="btnCancelar_Click" />
+
                     <asp:Button
                         ID="btnGuardar"
                         runat="server"
                         Text="Guardar Paciente"
-                        CssClass="btn btn-primary" />
+                        CssClass="btn btn-primary"
+                        OnClick="btnGuardar_Click" />
                 </div>
 
             </div>
