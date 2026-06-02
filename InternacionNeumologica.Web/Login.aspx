@@ -36,12 +36,24 @@
                             Contraseña
                         </label>
 
-                        <asp:TextBox
-                            ID="txtPassword"
-                            runat="server"
-                            TextMode="Password"
-                            CssClass="form-control">
-                        </asp:TextBox>
+                        <div class="input-group">
+
+                                <asp:TextBox
+                                    ID="txtPassword"
+                                    runat="server"
+                                    TextMode="Password"
+                                    CssClass="form-control"
+                                    ClientIDMode="Static">
+                                </asp:TextBox>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary"
+                                    onclick="mostrarPassword()">
+                                    👁
+                                </button>
+
+                         </div>
 
                     </div>
 
@@ -69,5 +81,19 @@
         </div>
 
     </div>
+
+                                <script>
+                                function mostrarPassword() {
+
+                                    let txt = document.getElementById("txtPassword");
+
+                                    if (txt.type === "password") {
+                                        txt.type = "text";
+                                    }
+                                    else {
+                                        txt.type = "password";
+                                    }
+                                }
+                                </script>
 
 </asp:Content>
