@@ -38,5 +38,20 @@ namespace InternacionNeumologica.Web
         {
             Response.Redirect("BuscarPaciente.aspx");
         }
+
+        protected void ddlTabaquismo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string valorSeleccionado = ddlTabaquismo.SelectedValue;
+
+            if (valorSeleccionado == "2" || valorSeleccionado == "3")
+            {
+                divPaquetesAnio.Visible = true;
+            }
+            else
+            {
+                divPaquetesAnio.Visible = false;
+                txtPaquetesAnio.Text = "";
+            }
+        }
     }
 }

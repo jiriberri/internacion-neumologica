@@ -78,6 +78,31 @@
                             CssClass="form-control" />
                     </div>
 
+                    <div class="col-md-6">
+                        <label class="form-label">Historial de Tabaquismo</label>
+                        <asp:DropDownList
+                            ID="ddlTabaquismo"
+                            runat="server"
+                            CssClass="form-select"
+                            AutoPostBack="true"
+                            OnSelectedIndexChanged="ddlTabaquismo_SelectedIndexChanged">
+                            <asp:ListItem Text="Seleccione una opción..." Value="0" />
+                            <asp:ListItem Text="Nunca fumó" Value="1" />
+                            <asp:ListItem Text="Exfumador" Value="2" />
+                            <asp:ListItem Text="Fumador activo" Value="3" />
+                        </asp:DropDownList>
+                    </div>
+
+                    <div class="col-md-6" id="divPaquetesAnio" runat="server" visible="false">
+                        <label class="form-label">Paquetes / Año</label>
+                        <asp:TextBox
+                            ID="txtPaquetesAnio"
+                            runat="server"
+                            TextMode="Number"
+                            CssClass="form-control"
+                            placeholder="Ej: 20" />
+                    </div>
+
                 </div>
 
                 <hr />
