@@ -101,6 +101,10 @@ namespace InternacionNeumologica.Web
             {
                 Response.Redirect("RegistrarPaciente.aspx?apellido=" + filtro);
             }
+            else
+            {
+                Response.Redirect("RegistrarPaciente.aspx");
+            }
         }
     }
 }
