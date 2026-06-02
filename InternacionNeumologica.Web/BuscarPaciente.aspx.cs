@@ -13,7 +13,10 @@ namespace InternacionNeumologica.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack && Request.QueryString["exito"] != null)
+            {
+                pnlMensaje.Visible = true;
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)

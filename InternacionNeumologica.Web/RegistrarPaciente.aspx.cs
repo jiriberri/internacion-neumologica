@@ -40,7 +40,6 @@ namespace InternacionNeumologica.Web
                 NuevoPac.Domicilio = txtDomicilio.Text;
                 NuevoPac.Telefono = txtTel.Text;
                 NuevoPac.FechaNacimiento = DateTime.Parse(txtDate.Text);
-                NuevoPac.Paquetes = int.Parse(txtPaquetesAnio.Text);
 
                 NuevoPac.Tabaquismo = new Tabaquismo();
                 NuevoPac.Tabaquismo.IdTabaquismo = int.Parse(ddlTabaquismo.SelectedValue);
@@ -57,7 +56,7 @@ namespace InternacionNeumologica.Web
                 PacienteNegocio negocio = new PacienteNegocio();
                 negocio.agregar(NuevoPac);
 
-                Response.Redirect("BuscarPaciente.aspx");
+                Response.Redirect("BuscarPaciente.aspx?exito=1");
             }
             catch (Exception ex)
             {
