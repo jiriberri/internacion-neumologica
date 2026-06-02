@@ -44,7 +44,16 @@ namespace Datos// puente de comunicacion con la db
 
             conexion.Open();
 
-            lector = comando.ExecuteReader();
+            lector = comando.ExecuteReader();// este se usa para el select, devuelve un lector con el resultado de la consulta, se recorre con un while para obtener cada fila
+        }
+
+        public void EjecutarAccion()
+        {
+            comando.Connection = conexion;
+
+            conexion.Open();
+
+            comando.ExecuteNonQuery();// este se usa para el insert, update y delete, no devuelve nada, solo ejecuta la consulta
         }
 
         public void CerrarConexion()

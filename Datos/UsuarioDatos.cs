@@ -91,5 +91,27 @@ namespace Datos
                 datos.CerrarConexion();
             }
         }
+
+        public void Agregar(Usuario nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "INSERT INTO USUARIO (usuario, pass, esAdmin) " +
+                    "VALUES (@usuario, @pass, @admin)");
+
+                datos.SetearParametro("@usuario", nuevo.User);
+                datos.SetearParametro("@pass", nuevo.Pass);
+                datos.SetearParametro("@admin", nuevo.Admin);
+
+                datos.EjecutarAccion();
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }
