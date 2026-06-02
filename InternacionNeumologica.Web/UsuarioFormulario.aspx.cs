@@ -13,6 +13,25 @@ namespace InternacionNeumologica.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    lblTitulo.Text = "Editar Usuario";
+                    btnGuardar.Text = "Actualizar";
+
+                    int id = int.Parse(Request.QueryString["id"]);
+
+                    UsuarioNegocio negocio = new UsuarioNegocio();
+
+                    Usuario usuario = negocio.ObtenerPorId(id);
+
+                    txtUsuario.Text = usuario.User;
+                    txtPassword.Text = usuario.Pass;
+                    chkAdmin.Checked = usuario.Admin;
+                }
+            }
+
 
         }
 
@@ -23,18 +42,27 @@ namespace InternacionNeumologica.Web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Usuario nuevo = new Usuario();
+            Usuario usuario = new Usuario();
 
-            nuevo.User = txtUsuario.Text;
-            nuevo.Pass = txtPassword.Text;
-            nuevo.Admin = chkAdmin.Checked;
+            usuario.User = txtUsuario.Text;
+            usuario.Pass = txtPassword.Text;
+            usuario.Admin = chkAdmin.Checked;
 
             UsuarioNegocio negocio = new UsuarioNegocio();
 
-            negocio.Agregar(nuevo);
+            if (Request.QueryString["id"] == null)
+            {
+                negocio.Agregar(usuario);
+            }
+            else
+            {
+                usuario.IdUsuario =
+                    int.Parse(Request.QueryString["id"]);
+
+                negocio.Modificar(usuario);
+            }
 
             Response.Redirect("Administracion.aspx");
-
         }
     }
 }

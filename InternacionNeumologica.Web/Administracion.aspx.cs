@@ -38,5 +38,15 @@ namespace InternacionNeumologica.Web
         {
             Response.Redirect("UsuarioFormulario.aspx");
         }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            string id = btn.CommandArgument;
+
+            Response.Redirect(
+                "UsuarioFormulario.aspx?id=" + id);
+        }
     }
 }

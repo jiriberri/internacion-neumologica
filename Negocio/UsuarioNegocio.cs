@@ -31,5 +31,19 @@ namespace Negocio
 
             datos.Agregar(nuevo);
         }
+
+        public Usuario ObtenerPorId(int id)
+        {
+            UsuarioDatos datos = new UsuarioDatos();
+
+            return datos.ObtenerPorId(id);
+        }
+
+        public void Modificar(Usuario usuario)
+        {
+            UsuarioDatos datos = new UsuarioDatos();
+
+            datos.Modificar(usuario);
+        }
     }
 }

@@ -93,6 +93,8 @@ namespace Datos
         }
 
         public void Agregar(Usuario nuevo)
+
+
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -105,6 +107,74 @@ namespace Datos
                 datos.SetearParametro("@usuario", nuevo.User);
                 datos.SetearParametro("@pass", nuevo.Pass);
                 datos.SetearParametro("@admin", nuevo.Admin);
+
+                datos.EjecutarAccion();
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public Usuario ObtenerPorId(int id)
+        {
+            Usuario usuario = null;
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "SELECT * FROM USUARIO " +
+                    "WHERE id_usuario = @id");
+
+                datos.SetearParametro("@id", id);
+
+                datos.EjecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    usuario = new Usuario();
+
+                    usuario.IdUsuario =
+                        (int)datos.Lector["id_usuario"];
+
+                    usuario.User =
+                        datos.Lector["usuario"].ToString();
+
+                    usuario.Pass =
+                        datos.Lector["pass"].ToString();
+
+                    usuario.Admin =
+                        (bool)datos.Lector["esAdmin"];
+                }
+
+                return usuario;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+
+        public void Modificar(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "UPDATE USUARIO " +
+                    "SET usuario = @usuario, " +
+                    "pass = @pass, " +
+                    "esAdmin = @admin " +
+                    "WHERE id_usuario = @id");
+
+                datos.SetearParametro("@usuario", usuario.User);
+                datos.SetearParametro("@pass", usuario.Pass);
+                datos.SetearParametro("@admin", usuario.Admin);
+                datos.SetearParametro("@id", usuario.IdUsuario);
 
                 datos.EjecutarAccion();
             }

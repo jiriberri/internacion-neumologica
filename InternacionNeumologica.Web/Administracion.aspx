@@ -70,6 +70,20 @@
                                         DataField="Admin"
                                         HeaderText="Administrador" />
 
+                                    <asp:TemplateField HeaderText="Acciones">
+                                            <ItemTemplate>
+
+                                                <asp:Button
+                                                    ID="btnEditar"
+                                                    runat="server"
+                                                    Text="Editar"
+                                                    CssClass="btn btn-sm btn-warning" 
+                                                    CommandArgument='<%# Eval("IdUsuario") %>' 
+                                                    OnClick="btnEditar_Click"/>
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
                              </Columns>
                             </asp:GridView>
                         </div>

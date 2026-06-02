@@ -8,7 +8,14 @@
     <div class="card shadow">
 
         <div class="card-header">
-            <h3>Nuevo Usuario</h3>
+                 <h3> <!-- esto es un control ASP:NET que me permite modificar el titulo de la pagina
+                     desde c# dependiendo si es un nuevo usuario o una edicion de un usuario existente -->
+                    <asp:Label
+                        ID="lblTitulo"
+                        runat="server"
+                        Text="Nuevo Usuario">
+                    </asp:Label>
+                </h3>
         </div>
 
         <div class="card-body">
