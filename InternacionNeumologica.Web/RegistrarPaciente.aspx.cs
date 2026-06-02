@@ -31,7 +31,39 @@ namespace InternacionNeumologica.Web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Paciente NuevoPac = new Paciente();
+                NuevoPac.Dni = txtDni.Text;
+                NuevoPac.Nombre = txtNombre.Text;
+                NuevoPac.Apellido = txtApellido.Text;
+                NuevoPac.Domicilio = txtDomicilio.Text;
+                NuevoPac.Telefono = txtTel.Text;
+                NuevoPac.FechaNacimiento = DateTime.Parse(txtDate.Text);
+                NuevoPac.Paquetes = int.Parse(txtPaquetesAnio.Text);
 
+                NuevoPac.Tabaquismo = new Tabaquismo();
+                NuevoPac.Tabaquismo.IdTabaquismo = int.Parse(ddlTabaquismo.SelectedValue);
+
+                if (ddlTabaquismo.SelectedValue == "2" || ddlTabaquismo.SelectedValue == "3")
+                {
+                    NuevoPac.Paquetes = int.Parse(txtPaquetesAnio.Text);
+                }
+                else
+                {
+                    NuevoPac.Paquetes = null; // Si nunca fumo, es null
+                }
+
+                PacienteNegocio negocio = new PacienteNegocio();
+                negocio.agregar(NuevoPac);
+
+                Response.Redirect("BuscarPaciente.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

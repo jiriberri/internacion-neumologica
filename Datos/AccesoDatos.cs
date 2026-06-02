@@ -50,10 +50,15 @@ namespace Datos// puente de comunicacion con la db
         public void EjecutarAccion()
         {
             comando.Connection = conexion;
-
-            conexion.Open();
-
-            comando.ExecuteNonQuery();// este se usa para el insert, update y delete, no devuelve nada, solo ejecuta la consulta
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void CerrarConexion()

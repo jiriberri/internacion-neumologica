@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,7 +105,8 @@ namespace Datos
             }
         }
 
-        public List<Paciente> BuscarPorDNIoApellido(string Texto) {
+        public List<Paciente> BuscarPorDNIoApellido(string Texto)
+        {
 
             List<Paciente> lista = new List<Paciente>();
             AccesoDatos datos = new AccesoDatos();
@@ -116,9 +118,9 @@ namespace Datos
     "WHERE apellido COLLATE Latin1_General_CI_AI LIKE @apellido " +
     "OR dni=@Dni");
 
-                datos.SetearParametro("@Dni",Texto);
+                datos.SetearParametro("@Dni", Texto);
                 datos.SetearParametro("@apellido", "%" + Texto + "%");
-                
+
 
                 datos.EjecutarLectura();
 
@@ -156,21 +158,45 @@ namespace Datos
             {
                 datos.CerrarConexion();
             }
-      
+
         }
+        public void agregar(Paciente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            datos.SetearConsulta("INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefono, id_tabaquismo, paquetes_anio) " +
+                             "VALUES (@dni, @nombre, @apellido, @fecha, @domicilio, @telefono, @idTabaquismo, @paquetes)");
 
+            try
+            {
+                datos.SetearParametro("@dni", nuevo.Dni);
+                datos.SetearParametro("@nombre", nuevo.Nombre);
+                datos.SetearParametro("@apellido", nuevo.Apellido);
+                datos.SetearParametro("@fecha", nuevo.FechaNacimiento);
+                datos.SetearParametro("@domicilio", nuevo.Domicilio);
+                datos.SetearParametro("@telefono", nuevo.Telefono);
 
+                if (nuevo.Tabaquismo != null && nuevo.Tabaquismo.IdTabaquismo > 0)
+                    datos.SetearParametro("@idTabaquismo", nuevo.Tabaquismo.IdTabaquismo);
+                else
+                    datos.SetearParametro("@idTabaquismo", DBNull.Value);
 
+                if (nuevo.Paquetes != null)
+                    datos.SetearParametro("@paquetes", nuevo.Paquetes);
+                else
+                    datos.SetearParametro("@paquetes", DBNull.Value);
 
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
-
-
-
-
-
-
-
-
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }
