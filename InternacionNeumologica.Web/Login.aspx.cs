@@ -25,7 +25,7 @@ namespace InternacionNeumologica.Web
                     txtUsuario.Text,
                     txtPassword.Text);
 
-            if (usuario != null)
+            if (usuario != null)//se guarda al usuario en sesion
             {
                 Session["usuario"] = usuario;
 

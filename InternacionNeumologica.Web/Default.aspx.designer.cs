@@ -33,6 +33,15 @@ namespace InternacionNeumologica.Web
         protected global::System.Web.UI.WebControls.Button btnEstadisticas;
 
         /// <summary>
+        /// Control pnlAdministracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlAdministracion;
+
+        /// <summary>
         /// Control btnAdmin.
         /// </summary>
         /// <remarks>

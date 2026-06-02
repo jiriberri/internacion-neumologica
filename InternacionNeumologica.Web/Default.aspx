@@ -23,7 +23,7 @@
 
             <div class="card bg-black text-white h-100 shadow">
 
-                <div class="card-body p-3">
+             <div class="card-body p-3 d-flex flex-column">
 
                     <h3>Pacientes</h3>
 
@@ -35,7 +35,7 @@
                         ID="btnPacientes"
                         runat="server"
                         Text="Ingresar"
-                        CssClass="btn btn-primary"
+                        CssClass="btn btn-primary mt-auto"
                         OnClick="btnPacientes_Click" />
 
                 </div>
@@ -48,7 +48,7 @@
 
             <div class="card bg-black text-white h-100 shadow">
 
-                <div class="card-body p-3">
+                 <div class="card-body p-3 d-flex flex-column">
 
                     <h3>Estadísticas y Filtros</h3>
 
@@ -60,7 +60,7 @@
                         ID="btnEstadisticas"
                         runat="server"
                         Text="Ingresar"
-                        CssClass="btn btn-primary"
+                        CssClass="btn btn-primary mt-auto"
                         OnClick="btnEstadisticas_Click" />
 
                 </div>
@@ -69,30 +69,32 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div id="pnlAdministracion"
+     runat="server"
+     class="col-md-4">
 
-            <div class="card bg-black text-white h-100 shadow">
+    <div class="card bg-black text-white h-100 shadow">
 
-                <div class="card-body p-3">
+        <div class="card-body p-3 d-flex flex-column">
 
-                    <h3>Administración</h3>
+            <h3>Administración</h3>
 
-                    <p>
-                        Gestión de usuarios y permisos.
-                    </p>
+            <p>
+                Gestión de usuarios y permisos.
+            </p>
 
-                    <asp:Button
-                        ID="btnAdmin"
-                        runat="server"
-                        Text="Ingresar"
-                        CssClass="btn btn-outline-light"
-                        OnClick="btnAdmin_Click" />
-
-                </div>
-
-            </div>
+            <asp:Button
+                ID="btnAdmin"
+                runat="server"
+                Text="Ingresar"
+                CssClass="btn btn-primary mt-auto"
+                OnClick="btnAdmin_Click" />
 
         </div>
+
+    </div>
+
+</div>
 
     </div>
 
