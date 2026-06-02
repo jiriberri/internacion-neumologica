@@ -24,5 +24,12 @@ namespace Negocio
 
             return datos.Listar();
         }
+
+        public void Agregar(Usuario nuevo)
+        {
+            UsuarioDatos datos = new UsuarioDatos();
+
+            datos.Agregar(nuevo);
+        }
     }
 }

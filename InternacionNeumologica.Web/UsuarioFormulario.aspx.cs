@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,6 +23,17 @@ namespace InternacionNeumologica.Web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            Usuario nuevo = new Usuario();
+
+            nuevo.User = txtUsuario.Text;
+            nuevo.Pass = txtPassword.Text;
+            nuevo.Admin = chkAdmin.Checked;
+
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            negocio.Agregar(nuevo);
+
+            Response.Redirect("Administracion.aspx");
 
         }
     }
