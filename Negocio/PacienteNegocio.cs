@@ -23,5 +23,14 @@ namespace Negocio
 
             return datos.BuscarPorApellido(apellido);
         }
+    
+
+     public List<Paciente> BuscarPorDNIoApellido(string Texto)
+        {
+            PacienteDatos datos = new PacienteDatos();
+
+            return datos.BuscarPorDNIoApellido(Texto);
+
+        }
     }
 }

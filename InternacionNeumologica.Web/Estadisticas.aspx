@@ -74,15 +74,23 @@
                             ID="btnFiltrar"
                             runat="server"
                             Text="Filtrar"
+                            OnClick="btnFiltrar_Click"
                             CssClass="btn btn-primary w-100" />
                     </div>
                 </div>
 
                 <div class="table-responsive mt-4">
-                    <asp:GridView ID="dgvPacientesFiltrados" runat="server"
+                    <asp:GridView ID="dgvPacientesFiltrados" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-striped table-hover align-middle mb-0"
                         EmptyDataText="No se encontraron pacientes que coincidan con los filtros aplicados.">
-                        <%-- Muestra el listado de pacientes --%>
+                    <Columns>
+        <asp:BoundField HeaderText="DNI" DataField="Dni" />
+        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+        <asp:BoundField HeaderText="Fecha Nacimiento" DataField="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
+        <asp:BoundField HeaderText="Domicilio" DataField="Domicilio" />
+        <asp:BoundField HeaderText="Teléfono" DataField="Telefono" />
+    </Columns>
                     </asp:GridView>
                 </div>
 

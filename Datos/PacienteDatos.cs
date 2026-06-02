@@ -103,5 +103,74 @@ namespace Datos
                 datos.CerrarConexion();
             }
         }
+
+        public List<Paciente> BuscarPorDNIoApellido(string Texto) {
+
+            List<Paciente> lista = new List<Paciente>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                   "SELECT * FROM PACIENTE " +
+    "WHERE apellido COLLATE Latin1_General_CI_AI LIKE @apellido " +
+    "OR dni=@Dni");
+
+                datos.SetearParametro("@Dni",Texto);
+                datos.SetearParametro("@apellido", "%" + Texto + "%");
+                
+
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Paciente aux = new Paciente();
+
+                    aux.IdPaciente =
+                        (int)datos.Lector["id_paciente"];
+
+                    aux.Dni =
+                        datos.Lector["dni"].ToString();
+
+                    aux.Nombre =
+                        datos.Lector["nombre"].ToString();
+
+                    aux.Apellido =
+                        datos.Lector["apellido"].ToString();
+
+                    aux.FechaNacimiento =
+                        (DateTime)datos.Lector["fecha_nacimiento"];
+
+                    aux.Domicilio =
+                        datos.Lector["domicilio"].ToString();
+
+                    aux.Telefono =
+                        datos.Lector["telefono"].ToString();
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+      
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
