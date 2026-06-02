@@ -51,5 +51,45 @@ namespace Datos
                 datos.CerrarConexion();
             }
         }
+
+        public List<Usuario> Listar()//busca todos los usuarios de la bd
+        {
+            List<Usuario> lista = new List<Usuario>();
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "SELECT * FROM USUARIO");
+
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario aux = new Usuario();// por cada fila crea un objeto usuario y lo agrega a la lista, luego devuelve la lista completa
+
+                    aux.IdUsuario =
+                        (int)datos.Lector["id_usuario"];
+
+                    aux.User =
+                        datos.Lector["usuario"].ToString();
+
+                    aux.Pass =
+                        datos.Lector["pass"].ToString();
+
+                    aux.Admin =
+                        (bool)datos.Lector["esAdmin"];
+
+                    lista.Add(aux);// guarda en la lista cada usuario que genera
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }

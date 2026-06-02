@@ -52,8 +52,24 @@
                             <asp:GridView
                                 ID="dgvUsuarios"
                                 runat="server"
+                                AutoGenerateColumns="false"
                                 CssClass="table table-striped table-hover align-middle mb-0">
                                 <%-- Muestra el listado de usuarios --%>
+                             <Columns>
+
+                                    <asp:BoundField
+                                        DataField="IdUsuario"
+                                           HeaderText="ID" />
+
+                                    <asp:BoundField
+                                        DataField="User"
+                                        HeaderText="Usuario" />
+
+                                    <asp:CheckBoxField
+                                        DataField="Admin"
+                                        HeaderText="Administrador" />
+
+                             </Columns>
                             </asp:GridView>
                         </div>
                     </div>

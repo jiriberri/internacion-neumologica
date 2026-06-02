@@ -16,5 +16,13 @@ namespace Negocio
 
             return datos.Loguear(usuario, pass);
         }
+    
+
+          public List<Usuario> Listar()// Puente entre web y dtos
+        {
+            UsuarioDatos datos = new UsuarioDatos();
+
+            return datos.Listar();
+        }
     }
 }

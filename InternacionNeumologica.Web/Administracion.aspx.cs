@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Negocio;
 
 namespace InternacionNeumologica.Web
 {
@@ -23,6 +24,13 @@ namespace InternacionNeumologica.Web
             {
                 Response.Redirect("Default.aspx");
                 return;
+            }
+            if (!IsPostBack)// cada vez que se recarga la pagina se vuelve a cargar la grilla, entonces con esto se hace que solo se cargue la grilla la primera vez que se carga la pagina
+            {
+                UsuarioNegocio negocio = new UsuarioNegocio();
+
+                dgvUsuarios.DataSource = negocio.Listar();
+                dgvUsuarios.DataBind();
             }
         }
     }
