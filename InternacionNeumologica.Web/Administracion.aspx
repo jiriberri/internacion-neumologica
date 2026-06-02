@@ -45,7 +45,8 @@
                             ID="btnAgregarUsuario"
                             runat="server"
                             Text="+ Nuevo Usuario"
-                            CssClass="btn btn-sm btn-primary" />
+                            CssClass="btn btn-sm btn-primary"
+                            OnClick="btnAgregarUsuario_Click"/>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

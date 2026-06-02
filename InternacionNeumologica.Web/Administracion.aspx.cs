@@ -33,5 +33,10 @@ namespace InternacionNeumologica.Web
                 dgvUsuarios.DataBind();
             }
         }
+
+        protected void btnAgregarUsuario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UsuarioFormulario.aspx");
+        }
     }
 }
