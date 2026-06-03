@@ -102,7 +102,7 @@
     <div class="card bg-black text-white shadow mb-4">
 
         <div class="card-header border-secondary">
-            <h4 class="mb-0">Pacientes Internados Actualmente</h4>
+            <h4 class="mb-0">Pacientes Internados</h4>
         </div>
 
         <div class="card-body">

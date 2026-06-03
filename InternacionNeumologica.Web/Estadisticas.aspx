@@ -23,10 +23,10 @@
             <div class="col-md-4">
                 <div class="card card-counter bg-warning text-dark shadow border-0">
                     <div class="card-body p-4">
-                        <h6 class="text-uppercase opacity-75 fw-bold">Internados Actuales</h6>
+                        <h6 class="text-uppercase opacity-75 fw-bold">Dados de alta</h6>
                         <%-- Numero de prueba --%>
                         <h2 class="display-5 fw-bold my-2">18</h2>
-                        <p class="mb-0 fs-7 fw-medium">Pacientes ocupando camas actualmente.</p>
+                        <p class="mb-0 fs-7 fw-medium">Pacientes que fueron dados de alta.</p>
                     </div>
                 </div>
             </div>
