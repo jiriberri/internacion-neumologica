@@ -152,7 +152,7 @@
 
 <div class="mt-auto pt-3 d-flex justify-content-around">
     
-    <asp:Button Text="Atras" ID="btnAtras" CssClass="btn btn-outline-secondary px-4 fw-semibold" runat="server" CausesValidation="false" />
+    <asp:Button Text="Atras" ID="btnAtras" CssClass="btn btn-outline-secondary px-4 fw-semibold" runat="server" OnClick="btnAtras_Click" CausesValidation="false" />
     <asp:Button Text="Prueba" ID="btnPrueba" CssClass="btn btn-warning" runat="server" />
     <asp:Button Text="Siguiente" ID="btnSiguiente" CssClass="btn btn-success px-4 fw-semibold" OnClick="btnSiguiente_Click" runat="server"/>    
      

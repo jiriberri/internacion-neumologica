@@ -83,7 +83,9 @@
                     runat="server"
                     Text="Nueva Internación"
                     CssClass="btn btn-success"
-                    Visible="false" />
+                    Visible="false" 
+                    OnClick="btnNuevaInternacion_Click"/>
+                    
 
                 <asp:Button
                     ID="btnNuevoPaciente"
