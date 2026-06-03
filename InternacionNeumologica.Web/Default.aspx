@@ -7,8 +7,7 @@
 
     <div class="text-white mb-4">
 
-        <h1 class="display-6">
-            Sistema de Internación Neumológica
+        <h1 class="display-6">Sistema de Internación Neumológica
         </h1>
 
         <p class="small text-secondary">
@@ -23,7 +22,7 @@
 
             <div class="card bg-black text-white h-100 shadow">
 
-             <div class="card-body p-3 d-flex flex-column">
+                <div class="card-body p-3 d-flex flex-column">
 
                     <h3>Pacientes</h3>
 
@@ -48,7 +47,7 @@
 
             <div class="card bg-black text-white h-100 shadow">
 
-                 <div class="card-body p-3 d-flex flex-column">
+                <div class="card-body p-3 d-flex flex-column">
 
                     <h3>Estadísticas y Filtros</h3>
 
@@ -70,31 +69,57 @@
         </div>
 
         <div id="pnlAdministracion"
-     runat="server"
-     class="col-md-4">
+            runat="server"
+            class="col-md-4">
 
-    <div class="card bg-black text-white h-100 shadow">
+            <div class="card bg-black text-white h-100 shadow">
 
-        <div class="card-body p-3 d-flex flex-column">
+                <div class="card-body p-3 d-flex flex-column">
 
-            <h3>Administración</h3>
+                    <h3>Administración</h3>
 
-            <p>
-                Gestión de usuarios y permisos.
-            </p>
+                    <p>
+                        Gestión de usuarios y permisos.
+                    </p>
 
-            <asp:Button
-                ID="btnAdmin"
-                runat="server"
-                Text="Ingresar"
-                CssClass="btn btn-primary mt-auto"
-                OnClick="btnAdmin_Click" />
+                    <asp:Button
+                        ID="btnAdmin"
+                        runat="server"
+                        Text="Ingresar"
+                        CssClass="btn btn-primary mt-auto"
+                        OnClick="btnAdmin_Click" />
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <hr class="text-white my-5" />
+
+    <div class="card bg-black text-white shadow mb-4">
+
+        <div class="card-header border-secondary">
+            <h4 class="mb-0">Pacientes Internados Actualmente</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <asp:GridView
+                    ID="dgvInternacionesActivas"
+                    runat="server"
+                    CssClass="table table-dark table-striped table-hover align-middle mb-0"
+                    EmptyDataText="No se registran pacientes internados en este momento.">
+                    
+                    <%-- Falta cargar contenido --%>
+
+                </asp:GridView>
+            </div>
+
+        </div>
 
     </div>
 
