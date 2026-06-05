@@ -11,6 +11,14 @@ namespace InternacionNeumologica.Web
 {
     public partial class Administracion : System.Web.UI.Page
     {
+
+        private void CargarGrilla()
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            dgvUsuarios.DataSource = negocio.Listar();
+            dgvUsuarios.DataBind();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario usuario = (Usuario)Session["usuario"];//el usuario esta guardado en sesion y si no es admin enonces no se muestra el panel de administracion)por si quieren entrar con url gaurdada
@@ -27,10 +35,7 @@ namespace InternacionNeumologica.Web
             }
             if (!IsPostBack)// cada vez que se recarga la pagina se vuelve a cargar la grilla, entonces con esto se hace que solo se cargue la grilla la primera vez que se carga la pagina
             {
-                UsuarioNegocio negocio = new UsuarioNegocio();
-
-                dgvUsuarios.DataSource = negocio.Listar();
-                dgvUsuarios.DataBind();
+                CargarGrilla();
             }
         }
 
@@ -48,5 +53,7 @@ namespace InternacionNeumologica.Web
             Response.Redirect(
                 "UsuarioFormulario.aspx?id=" + id);
         }
+
+        
     }
 }

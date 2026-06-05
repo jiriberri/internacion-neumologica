@@ -85,6 +85,8 @@
                                                     CommandArgument='<%# Eval("IdUsuario") %>' 
                                                     OnClick="btnEditar_Click"/>
 
+                                                
+
                                             </ItemTemplate>
                                         </asp:TemplateField>
 

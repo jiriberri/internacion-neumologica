@@ -45,5 +45,7 @@ namespace Negocio
 
             datos.Modificar(usuario);
         }
+
+       
     }
 }
