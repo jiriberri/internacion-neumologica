@@ -81,9 +81,6 @@ CREATE TABLE PACIENTE (
     fecha_nacimiento DATE NOT NULL,
     domicilio VARCHAR(200) NULL,
     telefono VARCHAR(50) NULL,
-    id_tabaquismo INT NULL,
-    paquetes_anio INT NULL,
-    CONSTRAINT FK_PACIENTE_TABAQUISMO FOREIGN KEY (id_tabaquismo) REFERENCES TABAQUISMO(id_tabaquismo)
 );
 GO
 
@@ -97,12 +94,15 @@ CREATE TABLE INTERNACION (
     id_motivo INT NOT NULL,
     id_insuficiencia INT NULL,
     id_soporte INT NULL,
+    id_tabaquismo INT NULL,
+    paquetes_anio INT NULL,
     FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
     FOREIGN KEY (id_origen) REFERENCES ORIGEN_INTERNACION(id_origen),
     FOREIGN KEY (id_destino) REFERENCES DESTINO_EGRESO(id_destino),
     FOREIGN KEY (id_motivo) REFERENCES MOTIVO_INTERNACION(id_motivo),
     FOREIGN KEY (id_insuficiencia) REFERENCES INSUFICIENCIA_RESPIRATORIA(id_insuficiencia),
-    FOREIGN KEY (id_soporte) REFERENCES SOPORTE_RESPIRATORIO(id_soporte)
+    FOREIGN KEY (id_soporte) REFERENCES SOPORTE_RESPIRATORIO(id_soporte),
+    FOREIGN KEY (id_tabaquismo) REFERENCES TABAQUISMO(id_tabaquismo)
 );
 GO
 

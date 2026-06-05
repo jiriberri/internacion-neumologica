@@ -41,18 +41,6 @@ namespace InternacionNeumologica.Web
                 NuevoPac.Telefono = txtTel.Text;
                 NuevoPac.FechaNacimiento = DateTime.Parse(txtDate.Text);
 
-                NuevoPac.Tabaquismo = new Tabaquismo();
-                NuevoPac.Tabaquismo.IdTabaquismo = int.Parse(ddlTabaquismo.SelectedValue);
-
-                if (ddlTabaquismo.SelectedValue == "2" || ddlTabaquismo.SelectedValue == "3")
-                {
-                    NuevoPac.Paquetes = int.Parse(txtPaquetesAnio.Text);
-                }
-                else
-                {
-                    NuevoPac.Paquetes = null; // Si nunca fumo, es null
-                }
-
                 PacienteNegocio negocio = new PacienteNegocio();
                 negocio.agregar(NuevoPac);
 
@@ -68,21 +56,6 @@ namespace InternacionNeumologica.Web
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("BuscarPaciente.aspx");
-        }
-
-        protected void ddlTabaquismo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string valorSeleccionado = ddlTabaquismo.SelectedValue;
-
-            if (valorSeleccionado == "2" || valorSeleccionado == "3")
-            {
-                divPaquetesAnio.Visible = true;
-            }
-            else
-            {
-                divPaquetesAnio.Visible = false;
-                txtPaquetesAnio.Text = "";
-            }
         }
     }
 }

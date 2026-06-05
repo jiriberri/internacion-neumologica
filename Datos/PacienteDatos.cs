@@ -164,8 +164,8 @@ namespace Datos
         {
             AccesoDatos datos = new AccesoDatos();
 
-            datos.SetearConsulta("INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefono, id_tabaquismo, paquetes_anio) " +
-                             "VALUES (@dni, @nombre, @apellido, @fecha, @domicilio, @telefono, @idTabaquismo, @paquetes)");
+            datos.SetearConsulta("INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefono) " +
+                             "VALUES (@dni, @nombre, @apellido, @fecha, @domicilio, @telefono)");
 
             try
             {
@@ -175,16 +175,6 @@ namespace Datos
                 datos.SetearParametro("@fecha", nuevo.FechaNacimiento);
                 datos.SetearParametro("@domicilio", nuevo.Domicilio);
                 datos.SetearParametro("@telefono", nuevo.Telefono);
-
-                if (nuevo.Tabaquismo != null && nuevo.Tabaquismo.IdTabaquismo > 0)
-                    datos.SetearParametro("@idTabaquismo", nuevo.Tabaquismo.IdTabaquismo);
-                else
-                    datos.SetearParametro("@idTabaquismo", DBNull.Value);
-
-                if (nuevo.Paquetes != null)
-                    datos.SetearParametro("@paquetes", nuevo.Paquetes);
-                else
-                    datos.SetearParametro("@paquetes", DBNull.Value);
 
                 datos.EjecutarAccion();
             }

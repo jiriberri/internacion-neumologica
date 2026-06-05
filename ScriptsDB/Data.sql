@@ -111,11 +111,11 @@ INSERT INTO USUARIO (usuario, pass, esAdmin) VALUES
 -- 3. CARGA DE DATOS DE PRUEBA (MOCKS)
 
 -- Pacientes
-INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefono, id_tabaquismo, paquetes_anio) VALUES
-('20111222', 'Juan', 'Perez', '1965-05-10', 'Av. Siempre Viva 123', '11111111', 3, 40),
-('22333444', 'Maria', 'Gomez', '1978-08-21', 'Calle Falsa 456', '22222222', 2, 25),
-('30123456', 'Carlos', 'Fernandez', '1952-01-15', 'Belgrano 789', '33333333', 1, NULL),
-('28999888', 'Ana', 'Rodriguez', '1985-12-03', 'San Martin 555', '44444444', 1, NULL);
+INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefono) VALUES
+('20111222', 'Juan', 'Perez', '1965-05-10', 'Av. Siempre Viva 123', '11111111'),
+('22333444', 'Maria', 'Gomez', '1978-08-21', 'Calle Falsa 456', '22222222'),
+('30123456', 'Carlos', 'Fernandez', '1952-01-15', 'Belgrano 789', '33333333'),
+('28999888', 'Ana', 'Rodriguez', '1985-12-03', 'San Martin 555', '44444444');
 GO
 
 -- Relaciones de Exposición Ambiental
@@ -140,8 +140,8 @@ INSERT INTO PACIENTE_COMORBILIDAD (id_paciente, id_comorbilidad) VALUES
 (3, 13);-- Carlos: Enf reumatologica
 
 -- Historial de Internaciones
-INSERT INTO INTERNACION (id_paciente, fecha_ingreso, fecha_egreso, id_origen, id_destino, id_motivo, id_insuficiencia, id_soporte) VALUES
-(1, '2026-05-01', '2026-05-10', 1, 1, 6, 2, 2),
-(2, '2026-04-12', '2026-04-15', 1, 1, 7, 1, 1),
-(3, '2026-03-20', '2026-04-05', 4, 4, 9, 4, 4);
+INSERT INTO INTERNACION (id_paciente, fecha_ingreso, fecha_egreso, id_origen, id_destino, id_motivo, id_insuficiencia, id_soporte, id_tabaquismo, paquetes_anio) VALUES
+(1, '2026-05-01', '2026-05-10', 1, 1, 6, 2, 2, 3, 40),
+(2, '2026-04-12', '2026-04-15', 1, 1, 7, 1, 1, 2, 25),
+(3, '2026-03-20', '2026-04-05', 4, 4, 9, 4, 4, 1, NULL);
 GO

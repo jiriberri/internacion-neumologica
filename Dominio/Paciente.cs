@@ -15,7 +15,5 @@ namespace Dominio
         public DateTime FechaNacimiento { get; set; }
         public string Domicilio { get; set; }
         public string Telefono { get; set; }
-        public Tabaquismo Tabaquismo { get; set; }
-        public int? Paquetes { get; set; }
     }
 }
