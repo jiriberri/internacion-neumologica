@@ -28,7 +28,8 @@
                 <asp:TextBox
                     ID="txtUsuario"
                     runat="server"
-                    CssClass="form-control" />
+                    CssClass="form-control"
+                    autocomplete="off"/>
             </div>
 
             <div class="mb-3">
@@ -40,7 +41,8 @@
                     ID="txtPassword"
                     runat="server"
                     TextMode="Password"
-                    CssClass="form-control" />
+                    CssClass="form-control"
+                    autocomplete="new-password" />
             </div>
 
             <div class="form-check mb-3">
@@ -52,6 +54,19 @@
 
                 <label class="form-check-label">
                     Administrador
+                </label>
+
+            </div>
+
+            <div class="form-check mb-3">
+
+                <asp:CheckBox
+                    ID="chkActivo"
+                    runat="server"
+                    CssClass="form-check-input" />
+
+                <label class="form-check-label">
+                    Activo
                 </label>
 
             </div>

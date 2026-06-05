@@ -18,9 +18,11 @@ namespace Datos
             try
             {
                 datos.SetearConsulta(
-                    "SELECT * FROM USUARIO " +
+                    "SELECT * " +
+                    "FROM USUARIO " +
                     "WHERE usuario = @usuario " +
-                    "AND pass = @pass");
+                    "AND pass = @pass " +
+                    "AND activo = 1");
 
                 datos.SetearParametro("@usuario", usuario);
                 datos.SetearParametro("@pass", pass);
@@ -42,6 +44,8 @@ namespace Datos
 
                     user.Admin =
                         (bool)datos.Lector["esAdmin"];
+
+                    user.Activo =(bool)datos.Lector["activo"];
                 }
 
                 return user;
@@ -81,6 +85,9 @@ namespace Datos
                     aux.Admin =
                         (bool)datos.Lector["esAdmin"];
 
+                    aux.Activo =
+                        (bool)datos.Lector["activo"];
+
                     lista.Add(aux);// guarda en la lista cada usuario que genera
                 }
 
@@ -101,12 +108,13 @@ namespace Datos
             try
             {
                 datos.SetearConsulta(
-                    "INSERT INTO USUARIO (usuario, pass, esAdmin) " +
-                    "VALUES (@usuario, @pass, @admin)");
+                    "INSERT INTO USUARIO (usuario, pass, esAdmin, activo) " +
+                    "VALUES (@usuario, @pass, @admin, @activo)");
 
                 datos.SetearParametro("@usuario", nuevo.User);
                 datos.SetearParametro("@pass", nuevo.Pass);
                 datos.SetearParametro("@admin", nuevo.Admin);
+                datos.SetearParametro("@activo", nuevo.Activo);
 
                 datos.EjecutarAccion();
             }
@@ -147,6 +155,8 @@ namespace Datos
 
                     usuario.Admin =
                         (bool)datos.Lector["esAdmin"];
+
+                    usuario.Activo =(bool)datos.Lector["activo"];
                 }
 
                 return usuario;
@@ -165,16 +175,18 @@ namespace Datos
             try
             {
                 datos.SetearConsulta(
-                    "UPDATE USUARIO " +
-                    "SET usuario = @usuario, " +
-                    "pass = @pass, " +
-                    "esAdmin = @admin " +
-                    "WHERE id_usuario = @id");
+                        "UPDATE USUARIO " +
+                        "SET usuario = @usuario, " +
+                        "pass = @pass, " +
+                        "esAdmin = @admin, " +
+                        "activo = @activo " +
+                        "WHERE id_usuario = @id");
 
                 datos.SetearParametro("@usuario", usuario.User);
                 datos.SetearParametro("@pass", usuario.Pass);
                 datos.SetearParametro("@admin", usuario.Admin);
                 datos.SetearParametro("@id", usuario.IdUsuario);
+                datos.SetearParametro("@activo", usuario.Activo);
 
                 datos.EjecutarAccion();
             }

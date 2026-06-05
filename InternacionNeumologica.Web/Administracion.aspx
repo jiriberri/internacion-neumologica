@@ -70,6 +70,10 @@
                                         DataField="Admin"
                                         HeaderText="Administrador" />
 
+                                    <asp:CheckBoxField
+                                        DataField="Activo"
+                                        HeaderText="Activo" />
+
                                     <asp:TemplateField HeaderText="Acciones">
                                             <ItemTemplate>
 

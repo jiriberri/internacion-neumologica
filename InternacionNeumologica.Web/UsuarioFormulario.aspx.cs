@@ -15,6 +15,19 @@ namespace InternacionNeumologica.Web
         {
             if (!IsPostBack)
             {
+               /* if (!IsPostBack)
+                {
+                    txtUsuario.Text = "";
+                    txtPassword.Text = "";
+
+                    return;
+                }*/
+
+                txtUsuario.Text = "";
+                txtPassword.Text = "";
+                chkAdmin.Checked = false;
+                chkActivo.Checked = true;//si es nuevo y alo pone com0a ctivo
+
                 if (Request.QueryString["id"] != null)
                 {
                     lblTitulo.Text = "Editar Usuario";
@@ -29,6 +42,7 @@ namespace InternacionNeumologica.Web
                     txtUsuario.Text = usuario.User;
                     txtPassword.Text = usuario.Pass;
                     chkAdmin.Checked = usuario.Admin;
+                    chkActivo.Checked = usuario.Activo;
                 }
             }
 
@@ -42,11 +56,14 @@ namespace InternacionNeumologica.Web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+
+            /*throw new Exception("PRUEBA");*/
             Usuario usuario = new Usuario();
 
             usuario.User = txtUsuario.Text;
             usuario.Pass = txtPassword.Text;
             usuario.Admin = chkAdmin.Checked;
+            usuario.Activo = chkActivo.Checked;
 
             UsuarioNegocio negocio = new UsuarioNegocio();
 
@@ -60,6 +77,9 @@ namespace InternacionNeumologica.Web
                     int.Parse(Request.QueryString["id"]);
 
                 negocio.Modificar(usuario);
+
+                /*Response.Write("ENTRO EN MODIFICAR");
+                return;*/
             }
 
             Response.Redirect("Administracion.aspx");
