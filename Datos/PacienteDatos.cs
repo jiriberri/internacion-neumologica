@@ -115,8 +115,8 @@ namespace Datos
             {
                 datos.SetearConsulta(
                    "SELECT * FROM PACIENTE " +
-    "WHERE apellido COLLATE Latin1_General_CI_AI LIKE @apellido " +
-    "OR dni=@Dni");
+                    "WHERE apellido COLLATE Latin1_General_CI_AI LIKE @apellido " +
+                    "OR dni=@Dni");
 
                 datos.SetearParametro("@Dni", Texto);
                 datos.SetearParametro("@apellido", "%" + Texto + "%");
@@ -182,6 +182,29 @@ namespace Datos
             {
 
                 throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        public int ContarPacientes()
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "SELECT COUNT(*) cantidad " +
+                    "FROM PACIENTE");
+
+                datos.EjecutarLectura();
+
+                if (datos.Lector.Read())
+                    return (int)datos.Lector["cantidad"];
+
+                return 0;
             }
             finally
             {

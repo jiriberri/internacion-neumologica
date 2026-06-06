@@ -38,5 +38,12 @@ namespace Negocio
             PacienteDatos datos = new PacienteDatos();
             datos.agregar(nuevo);
         }
+
+        public int ContarPacientes()
+        {
+            PacienteDatos datos = new PacienteDatos();
+
+            return datos.ContarPacientes();
+        }
     }
 }
