@@ -14,7 +14,8 @@ CREATE TABLE USUARIO (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
     usuario VARCHAR(50) NOT NULL UNIQUE,
     pass VARCHAR(256) NOT NULL,
-    esAdmin BIT NOT NULL   -- 1 para Admin, 0 para Usuario limitado
+    esAdmin BIT NOT NULL,   -- 1 para Admin, 0 para Usuario limitado
+    Activo BIT NOT NULL DEFAULT 1
 );
 GO
 
@@ -46,12 +47,7 @@ CREATE TABLE SOPORTE_RESPIRATORIO (
     id_soporte INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(50) NOT NULL UNIQUE
 );
-GO
 
-CREATE TABLE MOTIVO_INTERNACION (
-    id_motivo INT IDENTITY(1,1) PRIMARY KEY,
-    descripcion VARCHAR(150) NOT NULL UNIQUE
-);
 GO
 
 CREATE TABLE ANTECEDENTE_RESPIRATORIO (
@@ -70,6 +66,45 @@ CREATE TABLE COMORBILIDAD (
     id_comorbilidad INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(150) NOT NULL UNIQUE
 );
+
+--5. Creaciones tablas de enfermedades 
+GO
+CREATE TABLE INFECCIONES(
+id_infeccion INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE
+)
+GO
+CREATE TABLE OBSTRUCTIVAS(
+id_obstructiva INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE
+)
+GO
+CREATE TABLE INTERSTICIALES(
+id_intersticial INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE
+)
+GO
+CREATE TABLE PLEURA(
+id_pleura INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE
+)
+GO
+CREATE TABLE VASCULARES(
+id_vascular INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE
+)
+GO
+CREATE TABLE ONCOLOGICAS(
+id_oncologica INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE
+)
+GO
+CREATE TABLE OTROS(
+id_otro INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE
+)
+
+
 GO
 
 -- 3. TABLAS PRINCIPALES CON DEPENDENCIAS
@@ -91,7 +126,13 @@ CREATE TABLE INTERNACION (
     fecha_egreso DATE NULL,
     id_origen INT NOT NULL,
     id_destino INT NULL,
-    id_motivo INT NOT NULL,
+    id_infeccion INT NULL, 
+    id_obstructiva INT NULL, 
+    id_intersticial INT NULL, 
+    id_pleura INT NULL,
+    id_vascular INT NULL, 
+    id_oncologica INT NULL, 
+    id_otro INT NULL,
     id_insuficiencia INT NULL,
     id_soporte INT NULL,
     id_tabaquismo INT NULL,
@@ -99,7 +140,13 @@ CREATE TABLE INTERNACION (
     FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
     FOREIGN KEY (id_origen) REFERENCES ORIGEN_INTERNACION(id_origen),
     FOREIGN KEY (id_destino) REFERENCES DESTINO_EGRESO(id_destino),
-    FOREIGN KEY (id_motivo) REFERENCES MOTIVO_INTERNACION(id_motivo),
+    FOREIGN KEY (id_infeccion) REFERENCES INFECCIONES(id_infeccion),
+    FOREIGN KEY (id_obstructiva) REFERENCES OBSTRUCTIVAS(id_obstructiva),
+    FOREIGN KEY (id_intersticial) REFERENCES INTERSTICIALES(id_intersticial),
+    FOREIGN KEY (id_pleura) REFERENCES PLEURA (id_pleura),
+    FOREIGN KEY (id_vascular) REFERENCES VASCULARES (id_vascular),
+    FOREIGN KEY (id_oncologica) REFERENCES ONCOLOGICAS (id_oncologica), 
+    FOREIGN KEY (id_otro) REFERENCES OTROS (id_otro),
     FOREIGN KEY (id_insuficiencia) REFERENCES INSUFICIENCIA_RESPIRATORIA(id_insuficiencia),
     FOREIGN KEY (id_soporte) REFERENCES SOPORTE_RESPIRATORIO(id_soporte),
     FOREIGN KEY (id_tabaquismo) REFERENCES TABAQUISMO(id_tabaquismo)
@@ -132,4 +179,5 @@ CREATE TABLE PACIENTE_COMORBILIDAD (
     FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
     FOREIGN KEY (id_comorbilidad) REFERENCES COMORBILIDAD(id_comorbilidad)
 );
-GO
+GO 
+

@@ -34,28 +34,8 @@ INSERT INTO SOPORTE_RESPIRATORIO (descripcion) VALUES
 ('VNI'),
 ('ARM');
 
-INSERT INTO MOTIVO_INTERNACION (descripcion) VALUES
-('NAC (Neumonia adquirida en la comunidad)'),
-('Neumonia intrahospitalaria'),
-('Tuberculosis'),
-('Infeccion viral'),
-('Infeccion fungica'),
-('Exacerbacion de EPOC'),
-('Exacerbacion de asma'),
-('Exacerbacion de bronquiectasias'),
-('EPD progresiva'),
-('Exacerbacion aguda de EPD'),
-('Hemorragia alveolar'),
-('Derrame pleural'),
-('Empiema'),
-('Neumotorax'),
-('TEP'),
-('Hipertension pulmonar'),
-('Masa pulmonar en estudio'),
-('Complicacion oncologica'),
-('Estudio diagnostico'),
-('Manejo del dolor'),
-('Cuidados paliativos');
+
+go
 
 INSERT INTO ANTECEDENTE_RESPIRATORIO (descripcion) VALUES
 ('EPOC (Enfermedad pulmonar obstructiva cronica)'),
@@ -140,8 +120,64 @@ INSERT INTO PACIENTE_COMORBILIDAD (id_paciente, id_comorbilidad) VALUES
 (3, 13);-- Carlos: Enf reumatologica
 
 -- Historial de Internaciones
-INSERT INTO INTERNACION (id_paciente, fecha_ingreso, fecha_egreso, id_origen, id_destino, id_motivo, id_insuficiencia, id_soporte, id_tabaquismo, paquetes_anio) VALUES
-(1, '2026-05-01', '2026-05-10', 1, 1, 6, 2, 2, 3, 40),
-(2, '2026-04-12', '2026-04-15', 1, 1, 7, 1, 1, 2, 25),
-(3, '2026-03-20', '2026-04-05', 4, 4, 9, 4, 4, 1, NULL);
-GO
+INSERT INTO INTERNACION (id_paciente, fecha_ingreso, fecha_egreso, id_origen, id_destino, id_infeccion,id_obstructiva,id_intersticial,id_pleura,id_vascular,id_oncologica,id_otro, id_insuficiencia, id_soporte, id_tabaquismo, paquetes_anio) VALUES
+(1, '2026-05-01', '2026-05-10', 1, 1, 6, 1,1,1,1,1,1,1,2, 3, 40)
+--(2, '2026-04-12', '2026-04-15', 1, 1, 7, 1, 1, 2, 25),
+--(3, '2026-03-20', '2026-04-05', 4, 4, 9, 4, 4, 1, NULL);
+GO 
+
+
+---Enfermedades 
+INSERT INTO INFECCIONES(descripcion) VALUES
+('Ninguna'),
+('NAC (Neumonia adquirida en la comunidad)'),
+('Neumonia intrahospitalaria'),
+('Tuberculosis'),
+('Infeccion viral'),
+('Infeccion fungica'); 
+
+go
+
+INSERT INTO OBSTRUCTIVAS(descripcion) VALUES 
+('Ninguna'),
+('Exacerbacion de EPOC'),
+('Exacerbacion de asma'),
+('Exacerbacion de bronquiectasias'); 
+go
+
+INSERT INTO INTERSTICIALES(descripcion) VALUES 
+('Ninguna'),
+('Exacerbacion aguda de EPD'),
+('EPD progresiva'),
+('Hemorragia alveolar');
+
+go
+INSERT INTO PLEURA(descripcion) VALUES 
+('Ninguna'),
+('Derrame pleural'),
+('Empiema'),
+('Neumotorax'); 
+
+go 
+INSERT INTO VASCULARES(descripcion) VALUES 
+('Ninguna'),
+('TEP'),
+('Hipertension pulmonar'); 
+
+go 
+INSERT INTO ONCOLOGICAS(descripcion) VALUES 
+('Ninguna'),
+('Masa pulmonar en estudio'),
+('Complicacion oncologica'); 
+
+
+go 
+INSERT INTO OTROS(descripcion) VALUES 
+('Ninguna'),
+('Estudio diagnostico'),
+('Manejo del dolor'),
+('Cuidados paliativos'); 
+
+
+
+
