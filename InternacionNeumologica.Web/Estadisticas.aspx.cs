@@ -8,6 +8,9 @@ using Negocio;
 using Dominio;
 
 
+
+// Esta página solo recopila los criterios de búsqueda.
+// La generación del reporte se realiza en Reporte.aspx.
 namespace InternacionNeumologica.Web
 {
     public partial class Estadisticas : System.Web.UI.Page
@@ -15,33 +18,50 @@ namespace InternacionNeumologica.Web
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-
-
-        }
-
-        protected void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            try
+            if (!IsPostBack)
             {
-                string texto = txtFiltroBusqueda.Text;
-                PacienteNegocio negocio = new PacienteNegocio();
-
-                List<Paciente> listaFiltrada = negocio.BuscarPorDNIoApellido(texto);
-
-                dgvPacientesFiltrados.DataSource = listaFiltrada;
-                dgvPacientesFiltrados.DataBind();
-            }
-            catch(Exception ex) {
-
-                throw ex;
-
+                CargarCombos();
+                CargarResumen();
             }
         }
+        private void CargarCombos()
+        { // TODO: 
+            // Cargar Diagnósticos 
+            // Cargar Comorbilidades 
+            // Cargar Tipo de Insuficiencia Respiratoria 
+            // Cargar Soporte Respiratorio 
+            // Cargar Destino de Egreso }
+        }
 
+        private void CargarResumen()
+        { // TODO: 
+            // Mostrar: 
+            // - Total de pacientes 
+            // - Total de internaciones 
+            // - Total de fallecidos 
+            // Ejemplo: 
+            // lblPacientes.Text = negocio.ContarPacientes().ToString(); 
+            // lblInternaciones.Text = negocio.ContarInternaciones().ToString(); 
+            // lblFallecidos.Text = negocio.ContarFallecidos().ToString();
+            //
+        }
 
+        protected void btnGenerarReporte_Click(object sender, EventArgs e)
+        {
+            string url =
+                "Reporte.aspx" +
+                "?desde=" + txtFechaDesde.Text +
+                "&hasta=" + txtFechaHasta.Text +
+                "&edadMin=" + txtEdadMinima.Text +
+                "&edadMax=" + txtEdadMaxima.Text +
+                "&sexo=" + ddlSexo.SelectedValue +
+                "&diagnostico=" + ddlDiagnostico.SelectedValue +
+                "&insuficiencia=" + ddlInsuficiencia.SelectedValue +
+                "&comorbilidad=" + ddlComorbilidad.SelectedValue +
+                "&soporte=" + ddlSoporte.SelectedValue +
+                "&destino=" + ddlDestino.SelectedValue;
 
-
-
+            Response.Redirect(url);
+        }
     }
 }
