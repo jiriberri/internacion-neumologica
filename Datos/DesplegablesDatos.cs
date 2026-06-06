@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Datos
 {
     public class DesplegablesDatos
@@ -44,7 +43,28 @@ namespace Datos
         }
 
 
+        public List<T> Listar<T>(string tabla, string Id, string descripcion) where T: Despegables, new() {
+            List<T> lista = new List<T>();
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.SetearConsulta($"Select {Id}, {descripcion} from {tabla}");
+                datos.EjecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    T objeto = new T();
+                    objeto.Id = (int)datos.Lector[Id];
+                    objeto.Descripcion = (string)datos.Lector[descripcion];
+                    lista.Add(objeto);
+                }
+                return lista;
+
+            }
+            catch (Exception ex) { throw ex; }
+            
+            finally { datos.CerrarConexion(); }
+        }
 
 
 

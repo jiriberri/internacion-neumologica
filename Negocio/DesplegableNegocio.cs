@@ -16,8 +16,20 @@ namespace Negocio
             DesplegablesDatos datos = new DesplegablesDatos();
             return datos.ListarOrigenes();
         }
-            
 
 
+        public List<Origen> ListarOrigen() {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<Origen>("ORIGEN_INTERNACION","id_origen", "descripcion");
+        }
+
+        public List<DestinoEgreso> ListarEgreso() {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<DestinoEgreso>("DESTINO_EGRESO", "id_destino", "descripcion");
+        
+        }
+    
+    
+    
     }
 }

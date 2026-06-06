@@ -16,11 +16,17 @@ namespace InternacionNeumologica.Web
             if (!IsPostBack)
             {
                 DesplegableNegocio negocio = new DesplegableNegocio();
-                List<Origen> lista = negocio.ListarOrigenes();
-                ddlOrigen.DataSource = lista;
+                List<Origen> listaOrigen = negocio.ListarOrigen();
+                ddlOrigen.DataSource = listaOrigen;
                 ddlOrigen.DataValueField = "Id";
                 ddlOrigen.DataTextField = "Descripcion";
                 ddlOrigen.DataBind();
+
+                List<DestinoEgreso> listaEgreso = negocio.ListarEgreso();
+                ddlDestinoEgreso.DataSource = listaEgreso;
+                ddlDestinoEgreso.DataValueField = "Id";
+                ddlDestinoEgreso.DataTextField = "Descripcion";
+                ddlDestinoEgreso.DataBind();
             }
         }
 

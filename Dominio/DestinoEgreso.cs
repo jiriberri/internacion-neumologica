@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Origen : Despegables
+    public class DestinoEgreso : Despegables
     {
-    
         public int Id { get; set; }
 
         public string Descripcion { get; set; }
@@ -18,6 +17,9 @@ namespace Dominio
 
             return Descripcion;
         }
+
+
+
 
     }
 }
