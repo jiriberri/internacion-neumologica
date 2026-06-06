@@ -32,10 +32,10 @@ namespace Negocio
 
         }
 
-        public List<Motivo> ListarMotivo()
+        public List<Infeccion> ListarInfeccion()
         {
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Motivo>("MOTIVO_INTERNACION", "id_motivo", "descripcion");
+            return datos.Listar<Infeccion>("INFECCIONES", "id_infeccion", "descripcion");
 
         }
     }

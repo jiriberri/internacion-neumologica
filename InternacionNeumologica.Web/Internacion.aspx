@@ -63,10 +63,7 @@
              
            <div class="mb-3">
             
-              <label for="txtMotivoInternacion" class="mb-1 text-primary-emphasis fw-semibold fs-6">Motivo Principal de Internación:</label>
-              <asp:DropDownList ID="ddlMotivoInter" runat="server" CssClass="form-select">
-            <asp:ListItem Text="Seleccione una opción." Value="" />
-        </asp:DropDownList>
+              <label for="txtMotivoInternacion" class="mb-1 text-primary-emphasis fw-semibold fs-6">Motivo Principal de Internación</label>
           
        </div> 
 

@@ -28,11 +28,11 @@ namespace InternacionNeumologica.Web
                 ddlDestinoEgreso.DataTextField = "Descripcion";
                 ddlDestinoEgreso.DataBind();
 
-                List<Motivo> listaMotivo = negocio.ListarMotivo();
-                ddlMotivoInter.DataSource = listaMotivo;
-                ddlMotivoInter.DataValueField = "Id";
-                ddlMotivoInter.DataTextField = "Descripcion";
-                ddlMotivoInter.DataBind();
+                List<Infeccion> listaInfeccion = negocio.ListarInfeccion();
+                ddlInfrecciones.DataSource = listaInfeccion;
+                ddlInfrecciones.DataValueField = "Id";
+                ddlInfrecciones.DataTextField = "Descripcion";
+                ddlInfrecciones.DataBind();
             }
         }
 

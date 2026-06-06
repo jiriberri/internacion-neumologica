@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Despegables.cs" />
-    <Compile Include="Motivo.cs" />
+    <Compile Include="Infeccion.cs" />
     <Compile Include="Origen.cs" />
     <Compile Include="DestinoEgreso.cs" />
     <Compile Include="Paciente.cs" />
