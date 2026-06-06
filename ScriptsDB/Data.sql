@@ -84,9 +84,9 @@ GO
 -- 2. CARGA DE USUARIOS
 
 -- Usuarios
-INSERT INTO USUARIO (usuario, pass, esAdmin) VALUES
-('admin', 'admin123', 1),
-('usuario', 'usuario123', 0);
+INSERT INTO USUARIO (usuario, pass, esAdmin, activo ) VALUES
+('admin', 'admin123', 1, 1),
+('usuario', 'usuario123', 0, 1);
 
 -- 3. CARGA DE DATOS DE PRUEBA (MOCKS)
 

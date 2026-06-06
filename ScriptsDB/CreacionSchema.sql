@@ -15,7 +15,8 @@ CREATE TABLE USUARIO (
     usuario VARCHAR(50) NOT NULL UNIQUE,
     pass VARCHAR(256) NOT NULL,
     esAdmin BIT NOT NULL,   -- 1 para Admin, 0 para Usuario limitado
-    Activo BIT NOT NULL DEFAULT 1
+    activo BIT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
+
 );
 GO
 
