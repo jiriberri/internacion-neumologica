@@ -27,6 +27,12 @@ namespace InternacionNeumologica.Web
                 ddlDestinoEgreso.DataValueField = "Id";
                 ddlDestinoEgreso.DataTextField = "Descripcion";
                 ddlDestinoEgreso.DataBind();
+
+                List<Motivo> listaMotivo = negocio.ListarMotivo();
+                ddlMotivoInter.DataSource = listaMotivo;
+                ddlMotivoInter.DataValueField = "Id";
+                ddlMotivoInter.DataTextField = "Descripcion";
+                ddlMotivoInter.DataBind();
             }
         }
 
