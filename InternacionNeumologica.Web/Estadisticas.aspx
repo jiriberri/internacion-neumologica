@@ -314,7 +314,9 @@
             ID="btnGenerarReporte"
             runat="server"
             Text="Generar análisis"
+            OnClick="btnGenerarReporte_Click" 
             CssClass="btn btn-primary btn-lg px-5" />
+
 
     </div>
 

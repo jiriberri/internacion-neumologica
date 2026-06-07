@@ -61,7 +61,7 @@ namespace InternacionNeumologica.Web
                 "&soporte=" + ddlSoporte.SelectedValue +
                 "&destino=" + ddlDestino.SelectedValue;
 
-            Response.Redirect(url);
+            Response.Redirect("Reporte.aspx");
         }
     }
 }
