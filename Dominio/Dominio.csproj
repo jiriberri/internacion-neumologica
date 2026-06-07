@@ -43,12 +43,18 @@
   <ItemGroup>
     <Compile Include="Despegables.cs" />
     <Compile Include="Infeccion.cs" />
+    <Compile Include="Intersticiales.cs" />
+    <Compile Include="Obstructiva.cs" />
+    <Compile Include="Oncologica.cs" />
     <Compile Include="Origen.cs" />
     <Compile Include="DestinoEgreso.cs" />
+    <Compile Include="Otros.cs" />
     <Compile Include="Paciente.cs" />
+    <Compile Include="Pleura.cs" />
     <Compile Include="Tabaquismo.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vascular.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

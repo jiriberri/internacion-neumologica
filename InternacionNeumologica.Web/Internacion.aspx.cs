@@ -33,6 +33,44 @@ namespace InternacionNeumologica.Web
                 ddlInfrecciones.DataValueField = "Id";
                 ddlInfrecciones.DataTextField = "Descripcion";
                 ddlInfrecciones.DataBind();
+
+                List<Obstructiva> listaObstrutiva = negocio.ListarObtructiva();
+                ddlObtrucciones.DataSource = listaObstrutiva;
+                ddlObtrucciones.DataValueField = "Id";
+                ddlObtrucciones.DataTextField = "Descripcion";
+                ddlObtrucciones.DataBind();
+
+                List<Intersticiales> listaIntersticiales = negocio.ListarIntersticiales();
+                ddlIntersticiales.DataSource = listaIntersticiales;
+                ddlObtrucciones.DataValueField = "Id";
+                ddlIntersticiales.DataTextField = "Descripcion";
+                ddlIntersticiales.DataBind();
+
+                List<Pleura> listaPleura = negocio.ListarPleura();
+                ddlPleura.DataSource = listaPleura;
+                ddlPleura.DataValueField = "Id";
+                ddlPleura.DataTextField = "Descripcion";
+                ddlPleura.DataBind();
+
+                List<Vascular> listaVascular = negocio.ListarVascular();
+                ddlVasculares.DataSource = listaVascular;
+                ddlVasculares.DataValueField = "Id";
+                ddlVasculares.DataTextField = "Descripcion";
+                ddlVasculares.DataBind();
+
+                List<Oncologica> listaOncologica = negocio.ListarOncologica();
+                ddlOncologicas.DataSource = listaOncologica;
+                ddlOncologicas.DataValueField = "Id";
+                ddlOncologicas.DataTextField = "Descripcion";
+                ddlOncologicas.DataBind();
+
+                List<Otros> listaOtro = negocio.ListarOtros();
+                ddlOtros.DataSource = listaOtro;
+                ddlOtros.DataValueField = "Id";
+                ddlOtros.DataTextField = "Descripcion";
+                ddlOtros.DataBind();
+
+
             }
         }
 

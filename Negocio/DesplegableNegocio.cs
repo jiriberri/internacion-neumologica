@@ -35,8 +35,58 @@ namespace Negocio
         public List<Infeccion> ListarInfeccion()
         {
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Infeccion>("INFECCIONES", "id_infeccion", "descripcion");
+            return datos.Listar<Infeccion>("INFECCIONES", "id_infeccion", "descripcion"); 
 
         }
+
+        public List<Obstructiva> ListarObtructiva() {
+
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<Obstructiva>("OBSTRUCTIVAS", "id_obstructiva", "descripcion");
+
+        }
+
+        public List<Intersticiales> ListarIntersticiales()
+        {
+
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<Intersticiales>("INTERSTICIALES", "id_intersticial", "descripcion");
+
+        }
+
+        public List<Pleura> ListarPleura() {
+
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<Pleura>("PLEURA", "id_pleura", "descripcion");
+
+        }
+
+        public List<Vascular> ListarVascular()
+        {
+
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<Vascular>("VASCULARES", "id_vascular", "descripcion");
+
+        }
+
+        public List<Oncologica> ListarOncologica()
+        {
+
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<Oncologica>("ONCOLOGICAS", "id_oncologica", "descripcion");
+
+        }
+
+        public List<Otros> ListarOtros()
+        {
+
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<Otros>("OTROS", "id_otro", "descripcion");
+
+        }
+
+
     }
+
+
 }
