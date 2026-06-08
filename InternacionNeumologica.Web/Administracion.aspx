@@ -248,7 +248,32 @@
                         </div>
                     </div>
 
-                    
+                    <asp:PlaceHolder ID="phFormularioCatalogo" runat="server" Visible="false">
+                        <hr />
+                        <div class="row g-3 align-items-end mb-4">
+                            <div class="col-md-8">
+                                <label class="form-label">Nueva Descripción / Ítem</label>
+                                <asp:TextBox ID="txtNuevaDescripcion" runat="server" CssClass="form-control" Placeholder="Ej: Nueva variante o diagnóstico..." />
+                            </div>
+                            <div class="col-md-4">
+                                <asp:Button ID="btnAgregarItem" runat="server" Text="Agregar a la Tabla" CssClass="btn btn-success w-100" OnClick="btnAgregarItem_Click" />
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <asp:GridView
+                                ID="dgvCatalogoGenerico"
+                                runat="server"
+                                AutoGenerateColumns="false"
+                                CssClass="table table-striped table-hover align-middle mb-0"
+                                EmptyDataText="La tabla seleccionada no contiene registros.">
+                                <Columns>
+                                    <asp:BoundField DataField="Id" HeaderText="ID Interno" ItemStyle-Width="10%" />
+                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción Registrada" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </asp:PlaceHolder>
 
                 </div>
             </div>

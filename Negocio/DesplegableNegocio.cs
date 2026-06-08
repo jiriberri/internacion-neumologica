@@ -85,8 +85,10 @@ namespace Negocio
 
         }
 
-
+        public List<T> ListarCatalogo<T>(string tabla, string idColumna, string descripcionColumna) where T : Despegables, new()
+        {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<T>(tabla, idColumna, descripcionColumna);
+        }
     }
-
-
 }

@@ -56,12 +56,52 @@ namespace InternacionNeumologica.Web
 
         protected void ddlCatalogos_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (ddlCatalogos.SelectedValue != "0")
+            {
+                phFormularioCatalogo.Visible = true;
+                CargarGrillaCatalogo();
+                txtNuevaDescripcion.Text = "";
+            }
+            else
+            {
+                phFormularioCatalogo.Visible = false;
+            }
         }
-
         protected void btnAgregarItem_Click(object sender, EventArgs e)
         {
 
+        }
+        private void CargarGrillaCatalogo()
+        {
+            string tablaSeleccionada = ddlCatalogos.SelectedValue;
+            string columnaId = ObtenerColumnaId(tablaSeleccionada);
+
+            DesplegableNegocio negocio = new DesplegableNegocio();
+
+            dgvCatalogoGenerico.DataSource = negocio.ListarCatalogo<ItemCatalogo>(tablaSeleccionada, columnaId, "descripcion");
+            dgvCatalogoGenerico.DataBind();
+        }
+        private string ObtenerColumnaId(string tabla)
+        {
+            switch (tabla)
+            {
+                case "ANTECEDENTE_RESPIRATORIO": return "id_antecedente";
+                case "COMORBILIDAD": return "id_comorbilidad";
+                case "DESTINO_EGRESO": return "id_destino";
+                case "INFECCIONES": return "id_infeccion";
+                case "INTERSTICIALES": return "id_intersticial";
+                case "OBSTRUCTIVAS": return "id_obstructiva";
+                case "ONCOLOGICAS": return "id_oncologica";
+                case "PLEURA": return "id_pleura";
+                case "VASCULARES": return "id_vascular";
+                case "EXPOSICION_AMBIENTAL": return "id_exposicion";
+                case "INSUFICIENCIA_RESPIRATORIA": return "id_insuficiencia";
+                case "ORIGEN_INTERNACION": return "id_origen";
+                case "SOPORTE_RESPIRATORIO": return "id_soporte";
+                case "TABAQUISMO": return "id_tabaquismo";
+                case "OTROS": return "id_otro";
+                default: return "";
+            }
         }
     }
 }
