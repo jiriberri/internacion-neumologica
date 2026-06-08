@@ -139,31 +139,229 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 
     </div>
 
-    <!-- ========================================================= -->
-    <!-- TARJETAS KPI                                              -->
-    <!-- ========================================================= -->
+   
+<!-- ========================================================= -->
+<!-- INDICADORES PRINCIPALES (KPIs) Es una clase CSS                           -->
+<!-- ========================================================= -->
 
-    <!-- Próximo paso:
-         Pacientes
-         Internaciones
-         Fallecidos
-         Estadía promedio -->
+<div class="row g-3 mb-4">
 
-    <!-- ========================================================= -->
-    <!-- GRÁFICOS PRINCIPALES                                      -->
-    <!-- ========================================================= -->
+    <div class="col-md-3">
 
-    <!-- Próximo paso:
-         Distribución por edad
-         Soporte respiratorio -->
+        <div class="card dashboard-card h-100">
 
-    <!-- ========================================================= -->
-    <!-- GRÁFICOS SECUNDARIOS                                      -->
-    <!-- ========================================================= -->
+            <div class="card-body text-center">
 
-    <!-- Próximo paso:
-         Diagnósticos
-         Comorbilidades -->
+                <div style="font-size:2rem;">
+                    👥
+                </div>
+
+                <div class="kpi">
+                    84
+                </div>
+
+                <div class="kpi-label">
+                    Pacientes
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card dashboard-card h-100">
+
+            <div class="card-body text-center">
+
+                <div style="font-size:2rem;">
+                    🏥
+                </div>
+
+                <div class="kpi">
+                    102
+                </div>
+
+                <div class="kpi-label">
+                    Internaciones
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card dashboard-card h-100">
+
+            <div class="card-body text-center">
+
+                <div style="font-size:2rem;">
+                    ❤️
+                </div>
+
+                <div class="kpi">
+                    7
+                </div>
+
+                <div class="kpi-label">
+                    Fallecidos
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card dashboard-card h-100">
+
+            <div class="card-body text-center">
+
+                <div style="font-size:2rem;">
+                    📅
+                </div>
+
+                <div class="kpi">
+                    11,3
+                </div>
+
+                <div class="kpi-label">
+                    Estadía promedio (días)
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+   
+<!-- ========================================================= -->
+<!-- GRÁFICOS PRINCIPALES                                      -->
+<!-- ========================================================= -->
+
+<div class="row g-3 mb-4">
+
+    <div class="col-md-6">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h5 class="text-white mb-3">
+
+                    Distribución por edad
+
+                </h5>
+
+                <div class="grafico">
+
+                    Gráfico disponible próximamente
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h5 class="text-white mb-3">
+
+                    Soporte respiratorio
+
+                </h5>
+
+                <div class="grafico">
+
+                    Gráfico disponible próximamente
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+ 
+<!-- ========================================================= -->
+<!-- GRÁFICOS SECUNDARIOS                                      -->
+<!-- ========================================================= -->
+
+<div class="row g-3 mb-4">
+
+    <div class="col-md-6">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h5 class="text-white mb-3">
+
+                    Grupo diagnóstico
+
+                </h5>
+
+                <div class="grafico">
+
+                    Área reservada para visualización
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h5 class="text-white mb-3">
+
+                    Comorbilidades
+
+                </h5>
+
+                <div class="grafico">
+
+                    Área reservada para visualización
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 
     <!-- ========================================================= -->
     <!-- TABLA RESUMEN                                             -->
