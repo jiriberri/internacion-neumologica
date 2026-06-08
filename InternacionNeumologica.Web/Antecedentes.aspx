@@ -161,7 +161,9 @@
                 </div>
             </div>
 
-        </div> <div class="row g-3">
+        </div> 
+       
+       <div class="row g-3">
             
             <div class="col-lg-6">
                 <div class="card card-filtro h-100">
