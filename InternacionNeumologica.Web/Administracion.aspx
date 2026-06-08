@@ -213,70 +213,74 @@
         </div>
 
         <div class="tab-pane fade" id="catalogos" role="tabpanel" aria-labelledby="catalogos-tab">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h4 class="mb-0">Gestión de Tablas Maestras</h4>
-                </div>
-                <div class="card-body">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <h4 class="mb-0">Gestión de Tablas Maestras</h4>
+                        </div>
+                        <div class="card-body">
 
-                    <div class="row g-3 align-items-end mb-4">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Seleccionar Tabla / Catálogo</label>
-                            <asp:DropDownList
-                                ID="ddlCatalogos"
-                                runat="server"
-                                CssClass="form-select"
-                                AutoPostBack="true"
-                                OnSelectedIndexChanged="ddlCatalogos_SelectedIndexChanged">
-                                <asp:ListItem Text="-- Seleccione una tabla para gestionar --" Value="0" />
-                                <asp:ListItem Text="Antecedentes Respiratorios" Value="ANTECEDENTE_RESPIRATORIO" />
-                                <asp:ListItem Text="Comorbilidades" Value="COMORBILIDAD" />
-                                <asp:ListItem Text="Destinos de Egreso" Value="DESTINO_EGRESO" />
-                                <asp:ListItem Text="Enfermedades Infecciosas" Value="INFECCIONES" />
-                                <asp:ListItem Text="Enfermedades Intersticiales" Value="INTERSTICIALES" />
-                                <asp:ListItem Text="Enfermedades Obstructivas" Value="OBSTRUCTIVAS" />
-                                <asp:ListItem Text="Enfermedades Oncológicas" Value="ONCOLOGICAS" />
-                                <asp:ListItem Text="Enfermedades de la Pleura" Value="PLEURA" />
-                                <asp:ListItem Text="Enfermedades Vasculares" Value="VASCULARES" />
-                                <asp:ListItem Text="Exposiciones Ambientales" Value="EXPOSICION_AMBIENTAL" />
-                                <asp:ListItem Text="Insuficiencias Respiratorias" Value="INSUFICIENCIA_RESPIRATORIA" />
-                                <asp:ListItem Text="Orígenes de Internación" Value="ORIGEN_INTERNACION" />
-                                <asp:ListItem Text="Soportes Respiratorios" Value="SOPORTE_RESPIRATORIO" />
-                                <asp:ListItem Text="Historial de Tabaquismo" Value="TABAQUISMO" />
-                                <asp:ListItem Text="Otros Criterios Clínicos" Value="OTROS" />
-                            </asp:DropDownList>
+                            <div class="row g-3 align-items-end mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Seleccionar Tabla / Catálogo</label>
+                                    <asp:DropDownList
+                                        ID="ddlCatalogos"
+                                        runat="server"
+                                        CssClass="form-select"
+                                        AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlCatalogos_SelectedIndexChanged">
+                                        <asp:ListItem Text="-- Seleccione una tabla para gestionar --" Value="0" />
+                                        <asp:ListItem Text="Antecedentes Respiratorios" Value="ANTECEDENTE_RESPIRATORIO" />
+                                        <asp:ListItem Text="Comorbilidades" Value="COMORBILIDAD" />
+                                        <asp:ListItem Text="Destinos de Egreso" Value="DESTINO_EGRESO" />
+                                        <asp:ListItem Text="Enfermedades Infecciosas" Value="INFECCIONES" />
+                                        <asp:ListItem Text="Enfermedades Intersticiales" Value="INTERSTICIALES" />
+                                        <asp:ListItem Text="Enfermedades Obstructivas" Value="OBSTRUCTIVAS" />
+                                        <asp:ListItem Text="Enfermedades Oncológicas" Value="ONCOLOGICAS" />
+                                        <asp:ListItem Text="Enfermedades de la Pleura" Value="PLEURA" />
+                                        <asp:ListItem Text="Enfermedades Vasculares" Value="VASCULARES" />
+                                        <asp:ListItem Text="Exposiciones Ambientales" Value="EXPOSICION_AMBIENTAL" />
+                                        <asp:ListItem Text="Insuficiencias Respiratorias" Value="INSUFICIENCIA_RESPIRATORIA" />
+                                        <asp:ListItem Text="Orígenes de Internación" Value="ORIGEN_INTERNACION" />
+                                        <asp:ListItem Text="Soportes Respiratorios" Value="SOPORTE_RESPIRATORIO" />
+                                        <asp:ListItem Text="Historial de Tabaquismo" Value="TABAQUISMO" />
+                                        <asp:ListItem Text="Otros Criterios Clínicos" Value="OTROS" />
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <asp:PlaceHolder ID="phFormularioCatalogo" runat="server" Visible="false">
+                                <hr />
+                                <div class="row g-3 align-items-end mb-4">
+                                    <div class="col-md-8">
+                                        <label class="form-label">Nueva Descripción / Ítem</label>
+                                        <asp:TextBox ID="txtNuevaDescripcion" runat="server" CssClass="form-control" Placeholder="Ej: Nueva variante o diagnóstico..." />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <asp:Button ID="btnAgregarItem" runat="server" Text="Agregar a la Tabla" CssClass="btn btn-success w-100" OnClick="btnAgregarItem_Click" />
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <asp:GridView
+                                        ID="dgvCatalogoGenerico"
+                                        runat="server"
+                                        AutoGenerateColumns="false"
+                                        CssClass="table table-striped table-hover align-middle mb-0"
+                                        EmptyDataText="La tabla seleccionada no contiene registros.">
+                                        <Columns>
+                                            <asp:BoundField DataField="Id" HeaderText="ID Interno" ItemStyle-Width="10%" />
+                                            <asp:BoundField DataField="Descripcion" HeaderText="Descripción Registrada" />
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                            </asp:PlaceHolder>
+
                         </div>
                     </div>
-
-                    <asp:PlaceHolder ID="phFormularioCatalogo" runat="server" Visible="false">
-                        <hr />
-                        <div class="row g-3 align-items-end mb-4">
-                            <div class="col-md-8">
-                                <label class="form-label">Nueva Descripción / Ítem</label>
-                                <asp:TextBox ID="txtNuevaDescripcion" runat="server" CssClass="form-control" Placeholder="Ej: Nueva variante o diagnóstico..." />
-                            </div>
-                            <div class="col-md-4">
-                                <asp:Button ID="btnAgregarItem" runat="server" Text="Agregar a la Tabla" CssClass="btn btn-success w-100" OnClick="btnAgregarItem_Click" />
-                            </div>
-                        </div>
-
-                        <div class="table-responsive">
-                            <asp:GridView
-                                ID="dgvCatalogoGenerico"
-                                runat="server"
-                                AutoGenerateColumns="false"
-                                CssClass="table table-striped table-hover align-middle mb-0"
-                                EmptyDataText="La tabla seleccionada no contiene registros.">
-                                <Columns>
-                                    <asp:BoundField DataField="Id" HeaderText="ID Interno" ItemStyle-Width="10%" />
-                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción Registrada" />
-                                </Columns>
-                            </asp:GridView>
-                        </div>
-                    </asp:PlaceHolder>
-
-                </div>
-            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 

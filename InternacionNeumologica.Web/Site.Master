@@ -12,6 +12,7 @@
 <body class="bg-dark">
 
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
         <nav class="navbar navbar-dark bg-black shadow">
             <div class="container-fluid">
