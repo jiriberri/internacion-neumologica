@@ -54,6 +54,14 @@ namespace InternacionNeumologica.Web
                 "UsuarioFormulario.aspx?id=" + id);
         }
 
-        
+        protected void ddlCatalogos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAgregarItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

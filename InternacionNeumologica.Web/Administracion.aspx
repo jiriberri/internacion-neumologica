@@ -33,6 +33,11 @@
                     Corrección de Pacientes
                 </button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="catalogos-tab" data-bs-toggle="tab" data-bs-target="#catalogos" type="button" role="tab" aria-controls="catalogos" aria-selected="false">
+                    Tablas Maestras
+                </button>
+            </li>
         </ul>
 
         <div class="tab-content" id="adminTabsContent">
@@ -46,7 +51,7 @@
                             runat="server"
                             Text="+ Nuevo Usuario"
                             CssClass="btn btn-sm btn-primary"
-                            OnClick="btnAgregarUsuario_Click"/>
+                            OnClick="btnAgregarUsuario_Click" />
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -55,12 +60,11 @@
                                 runat="server"
                                 AutoGenerateColumns="false"
                                 CssClass="table table-striped table-hover align-middle mb-0">
-                                <%-- Muestra el listado de usuarios --%>
-                             <Columns>
+                                <Columns>
 
                                     <asp:BoundField
                                         DataField="IdUsuario"
-                                           HeaderText="ID" />
+                                        HeaderText="ID" />
 
                                     <asp:BoundField
                                         DataField="User"
@@ -75,22 +79,22 @@
                                         HeaderText="Activo" />
 
                                     <asp:TemplateField HeaderText="Acciones">
-                                            <ItemTemplate>
+                                        <ItemTemplate>
 
-                                                <asp:Button
-                                                    ID="btnEditar"
-                                                    runat="server"
-                                                    Text="Editar"
-                                                    CssClass="btn btn-sm btn-warning" 
-                                                    CommandArgument='<%# Eval("IdUsuario") %>' 
-                                                    OnClick="btnEditar_Click"/>
+                                            <asp:Button
+                                                ID="btnEditar"
+                                                runat="server"
+                                                Text="Editar"
+                                                CssClass="btn btn-sm btn-warning"
+                                                CommandArgument='<%# Eval("IdUsuario") %>'
+                                                OnClick="btnEditar_Click" />
 
-                                                
 
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
 
-                             </Columns>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
                             </asp:GridView>
                         </div>
                     </div>
@@ -206,6 +210,48 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="tab-pane fade" id="catalogos" role="tabpanel" aria-labelledby="catalogos-tab">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h4 class="mb-0">Gestión de Tablas Maestras</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="row g-3 align-items-end mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Seleccionar Tabla / Catálogo</label>
+                            <asp:DropDownList
+                                ID="ddlCatalogos"
+                                runat="server"
+                                CssClass="form-select"
+                                AutoPostBack="true"
+                                OnSelectedIndexChanged="ddlCatalogos_SelectedIndexChanged">
+                                <asp:ListItem Text="-- Seleccione una tabla para gestionar --" Value="0" />
+                                <asp:ListItem Text="Antecedentes Respiratorios" Value="ANTECEDENTE_RESPIRATORIO" />
+                                <asp:ListItem Text="Comorbilidades" Value="COMORBILIDAD" />
+                                <asp:ListItem Text="Destinos de Egreso" Value="DESTINO_EGRESO" />
+                                <asp:ListItem Text="Enfermedades Infecciosas" Value="INFECCIONES" />
+                                <asp:ListItem Text="Enfermedades Intersticiales" Value="INTERSTICIALES" />
+                                <asp:ListItem Text="Enfermedades Obstructivas" Value="OBSTRUCTIVAS" />
+                                <asp:ListItem Text="Enfermedades Oncológicas" Value="ONCOLOGICAS" />
+                                <asp:ListItem Text="Enfermedades de la Pleura" Value="PLEURA" />
+                                <asp:ListItem Text="Enfermedades Vasculares" Value="VASCULARES" />
+                                <asp:ListItem Text="Exposiciones Ambientales" Value="EXPOSICION_AMBIENTAL" />
+                                <asp:ListItem Text="Insuficiencias Respiratorias" Value="INSUFICIENCIA_RESPIRATORIA" />
+                                <asp:ListItem Text="Orígenes de Internación" Value="ORIGEN_INTERNACION" />
+                                <asp:ListItem Text="Soportes Respiratorios" Value="SOPORTE_RESPIRATORIO" />
+                                <asp:ListItem Text="Historial de Tabaquismo" Value="TABAQUISMO" />
+                                <asp:ListItem Text="Otros Criterios Clínicos" Value="OTROS" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
         </div>
     </div>
 
