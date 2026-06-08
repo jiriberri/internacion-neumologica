@@ -81,14 +81,55 @@ INSERT INTO COMORBILIDAD (descripcion) VALUES
 ('Neoplasia extrapulmonar activa');
 GO
 
--- 2. CARGA DE USUARIOS
+---Enfermedades 
+INSERT INTO INFECCIONES(descripcion) VALUES
+('Ninguna'),
+('NAC (Neumonia adquirida en la comunidad)'),
+('Neumonia intrahospitalaria'),
+('Tuberculosis'),
+('Infeccion viral'),
+('Infeccion fungica'); 
+
+
+INSERT INTO OBSTRUCTIVAS(descripcion) VALUES 
+('Ninguna'),
+('Exacerbacion de EPOC'),
+('Exacerbacion de asma'),
+('Exacerbacion de bronquiectasias'); 
+
+INSERT INTO INTERSTICIALES(descripcion) VALUES 
+('Ninguna'),
+('Exacerbacion aguda de EPD'),
+('EPD progresiva'),
+('Hemorragia alveolar');
+
+INSERT INTO PLEURA(descripcion) VALUES 
+('Ninguna'),
+('Derrame pleural'),
+('Empiema'),
+('Neumotorax'); 
+
+INSERT INTO VASCULARES(descripcion) VALUES 
+('Ninguna'),
+('TEP'),
+('Hipertension pulmonar'); 
+
+INSERT INTO ONCOLOGICAS(descripcion) VALUES 
+('Ninguna'),
+('Masa pulmonar en estudio'),
+('Complicacion oncologica'); 
+
+INSERT INTO OTROS(descripcion) VALUES 
+('Ninguna'),
+('Estudio diagnostico'),
+('Manejo del dolor'),
+('Cuidados paliativos'); 
 
 -- Usuarios
 INSERT INTO USUARIO (usuario, pass, esAdmin, activo ) VALUES
 ('admin', 'admin123', 1, 1),
 ('usuario', 'usuario123', 0, 1);
-
--- 3. CARGA DE DATOS DE PRUEBA (MOCKS)
+GO
 
 -- Pacientes
 INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefono) VALUES
@@ -125,59 +166,3 @@ INSERT INTO INTERNACION (id_paciente, fecha_ingreso, fecha_egreso, id_origen, id
 --(2, '2026-04-12', '2026-04-15', 1, 1, 7, 1, 1, 2, 25),
 --(3, '2026-03-20', '2026-04-05', 4, 4, 9, 4, 4, 1, NULL);
 GO 
-
-
----Enfermedades 
-INSERT INTO INFECCIONES(descripcion) VALUES
-('Ninguna'),
-('NAC (Neumonia adquirida en la comunidad)'),
-('Neumonia intrahospitalaria'),
-('Tuberculosis'),
-('Infeccion viral'),
-('Infeccion fungica'); 
-
-go
-
-INSERT INTO OBSTRUCTIVAS(descripcion) VALUES 
-('Ninguna'),
-('Exacerbacion de EPOC'),
-('Exacerbacion de asma'),
-('Exacerbacion de bronquiectasias'); 
-go
-
-INSERT INTO INTERSTICIALES(descripcion) VALUES 
-('Ninguna'),
-('Exacerbacion aguda de EPD'),
-('EPD progresiva'),
-('Hemorragia alveolar');
-
-go
-INSERT INTO PLEURA(descripcion) VALUES 
-('Ninguna'),
-('Derrame pleural'),
-('Empiema'),
-('Neumotorax'); 
-
-go 
-INSERT INTO VASCULARES(descripcion) VALUES 
-('Ninguna'),
-('TEP'),
-('Hipertension pulmonar'); 
-
-go 
-INSERT INTO ONCOLOGICAS(descripcion) VALUES 
-('Ninguna'),
-('Masa pulmonar en estudio'),
-('Complicacion oncologica'); 
-
-
-go 
-INSERT INTO OTROS(descripcion) VALUES 
-('Ninguna'),
-('Estudio diagnostico'),
-('Manejo del dolor'),
-('Cuidados paliativos'); 
-
-
-
-
