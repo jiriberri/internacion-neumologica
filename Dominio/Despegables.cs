@@ -12,6 +12,4 @@ namespace Dominio
        string Descripcion { get; set; }
 
     }
-
-
 }

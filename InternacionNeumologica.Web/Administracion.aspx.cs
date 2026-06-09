@@ -69,7 +69,24 @@ namespace InternacionNeumologica.Web
         }
         protected void btnAgregarItem_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNuevaDescripcion.Text))
+                return;
 
+            try
+            {
+                string tablaDestino = ddlCatalogos.SelectedValue;
+                string nuevaDescripcion = txtNuevaDescripcion.Text.Trim();
+
+                DesplegableNegocio negocio = new DesplegableNegocio();
+                negocio.AgregarItem(tablaDestino, nuevaDescripcion);
+
+                CargarGrillaCatalogo();
+                txtNuevaDescripcion.Text = "";
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+            }
         }
         private void CargarGrillaCatalogo()
         {

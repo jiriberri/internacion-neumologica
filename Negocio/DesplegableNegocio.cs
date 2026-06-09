@@ -104,10 +104,10 @@ namespace Negocio
             DesplegablesDatos datos = new DesplegablesDatos();
             return datos.Listar<T>(tabla, idColumna, descripcionColumna);
         }
-    
-    
-     
-    
-    
+        public void AgregarItem(string tabla, string descripcion)
+        {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            datos.AgregarItem(tabla, descripcion);
+        }
     }
 }
