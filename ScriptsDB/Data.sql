@@ -160,9 +160,104 @@ INSERT INTO PACIENTE_COMORBILIDAD (id_paciente, id_comorbilidad) VALUES
 (2, 8), -- Maria: Obesidad
 (3, 13);-- Carlos: Enf reumatologica
 
--- Historial de Internaciones
-INSERT INTO INTERNACION (id_paciente, fecha_ingreso, fecha_egreso, id_origen, id_destino, id_infeccion,id_obstructiva,id_intersticial,id_pleura,id_vascular,id_oncologica,id_otro, id_insuficiencia, id_soporte, id_tabaquismo, paquetes_anio) VALUES
-(1, '2026-05-01', '2026-05-10', 1, 1, 6, 1,1,1,1,1,1,1,2, 3, 40)
---(2, '2026-04-12', '2026-04-15', 1, 1, 7, 1, 1, 2, 25),
---(3, '2026-03-20', '2026-04-05', 4, 4, 9, 4, 4, 1, NULL);
-GO 
+
+-- ============================================================
+-- HISTORIAL DE INTERNACIONES
+-- Una internación por cada paciente de prueba
+-- ============================================================
+
+INSERT INTO INTERNACION
+(
+    id_paciente,
+    fecha_ingreso,
+    fecha_egreso,
+    id_origen,
+    id_destino,
+    id_infeccion,
+    id_obstructiva,
+    id_intersticial,
+    id_pleura,
+    id_vascular,
+    id_oncologica,
+    id_otro,
+    id_insuficiencia,
+    id_soporte,
+    id_tabaquismo,
+    paquetes_anio
+)
+VALUES
+
+-- Paciente 1
+(1,
+'2026-05-01',
+'2026-05-10',
+1,
+1,
+6,
+1,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+1,
+2,
+3,
+40),
+
+-- Paciente 2
+(2,
+'2026-04-12',
+'2026-04-18',
+2,
+2,
+NULL,
+2,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+2,
+1,
+2,
+25),
+
+-- Paciente 3
+(3,
+'2026-03-20',
+'2026-04-05',
+3,
+5,
+NULL,
+NULL,
+1,
+NULL,
+NULL,
+NULL,
+NULL,
+1,
+3,
+1,
+60),
+
+-- Paciente 4
+(4,
+'2026-02-08',
+'2026-02-15',
+1,
+1,
+NULL,
+NULL,
+NULL,
+1,
+NULL,
+NULL,
+NULL,
+2,
+2,
+3,
+15);
+
+GO
+
