@@ -55,7 +55,7 @@
            <div class="mb-2">
             
               <label for="txtEgreso" class="mb-1">Fecha egreso</label>
-             <asp:TextBox runat="server" Id="txtFechadeEgreso" TextMode="Date" CssClass="form-control"/> 
+             <asp:TextBox runat="server" Id="txtFechaEgreso" TextMode="Date" CssClass="form-control"/> 
            
        </div>
      

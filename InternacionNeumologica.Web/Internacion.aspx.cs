@@ -74,7 +74,7 @@ namespace InternacionNeumologica.Web
             }
         }
 
-        protected void btnSiguiente_Click(object sender, EventArgs e) {
+        protected void btnSiguiente_Click(object sender, EventArgs e) { 
 
             Response.Redirect("Antecedentes.aspx");
 

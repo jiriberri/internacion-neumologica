@@ -85,10 +85,29 @@ namespace Negocio
 
         }
 
+        public List<InsuficienciaRespiratoria> ListarInsuficiencias() {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<InsuficienciaRespiratoria>("INSUFICIENCIA_RESPIRATORIA", "id_insuficiencia", "descripcion");
+
+        }
+
+        public List<SoporteRespiratorio> ListarSoportes() {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.Listar<SoporteRespiratorio>("SOPORTE_RESPIRATORIO", "id_soporte", "descripcion");
+        }
+        
+        
+
+
         public List<T> ListarCatalogo<T>(string tabla, string idColumna, string descripcionColumna) where T : Despegables, new()
         {
             DesplegablesDatos datos = new DesplegablesDatos();
             return datos.Listar<T>(tabla, idColumna, descripcionColumna);
         }
+    
+    
+     
+    
+    
     }
 }
