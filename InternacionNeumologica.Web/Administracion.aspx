@@ -252,7 +252,8 @@
 
                             <asp:PlaceHolder ID="phFormularioCatalogo" runat="server" Visible="false">
                                 <hr />
-                                <div class="row g-3 align-items-end mb-4">
+
+                                <asp:Panel ID="pnlAltaCatalogo" runat="server" DefaultButton="btnAgregarItem" CssClass="row g-3 align-items-end mb-4">
                                     <div class="col-md-8">
                                         <label class="form-label">Nueva Descripción / Ítem</label>
                                         <asp:TextBox ID="txtNuevaDescripcion" runat="server" CssClass="form-control" Placeholder="Ej: Nueva variante o diagnóstico..." />
@@ -260,7 +261,7 @@
                                     <div class="col-md-4">
                                         <asp:Button ID="btnAgregarItem" runat="server" Text="Agregar a la Tabla" CssClass="btn btn-success w-100" OnClick="btnAgregarItem_Click" />
                                     </div>
-                                </div>
+                                </asp:Panel>
 
                                 <div class="table-responsive">
                                     <asp:GridView
