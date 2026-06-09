@@ -39,11 +39,6 @@ namespace Negocio
             datos.agregar(nuevo);
         }
 
-        public int ContarPacientes()
-        {
-            PacienteDatos datos = new PacienteDatos();
-
-            return datos.ContarPacientes();
-        }
+       
     }
 }

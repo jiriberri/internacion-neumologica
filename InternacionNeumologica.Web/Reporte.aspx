@@ -156,8 +156,13 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
                     👥
                 </div>
 
-                <div class="kpi">
-                    84
+               <div class="kpi">
+
+                    <asp:Label
+                        ID="lblPacientes"
+                        runat="server"
+                        Text="0" />
+
                 </div>
 
                 <div class="kpi-label">
@@ -180,9 +185,14 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
                     🏥
                 </div>
 
-                <div class="kpi">
-                    102
-                </div>
+               <div class="kpi">
+
+                        <asp:Label
+                            ID="lblInternaciones"
+                            runat="server"
+                            Text="0" />
+
+                    </div>
 
                 <div class="kpi-label">
                     Internaciones
@@ -205,7 +215,12 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
                 </div>
 
                 <div class="kpi">
-                    7
+
+                    <asp:Label
+                        ID="lblFallecidos"
+                        runat="server"
+                        Text="0" />
+
                 </div>
 
                 <div class="kpi-label">
@@ -228,8 +243,13 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
                     📅
                 </div>
 
-                <div class="kpi">
-                    11,3
+               <div class="kpi">
+
+                    <asp:Label
+                        ID="lblEstadiaPromedio"
+                        runat="server"
+                        Text="0" />
+
                 </div>
 
                 <div class="kpi-label">

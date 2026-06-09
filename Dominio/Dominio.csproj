@@ -47,6 +47,7 @@
     <Compile Include="Internacion.cs" />
     <Compile Include="Intersticiales.cs" />
     <Compile Include="ItemCatalogo.cs" />
+    <Compile Include="ItemGrafico.cs" />
     <Compile Include="Obstructiva.cs" />
     <Compile Include="Oncologica.cs" />
     <Compile Include="Origen.cs" />

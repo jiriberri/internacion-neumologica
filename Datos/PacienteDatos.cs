@@ -189,27 +189,6 @@ namespace Datos
             }
         }
 
-        public int ContarPacientes()
-        {
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                datos.SetearConsulta(
-                    "SELECT COUNT(*) cantidad " +
-                    "FROM PACIENTE");
-
-                datos.EjecutarLectura();
-
-                if (datos.Lector.Read())
-                    return (int)datos.Lector["cantidad"];
-
-                return 0;
-            }
-            finally
-            {
-                datos.CerrarConexion();
-            }
-        }
+        
     }
 }

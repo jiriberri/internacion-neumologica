@@ -48,18 +48,6 @@ namespace InternacionNeumologica.Web
 
         protected void btnGenerarReporte_Click(object sender, EventArgs e)
         {
-            string url =
-                "Reporte.aspx" +
-                "?desde=" + txtFechaDesde.Text +
-                "&hasta=" + txtFechaHasta.Text +
-                "&edadMin=" + txtEdadMinima.Text +
-                "&edadMax=" + txtEdadMaxima.Text +
-                "&sexo=" + ddlSexo.SelectedValue +
-                "&diagnostico=" + ddlDiagnostico.SelectedValue +
-                "&insuficiencia=" + ddlInsuficiencia.SelectedValue +
-                "&comorbilidad=" + ddlComorbilidad.SelectedValue +
-                "&soporte=" + ddlSoporte.SelectedValue +
-                "&destino=" + ddlDestino.SelectedValue;
 
             Response.Redirect("Reporte.aspx");
         }
