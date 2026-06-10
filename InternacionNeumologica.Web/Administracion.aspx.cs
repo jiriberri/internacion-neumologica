@@ -78,7 +78,20 @@ namespace InternacionNeumologica.Web
                 string nuevaDescripcion = txtNuevaDescripcion.Text.Trim();
 
                 DesplegableNegocio negocio = new DesplegableNegocio();
-                negocio.AgregarItem(tablaDestino, nuevaDescripcion);
+
+                if (btnAgregarItem.Text == "Guardar Cambios")
+                {
+                    int id = int.Parse(hfIdEditando.Value);
+                    string columnaId = ObtenerColumnaId(tablaDestino);
+
+                    negocio.ModificarItem(tablaDestino, columnaId, id, nuevaDescripcion);
+
+                    ResetearFormularioEdicion();
+                }
+                else
+                {
+                    negocio.AgregarItem(tablaDestino, nuevaDescripcion);
+                }
 
                 CargarGrillaCatalogo();
                 txtNuevaDescripcion.Text = "";
@@ -119,6 +132,30 @@ namespace InternacionNeumologica.Web
                 case "OTROS": return "id_otro";
                 default: return "";
             }
+        }
+
+        protected void btnEditarItemTabla_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            //Guardo lo que esta dentro de CommandArgument en dos strings id y descripcion
+            string[] argumentos = btn.CommandArgument.Split('|');
+            string id = argumentos[0];
+            string descripcion = argumentos[1];
+
+            hfIdEditando.Value = id;
+            txtNuevaDescripcion.Text = descripcion;
+
+            btnAgregarItem.Text = "Guardar Cambios";
+            btnAgregarItem.CssClass = "btn btn-warning w-100";
+            txtNuevaDescripcion.CssClass = "form-control border border-warning border-3 border-opacity-50 pt-1 pb-1";
+        }
+        private void ResetearFormularioEdicion()
+        {
+            btnAgregarItem.Text = "Agregar a la Tabla";
+            btnAgregarItem.CssClass = "btn btn-success w-100";
+            hfIdEditando.Value = "";
+            txtNuevaDescripcion.CssClass = "form-control";
         }
     }
 }

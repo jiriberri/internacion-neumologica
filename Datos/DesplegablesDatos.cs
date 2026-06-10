@@ -89,5 +89,25 @@ namespace Datos
                 datos.CerrarConexion();
             }
         }
+        public void ModificarItem(string tabla, string idColumna, int id, string descripcion)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta($"UPDATE {tabla} SET descripcion = @descripcion WHERE {idColumna} = @id");
+                datos.SetearParametro("@descripcion", descripcion);
+                datos.SetearParametro("@id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }

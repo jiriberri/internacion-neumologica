@@ -215,6 +215,9 @@
         <div class="tab-pane fade" id="catalogos" role="tabpanel" aria-labelledby="catalogos-tab">
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
+
+                    <asp:HiddenField ID="hfIdEditando" runat="server" />
+
                     <div class="card shadow">
                         <div class="card-header">
                             <h4 class="mb-0">Gestión de Tablas Maestras</h4>
@@ -273,6 +276,19 @@
                                         <Columns>
                                             <asp:BoundField DataField="Id" HeaderText="ID Interno" ItemStyle-Width="10%" />
                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripción Registrada" />
+
+                                            <asp:TemplateField HeaderText="Acciones" ItemStyle-Width="15%">
+                                                <ItemTemplate>
+                                                    <asp:Button
+                                                        ID="btnEditarItemTabla"
+                                                        runat="server"
+                                                        Text="Editar"
+                                                        CssClass="btn btn-sm btn-warning"
+                                                        CommandArgument='<%# Eval("Id") + "|" + Eval("Descripcion") %>'
+                                                        OnClick="btnEditarItemTabla_Click" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                         </Columns>
                                     </asp:GridView>
                                 </div>

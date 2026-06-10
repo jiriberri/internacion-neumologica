@@ -109,5 +109,10 @@ namespace Negocio
             DesplegablesDatos datos = new DesplegablesDatos();
             datos.AgregarItem(tabla, descripcion);
         }
+        public void ModificarItem(string tabla, string idColumna, int id, string descripcion)
+        {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            datos.ModificarItem(tabla, idColumna, id, descripcion);
+        }
     }
 }
