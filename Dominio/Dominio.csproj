@@ -44,7 +44,7 @@
     <Compile Include="Despegables.cs" />
     <Compile Include="Infeccion.cs" />
     <Compile Include="InsuficienciaRespiratoria.cs" />
-    <Compile Include="Internacion.cs" />
+    <Compile Include="Internaciones.cs" />
     <Compile Include="Intersticiales.cs" />
     <Compile Include="ItemCatalogo.cs" />
     <Compile Include="ItemGrafico.cs" />

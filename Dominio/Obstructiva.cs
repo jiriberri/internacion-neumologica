@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Obstructiva : Despegables
+    public class Obstructiva : Desplegables
     {
         public int Id { get; set; }
 

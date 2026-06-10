@@ -47,7 +47,7 @@ namespace Datos
         }
 
 
-        public List<T> Listar<T>(string tabla, string Id, string descripcion) where T : Despegables, new()
+        public List<T> Listar<T>(string tabla, string Id, string descripcion) where T : Desplegables, new()
         {
             List<T> lista = new List<T>();
             AccesoDatos datos = new AccesoDatos();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class ItemCatalogo : Despegables
+    public class ItemCatalogo : Desplegables
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }

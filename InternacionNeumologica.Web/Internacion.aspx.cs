@@ -29,10 +29,10 @@ namespace InternacionNeumologica.Web
                 ddlDestinoEgreso.DataBind();
 
                 List<Infeccion> listaInfeccion = negocio.ListarInfeccion();
-                ddlInfrecciones.DataSource = listaInfeccion;
-                ddlInfrecciones.DataValueField = "Id";
-                ddlInfrecciones.DataTextField = "Descripcion";
-                ddlInfrecciones.DataBind();
+                ddlInfecciones.DataSource = listaInfeccion;
+                ddlInfecciones.DataValueField = "Id";
+                ddlInfecciones.DataTextField = "Descripcion";
+                ddlInfecciones.DataBind();
 
                 List<Obstructiva> listaObstrutiva = negocio.ListarObtructiva();
                 ddlObtrucciones.DataSource = listaObstrutiva;
@@ -42,7 +42,7 @@ namespace InternacionNeumologica.Web
 
                 List<Intersticiales> listaIntersticiales = negocio.ListarIntersticiales();
                 ddlIntersticiales.DataSource = listaIntersticiales;
-                ddlObtrucciones.DataValueField = "Id";
+                ddlIntersticiales.DataValueField = "Id";
                 ddlIntersticiales.DataTextField = "Descripcion";
                 ddlIntersticiales.DataBind();
 
@@ -74,7 +74,41 @@ namespace InternacionNeumologica.Web
             }
         }
 
-        protected void btnSiguiente_Click(object sender, EventArgs e) { 
+        protected void btnSiguiente_Click(object sender, EventArgs e) {
+            Internaciones auxInternacion = new Internaciones();
+            auxInternacion.FechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
+            auxInternacion.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
+            
+            auxInternacion.Origen = new Origen();
+            auxInternacion.Origen.Id = int.Parse(ddlOrigen.SelectedValue);
+            
+            auxInternacion.Destino = new DestinoEgreso();
+            auxInternacion.Destino.Id = int.Parse(ddlDestinoEgreso.SelectedValue);
+
+            auxInternacion.Infeccion = new Infeccion();
+            auxInternacion.Infeccion.Id = int.Parse(ddlInfecciones.SelectedValue);
+
+            auxInternacion.Obstructiva = new Obstructiva();
+            auxInternacion.Obstructiva.Id = int.Parse(ddlObtrucciones.SelectedValue);
+
+            auxInternacion.Intersticial = new Intersticiales();
+            auxInternacion.Intersticial.Id = int.Parse(ddlIntersticiales.SelectedValue);
+
+
+            auxInternacion.Pleura = new Pleura();
+            auxInternacion.Pleura.Id = int.Parse(ddlPleura.SelectedValue);
+
+            auxInternacion.Vascular = new Vascular();
+            auxInternacion.Vascular.Id = int.Parse(ddlVasculares.SelectedValue);
+
+            auxInternacion.Oncologica = new Oncologica();
+            auxInternacion.Oncologica.Id = int.Parse(ddlOncologicas.SelectedValue);
+
+            auxInternacion.Otro = new Otros();
+            auxInternacion.Otro.Id = int.Parse(ddlOtros.SelectedValue);
+
+
+            Session["InternacionEnCurso"] = auxInternacion;
 
             Response.Redirect("Antecedentes.aspx");
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Intersticiales : Despegables
+    public class Intersticiales : Desplegables
     {
 
         public int Id { get; set; }

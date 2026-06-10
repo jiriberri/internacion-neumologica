@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Internacion
+    public class Internaciones
     {
         public int IdInternacion { get; set; } 
 
@@ -21,7 +21,7 @@ namespace Dominio
 
         public DestinoEgreso Destino { get; set; }
 
-        public Infeccion Infecciom { get; set; }
+        public Infeccion Infeccion { get; set; }
 
         public Obstructiva Obstructiva { get; set; }
 
@@ -35,12 +35,12 @@ namespace Dominio
 
         public Otros Otro { get; set; } 
 
-        public InsuficienciaRespiratoria insuficiencia { get; set; }
+        public InsuficienciaRespiratoria Insuficiencia { get; set; }
          
         public SoporteRespiratorio Soporte { get; set; }
 
-        public Tabaquismo tabaquismo { get; set; }
+        public Tabaquismo Tabaquismo { get; set; }
 
-        public int paquetes_anio { get; set; }
+        public int Paquetes_anio { get; set; }
     }
 }

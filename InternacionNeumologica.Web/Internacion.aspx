@@ -117,7 +117,7 @@
      <div class="mb-3">
      
       <label for="txtInfecciones" class="mb-1">Infecciones</label>
-      <asp:DropDownList ID="ddlInfrecciones" runat="server" CssClass="form-select">
+      <asp:DropDownList ID="ddlInfecciones" runat="server" CssClass="form-select">
     <asp:ListItem Text="Seleccione una opción." Value="" />
 </asp:DropDownList>
    </div>
@@ -135,7 +135,6 @@
              
               <label for="txtIntersticiales" class="mb-1">Intersticiales</label>
               <asp:DropDownList ID="ddlIntersticiales" runat="server" CssClass="form-select">
-            <asp:ListItem Text="Seleccione una opción." Value="" />
         </asp:DropDownList>
          
        </div>
