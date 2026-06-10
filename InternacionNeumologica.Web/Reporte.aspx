@@ -286,11 +286,15 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 
                 <div class="grafico">
 
-                    Gráfico disponible próximamente
+                          <!-- Área destinada al gráfico de distribución por edad.
+                            El contenido será dibujado dinámicamente mediante Chart.js. -->
+
+                            <canvas id="graficoEdades"></canvas>
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -399,6 +403,51 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 
 </div>
 
+<!-- ========================================================= -->
+<!-- CHART.JS                                                  -->
+<!-- Librería JavaScript utilizada para generar gráficos       -->
+<!-- dinámicos dentro del elemento <canvas>.                   -->
+<!-- ========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    // Obtiene el elemento <canvas> donde se dibujará el gráfico.
+    const ctx = document.getElementById('graficoEdades');
+
+    // Crea un nuevo gráfico utilizando la librería Chart.js.
+    new Chart(ctx, {
+
+        // Tipo de gráfico.
+        type: 'bar',
+
+        // Datos que se mostrarán.
+        data: {
+
+            // Categorías del eje X.
+            labels: [<%= LabelsEdades %>],
+
+            // Serie de datos.
+            datasets: [{
+
+                // Nombre de la serie.
+                label: 'Pacientes',
+
+                // Valores de prueba.
+                // Más adelante serán reemplazados por los obtenidos desde la base de datos.
+                data: [<%= DatosEdades %>]
+
+            }]
+
+        }
+
+    });
+
+</script>
 
 </asp:Content>
+
+
+
 

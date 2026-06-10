@@ -11,6 +11,9 @@ namespace InternacionNeumologica.Web
 {
     public partial class Reporte : System.Web.UI.Page
     {
+        public string LabelsEdades { get; set; }//puente entre C# y JS para pasar los datos al gráfico
+
+        public string DatosEdades { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -39,11 +42,11 @@ namespace InternacionNeumologica.Web
 
             List<ItemGrafico> edades = negocio.ObtenerDistribucionEdades();
 
-            foreach (ItemGrafico item in edades)
-            {
-                Response.Write(item.Categoria + " - " + item.Cantidad + "<br/>");
-            }
+            LabelsEdades = string.Join(",",
+                edades.Select(x => "'" + x.Categoria + "'"));
 
+            DatosEdades = string.Join(",",
+                edades.Select(x => x.Cantidad));
         }
     }
 }
