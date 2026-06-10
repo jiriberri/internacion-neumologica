@@ -34,9 +34,6 @@ INSERT INTO SOPORTE_RESPIRATORIO (descripcion) VALUES
 ('VNI'),
 ('ARM');
 
-
-go
-
 INSERT INTO ANTECEDENTE_RESPIRATORIO (descripcion) VALUES
 ('EPOC (Enfermedad pulmonar obstructiva cronica)'),
 ('Asma'),
