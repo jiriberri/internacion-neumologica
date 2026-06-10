@@ -41,5 +41,25 @@ namespace Negocio
 
             return datos.ObtenerDistribucionEdades();
         }
+
+        public List<ItemGrafico> ObtenerDistribucionSoporte()
+        {
+            ReporteDatos datos = new ReporteDatos();
+
+            return datos.ObtenerDistribucionSoporte();
+        }
+
+        public List<ItemGrafico> ObtenerDiagnosticos()
+        {
+            ReporteDatos datos = new ReporteDatos();
+
+            return datos.ObtenerDiagnosticos();
+        }
+        public List<ItemGrafico> ObtenerComorbilidades()
+        {
+            ReporteDatos datos = new ReporteDatos();
+
+            return datos.ObtenerComorbilidades();
+        }
     }
 }

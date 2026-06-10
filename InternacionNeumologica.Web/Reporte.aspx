@@ -314,7 +314,9 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 
                 <div class="grafico">
 
-                    Gráfico disponible próximamente
+                    <!-- Área destinada al gráfico de soporte respiratorio. -->
+
+                          <canvas id="graficoSoporte"></canvas>
 
                 </div>
 
@@ -349,7 +351,9 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 
                 <div class="grafico">
 
-                    Área reservada para visualización
+                    <!-- Área destinada al gráfico de grupos diagnósticos. -->
+
+                           <canvas id="graficoDiagnosticos"></canvas>
 
                 </div>
 
@@ -373,7 +377,9 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 
                 <div class="grafico">
 
-                    Área reservada para visualización
+                    <!-- Área destinada al gráfico de comorbilidades. -->
+
+                           <canvas id="graficoComorbilidades"></canvas>
 
                 </div>
 
@@ -414,10 +420,10 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 <script>
 
     // Obtiene el elemento <canvas> donde se dibujará el gráfico.
-    const ctx = document.getElementById('graficoEdades');
+    const ctxEdades = document.getElementById('graficoEdades');
 
     // Crea un nuevo gráfico utilizando la librería Chart.js.
-    new Chart(ctx, {
+    new Chart(ctxEdades, {
 
         // Tipo de gráfico.
         type: 'bar',
@@ -434,8 +440,7 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
                 // Nombre de la serie.
                 label: 'Pacientes',
 
-                // Valores de prueba.
-                // Más adelante serán reemplazados por los obtenidos desde la base de datos.
+                
                 data: [<%= DatosEdades %>]
 
             }]
@@ -444,7 +449,79 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 
     });
 
-</script>
+
+
+    const ctxSoporte = document.getElementById('graficoSoporte');
+
+    new Chart(ctxSoporte, {
+
+        type: 'pie',
+
+        data: {
+
+            labels: [<%= LabelsSoporte %>],
+
+            datasets: [{
+
+                label: 'Soporte respiratorio',
+
+                data: [<%= DatosSoporte %>]
+
+            }]
+
+        }
+
+    });
+
+
+
+    const ctxDiagnosticos = document.getElementById('graficoDiagnosticos');
+
+    new Chart(ctxDiagnosticos, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: [<%= LabelsDiagnosticos %>],
+
+            datasets: [{
+
+                label: 'Diagnósticos',
+
+                data: [<%= DatosDiagnosticos %>]
+
+            }]
+
+        }
+
+    });
+
+
+
+        const ctxComorbilidades = document.getElementById('graficoComorbilidades');
+
+        new Chart(ctxComorbilidades, {
+
+            type: 'bar',
+
+            data: {
+
+                labels: [<%= LabelsComorbilidades %>],
+
+            datasets: [{
+
+                label: 'Comorbilidades',
+
+                data: [<%= DatosComorbilidades %>]
+
+            }]
+
+        }
+
+    });
+
+    </script>
 
 </asp:Content>
 

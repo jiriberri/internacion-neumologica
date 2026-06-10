@@ -163,13 +163,141 @@ namespace Datos
             }
         }
 
-        /*public List<ItemGrafico> ObtenerDistribucionSoporte()
+        public List<ItemGrafico> ObtenerDistribucionSoporte()
+        {
+            List<ItemGrafico> lista = new List<ItemGrafico>();
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+
+                datos.SetearConsulta(
+                    "SELECT " +
+                     "S.descripcion AS Categoria, " +
+                     "COUNT(*) AS Cantidad " +
+                     "FROM INTERNACION I " +
+                     "INNER JOIN SOPORTE_RESPIRATORIO S " +
+                     "ON I.id_soporte = S.id_soporte " +
+                     "GROUP BY S.descripcion " +
+                     "ORDER BY S.descripcion ");
+
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    ItemGrafico aux = new ItemGrafico();
+
+                    aux.Categoria = datos.Lector["Categoria"].ToString();
+                    aux.Cantidad = (int)datos.Lector["Cantidad"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
 
         public List<ItemGrafico> ObtenerDiagnosticos()
+        {
+            {
+                List<ItemGrafico> lista = new List<ItemGrafico>();
 
-        public List<ItemGrafico> ObtenerComorbilidades()*/
+                AccesoDatos datos = new AccesoDatos();
+
+                try
+                {
+
+                    datos.SetearConsulta(
+                            "SELECT 'Infecciones' AS Categoria, COUNT(*) AS Cantidad " +
+                            "FROM INTERNACION WHERE id_infeccion IS NOT NULL " +
+                            "UNION ALL " +
+                            "SELECT 'Obstructivas', COUNT(*) " +
+                            "FROM INTERNACION WHERE id_obstructiva IS NOT NULL " +
+                            "UNION ALL " +
+                            "SELECT 'Intersticiales', COUNT(*) " +
+                            "FROM INTERNACION WHERE id_intersticial IS NOT NULL " +
+                            "UNION ALL " +
+                            "SELECT 'Pleura', COUNT(*) " +
+                            "FROM INTERNACION WHERE id_pleura IS NOT NULL " +
+                            "UNION ALL " +
+                            "SELECT 'Vasculares', COUNT(*) " +
+                            "FROM INTERNACION WHERE id_vascular IS NOT NULL " +
+                            "UNION ALL " +
+                            "SELECT 'Oncológicas', COUNT(*) " +
+                            "FROM INTERNACION WHERE id_oncologica IS NOT NULL " +
+                            "UNION ALL " +
+                            "SELECT 'Otros', COUNT(*) " +
+                            "FROM INTERNACION WHERE id_otro IS NOT NULL");
+
+                    datos.EjecutarLectura();
+
+                    while (datos.Lector.Read())
+                    {
+                        ItemGrafico aux = new ItemGrafico();
+
+                        aux.Categoria = datos.Lector["Categoria"].ToString();
+                        aux.Cantidad = (int)datos.Lector["Cantidad"];
+
+                        lista.Add(aux);
+                    }
+
+                    return lista;
+                }
+                finally
+                {
+                    datos.CerrarConexion();
+                }
+            }
+        }
+
+            public List<ItemGrafico> ObtenerComorbilidades()
+        {
+            {
+                List<ItemGrafico> lista = new List<ItemGrafico>();
+
+                AccesoDatos datos = new AccesoDatos();
+
+                try
+                {
+                    datos.SetearConsulta(
+                            "SELECT " +
+                            "C.descripcion AS Categoria, " +
+                            "COUNT(*) AS Cantidad " +
+                            "FROM PACIENTE_COMORBILIDAD PC " +
+                            "INNER JOIN COMORBILIDAD C " +
+                            "ON PC.id_comorbilidad = C.id_comorbilidad " +
+                            "GROUP BY C.descripcion " +
+                            "ORDER BY Cantidad DESC");
+
+                    datos.EjecutarLectura();
+
+                    while (datos.Lector.Read())
+                    {
+                        ItemGrafico aux = new ItemGrafico();
+
+                        aux.Categoria = datos.Lector["Categoria"].ToString();
+                        aux.Cantidad = (int)datos.Lector["Cantidad"];
+
+                        lista.Add(aux);
+                    }
+
+                    return lista;
+                }
+                finally
+                {
+                    datos.CerrarConexion();
+                }
+            }
+        }
+
 
 
     }
 }
+
 
