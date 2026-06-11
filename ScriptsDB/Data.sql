@@ -63,34 +63,34 @@ INSERT INTO EXPOSICION_AMBIENTAL (descripcion) VALUES
 ('Asbesto'),
 ('Otra exposicion relevante');
 
-INSERT INTO CARDIOVASCULAR (descripcion) VALUES
+INSERT INTO COMORBILIDAD_CARDIOVASCULAR (descripcion) VALUES
 ('HTA (Hipertension arterial)'),
 ('Insuficiencia cardiaca'),
 ('Fibrilacion auricular'),
 ('Cardiopatia isquemica'),
 ('Hipertension pulmonar'),
 ('TEP previo');
-INSERT INTO METABOLICA (descripcion) VALUES
+INSERT INTO COMORBILIDAD_METABOLICA (descripcion) VALUES
 ('Diabetes'),
 ('Obesidad'); 
-INSERT INTO NEUROLOGICO (descripcion) VALUES
+INSERT INTO COMORBILIDAD_NEUROLOGICA (descripcion) VALUES
 ('ACV previo'),
 ('Enfermedad neuromuscular');
 
-INSERT INTO SUEÑO (descripcion) VALUES
+INSERT INTO COMORBILIDAD_SUEÑO (descripcion) VALUES
 ('SAOS (Sindrome de apnea obstructiva del sueño)'),
 ('Sindrome obesidad-hipoventilacion');
 
-INSERT INTO INMUNOLOGICA (descripcion) VALUES
+INSERT INTO COMORBILIDAD_INMUNOLOGICA (descripcion) VALUES
 ('Enfermedad reumatologica'),
 ('Inmunosuprimido'),
 ('HIV');
-INSERT INTO ONCOLOGICA (descripcion) VALUES
+INSERT INTO COMORBILIDAD_ONCOLOGICA (descripcion) VALUES
 ('Neoplasia extrapulmonar activa');
 GO
 
 ---Enfermedades 
-INSERT INTO INFECCIONES(descripcion) VALUES
+INSERT INTO DIAGNOSTICO_INFECCIONES(descripcion) VALUES
 ('Ninguna'),
 ('NAC (Neumonia adquirida en la comunidad)'),
 ('Neumonia intrahospitalaria'),
@@ -99,35 +99,35 @@ INSERT INTO INFECCIONES(descripcion) VALUES
 ('Infeccion fungica'); 
 
 
-INSERT INTO OBSTRUCTIVAS(descripcion) VALUES 
+INSERT INTO DIAGNOSTICO_OBSTRUCTIVAS(descripcion) VALUES 
 ('Ninguna'),
 ('Exacerbacion de EPOC'),
 ('Exacerbacion de asma'),
 ('Exacerbacion de bronquiectasias'); 
 
-INSERT INTO INTERSTICIALES(descripcion) VALUES 
+INSERT INTO DIAGNOSTICO_INTERSTICIALES(descripcion) VALUES 
 ('Ninguna'),
 ('Exacerbacion aguda de EPD'),
 ('EPD progresiva'),
 ('Hemorragia alveolar');
 
-INSERT INTO PLEURA(descripcion) VALUES 
+INSERT INTO DIAGNOSTICO_PLEURA(descripcion) VALUES 
 ('Ninguna'),
 ('Derrame pleural'),
 ('Empiema'),
 ('Neumotorax'); 
 
-INSERT INTO VASCULARES(descripcion) VALUES 
+INSERT INTO DIAGNOSTICO_VASCULARES(descripcion) VALUES 
 ('Ninguna'),
 ('TEP'),
 ('Hipertension pulmonar'); 
 
-INSERT INTO ONCOLOGICAS(descripcion) VALUES 
+INSERT INTO DIAGNOSTICO_ONCOLOGICAS(descripcion) VALUES 
 ('Ninguna'),
 ('Masa pulmonar en estudio'),
 ('Complicacion oncologica'); 
 
-INSERT INTO OTROS(descripcion) VALUES 
+INSERT INTO DIAGNOSTICO_OTROS(descripcion) VALUES 
 ('Ninguna'),
 ('Estudio diagnostico'),
 ('Manejo del dolor'),
@@ -148,7 +148,7 @@ INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefo
 GO
 
 -- Relaciones de Exposición Ambiental
-INSERT INTO PACIENTE_EXPOSICION (id_paciente, id_exposicion) VALUES 
+INSERT INTO PACIENTE_EXPOSICION_AMBIENTAL (id_paciente, id_exposicion) VALUES 
 (1, 1), -- Juan: Humo de leña
 (3, 2), -- Carlos: Aves
 (3, 4); -- Carlos: Asbesto
