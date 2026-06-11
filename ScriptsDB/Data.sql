@@ -42,11 +42,15 @@ INSERT INTO ANTECEDENTE_RESPIRATORIO (descripcion) VALUES
 ('Tuberculosis previa'),
 ('Cancer de pulmon'),
 ('Oxigeno domiciliario'),
-('VNI domiciliaria'),
+('VNI domiciliaria');
+
+INSERT INTO SECUELA (descripcion) values
 ('Secuela postinfecciosa'),
 ('Secuela postraumatica'),
 ('Secuela post-TBC'),
-('Otra secuela pulmonar'),
+('Otra secuela pulmonar');
+
+INSERT INTO CIRUGIA (descripcion) VALUES
 ('Lobectomia'),
 ('Segmentectomia'),
 ('Neumonectomia'),
@@ -59,22 +63,29 @@ INSERT INTO EXPOSICION_AMBIENTAL (descripcion) VALUES
 ('Asbesto'),
 ('Otra exposicion relevante');
 
-INSERT INTO COMORBILIDAD (descripcion) VALUES
+INSERT INTO CARDIOVASCULAR (descripcion) VALUES
 ('HTA (Hipertension arterial)'),
 ('Insuficiencia cardiaca'),
 ('Fibrilacion auricular'),
 ('Cardiopatia isquemica'),
 ('Hipertension pulmonar'),
-('TEP previo'),
+('TEP previo');
+INSERT INTO METABOLICA (descripcion) VALUES
 ('Diabetes'),
-('Obesidad'),
+('Obesidad'); 
+INSERT INTO NEUROLOGICO (descripcion) VALUES
 ('ACV previo'),
-('Enfermedad neuromuscular'),
+('Enfermedad neuromuscular');
+
+INSERT INTO SUEÑO (descripcion) VALUES
 ('SAOS (Sindrome de apnea obstructiva del sueño)'),
-('Sindrome obesidad-hipoventilacion'),
+('Sindrome obesidad-hipoventilacion');
+
+INSERT INTO INMUNOLOGICA (descripcion) VALUES
 ('Enfermedad reumatologica'),
 ('Inmunosuprimido'),
-('HIV'),
+('HIV');
+INSERT INTO ONCOLOGICA (descripcion) VALUES
 ('Neoplasia extrapulmonar activa');
 GO
 
@@ -141,21 +152,6 @@ INSERT INTO PACIENTE_EXPOSICION (id_paciente, id_exposicion) VALUES
 (1, 1), -- Juan: Humo de leña
 (3, 2), -- Carlos: Aves
 (3, 4); -- Carlos: Asbesto
-
--- Relaciones de Antecedentes Respiratorios
-INSERT INTO PACIENTE_ANTECEDENTE (id_paciente, id_antecedente) VALUES 
-(1, 1), -- Juan: EPOC
-(1, 7), -- Juan: Oxigeno dom.
-(2, 2), -- Maria: Asma
-(3, 4), -- Carlos: EPD
-(3, 15);-- Carlos: Neumonectomia
-
--- Relaciones de Comorbilidades
-INSERT INTO PACIENTE_COMORBILIDAD (id_paciente, id_comorbilidad) VALUES 
-(1, 1), -- Juan: HTA
-(1, 7), -- Juan: Diabetes
-(2, 8), -- Maria: Obesidad
-(3, 13);-- Carlos: Enf reumatologica
 
 
 -- ============================================================

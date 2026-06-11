@@ -32,6 +32,7 @@ namespace InternacionNeumologica.Web
 
         protected void btnAtras_Click(object sender, EventArgs e)
         {
+           
 
             Response.Redirect("Internacion.aspx");
 
@@ -39,7 +40,22 @@ namespace InternacionNeumologica.Web
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            
+
+            List<int> listaAntecedentesPaciente = new List<int>();
+
+            if (cbEpoc.Checked) { listaAntecedentesPaciente.Add(1); }
+            if (cbAsma.Checked) { listaAntecedentesPaciente.Add(2); }
+            if (cbBronquiectasias.Checked) listaAntecedentesPaciente.Add(3);
+            if (cbEpd.Checked) listaAntecedentesPaciente.Add(4);
+            if (cbTuberprev.Checked) listaAntecedentesPaciente.Add(5);
+            if (cbCancerdepulmon.Checked) listaAntecedentesPaciente.Add(6);
+            if (cbOxigenoDomi.Checked) listaAntecedentesPaciente.Add(7);
+            if (cbVniDomicilia.Checked) listaAntecedentesPaciente.Add(8);
+            if (cbSecPosinfec.Checked) listaAntecedentesPaciente.Add(9);
+
+            Session["AntecedentesPaciente"] = listaAntecedentesPaciente;
+
+
             Response.Redirect("Comorbilidades.aspx");
 
         }

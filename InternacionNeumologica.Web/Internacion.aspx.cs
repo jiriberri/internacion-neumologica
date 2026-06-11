@@ -76,6 +76,7 @@ namespace InternacionNeumologica.Web
 
         protected void btnSiguiente_Click(object sender, EventArgs e) {
             Internaciones auxInternacion = new Internaciones();
+            
             auxInternacion.FechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
             auxInternacion.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
             

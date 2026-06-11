@@ -31,7 +31,7 @@
 
         <div class="row g-3 mb-4">
             
-            <div class="col-lg-6">
+            <div class="col-lg-6"> 
                 <div class="card card-filtro h-100">
                     <div class="card-body">
                         
@@ -39,39 +39,31 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbEpoc">
-                                    <label class="form-check-label ms-2" for="cbEpoc">EPOC</label>
-                                </div>
+                        <asp:CheckBox ID="cbEpoc" runat="server" Text="EPOC" CssClass="me-0" />
+                    </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbAsma">
-                                    <label class="form-check-label ms-2" for="cbAsma">Asma</label>
-                                </div>
+                        <asp:CheckBox ID="cbAsma" runat="server" Text="Asma" />
+                    </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbBronquiectasias">
-                                    <label class="form-check-label ms-2" for="cbBronquiectasias">Bronquiectasias</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbEpd">
-                                    <label class="form-check-label ms-2" for="cbEpd">EPD</label>
-                                </div>
+                        <asp:CheckBox ID="cbBronquiectasias" runat="server" Text="Bronquiectasias" />
+                    </div>
+                               <div class="form-check mb-3">
+                        <asp:CheckBox ID="cbEpd" runat="server" Text="EPD" />
+                    </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbTuberprev">
-                                    <label class="form-check-label ms-2" for="cbTuberprev">Tuberculosis Previa</label>
-                                </div>
+                        <asp:CheckBox ID="cbTuberprev" runat="server" Text="Tuberculosis Previa" />
+                    </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbCancerdepulmon">
-                                    <label class="form-check-label ms-2" for="cbCancerdepulmon">Cáncer de Pulmón</label>
-                                </div>
+                        <asp:CheckBox ID="cbCancerdepulmon" runat="server" Text="Cáncer de Pulmón" />
+                    </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbVniDomicilia">
-                                    <label class="form-check-label ms-2" for="cbVniDomicilia">VNI domiciliaria</label>
-                                </div>
+                        <asp:CheckBox ID="cbVniDomicilia" runat="server" Text="VNI domiciliaria"/>
+                    </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbOxigenoDomi">
-                                    <label class="form-check-label ms-2" for="cbOxigenoDomi">Oxígeno Domiciliario</label> 
-                                </div>
+                        <asp:CheckBox ID="cbOxigenoDomi" runat="server" Text="Oxígeno Domiciliario"/>
+                    </div>
                             </div>
                         </div>
 
@@ -80,13 +72,15 @@
                         <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Secuelas pulmonares:</div> 
                         <div class="row">
                             <div class="col-md-6">
+                                
+                                
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbSecPosinfec">
-                                    <label class="form-check-label ms-2" for="cbSecPosinfec">Secuela postinfecciosas</label>
-                                </div>
+                        <asp:CheckBox ID="cbSecPosinfec" runat="server" Text="Secuela postinfecciosas" />
+                    </div>
+                            
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbSecPosTrauma">
-                                    <label class="form-check-label ms-2" for="cbSecPosTrauma">Secuela postraumática</label>
+                                     <asp:CheckBox ID="cbSecPosTrauma" runat="server" Text="Secuela postraumática" />
+                                  
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -229,5 +223,6 @@
                 </div> 
             </div>
 
-        </div> </div>
+        </div> </div> 
+    
 </asp:Content>

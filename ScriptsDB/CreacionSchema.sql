@@ -61,7 +61,18 @@ CREATE TABLE ANTECEDENTE_RESPIRATORIO (
     activo BIT NOT NULL DEFAULT 1
 );
 GO
-
+CREATE TABLE SECUELA (
+    id_secuela INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE,
+    activo BIT NOT NULL DEFAULT 1
+);
+GO
+CREATE TABLE CIRUGIA (
+    id_cirugia INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE,
+    activo BIT NOT NULL DEFAULT 1
+);
+GO
 CREATE TABLE EXPOSICION_AMBIENTAL (
     id_exposicion INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(100) NOT NULL UNIQUE,
@@ -69,12 +80,43 @@ CREATE TABLE EXPOSICION_AMBIENTAL (
 );
 GO
 
-CREATE TABLE COMORBILIDAD (
-    id_comorbilidad INT IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE  CARDIOVASCULAR (
+    id_cardiovascular INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(150) NOT NULL UNIQUE,
     activo BIT NOT NULL DEFAULT 1
 );
 GO
+CREATE TABLE  METABOLICA (
+    id_metabolica INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE,
+    activo BIT NOT NULL DEFAULT 1
+);
+GO
+
+CREATE TABLE  NEUROLOGICO (
+    id_neurologico INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE,
+    activo BIT NOT NULL DEFAULT 1
+);
+GO 
+CREATE TABLE  SUEÑO (
+    id_sueño INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE,
+    activo BIT NOT NULL DEFAULT 1
+);
+GO 
+CREATE TABLE  INMUNOLOGICA (
+    id_inmunologica INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE,
+    activo BIT NOT NULL DEFAULT 1
+);
+GO 
+CREATE TABLE  ONCOLOGICA (
+    id_oncologica INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(150) NOT NULL UNIQUE,
+    activo BIT NOT NULL DEFAULT 1
+);
+GO 
 
 CREATE TABLE INFECCIONES (
     id_infeccion INT IDENTITY(1,1) PRIMARY KEY,
@@ -190,12 +232,71 @@ CREATE TABLE PACIENTE_ANTECEDENTE (
 );
 GO
 
-CREATE TABLE PACIENTE_COMORBILIDAD (
-    id_paciente INT NOT NULL,
-    id_comorbilidad INT NOT NULL,
-    PRIMARY KEY (id_paciente, id_comorbilidad),
+CREATE TABLE PACIENTE_SECUELA (
+ id_paciente INT NOT NULL,
+    id_secuela INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_secuela),
     FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
-    FOREIGN KEY (id_comorbilidad) REFERENCES COMORBILIDAD(id_comorbilidad)
+    FOREIGN KEY (id_secuela) REFERENCES SECUELA(id_secuela)
+); 
+GO
+
+CREATE TABLE PACIENTE_CIRUGIA (
+ id_paciente INT NOT NULL,
+    id_cirugia INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_cirugia),
+    FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
+    FOREIGN KEY (id_cirugia) REFERENCES CIRUGIA(id_cirugia)
+); 
+GO
+
+
+CREATE TABLE PACIENTE_CARDIOVASCULAR (
+    id_paciente INT NOT NULL,
+    id_cardiovascular INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_cardiovascular),
+    FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
+    FOREIGN KEY (id_cardiovascular) REFERENCES CARDIOVASCULAR(id_cardiovascular)
+);
+GO  
+CREATE TABLE PACIENTE_METABOLICA (
+    id_paciente INT NOT NULL,
+    id_metabolica INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_metabolica),
+    FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
+    FOREIGN KEY (id_metabolica) REFERENCES METABOLICA(id_metabolica)
+);
+GO 
+CREATE TABLE PACIENTE_NEUROLOGICO (
+    id_paciente INT NOT NULL,
+    id_neurologico INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_neurologico),
+    FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
+    FOREIGN KEY (id_neurologico) REFERENCES NEUROLOGICO(id_neurologico) 
+);
+GO 
+CREATE TABLE PACIENTE_SUEÑO (
+    id_paciente INT NOT NULL,
+    id_sueño INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_sueño),
+    FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
+    FOREIGN KEY (id_sueño) REFERENCES SUEÑO(id_sueño) 
 );
 GO 
 
+CREATE TABLE PACIENTE_INMUNOLOGICA (
+    id_paciente INT NOT NULL,
+    id_inmunologica INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_inmunologica),
+    FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
+    FOREIGN KEY (id_inmunologica) REFERENCES INMUNOLOGICA(id_inmunologica)
+);
+GO 
+CREATE TABLE PACIENTE_ONCOLOGICA (
+    id_paciente INT NOT NULL,
+    id_oncologica INT NOT NULL,
+    PRIMARY KEY (id_paciente, id_oncologica),
+    FOREIGN KEY (id_paciente) REFERENCES PACIENTE(id_paciente),
+    FOREIGN KEY (id_oncologica) REFERENCES ONCOLOGICA(id_oncologica)
+);
+GO 
