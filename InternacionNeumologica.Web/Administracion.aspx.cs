@@ -116,20 +116,27 @@ namespace InternacionNeumologica.Web
             switch (tabla)
             {
                 case "ANTECEDENTE_RESPIRATORIO": return "id_antecedente";
-                case "COMORBILIDAD": return "id_comorbilidad";
-                case "DESTINO_EGRESO": return "id_destino";
-                case "INFECCIONES": return "id_infeccion";
-                case "INTERSTICIALES": return "id_intersticial";
-                case "OBSTRUCTIVAS": return "id_obstructiva";
-                case "ONCOLOGICAS": return "id_oncologica";
-                case "PLEURA": return "id_pleura";
-                case "VASCULARES": return "id_vascular";
+                case "CIRUGIA": return "id_cirugia";
+                case "SECUELA": return "id_secuela";
                 case "EXPOSICION_AMBIENTAL": return "id_exposicion";
-                case "INSUFICIENCIA_RESPIRATORIA": return "id_insuficiencia";
-                case "ORIGEN_INTERNACION": return "id_origen";
-                case "SOPORTE_RESPIRATORIO": return "id_soporte";
                 case "TABAQUISMO": return "id_tabaquismo";
-                case "OTROS": return "id_otro";
+                case "ORIGEN_INTERNACION": return "id_origen";
+                case "DESTINO_EGRESO": return "id_destino";
+                case "INSUFICIENCIA_RESPIRATORIA": return "id_insuficiencia";
+                case "SOPORTE_RESPIRATORIO": return "id_soporte";
+                case "COMORBILIDAD_CARDIOVASCULAR": return "id_cardiovascular";
+                case "COMORBILIDAD_METABOLICA": return "id_metabolica";
+                case "COMORBILIDAD_NEUROLOGICA": return "id_neurologico";
+                case "COMORBILIDAD_SUEÑO": return "id_sueño";
+                case "COMORBILIDAD_INMUNOLOGICA": return "id_inmunologica";
+                case "COMORBILIDAD_ONCOLOGICA": return "id_oncologica";
+                case "DIAGNOSTICO_INFECCIONES": return "id_infeccion";
+                case "DIAGNOSTICO_OBSTRUCTIVAS": return "id_obstructiva";
+                case "DIAGNOSTICO_INTERSTICIALES": return "id_intersticial";
+                case "DIAGNOSTICO_PLEURA": return "id_pleura";
+                case "DIAGNOSTICO_VASCULARES": return "id_vascular";
+                case "DIAGNOSTICO_ONCOLOGICAS": return "id_oncologica";
+                case "DIAGNOSTICO_OTROS": return "id_otro";
                 default: return "";
             }
         }

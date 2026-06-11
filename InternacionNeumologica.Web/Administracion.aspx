@@ -235,20 +235,27 @@
                                         OnSelectedIndexChanged="ddlCatalogos_SelectedIndexChanged">
                                         <asp:ListItem Text="-- Seleccione una tabla para gestionar --" Value="0" />
                                         <asp:ListItem Text="Antecedentes Respiratorios" Value="ANTECEDENTE_RESPIRATORIO" />
-                                        <asp:ListItem Text="Comorbilidades" Value="COMORBILIDAD" />
+                                        <asp:ListItem Text="Cirugías Torácicas Previas" Value="CIRUGIA" />
+                                        <asp:ListItem Text="Comorbilidades: Cardiovasculares" Value="COMORBILIDAD_CARDIOVASCULAR" />
+                                        <asp:ListItem Text="Comorbilidades: Inmunológicas" Value="COMORBILIDAD_INMUNOLOGICA" />
+                                        <asp:ListItem Text="Comorbilidades: Metabólicas" Value="COMORBILIDAD_METABOLICA" />
+                                        <asp:ListItem Text="Comorbilidades: Neurológicas" Value="COMORBILIDAD_NEUROLOGICA" />
+                                        <asp:ListItem Text="Comorbilidades: Oncológicas" Value="COMORBILIDAD_ONCOLOGICA" />
+                                        <asp:ListItem Text="Comorbilidades: Sueño" Value="COMORBILIDAD_SUEÑO" />
                                         <asp:ListItem Text="Destinos de Egreso" Value="DESTINO_EGRESO" />
-                                        <asp:ListItem Text="Enfermedades Infecciosas" Value="INFECCIONES" />
-                                        <asp:ListItem Text="Enfermedades Intersticiales" Value="INTERSTICIALES" />
-                                        <asp:ListItem Text="Enfermedades Obstructivas" Value="OBSTRUCTIVAS" />
-                                        <asp:ListItem Text="Enfermedades Oncológicas" Value="ONCOLOGICAS" />
-                                        <asp:ListItem Text="Enfermedades de la Pleura" Value="PLEURA" />
-                                        <asp:ListItem Text="Enfermedades Vasculares" Value="VASCULARES" />
+                                        <asp:ListItem Text="Diagnósticos: Infecciones" Value="DIAGNOSTICO_INFECCIONES" />
+                                        <asp:ListItem Text="Diagnósticos: Intersticiales" Value="DIAGNOSTICO_INTERSTICIALES" />
+                                        <asp:ListItem Text="Diagnósticos: Obstructivas" Value="DIAGNOSTICO_OBSTRUCTIVAS" />
+                                        <asp:ListItem Text="Diagnósticos: Oncológicas" Value="DIAGNOSTICO_ONCOLOGICAS" />
+                                        <asp:ListItem Text="Diagnósticos: Otros Criterios" Value="DIAGNOSTICO_OTROS" />
+                                        <asp:ListItem Text="Diagnósticos: Pleura" Value="DIAGNOSTICO_PLEURA" />
+                                        <asp:ListItem Text="Diagnósticos: Vasculares" Value="DIAGNOSTICO_VASCULARES" />
                                         <asp:ListItem Text="Exposiciones Ambientales" Value="EXPOSICION_AMBIENTAL" />
                                         <asp:ListItem Text="Insuficiencias Respiratorias" Value="INSUFICIENCIA_RESPIRATORIA" />
                                         <asp:ListItem Text="Orígenes de Internación" Value="ORIGEN_INTERNACION" />
+                                        <asp:ListItem Text="Secuelas Pulmonares" Value="SECUELA" />
                                         <asp:ListItem Text="Soportes Respiratorios" Value="SOPORTE_RESPIRATORIO" />
                                         <asp:ListItem Text="Historial de Tabaquismo" Value="TABAQUISMO" />
-                                        <asp:ListItem Text="Otros Criterios Clínicos" Value="OTROS" />
                                     </asp:DropDownList>
                                 </div>
                             </div>
