@@ -114,5 +114,10 @@ namespace Negocio
             DesplegablesDatos datos = new DesplegablesDatos();
             datos.ModificarItem(tabla, idColumna, id, descripcion);
         }
+        public void EliminarItem(string tabla, string idColumna, int id)
+        {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            datos.EliminarItem(tabla, idColumna, id);
+        }
     }
 }

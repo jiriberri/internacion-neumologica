@@ -284,7 +284,7 @@
                                             <asp:BoundField DataField="Id" HeaderText="ID Interno" ItemStyle-Width="10%" />
                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripción Registrada" />
 
-                                            <asp:TemplateField HeaderText="Acciones" ItemStyle-Width="15%">
+                                            <asp:TemplateField HeaderText="Acciones" ItemStyle-Width="22%">
                                                 <ItemTemplate>
                                                     <asp:Button
                                                         ID="btnEditarItemTabla"
@@ -293,6 +293,15 @@
                                                         CssClass="btn btn-sm btn-warning"
                                                         CommandArgument='<%# Eval("Id") + "|" + Eval("Descripcion") %>'
                                                         OnClick="btnEditarItemTabla_Click" />
+
+                                                    <asp:Button
+                                                        ID="btnEliminarItem"
+                                                        runat="server"
+                                                        Text="Eliminar"
+                                                        CssClass="btn btn-sm btn-danger"
+                                                        CommandArgument='<%# Eval("Id") %>'
+                                                        OnClick="btnEliminarItem_Click"
+                                                        OnClientClick="return confirm('¿Está seguro de que desea deshabilitar este elemento del catálogo?');" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

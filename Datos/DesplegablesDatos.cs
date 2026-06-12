@@ -54,7 +54,7 @@ namespace Datos
 
             try
             {
-                datos.SetearConsulta($"Select {Id}, {descripcion} from {tabla}");
+                datos.SetearConsulta($"Select {Id}, {descripcion} from {tabla} WHERE activo = 1");
                 datos.EjecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -96,6 +96,25 @@ namespace Datos
             {
                 datos.SetearConsulta($"UPDATE {tabla} SET descripcion = @descripcion WHERE {idColumna} = @id");
                 datos.SetearParametro("@descripcion", descripcion);
+                datos.SetearParametro("@id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public void EliminarItem(string tabla, string idColumna, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta($"UPDATE {tabla} SET activo = 0 WHERE {idColumna} = @id");
                 datos.SetearParametro("@id", id);
                 datos.EjecutarAccion();
             }

@@ -164,5 +164,34 @@ namespace InternacionNeumologica.Web
             hfIdEditando.Value = "";
             txtNuevaDescripcion.CssClass = "form-control";
         }
+
+        protected void btnEliminarItem_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            int id = int.Parse(btn.CommandArgument);
+            string tablaActive = ddlCatalogos.SelectedValue;
+            string columnaId = ObtenerColumnaId(tablaActive);
+
+            try
+            {
+                DesplegableNegocio negocio = new DesplegableNegocio();
+
+                negocio.EliminarItem(tablaActive, columnaId, id);
+
+                if (hfIdEditando.Value == id.ToString())
+                {
+                    ResetearFormularioEdicion();
+                    txtNuevaDescripcion.Text = "";
+                }
+
+                CargarGrillaCatalogo();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
+        }
     }
 }
