@@ -106,9 +106,11 @@ namespace InternacionNeumologica.Web
             string tablaSeleccionada = ddlCatalogos.SelectedValue;
             string columnaId = ObtenerColumnaId(tablaSeleccionada);
 
+            bool filtrarSoloActivos = !chkMostrarDeshabilitados.Checked;
+
             DesplegableNegocio negocio = new DesplegableNegocio();
 
-            dgvCatalogoGenerico.DataSource = negocio.ListarCatalogo<ItemCatalogo>(tablaSeleccionada, columnaId, "descripcion");
+            dgvCatalogoGenerico.DataSource = negocio.ListarCatalogo<ItemCatalogo>(tablaSeleccionada, columnaId, "descripcion", filtrarSoloActivos);
             dgvCatalogoGenerico.DataBind();
         }
         private string ObtenerColumnaId(string tabla)
@@ -185,6 +187,35 @@ namespace InternacionNeumologica.Web
                     txtNuevaDescripcion.Text = "";
                 }
 
+                CargarGrillaCatalogo();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
+        }
+
+        protected void chkMostrarDeshabilitados_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ddlCatalogos.SelectedValue != "0")
+            {
+                pnlAltaCatalogo.Visible = !chkMostrarDeshabilitados.Checked;
+                CargarGrillaCatalogo();
+            }
+        }
+
+        protected void btnReactivarItem_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = int.Parse(btn.CommandArgument);
+            string tablaActive = ddlCatalogos.SelectedValue;
+            string columnaId = ObtenerColumnaId(tablaActive);
+
+            try
+            {
+                DesplegableNegocio negocio = new DesplegableNegocio();
+                negocio.ReactivarItem(tablaActive, columnaId, id);
                 CargarGrillaCatalogo();
             }
             catch (Exception ex)

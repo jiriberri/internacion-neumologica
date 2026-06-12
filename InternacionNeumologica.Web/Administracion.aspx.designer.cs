@@ -141,6 +141,15 @@ namespace InternacionNeumologica.Web
         protected global::System.Web.UI.WebControls.DropDownList ddlCatalogos;
 
         /// <summary>
+        /// chkMostrarDeshabilitados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkMostrarDeshabilitados;
+
+        /// <summary>
         /// phFormularioCatalogo control.
         /// </summary>
         /// <remarks>

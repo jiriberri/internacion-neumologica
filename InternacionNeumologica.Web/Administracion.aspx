@@ -258,6 +258,18 @@
                                         <asp:ListItem Text="Historial de Tabaquismo" Value="TABAQUISMO" />
                                     </asp:DropDownList>
                                 </div>
+
+                                <div class="col-md-6 mb-2">
+                                    <div class="d-flex align-items-center h-100 ps-md-2 pt-2">
+                                        <asp:CheckBox
+                                            ID="chkMostrarDeshabilitados"
+                                            runat="server"
+                                            Text="&nbsp;Ver elementos deshabilitados"
+                                            AutoPostBack="true"
+                                            OnCheckedChanged="chkMostrarDeshabilitados_CheckedChanged"
+                                            CssClass="fw-semibold" />
+                                    </div>
+                                </div>
                             </div>
 
                             <asp:PlaceHolder ID="phFormularioCatalogo" runat="server" Visible="false">
@@ -284,7 +296,7 @@
                                             <asp:BoundField DataField="Id" HeaderText="ID Interno" ItemStyle-Width="10%" />
                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripción Registrada" />
 
-                                            <asp:TemplateField HeaderText="Acciones" ItemStyle-Width="22%">
+                                            <asp:TemplateField HeaderText="Acciones" ItemStyle-Width="25%">
                                                 <ItemTemplate>
                                                     <asp:Button
                                                         ID="btnEditarItemTabla"
@@ -292,7 +304,8 @@
                                                         Text="Editar"
                                                         CssClass="btn btn-sm btn-warning"
                                                         CommandArgument='<%# Eval("Id") + "|" + Eval("Descripcion") %>'
-                                                        OnClick="btnEditarItemTabla_Click" />
+                                                        OnClick="btnEditarItemTabla_Click"
+                                                        Visible='<%# !chkMostrarDeshabilitados.Checked %>' />
 
                                                     <asp:Button
                                                         ID="btnEliminarItem"
@@ -301,7 +314,17 @@
                                                         CssClass="btn btn-sm btn-danger"
                                                         CommandArgument='<%# Eval("Id") %>'
                                                         OnClick="btnEliminarItem_Click"
-                                                        OnClientClick="return confirm('¿Está seguro de que desea deshabilitar este elemento del catálogo?');" />
+                                                        OnClientClick="return confirm('¿Está seguro de que desea deshabilitar este elemento del catálogo?');"
+                                                        Visible='<%# !chkMostrarDeshabilitados.Checked %>' />
+
+                                                    <asp:Button
+                                                        ID="btnReactivarItem"
+                                                        runat="server"
+                                                        Text="Reactivar"
+                                                        CssClass="btn btn-sm btn-success"
+                                                        CommandArgument='<%# Eval("Id") %>'
+                                                        OnClick="btnReactivarItem_Click"
+                                                        Visible='<%# chkMostrarDeshabilitados.Checked %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

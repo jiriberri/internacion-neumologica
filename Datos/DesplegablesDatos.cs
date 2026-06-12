@@ -47,14 +47,16 @@ namespace Datos
         }
 
 
-        public List<T> Listar<T>(string tabla, string Id, string descripcion) where T : Desplegables, new()
+        public List<T> Listar<T>(string tabla, string Id, string descripcion, bool soloActivos = true) where T : Desplegables, new()
         {
             List<T> lista = new List<T>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta($"Select {Id}, {descripcion} from {tabla} WHERE activo = 1");
+                int valorActivo = soloActivos ? 1 : 0;
+
+                datos.SetearConsulta($"Select {Id}, {descripcion} from {tabla} WHERE activo = {valorActivo}");
                 datos.EjecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -66,9 +68,15 @@ namespace Datos
                 return lista;
 
             }
-            catch (Exception ex) { throw ex; }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-            finally { datos.CerrarConexion(); }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
         public void AgregarItem(string tabla, string descripcion)
@@ -115,6 +123,25 @@ namespace Datos
             try
             {
                 datos.SetearConsulta($"UPDATE {tabla} SET activo = 0 WHERE {idColumna} = @id");
+                datos.SetearParametro("@id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public void ReactivarItem(string tabla, string idColumna, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta($"UPDATE {tabla} SET activo = 1 WHERE {idColumna} = @id");
                 datos.SetearParametro("@id", id);
                 datos.EjecutarAccion();
             }

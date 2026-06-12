@@ -99,10 +99,10 @@ namespace Negocio
         
 
 
-        public List<T> ListarCatalogo<T>(string tabla, string idColumna, string descripcionColumna) where T : Desplegables, new()
+        public List<T> ListarCatalogo<T>(string tabla, string idColumna, string descripcionColumna, bool soloActivos = true) where T : Desplegables, new()
         {
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<T>(tabla, idColumna, descripcionColumna);
+            return datos.Listar<T>(tabla, idColumna, descripcionColumna, soloActivos);
         }
         public void AgregarItem(string tabla, string descripcion)
         {
@@ -118,6 +118,11 @@ namespace Negocio
         {
             DesplegablesDatos datos = new DesplegablesDatos();
             datos.EliminarItem(tabla, idColumna, id);
+        }
+        public void ReactivarItem(string tabla, string idColumna, int id)
+        {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            datos.ReactivarItem(tabla, idColumna, id);
         }
     }
 }
