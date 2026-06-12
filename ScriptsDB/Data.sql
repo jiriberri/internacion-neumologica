@@ -254,3 +254,48 @@ NULL,
 
 GO
 
+-- ============================================================
+-- COMORBILIDADES DE LOS PACIENTES (Datos de prueba)
+-- ============================================================
+
+INSERT INTO PACIENTE_COMORBILIDAD_CARDIOVASCULAR
+(id_paciente, id_cardiovascular)
+VALUES
+(1,1), -- Juan: HTA
+(2,2), -- María: Insuficiencia cardíaca
+(3,1), -- Carlos: HTA
+(4,3); -- Ana: Fibrilación auricular
+
+
+INSERT INTO PACIENTE_COMORBILIDAD_METABOLICA
+(id_paciente, id_metabolica)
+VALUES
+(1,1), -- Diabetes
+(4,2); -- Obesidad
+
+
+INSERT INTO PACIENTE_COMORBILIDAD_NEUROLOGICA
+(id_paciente, id_neurologico)
+VALUES
+(3,1); -- ACV previo
+
+
+INSERT INTO PACIENTE_COMORBILIDAD_SUEÑO
+(id_paciente, id_sueño)
+VALUES
+(2,1); -- SAOS
+
+
+INSERT INTO PACIENTE_COMORBILIDAD_INMUNOLOGICA
+(id_paciente, id_inmunologica)
+VALUES
+(4,2); -- Inmunosuprimido
+
+
+INSERT INTO PACIENTE_COMORBILIDAD_ONCOLOGICA
+(id_paciente, id_oncologica)
+VALUES
+(3,1); -- Neoplasia extrapulmonar activa
+
+GO
+

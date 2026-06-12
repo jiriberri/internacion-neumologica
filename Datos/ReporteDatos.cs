@@ -265,14 +265,52 @@ namespace Datos
                 try
                 {
                     datos.SetearConsulta(
-                            "SELECT " +
-                            "C.descripcion AS Categoria, " +
-                            "COUNT(*) AS Cantidad " +
-                            "FROM PACIENTE_COMORBILIDAD PC " +
-                            "INNER JOIN COMORBILIDAD C " +
-                            "ON PC.id_comorbilidad = C.id_comorbilidad " +
-                            "GROUP BY C.descripcion " +
-                            "ORDER BY Cantidad DESC");
+                                    "SELECT Categoria, SUM(Cantidad) AS Cantidad " +
+                                    "FROM ( " +
+
+                                    "SELECT C.descripcion AS Categoria, COUNT(*) AS Cantidad " +
+                                    "FROM PACIENTE_COMORBILIDAD_CARDIOVASCULAR PC " +
+                                    "INNER JOIN COMORBILIDAD_CARDIOVASCULAR C ON PC.id_cardiovascular = C.id_cardiovascular " +
+                                    "GROUP BY C.descripcion " +
+
+                                    "UNION ALL " +
+
+                                    "SELECT C.descripcion, COUNT(*) AS Cantidad " +
+                                    "FROM PACIENTE_COMORBILIDAD_METABOLICA PC " +
+                                    "INNER JOIN COMORBILIDAD_METABOLICA C ON PC.id_metabolica = C.id_metabolica " +
+                                    "GROUP BY C.descripcion " +
+
+                                    "UNION ALL " +
+
+                                    "SELECT C.descripcion, COUNT(*) AS Cantidad " +
+                                    "FROM PACIENTE_COMORBILIDAD_NEUROLOGICA PC " +
+                                    "INNER JOIN COMORBILIDAD_NEUROLOGICA C ON PC.id_neurologico = C.id_neurologico " +
+                                    "GROUP BY C.descripcion " +
+
+                                    "UNION ALL " +
+
+                                    "SELECT C.descripcion, COUNT(*) AS Cantidad " +
+                                    "FROM PACIENTE_COMORBILIDAD_INMUNOLOGICA PC " +
+                                    "INNER JOIN COMORBILIDAD_INMUNOLOGICA C ON PC.id_inmunologica = C.id_inmunologica " +
+                                    "GROUP BY C.descripcion " +
+
+                                    "UNION ALL " +
+
+                                    "SELECT C.descripcion, COUNT(*) AS Cantidad " +
+                                    "FROM PACIENTE_COMORBILIDAD_ONCOLOGICA PC " +
+                                    "INNER JOIN COMORBILIDAD_ONCOLOGICA C ON PC.id_oncologica = C.id_oncologica " +
+                                    "GROUP BY C.descripcion " +
+
+                                    "UNION ALL " +
+
+                                    "SELECT C.descripcion, COUNT(*) AS Cantidad " +
+                                    "FROM PACIENTE_COMORBILIDAD_SUEÑO PC " +
+                                    "INNER JOIN COMORBILIDAD_SUEÑO C ON PC.id_sueño = C.id_sueño " +
+                                    "GROUP BY C.descripcion " +
+
+                                    ") AS T " +
+                                    "GROUP BY Categoria " +
+                                    "ORDER BY Cantidad DESC");
 
                     datos.EjecutarLectura();
 
