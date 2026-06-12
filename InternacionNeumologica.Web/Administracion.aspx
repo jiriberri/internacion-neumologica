@@ -40,6 +40,12 @@
             </li>
         </ul>
 
+        <asp:HiddenField
+    ID="hfTabActiva"
+    runat="server" />
+
+<div class="tab-content" id="adminTabsContent">
+
         <div class="tab-content" id="adminTabsContent">
 
             <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
@@ -108,6 +114,11 @@
                     </div>
                     <div class="card-body">
 
+<asp:Panel
+    ID="pnlCorreccionPacientes"
+    runat="server"
+    DefaultButton="btnBuscarPacienteAdmin">
+
                         <div class="row g-3 align-items-end mb-4">
                             <div class="col-md-8">
                                 <label class="form-label">Ingresar DNI del Paciente a corregir</label>
@@ -123,7 +134,9 @@
                                     ID="btnBuscarPacienteAdmin"
                                     runat="server"
                                     Text="Buscar para Editar"
-                                    CssClass="btn btn-primary w-100" />
+                                    CssClass="btn btn-primary w-100" 
+                                    OnClick="btnBuscarPacienteAdmin_Click"/>
+                                    
                             </div>
                         </div>
 
@@ -198,13 +211,25 @@
                                 ID="btnCancelarMod"
                                 runat="server"
                                 Text="Descartar Cambios"
-                                CssClass="btn btn-secondary" />
+                                CssClass="btn btn-secondary"
+                                OnClick="btnCancelarMod_Click"/>
                             <asp:Button
                                 ID="btnGuardarMod"
                                 runat="server"
                                 Text="Guardar Modificaciones"
-                                CssClass="btn btn-success" />
+                                CssClass="btn btn-success" 
+                                OnClick="btnGuardarMod_Click"/>
+                           
                         </div>
+</asp:Panel>
+
+                        <div class="mt-3">
+                                <asp:Label
+                                    ID="lblMensajeMod"
+                                    runat="server"
+                                    CssClass="text-success fw-bold">
+                                </asp:Label>
+                            </div>
 
                     </div>
                 </div>

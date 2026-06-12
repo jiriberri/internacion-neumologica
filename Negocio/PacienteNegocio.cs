@@ -39,6 +39,12 @@ namespace Negocio
             datos.agregar(nuevo);
         }
 
-       
+        public void ModificarPaciente(Paciente paciente)
+        {
+            PacienteDatos datos = new PacienteDatos();
+
+            datos.ModificarPaciente(paciente);
+        }
+
     }
 }

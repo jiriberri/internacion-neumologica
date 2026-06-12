@@ -189,6 +189,38 @@ namespace Datos
             }
         }
 
-        
+        public void ModificarPaciente(Paciente paciente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "UPDATE PACIENTE SET " +
+                    "nombre = @nombre, " +
+                    "apellido = @apellido, " +
+                    "dni = @dni, " +
+                    "domicilio = @domicilio, " +
+                    "telefono = @telefono, " +
+                    "fecha_nacimiento = @fechaNacimiento " +
+                    "WHERE id_paciente = @id");
+
+                datos.SetearParametro("@nombre", paciente.Nombre);
+                datos.SetearParametro("@apellido", paciente.Apellido);
+                datos.SetearParametro("@dni", paciente.Dni);
+                datos.SetearParametro("@domicilio", paciente.Domicilio);
+                datos.SetearParametro("@telefono", paciente.Telefono);
+                datos.SetearParametro("@fechaNacimiento", paciente.FechaNacimiento);
+                datos.SetearParametro("@id", paciente.IdPaciente);
+
+                datos.EjecutarAccion();
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+
     }
 }
