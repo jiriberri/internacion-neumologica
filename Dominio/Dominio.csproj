@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntecedenteRespiratorio.cs" />
     <Compile Include="Despegables.cs" />
+    <Compile Include="IElementoCheck.cs" />
     <Compile Include="Infeccion.cs" />
     <Compile Include="InsuficienciaRespiratoria.cs" />
     <Compile Include="Internaciones.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="Otros.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="Pleura.cs" />
+    <Compile Include="Secuela.cs" />
     <Compile Include="SoporteRespiratorio.cs" />
     <Compile Include="Tabaquismo.cs" />
     <Compile Include="Usuario.cs" />

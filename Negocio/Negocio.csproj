@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesplegableNegocio.cs" />
+    <Compile Include="ElementoCheckNegocio.cs" />
     <Compile Include="PacienteNegocio.cs" />
     <Compile Include="ReporteNegocio.cs" />
     <Compile Include="UsuarioNegocio.cs" />

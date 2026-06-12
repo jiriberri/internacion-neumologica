@@ -36,64 +36,43 @@
                     <div class="card-body">
                         
                         <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Antecedentes respiratorios:</div> 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbEpoc" runat="server" Text="EPOC" CssClass="me-0" />
-                    </div>
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbAsma" runat="server" Text="Asma" />
-                    </div>
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbBronquiectasias" runat="server" Text="Bronquiectasias" />
-                    </div>
-                               <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbEpd" runat="server" Text="EPD" />
-                    </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbTuberprev" runat="server" Text="Tuberculosis Previa" />
-                    </div>
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbCancerdepulmon" runat="server" Text="Cáncer de Pulmón" />
-                    </div>
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbVniDomicilia" runat="server" Text="VNI domiciliaria"/>
-                    </div>
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbOxigenoDomi" runat="server" Text="Oxígeno Domiciliario"/>
-                    </div>
-                            </div>
-                        </div>
+                        <div class="row"> <% foreach (var item in ListaAntecedetesRespiratorios) { %>
+        
+        <div class="col-md-6 mb-3"> <div class="form-check">
+                <input class="form-check-input" type="checkbox" 
+                       name="chkAntecedentes" 
+                       value="<%= item.Id %>" 
+                       id="chk_resp_<%= item.Id %>" />
+                
+                <label class="form-check-label" for="chk_resp_<%= item.Id %>">
+                    <%= item.Descripcion %> </label>
+            </div>
+        </div>
+
+    <% } %>
+</div>
 
                         <hr class="border-secondary opacity-25 my-4" />
 
                         <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Secuelas pulmonares:</div> 
+           
                         <div class="row">
-                            <div class="col-md-6">
-                                
-                                
-                                <div class="form-check mb-3">
-                        <asp:CheckBox ID="cbSecPosinfec" runat="server" Text="Secuela postinfecciosas" />
-                    </div>
+                <% foreach (var item in ListaSecuela) { %>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox"
+                                   name="chkSecuela"
+                                   value="<%= item.Id %>"
+                                   id="chk_sec_<%= item.Id %>" />
                             
-                                <div class="form-check mb-3">
-                                     <asp:CheckBox ID="cbSecPosTrauma" runat="server" Text="Secuela postraumática" />
-                                  
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbSecasdsa">
-                                    <label class="form-check-label ms-2" for="cbSecasdsa">Secuela post-TBC</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbSecPasdas">
-                                    <label class="form-check-label ms-2" for="cbSecPasdas">Otra resección pulmonar</label>
-                                </div>
-                            </div>
+                            <label class="form-check-label" for="chk_sec_<%= item.Id %>">
+                                <%= item.Descripcion %>
+                            </label>
                         </div>
+                    </div>
+                <% } %> </div>
+                      
+
 
                     </div>
                 </div>
