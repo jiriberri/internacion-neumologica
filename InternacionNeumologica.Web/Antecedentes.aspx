@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Antecedentes.aspx.cs" Inherits="InternacionNeumologica.Web.Antecedentes" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
    <style>
@@ -31,52 +32,45 @@
 
         <div class="row g-3 mb-4">
             
-            <div class="col-lg-6"> 
-                <div class="card card-filtro h-100">
-                    <div class="card-body">
-                        
-                        <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Antecedentes respiratorios:</div> 
-                        <div class="row"> <% foreach (var item in ListaAntecedetesRespiratorios) { %>
-        
-        <div class="col-md-6 mb-3"> <div class="form-check">
-                <input class="form-check-input" type="checkbox" 
-                       name="chkAntecedentes" 
-                       value="<%= item.Id %>" 
-                       id="chk_resp_<%= item.Id %>" />
-                
-                <label class="form-check-label" for="chk_resp_<%= item.Id %>">
-                    <%= item.Descripcion %> </label>
-            </div>
-        </div>
+        <div class="col-lg-6"> 
+    <div class="card card-filtro h-100">
+        <div class="card-body">
+            
+            <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Antecedentes respiratorios:</div> 
+            <div class="row"> 
+                <% foreach (var ant in ListaAntecedentesRespiratorios) { %>
+                    <div class="col-md-6 mb-3"> 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" 
+                                   name="chkAntecedentes" 
+                                   value="<%Response.Write(ant.Id);%>" 
+                                   id="chk_resp_<%Response.Write(ant.Id);%>" />
+                            
+                            <label class="form-check-label" for="chk_resp_<%Response.Write(ant.Id);%>">
+                                <%Response.Write(ant.Descripcion);%> 
+                            </label>
+                        </div>
+                    </div>
+                <% } %>
+            </div> <hr class="border-secondary opacity-25 my-4" />
 
-    <% } %>
-</div>
-
-                        <hr class="border-secondary opacity-25 my-4" />
-
-                        <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Secuelas pulmonares:</div> 
-           
-                        <div class="row">
-                <% foreach (var item in ListaSecuela) { %>
+            <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Secuelas pulmonares:</div> 
+            <div class="row">
+                <% foreach (var sec in ListaSecuela) { %>
                     <div class="col-md-6 mb-3">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox"
                                    name="chkSecuela"
-                                   value="<%= item.Id %>"
-                                   id="chk_sec_<%= item.Id %>" />
+                                   value="<%Response.Write(sec.Id);%>"
+                                   id="chk_sec_<%Response.Write(sec.Id); %>" />
                             
-                            <label class="form-check-label" for="chk_sec_<%= item.Id %>">
-                                <%= item.Descripcion %>
+                            <label class="form-check-label" for="chk_resp_<%Response.Write(sec.Id);%>">
+                               <%Response.Write(sec.Descripcion);%>
                             </label>
                         </div>
                     </div>
-                <% } %> </div>
-                      
-
-
-                    </div>
-                </div>
-            </div>
+                <% } %> 
+            </div> </div> </div> </div>
 
             <div class="col-lg-6">
                 <div class="card card-filtro h-100">
@@ -86,16 +80,16 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="radio" name="TipodeFumadores" id="cbNuncafumo">
+                                    <input class="form-check-input" type="radio" name="TipodeFumadores" value="1" id="cbNuncafumo">
                                     <label class="form-check-label ms-2" for="cbNuncafumo">Nunca fumó</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="radio" name="TipodeFumadores" id="radioExfumador">
+                                    <input class="form-check-input" type="radio" name="TipodeFumadores" value="2" id="radioExfumador">
                                     <label class="form-check-label ms-2" for="radioExfumador">Exfumador</label>
                                 </div>
                                 <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="TipodeFumadores" id="RadioFumadoractivo">
+                                        <input class="form-check-input" type="radio" name="TipodeFumadores" value="3" id="RadioFumadoractivo">
                                         <label class="form-check-label ms-2" for="RadioFumadoractivo">Fumador Activo</label> 
                                     </div>
                                     <label for="txtPaquetesAnio" class="form-label text-danger-emphasis ms-lg-3 mb-0">Paquetes/año:</label>

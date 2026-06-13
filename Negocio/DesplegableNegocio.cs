@@ -35,14 +35,14 @@ namespace Negocio
         public List<Infeccion> ListarInfeccion()
         {
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Infeccion>("INFECCIONES", "id_infeccion", "descripcion"); 
+            return datos.Listar<Infeccion>("DIAGNOSTICO_INFECCIONES", "id_infeccion", "descripcion"); 
 
         }
 
         public List<Obstructiva> ListarObtructiva() {
 
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Obstructiva>("OBSTRUCTIVAS", "id_obstructiva", "descripcion");
+            return datos.Listar<Obstructiva>("DIAGNOSTICO_OBSTRUCTIVAS", "id_obstructiva", "descripcion");
 
         }
 
@@ -50,14 +50,14 @@ namespace Negocio
         {
 
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Intersticiales>("INTERSTICIALES", "id_intersticial", "descripcion");
+            return datos.Listar<Intersticiales>("DIAGNOSTICO_INTERSTICIALES", "id_intersticial", "descripcion");
 
         }
 
         public List<Pleura> ListarPleura() {
 
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Pleura>("PLEURA", "id_pleura", "descripcion");
+            return datos.Listar<Pleura>("DIAGNOSTICO_PLEURA", "id_pleura", "descripcion");
 
         }
 
@@ -65,7 +65,7 @@ namespace Negocio
         {
 
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Vascular>("VASCULARES", "id_vascular", "descripcion");
+            return datos.Listar<Vascular>("DIAGNOSTICO_VASCULARES", "id_vascular", "descripcion");
 
         }
 
@@ -73,7 +73,7 @@ namespace Negocio
         {
 
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Oncologica>("ONCOLOGICAS", "id_oncologica", "descripcion");
+            return datos.Listar<Oncologica>("DIAGNOSTICO_ONCOLOGICAS", "id_oncologica", "descripcion");
 
         }
 
@@ -81,7 +81,7 @@ namespace Negocio
         {
 
             DesplegablesDatos datos = new DesplegablesDatos();
-            return datos.Listar<Otros>("OTROS", "id_otro", "descripcion");
+            return datos.Listar<Otros>("DIAGNOSTICO_OTROS", "id_otro", "descripcion");
 
         }
 
