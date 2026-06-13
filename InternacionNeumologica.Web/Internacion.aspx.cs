@@ -15,6 +15,14 @@ namespace InternacionNeumologica.Web
         {
             if (!IsPostBack)
             {
+                Internaciones auxInternacion = new Internaciones();
+
+                if (Session["IdPacienteActual"] != null) {
+                    auxInternacion.IdPaciente = (int)Session["IdPacienteActual"];
+                }
+                Session["InternacionEnCurso"] = auxInternacion;
+
+
                 DesplegableNegocio negocio = new DesplegableNegocio();
                 List<Origen> listaOrigen = negocio.ListarOrigen();
                 ddlOrigen.DataSource = listaOrigen;
@@ -75,8 +83,8 @@ namespace InternacionNeumologica.Web
         }
 
         protected void btnSiguiente_Click(object sender, EventArgs e) {
-            Internaciones auxInternacion = new Internaciones();
-            
+            Internaciones auxInternacion = (Internaciones)Session["InternacionEnCurso"];
+
             auxInternacion.FechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
             auxInternacion.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
             

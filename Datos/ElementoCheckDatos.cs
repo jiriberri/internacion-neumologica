@@ -9,83 +9,42 @@ namespace Datos
 {
     public class ElementoCheckDatos
     {
+ 
 
-
-        public List<AntecedenteRespiratorio> ListarAntecedentesRespActivo()
+        public List<T> Listar<T>(string tabla, string Id, string descripcion, bool soloActivos = true) where T : IElementoCheck, new()
         {
-
-            List<AntecedenteRespiratorio> lista = new List<AntecedenteRespiratorio>();
-            AccesoDatos datos = new AccesoDatos();
-
-
-            try
-            {
-                datos.SetearConsulta("select id_antecedente, descripcion, activo from ANTECEDENTE_RESPIRATORIO where activo= 1");
-                datos.EjecutarLectura();
-
-
-                while (datos.Lector.Read())
-                {
-                    AntecedenteRespiratorio aux = new AntecedenteRespiratorio();
-                    aux.Id = (int)datos.Lector["id_antecedente"];
-                    aux.Descripcion = (string)datos.Lector["descripcion"];
-                    aux.Activo = (bool)datos.Lector["activo"];
-
-                    lista.Add(aux);
-                }
-
-                return lista;
-            }
-
-            catch (Exception ex) { throw ex; }
-
-
-            finally
-            {
-
-                datos.CerrarConexion();
-            }
-
-        }
-
-
-        public List<Secuela> ListarSecuelaActivo() {
-
-            List<Secuela> lista = new List<Secuela>();
+            List<T> lista = new List<T>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta("select id_secuela, descripcion, activo from SECUELA where activo= 1");
+                int valorActivo = soloActivos ? 1 : 0;
+
+                datos.SetearConsulta($"Select {Id}, {descripcion} from {tabla} WHERE activo = {valorActivo}");
                 datos.EjecutarLectura();
-
-
                 while (datos.Lector.Read())
                 {
-                    Secuela aux = new Secuela();
-                    aux.Id = (int)datos.Lector["id_secuela"];
-                    aux.Descripcion = (string)datos.Lector["descripcion"];
-                    aux.Activo = (bool)datos.Lector["activo"];
-
-                    lista.Add(aux);
+                    T objeto = new T();
+                    objeto.Id = (int)datos.Lector[Id];
+                    objeto.Descripcion = (string)datos.Lector[descripcion];
+                    lista.Add(objeto);
                 }
-
                 return lista;
+
             }
-
-            catch (Exception ex) { throw ex; }
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             finally
             {
-
                 datos.CerrarConexion();
             }
-
-
         }
+
 
 
 
     }
-}
+    }

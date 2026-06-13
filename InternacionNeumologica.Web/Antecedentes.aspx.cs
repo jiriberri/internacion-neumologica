@@ -13,14 +13,18 @@ namespace InternacionNeumologica.Web
     public partial class Antecedentes : System.Web.UI.Page
     {
         public List<AntecedenteRespiratorio> ListaAntecedentesRespiratorios { get; set; }
-        public List<Secuela> ListaSecuela { get; set; }
+        public List<Secuela> ListaSecuela { get; set; } 
 
+        public List<Cirugia> ListaCirugia { get; set; } 
+
+        public List<ExposicionAmbiental> ListaExpoAmb { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             ElementoCheckNegocio negociocheck = new ElementoCheckNegocio();
             ListaAntecedentesRespiratorios = negociocheck.ListarAntecedentesRespActivo();
             ListaSecuela = negociocheck.ListarSecuelaActivo();
-
+            ListaCirugia = negociocheck.ListarCirugiaActivo();
+            ListaExpoAmb = negociocheck.ListarExpoAmb();
 
             if (!IsPostBack)
             {
@@ -51,6 +55,9 @@ namespace InternacionNeumologica.Web
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
+           
+            
+            
             Internaciones auxInternacion = (Internaciones)Session["InternacionEnCurso"];
             if (auxInternacion.Tabaquismo == null)
             {
@@ -67,13 +74,32 @@ namespace InternacionNeumologica.Web
                 auxInternacion.Paquetes_anio = 0;
             }
 
+            auxInternacion.Insuficiencia = new InsuficienciaRespiratoria();
+            auxInternacion.Insuficiencia.Id = int.Parse(ddlInsRespiratoria.SelectedValue);
+
+            auxInternacion.Soporte= new SoporteRespiratorio();
+            auxInternacion.Soporte.Id = int.Parse(ddlSoporte.SelectedValue);
+
+
+            //Todos lo Session que guardan el checkbox
+
+
+
             string seleccionadosResp = Request.Form["chkAntecedentes"]; //Va string porque el internet solo reconoce como texto plano
             Session["SeleccionRespiratorios"] = seleccionadosResp;
-
+            
             string seleccionadosSecuela = Request.Form["chkSecuela"];
             Session["SeleccionSecuelas"] = seleccionadosSecuela;
 
+            string seleccionadosCirugia = Request.Form["chkCirugias"];
+            Session["SeleccionCirugias"] = seleccionadosCirugia;
+
+            string seleccionadosExpAmb = Request.Form["chkExposiciones"];
+            Session["SeleccionExpo"] = seleccionadosExpAmb;
+
+
             Session["InternacionEnCurso"] = auxInternacion;
+            
             Response.Redirect("Comorbilidades.aspx");
 
         }

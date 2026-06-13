@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AntecedenteRespiratorio.cs" />
+    <Compile Include="Cirugia.cs" />
     <Compile Include="Despegables.cs" />
+    <Compile Include="ExposicionAmbiental.cs" />
     <Compile Include="IElementoCheck.cs" />
     <Compile Include="Infeccion.cs" />
     <Compile Include="InsuficienciaRespiratoria.cs" />

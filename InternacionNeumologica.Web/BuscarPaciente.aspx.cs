@@ -30,6 +30,7 @@ namespace InternacionNeumologica.Web
 
                 if (paciente != null)
                 {
+                    Session["IdPacienteActual"] = paciente.IdPaciente;
                     lblResultado.Text =
                         "Paciente encontrado: " +
                         paciente.Apellido + ", " +
@@ -69,9 +70,10 @@ namespace InternacionNeumologica.Web
                                  negocio.BuscarPorApellido(txtBusqueda.Text);
 
                 if (lista.Count > 0)
-                {
+                { 
+                    
                     Paciente paciente = lista[0];
-
+                    Session["IdPacienteActual"] = paciente.IdPaciente;
                     lblResultado.Text =
                         "Paciente encontrado: " +
                         paciente.Apellido + ", " +

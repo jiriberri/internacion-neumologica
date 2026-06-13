@@ -100,102 +100,85 @@
 
                         <hr class="border-secondary opacity-25 my-4" />
 
-                        <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Cirugía torácica previa:</div> 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbLobectomía">
-                                    <label class="form-check-label ms-2" for="cbLobectomía">Lobectomía</label>
+        <div class="mb-3 text-primary-emphasis fw-semibold fs-5">Cirugía torácica previa:</div> 
+<div class="row">
+    <% foreach (var cir in ListaCirugia) { %>
+        <div class="col-md-6 mb-3"> 
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" 
+                       name="chkCirugias" 
+                       value="<% Response.Write(cir.Id); %>" 
+                       id="chk_cir_<% Response.Write(cir.Id); %>" />
+                
+                <label class="form-check-label ms-2" for="chk_cir_<% Response.Write(cir.Id); %>">
+                    <% Response.Write(cir.Descripcion); %> 
+                </label>
+            </div>
+        </div>
+    <% } %>
+</div>
+
                                 </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbSegmentectomia">
-                                    <label class="form-check-label ms-2" for="cbSegmentectomia">Segmentectomía</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbNeumonectomia">
-                                    <label class="form-check-label ms-2" for="cbNeumonectomia">Neumonectomías</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbOtraresección">
-                                    <label class="form-check-label ms-2" for="cbOtraresección">Otra resección pulmonar</label>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
                 </div>
             </div>
 
-        </div> 
+        
        
-       <div class="row g-3">
-            
-            <div class="col-lg-6">
-                <div class="card card-filtro h-100">
-                    <div class="card-body">    
-                        <div class="mb-4 text-primary-emphasis fw-semibold fs-5">Exposición ambiental/Ocupacional:</div> 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbHumoleña">
-                                    <label class="form-check-label ms-2" for="cbHumoleña">Humo de leña</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbAves">
-                                    <label class="form-check-label ms-2" for="cbAves">Aves</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbSiliMargra">
-                                    <label class="form-check-label ms-2" for="cbSiliMargra">Sílice/Mármol/Granito</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbAsbesto">
-                                    <label class="form-check-label ms-2" for="cbAsbesto">Asbesto</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="cbOtraExposicion">
-                                    <label class="form-check-label ms-2" for="cbOtraExposicion">Otra exposición relevante</label>
-                                </div>
-                            </div>      
-                        </div>
-                    </div> 
-                </div> 
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card card-filtro h-100">
-                    <div class="card-body d-flex flex-column justify-content-between">    
-                        <div>
-                            <div class="mb-4 text-success-emphasis fw-semibold fs-5">Evolución respiratoria:</div> 
-                            
-                            <div class="mb-3">
-                                <label for="ddlInsRespiratoria" class="form-label text-secondary fw-semibold fs-6">¿Tuvo insuficiencia respiratoria?</label>
-                                <asp:DropDownList ID="ddlInsRespiratoria" runat="server" CssClass="form-select" Style="max-width: 350px;">
-                                    <asp:ListItem Text="Seleccione una opción." Value="" />
-                                </asp:DropDownList>  
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ddlSoporte" class="form-label text-secondary fw-semibold fs-6">¿Requirió soporte?</label>
-                                <asp:DropDownList ID="ddlSoporte" runat="server" CssClass="form-select" Style="max-width: 350px;">
-                                    <asp:ListItem Text="Seleccione una opción." Value="" />
-                                </asp:DropDownList>  
+      <div class="row g-3">
+    
+    <div class="col-lg-6">
+        <div class="card card-filtro h-100">
+            <div class="card-body">    
+                <div class="mb-4 text-primary-emphasis fw-semibold fs-5">Exposición ambiental/Ocupacional:</div> 
+                <div class="row">
+                    <% foreach (var exp in ListaExpoAmb) { %>
+                        <div class="col-md-6 mb-3"> 
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       name="chkExposiciones" 
+                                       value="<% Response.Write(exp.Id); %>" 
+                                       id="chk_exp_<% Response.Write(exp.Id); %>" />
+                                
+                                <label class="form-check-label ms-2" for="chk_exp_<% Response.Write(exp.Id); %>">
+                                    <% Response.Write(exp.Descripcion); %> 
+                                </label>
                             </div>
                         </div>
-
-                        <div class="d-flex justify-content-center gap-3 mt-4">
-                            <asp:Button ID="btnAtras" runat="server" Text="Atrás" OnClick="btnAtras_Click" CssClass="btn btn-outline-secondary px-4 fw-semibold" CausesValidation="false"/>
-                            <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" OnClick="btnSiguiente_Click" CssClass="btn btn-success px-4 fw-semibold" />
-                        </div>
-
+                    <% } %>
+                </div>
+            </div> </div> </div> <div class="col-lg-6">
+        <div class="card card-filtro h-100">
+            <div class="card-body d-flex flex-column justify-content-between">    
+                <div>
+                    <div class="mb-4 text-success-emphasis fw-semibold fs-5">Evolución respiratoria:</div> 
+                    
+                    <div class="mb-3">
+                        <label for="ddlInsRespiratoria" class="form-label text-secondary fw-semibold fs-6">¿Tuvo insuficiencia respiratoria?</label>
+                        <asp:DropDownList ID="ddlInsRespiratoria" runat="server" CssClass="form-select" Style="max-width: 350px;">
+                            <asp:ListItem Text="Seleccione una opción." Value="" />
+                        </asp:DropDownList>  
                     </div>
-                </div> 
-            </div>
 
-        </div> </div> 
+                    <div class="mb-3">
+                        <label for="ddlSoporte" class="form-label text-secondary fw-semibold fs-6">¿Requirió soporte?</label>
+                        <asp:DropDownList ID="ddlSoporte" runat="server" CssClass="form-select" Style="max-width: 350px;">
+                            <asp:ListItem Text="Seleccione una opción." Value="" />
+                        </asp:DropDownList>  
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <asp:Button ID="btnAtras" runat="server" Text="Atrás" OnClick="btnAtras_Click" CssClass="btn btn-outline-secondary px-4 fw-semibold" CausesValidation="false"/>
+                    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" OnClick="btnSiguiente_Click" CssClass="btn btn-success px-4 fw-semibold" />
+                </div>
+
+            </div>
+        </div> 
+    </div>
+
+</div>
     
 </asp:Content>
