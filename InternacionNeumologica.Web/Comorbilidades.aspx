@@ -43,35 +43,20 @@
                 <div class="mb-4 text-primary-emphasis fw-semibold text-center fs-5">Cardiovasculares</div> 
                 
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="cbHarterial">
-                            <label class="form-check-label ms-2" for="cbHarterial">Hipertensión arterial</label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="cbInsuCardi">
-                            <label class="form-check-label ms-2" for="cbInsuCardi">Insuficiencia cardíaca</label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="cbFibriAuricu">
-                            <label class="form-check-label ms-2" for="cbFibriAuricu">Fibrilación auricular</label>
-                        </div>
-                    </div>  
-
-                    <div class="col-md-6">
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="cbCardioIsquem">
-                            <label class="form-check-label ms-2" for="cbCardioIsquem">Cardiopatía isquémica</label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="cbHPulmonar">
-                            <label class="form-check-label ms-2" for="cbHPulmonar">Hipertensión pulmonar</label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="cbTEPprevio">
-                            <label class="form-check-label ms-2" for="cbTEPprevio">TEP previo</label>
-                        </div>
-                    </div>
+                    <% foreach (var car in ListaCardioVascular) { %>
+    <div class="col-md-6 mb-3"> 
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" 
+                   name="chkAntecedentes" 
+                   value="<%Response.Write(car.Id);%>" 
+                   id="chk_resp_<%Response.Write(car.Id);%>" />
+            
+            <label class="form-check-label" for="chk_resp_<%Response.Write(car.Id);%>">
+                <%Response.Write(car.Descripcion);%> 
+            </label>
+        </div>
+    </div>
+<% } %>
                 </div> 
             </div>
         </div>
@@ -148,7 +133,7 @@
                      </div>
                    </div> <div class="text-center mt-4 mb-5 d-flex justify-content-center gap-3">
     <asp:Button Text="Atras" ID="btnAtras" CssClass="btn btn-outline-secondary px-4 fw-semibold" OnClick="btnAtras_Click" runat="server" CausesValidation="false"/>
-    <asp:Button Text="Finalizar" ID="btnSiguiente" CssClass="btn btn-success px-4 fw-semibold" runat="server"/>
+    <asp:Button Text="Guardar" ID="btnSiguiente" CssClass="btn btn-success px-4 fw-semibold" OnClick="btnGuardar_Click" runat="server"/>
 </div>
                         
                     </div>

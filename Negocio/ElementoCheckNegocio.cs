@@ -36,5 +36,12 @@ namespace Negocio
             return datos.Listar<ExposicionAmbiental>("EXPOSICION_AMBIENTAL", "id_exposicion", "descripcion");
         }
 
+        public List<Cardiovascular> ListarCardioVasActivo()
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+            return datos.Listar<Cardiovascular>("COMORBILIDAD_CARDIOVASCULAR", "id_cardiovascular", "descripcion");
+        }
+
+
     }
 }
