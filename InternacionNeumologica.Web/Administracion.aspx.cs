@@ -200,7 +200,7 @@ namespace InternacionNeumologica.Web
 
         protected void chkMostrarDeshabilitados_CheckedChanged(object sender, EventArgs e)
         {
-            if(ddlCatalogos.SelectedValue != "0")
+            if (ddlCatalogos.SelectedValue != "0")
             {
                 pnlAltaCatalogo.Visible = !chkMostrarDeshabilitados.Checked;
                 CargarGrillaCatalogo();
