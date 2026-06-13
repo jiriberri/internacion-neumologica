@@ -229,7 +229,6 @@ namespace InternacionNeumologica.Web
         protected void btnBuscarPacienteAdmin_Click(object sender, EventArgs e)
         {
             PacienteNegocio negocio = new PacienteNegocio();
-
             Paciente paciente = negocio.BuscarPorDni(txtDniBuscar.Text);
 
             if (paciente != null)
@@ -251,22 +250,12 @@ namespace InternacionNeumologica.Web
                 lblMensajeMod.CssClass = "text-danger fw-bold";
                 lblMensajeMod.Text = "No se encontró un paciente con el DNI ingresado.";
             }
-
-            ScriptManager.RegisterStartupScript(
-                                    this,
-                                    GetType(),
-                                    "activarTab",
-                                    @"
-                                    window.onload = function () {
-                                        var tab = document.getElementById('pacientes-tab');
-                                        bootstrap.Tab.getOrCreateInstance(tab).show();
-                                    };
-                                    ",
-                                     true);//lo qu esta despues del arroba es JS//
         }
 
         protected void btnGuardarMod_Click(object sender, EventArgs e)
         {
+            if (Session["PacienteEditar"] == null) return;
+
             Paciente paciente = new Paciente();
 
             paciente.IdPaciente = (int)Session["PacienteEditar"];
@@ -280,6 +269,7 @@ namespace InternacionNeumologica.Web
                 txtModDate.Text,
                 "yyyy-MM-dd",
                 System.Globalization.CultureInfo.InvariantCulture);
+
             PacienteNegocio negocio = new PacienteNegocio();
             try
             {
@@ -287,43 +277,28 @@ namespace InternacionNeumologica.Web
 
                 lblMensajeMod.CssClass = "text-success fw-bold";
                 lblMensajeMod.Text = "✔ Los datos del paciente se actualizaron correctamente.";
-                Session.Remove("PacienteEditar");//esto es para fque no quede el id guardado en sesion despues de modificar el paciente, asi si quieren modificar otro paciente no se confunda con el id guardado en sesion del paciente anterior
 
+                Session.Remove("PacienteEditar");
             }
             catch
             {
                 lblMensajeMod.CssClass = "text-danger fw-bold";
                 lblMensajeMod.Text = "✖ Ocurrió un error al guardar las modificaciones.";
-
             }
         }
 
         protected void btnCancelarMod_Click(object sender, EventArgs e)
         {
             txtDniBuscar.Text = "";
-
             txtModNombre.Text = "";
             txtModApellido.Text = "";
             txtModDni.Text = "";
             txtModDomicilio.Text = "";
             txtModTel.Text = "";
             txtModDate.Text = "";
-
             lblMensajeMod.Text = "";
 
             Session.Remove("PacienteEditar");
-
-            ScriptManager.RegisterStartupScript(
-                this,
-                GetType(),
-                "activarTab",
-                @"
-        window.onload = function () {
-            var tab = document.getElementById('pacientes-tab');
-            bootstrap.Tab.getOrCreateInstance(tab).show();
-        };
-        ",
-                true);
         }
     }
 }
