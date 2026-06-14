@@ -48,13 +48,17 @@
     <Compile Include="ExposicionAmbiental.cs" />
     <Compile Include="IElementoCheck.cs" />
     <Compile Include="Infeccion.cs" />
+    <Compile Include="Inmunologica.cs" />
     <Compile Include="InsuficienciaRespiratoria.cs" />
     <Compile Include="Internaciones.cs" />
     <Compile Include="Intersticiales.cs" />
     <Compile Include="ItemCatalogo.cs" />
     <Compile Include="ItemGrafico.cs" />
+    <Compile Include="Metabolica.cs" />
+    <Compile Include="Neurologico.cs" />
     <Compile Include="Obstructiva.cs" />
     <Compile Include="Oncologica.cs" />
+    <Compile Include="OncologicaComorbilidad.cs" />
     <Compile Include="Origen.cs" />
     <Compile Include="DestinoEgreso.cs" />
     <Compile Include="Otros.cs" />
@@ -62,6 +66,7 @@
     <Compile Include="Pleura.cs" />
     <Compile Include="Secuela.cs" />
     <Compile Include="SoporteRespiratorio.cs" />
+    <Compile Include="Sueño.cs" />
     <Compile Include="Tabaquismo.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
