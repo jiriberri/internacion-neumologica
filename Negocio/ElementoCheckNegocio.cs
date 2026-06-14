@@ -67,11 +67,27 @@ namespace Negocio
 
         }
 
-        public List<OncologicaComorbilidad> ListarOncologicaComorbilidades() {
+        public List<OncologicaComorbilidad> ListarOncologicaComorbilidades()
+        {
             ElementoCheckDatos datos = new ElementoCheckDatos();
             return datos.Listar<OncologicaComorbilidad>("COMORBILIDAD_ONCOLOGICA", "id_oncologica", "descripcion");
 
         }
 
+
+
+        public void guardarOncologiaPaciente(int idPaciente, string stringOncologia)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, stringOncologia, "PACIENTE_COMORBILIDAD_ONCOLOGICA", "id_oncologica"); 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

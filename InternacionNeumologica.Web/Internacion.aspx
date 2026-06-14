@@ -48,7 +48,7 @@
         <label for="txtFechaIngreso" class="mb-1">Fecha ingreso</label>
         <asp:TextBox runat="server" Id="txtFechaIngreso" TextMode="Date" CssClass="form-control"/> 
         <asp:Label ID="lblErrorFechaIng" runat="server" Text="Debes ingresar una fecha para poder continuar." CssClass="text-danger d-block mt-1 fw-semibold fs-6" Visible="false"></asp:Label>
-    </div>
+        </div>
    
     
     

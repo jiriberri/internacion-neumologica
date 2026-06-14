@@ -43,7 +43,35 @@ namespace Datos
             }
         }
 
+        public void guardarOpcionesMultiples(int idPaciente, string stringIds, string nombreTabla, string nombreColumnaIdOpcion)
+        {
+            if (string.IsNullOrEmpty(stringIds)) return;
 
+            string[] idsSeleccionados = stringIds.Split(',');
+
+            foreach (var idOpcion in idsSeleccionados)
+            {
+                AccesoDatos datos = new AccesoDatos();
+                string consulta = $"INSERT INTO {nombreTabla} (id_paciente, {nombreColumnaIdOpcion}) VALUES (@idPaciente, @idOpcion)";
+
+                datos.SetearConsulta(consulta);
+                datos.SetearParametro("@idPaciente", idPaciente);
+                datos.SetearParametro("@idOpcion", int.Parse(idOpcion));
+
+                try
+                {
+                    datos.EjecutarAccion();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    datos.CerrarConexion();
+                }
+            }
+        }
 
 
     }

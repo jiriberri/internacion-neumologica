@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace InternacionNeumologica.Web
 {
     public partial class Comorbilidades : System.Web.UI.Page
@@ -35,14 +36,26 @@ namespace InternacionNeumologica.Web
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string cardiovasculares = Request.Form["chkCardio"];
-            
-            
+            string oncologiaSel = Request.Form["chkOncologica"];
+
+
             Internaciones internacionFinal = (Internaciones)Session["InternacionEnCurso"];
             InternacionNegocio negocio = new InternacionNegocio();
+            ElementoCheckNegocio checkboxNegocio = new ElementoCheckNegocio();
+           
+
             try
             {
                 negocio.agregar(internacionFinal);
+
+                checkboxNegocio.guardarOncologiaPaciente(internacionFinal.IdPaciente, oncologiaSel);
+
+
+
+
+
                 Session["InternacionEnCurso"] = null;
+                Response.Redirect("BuscarPaciente.aspx?exito=true");
             }
             catch (Exception ex)
             {
