@@ -22,35 +22,37 @@ namespace InternacionNeumologica.Web
         public string DatosComorbilidades { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
+        
             if (!IsPostBack)
             {
-                CargarIndicadores();
-                CargarGraficoEdades();
-                CargarGraficoSoporte(); 
-                CargarGraficoDiagnosticos();
-                CargarGraficoComorbilidades();
+                FiltroReporte filtro = Session["FiltroReporte"] as FiltroReporte;
+                CargarIndicadores(filtro);
+                CargarGraficoEdades(filtro);
+                CargarGraficoSoporte(filtro);
+                CargarGraficoDiagnosticos(filtro);
+                CargarGraficoComorbilidades(filtro);
             }
 
         }
 
-        private void CargarIndicadores()
+        private void CargarIndicadores(FiltroReporte filtro)
         {
             ReporteNegocio negocio = new ReporteNegocio();
 
-            lblPacientes.Text = negocio.ObtenerTotalPacientes().ToString();
-            lblInternaciones.Text = negocio.ObtenerTotalInternaciones().ToString();
-            lblFallecidos.Text = negocio.ObtenerTotalFallecidos().ToString();
-            lblEstadiaPromedio.Text = negocio.ObtenerEstadiaPromedio().ToString("0.0");
-                       
-        
+            lblPacientes.Text = negocio.ObtenerTotalPacientes(filtro).ToString();
+            lblInternaciones.Text = negocio.ObtenerTotalInternaciones(filtro).ToString();
+            lblFallecidos.Text = negocio.ObtenerTotalFallecidos(filtro).ToString();
+            lblEstadiaPromedio.Text = negocio.ObtenerEstadiaPromedio(filtro).ToString("0.0");
+
+            
         }
 
-        private void CargarGraficoEdades()
+        private void CargarGraficoEdades(FiltroReporte filtro)
         {
             ReporteNegocio negocio = new ReporteNegocio();
 
-            List<ItemGrafico> edades = negocio.ObtenerDistribucionEdades();
+            List<ItemGrafico> edades = negocio.ObtenerDistribucionEdades(filtro);
 
             LabelsEdades = string.Join(",",
                 edades.Select(x => "'" + x.Categoria + "'"));
@@ -59,11 +61,11 @@ namespace InternacionNeumologica.Web
                 edades.Select(x => x.Cantidad));
         }
 
-        private void CargarGraficoSoporte()
+        private void CargarGraficoSoporte(FiltroReporte filtro)
         {
             ReporteNegocio negocio = new ReporteNegocio();
 
-            List<ItemGrafico> soporte = negocio.ObtenerDistribucionSoporte();
+            List<ItemGrafico> soporte = negocio.ObtenerDistribucionSoporte(filtro);
 
             LabelsSoporte = string.Join(",",
                 soporte.Select(x => "'" + x.Categoria + "'"));
@@ -72,11 +74,11 @@ namespace InternacionNeumologica.Web
                 soporte.Select(x => x.Cantidad));
         }
         
-        private void CargarGraficoDiagnosticos()
+        private void CargarGraficoDiagnosticos(FiltroReporte filtro)
         {
             ReporteNegocio negocio = new ReporteNegocio();
 
-            List<ItemGrafico> diagnosticos = negocio.ObtenerDiagnosticos();
+            List<ItemGrafico> diagnosticos = negocio.ObtenerDiagnosticos(filtro);
 
             LabelsDiagnosticos = string.Join(",",
                 diagnosticos.Select(x => "'" + x.Categoria + "'"));
@@ -85,11 +87,11 @@ namespace InternacionNeumologica.Web
                 diagnosticos.Select(x => x.Cantidad));
         }
         
-        private void CargarGraficoComorbilidades()
+        private void CargarGraficoComorbilidades(FiltroReporte filtro)
         {
             ReporteNegocio negocio = new ReporteNegocio();
 
-            List<ItemGrafico> comorbilidades = negocio.ObtenerComorbilidades();
+            List<ItemGrafico> comorbilidades = negocio.ObtenerComorbilidades(filtro);
 
             LabelsComorbilidades = string.Join(",",
                 comorbilidades.Select(x => "'" + x.Categoria + "'"));
