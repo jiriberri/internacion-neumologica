@@ -46,6 +46,7 @@
     <Compile Include="Cirugia.cs" />
     <Compile Include="Despegables.cs" />
     <Compile Include="ExposicionAmbiental.cs" />
+    <Compile Include="FiltroReporte.cs" />
     <Compile Include="IElementoCheck.cs" />
     <Compile Include="Infeccion.cs" />
     <Compile Include="Inmunologica.cs" />

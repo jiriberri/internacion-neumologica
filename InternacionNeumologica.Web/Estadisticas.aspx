@@ -1,11 +1,8 @@
-﻿
-
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Estadisticas.aspx.cs" Inherits="InternacionNeumologica.Web.Estadisticas" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Site.Master" autoeventwireup="true" codebehind="Estadisticas.aspx.cs" inherits="InternacionNeumologica.Web.Estadisticas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <style>
-
         .card-filtro {
             background: #f3f6fa;
             border: none;
@@ -19,310 +16,283 @@
             color: #34495e;
             margin-bottom: 15px;
         }
-
     </style>
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<div class="container mt-4">
+    <div class="container mt-4">
 
-    <div class="mb-4">
+        <div class="mb-4">
 
-        <h2 class="text-white mb-1">
-            Análisis Histórico de Internaciones
-        </h2>
+            <h2 class="text-white mb-1">Análisis Histórico de Internaciones
+            </h2>
 
-        <p class="text-secondary">
-            Generación de reportes sobre el registro histórico de pacientes.
-        </p>
+            <p class="text-secondary">
+                Generación de reportes sobre el registro histórico de pacientes.
+            </p>
 
-    </div>
+        </div>
 
-    <div class="alert alert-warning shadow-sm">
+        <div class="alert alert-warning shadow-sm">
 
-        <strong>Importante:</strong>
+            <strong>Importante:</strong>
 
-        Seleccione únicamente los criterios que desea aplicar.
+            Seleccione únicamente los criterios que desea aplicar.
         Los campos vacíos o con la opción <strong>"Todos"</strong>
-        incluirán la totalidad de los registros.
+            incluirán la totalidad de los registros.
 
-    </div>
+        </div>
 
-    <div class="row g-3">
+        <div class="row g-3">
 
-        <!-- PERIODO -->
+            <!-- PERIODO -->
 
-        <div class="col-lg-4">
+            <div class="col-lg-4">
 
-            <div class="card card-filtro h-100">
+                <div class="card card-filtro h-100">
 
-                <div class="card-body">
+                    <div class="card-body">
 
-                    <div class="titulo-card">
+                        <div class="titulo-card">
+                            Período
 
-                        Período
+                        </div>
+
+                        <label>Desde</label>
+
+                        <asp:TextBox
+                            ID="txtFechaDesde"
+                            runat="server"
+                            TextMode="Date"
+                            CssClass="form-control mb-2" />
+
+                        <label>Hasta</label>
+
+                        <asp:TextBox
+                            ID="txtFechaHasta"
+                            runat="server"
+                            TextMode="Date"
+                            CssClass="form-control" />
 
                     </div>
-
-                    <label>Desde</label>
-
-                    <asp:TextBox
-                        ID="txtFechaDesde"
-                        runat="server"
-                        TextMode="Date"
-                        CssClass="form-control mb-2" />
-
-                    <label>Hasta</label>
-
-                    <asp:TextBox
-                        ID="txtFechaHasta"
-                        runat="server"
-                        TextMode="Date"
-                        CssClass="form-control" />
 
                 </div>
 
             </div>
 
-        </div>
+            <!-- EDAD -->
 
-        <!-- EDAD -->
+            <div class="col-lg-4">
 
-        <div class="col-lg-4">
+                <div class="card card-filtro h-100">
 
-            <div class="card card-filtro h-100">
+                    <div class="card-body">
 
-                <div class="card-body">
+                        <div class="titulo-card">
+                            Edad
 
-                    <div class="titulo-card">
+                        </div>
 
-                        Edad
+                        <label>Desde</label>
+
+                        <asp:TextBox
+                            ID="txtEdadMinima"
+                            runat="server"
+                            TextMode="Number"
+                            CssClass="form-control mb-2" />
+
+                        <label>Hasta</label>
+
+                        <asp:TextBox
+                            ID="txtEdadMaxima"
+                            runat="server"
+                            TextMode="Number"
+                            CssClass="form-control" />
+
+                        <small class="text-muted">Vacío = todas las edades
+
+                        </small>
 
                     </div>
-
-                    <label>Desde</label>
-
-                    <asp:TextBox
-                        ID="txtEdadMinima"
-                        runat="server"
-                        TextMode="Number"
-                        CssClass="form-control mb-2" />
-
-                    <label>Hasta</label>
-
-                    <asp:TextBox
-                        ID="txtEdadMaxima"
-                        runat="server"
-                        TextMode="Number"
-                        CssClass="form-control" />
-
-                    <small class="text-muted">
-
-                        Vacío = todas las edades
-
-                    </small>
 
                 </div>
 
             </div>
 
-        </div>
+            <!-- SEXO -->
 
-        <!-- SEXO -->
+            <div class="col-lg-4">
 
-        <div class="col-lg-4">
+                <div class="card card-filtro h-100">
 
-            <div class="card card-filtro h-100">
+                    <div class="card-body">
 
-                <div class="card-body">
+                        <div class="titulo-card">
+                            Sexo
 
-                    <div class="titulo-card">
+                        </div>
 
-                        Sexo
+                        <asp:DropDownList
+                            ID="ddlSexo"
+                            runat="server"
+                            CssClass="form-select">
+
+                            <asp:ListItem Text="Todos" />
+                            <asp:ListItem Text="Masculino" />
+                            <asp:ListItem Text="Femenino" />
+
+                        </asp:DropDownList>
 
                     </div>
-
-                    <asp:DropDownList
-                        ID="ddlSexo"
-                        runat="server"
-                        CssClass="form-select">
-
-                        <asp:ListItem Text="Todos" />
-                        <asp:ListItem Text="Masculino" />
-                        <asp:ListItem Text="Femenino" />
-
-                    </asp:DropDownList>
 
                 </div>
 
             </div>
 
-        </div>
+            <div class="row g-4">
 
-        <!-- DIAGNOSTICO -->
+                <!-- BLOQUE 1 - Diagnóstico de ingreso -->
 
-        <div class="col-lg-4">
 
-            <div class="card card-filtro h-100">
+                <div class="col-12">
 
-                <div class="card-body">
+                    <div class="card card-filtro">
 
-                    <div class="titulo-card">
+                        <div class="card-body">
 
-                        Diagnóstico de base
+                            <div class="titulo-card">
+                                Diagnóstico de ingreso
+                            </div>
 
-                    </div>
+                            <div class="row">
 
-                    <asp:DropDownList
-                        ID="ddlDiagnostico"
-                        runat="server"
-                        CssClass="form-select">
+                                <div class="col-md-6 mb-3">
+                                    <label>Infecciones</label>
+                                    <asp:DropDownList ID="ddlInfecciones" runat="server" CssClass="form-select" />
+                                </div>
 
-                        <asp:ListItem Text="Todos" />
+                                <div class="col-md-6 mb-3">
+                                    <label>Vasculares</label>
+                                    <asp:DropDownList ID="ddlVasculares" runat="server" CssClass="form-select" />
+                                </div>
 
-                    </asp:DropDownList>
+                                <div class="col-md-6 mb-3">
+                                    <label>Obstructivas</label>
+                                    <asp:DropDownList ID="ddlObstructivas" runat="server" CssClass="form-select" />
+                                </div>
 
-                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Oncológicas</label>
+                                    <asp:DropDownList ID="ddlOncologicas" runat="server" CssClass="form-select" />
+                                </div>
 
-            </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Intersticiales</label>
+                                    <asp:DropDownList ID="ddlIntersticiales" runat="server" CssClass="form-select" />
+                                </div>
 
-        </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Otros</label>
+                                    <asp:DropDownList ID="ddlOtros" runat="server" CssClass="form-select" />
+                                </div>
 
-        <!-- INSUFICIENCIA -->
+                                <div class="col-md-6 mb-3">
+                                    <label>Pleura</label>
+                                    <asp:DropDownList ID="ddlPleura" runat="server" CssClass="form-select" />
+                                </div>
 
-        <div class="col-lg-4">
+                            </div>
 
-            <div class="card card-filtro h-100">
-
-                <div class="card-body">
-
-                    <div class="titulo-card">
-
-                        Tipo de insuficiencia
-
-                    </div>
-
-                    <asp:DropDownList
-                        ID="ddlInsuficiencia"
-                        runat="server"
-                        CssClass="form-select">
-
-                        <asp:ListItem Text="Todas" />
-
-                    </asp:DropDownList>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- COMORBILIDAD -->
-
-        <div class="col-lg-4">
-
-            <div class="card card-filtro h-100">
-
-                <div class="card-body">
-
-                    <div class="titulo-card">
-
-                        Comorbilidad
+                        </div>
 
                     </div>
 
-                    <asp:DropDownList
-                        ID="ddlComorbilidad"
-                        runat="server"
-                        CssClass="form-select">
-
-                        <asp:ListItem Text="Todas" />
-
-                    </asp:DropDownList>
-
                 </div>
+                <!-- BLOQUE 2 - Comorbilidades (estructura solamente) -->
 
-            </div>
 
-        </div>
+                <div class="col-12">
 
-        <!-- SOPORTE -->
+                    <div class="card card-filtro">
 
-        <div class="col-lg-6">
+                        <div class="card-body">
 
-            <div class="card card-filtro h-100">
+                            <div class="titulo-card">
+                                Comorbilidades
+                            </div>
 
-                <div class="card-body">
+                            <!-- Aquí irán los filtros de comorbilidades -->
 
-                    <div class="titulo-card">
-
-                        Soporte respiratorio
+                        </div>
 
                     </div>
 
-                    <asp:DropDownList
-                        ID="ddlSoporte"
-                        runat="server"
-                        CssClass="form-select">
-
-                        <asp:ListItem Text="Todos" />
-
-                    </asp:DropDownList>
-
                 </div>
+                <!-- BLOQUE 3 - Evolución de la internación -->
 
-            </div>
+                <div class="col-12">
 
-        </div>
+                    <div class="card card-filtro">
 
-        <!-- DESTINO -->
+                        <div class="card-body">
 
-        <div class="col-lg-6">
+                            <div class="titulo-card">
+                                Evolución de la internación
+                            </div>
 
-            <div class="card card-filtro h-100">
+                            <div class="row">
 
-                <div class="card-body">
+                                <div class="col-md-4">
+                                    <label>Insuficiencia respiratoria</label>
+                                    <asp:DropDownList
+                                        ID="ddlInsuficiencia"
+                                        runat="server"
+                                        CssClass="form-select" />
+                                </div>
 
-                    <div class="titulo-card">
+                                <div class="col-md-4">
+                                    <label>Soporte respiratorio</label>
+                                    <asp:DropDownList
+                                        ID="ddlSoporte"
+                                        runat="server"
+                                        CssClass="form-select" />
+                                </div>
 
-                        Destino de egreso
+                                <div class="col-md-4">
+                                    <label>Destino de egreso</label>
+                                    <asp:DropDownList
+                                        ID="ddlDestino"
+                                        runat="server"
+                                        CssClass="form-select" />
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
-                    <asp:DropDownList
-                        ID="ddlDestino"
+                </div>
+                <!-- BLOQUE 4 - Botón -->
+
+                <div class="text-center mt-5 mb-5">
+
+                    <asp:Button
+                        ID="btnGenerarReporte"
                         runat="server"
-                        CssClass="form-select">
-
-                        <asp:ListItem Text="Todos" />
-
-                    </asp:DropDownList>
+                        Text="Generar análisis"
+                        OnClick="btnGenerarReporte_Click"
+                        CssClass="btn btn-primary btn-lg px-5" />
 
                 </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="text-center mt-4 mb-5">
-
-        <asp:Button
-            ID="btnGenerarReporte"
-            runat="server"
-            Text="Generar análisis"
-            OnClick="btnGenerarReporte_Click"
-            CssClass="btn btn-primary btn-lg px-5" />
-
-
-    </div>
-
-</div>
-
 </asp:Content>
+
+
+
+
+
 
 
 

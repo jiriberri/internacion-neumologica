@@ -12,20 +12,111 @@ namespace Datos
 {
     public class ReporteDatos
     {
-        public int ObtenerTotalPacientes()
+
+        private string ArmarWhere(FiltroReporte filtro)
+        {
+            string where = " WHERE 1=1 ";
+
+            if (filtro.FechaDesde.HasValue)
+                where += "AND I.fecha_ingreso >= @fechaDesde ";
+
+            if (filtro.FechaHasta.HasValue)
+                where += "AND I.fecha_ingreso <= @fechaHasta ";
+
+            if (filtro.SoporteRespiratorio.HasValue)
+                where += "AND I.id_soporte = @soporte ";
+
+            if (filtro.InsuficienciaRespiratoria.HasValue)
+                where += "AND I.id_insuficiencia = @insuficiencia ";
+
+            if (filtro.DestinoEgreso.HasValue)
+                where += "AND I.id_destino = @destino ";
+
+            if (filtro.Infeccion.HasValue)
+                where += "AND I.id_infeccion = @infeccion ";
+
+            if (filtro.Obstructiva.HasValue)
+                where += "AND I.id_obstructiva = @obstructiva ";
+
+            if (filtro.Intersticial.HasValue)
+                where += "AND I.id_intersticial = @intersticial ";
+
+            if (filtro.Pleura.HasValue)
+                where += "AND I.id_pleura = @pleura ";
+
+            if (filtro.Vascular.HasValue)
+                where += "AND I.id_vascular = @vascular ";
+
+            if (filtro.Oncologica.HasValue)
+                where += "AND I.id_oncologica = @oncologica ";
+
+            if (filtro.Otro.HasValue)
+                where += "AND I.id_otro = @otro ";
+
+            return where;
+        }
+
+        private void CargarParametros(FiltroReporte filtro, AccesoDatos datos)
+        {
+            if (filtro.FechaDesde.HasValue)
+                datos.SetearParametro("@fechaDesde", filtro.FechaDesde.Value);
+
+            if (filtro.FechaHasta.HasValue)
+                datos.SetearParametro("@fechaHasta", filtro.FechaHasta.Value);
+
+            if (filtro.SoporteRespiratorio.HasValue)
+                datos.SetearParametro("@soporte", filtro.SoporteRespiratorio.Value);
+
+            if (filtro.InsuficienciaRespiratoria.HasValue)
+                datos.SetearParametro("@insuficiencia", filtro.InsuficienciaRespiratoria.Value);
+
+            if (filtro.DestinoEgreso.HasValue)
+                datos.SetearParametro("@destino", filtro.DestinoEgreso.Value);
+
+            if (filtro.Infeccion.HasValue)
+                datos.SetearParametro("@infeccion", filtro.Infeccion.Value);
+
+            if (filtro.Obstructiva.HasValue)
+                datos.SetearParametro("@obstructiva", filtro.Obstructiva.Value);
+
+            if (filtro.Intersticial.HasValue)
+                datos.SetearParametro("@intersticial", filtro.Intersticial.Value);
+
+            if (filtro.Pleura.HasValue)
+                datos.SetearParametro("@pleura", filtro.Pleura.Value);
+
+            if (filtro.Vascular.HasValue)
+                datos.SetearParametro("@vascular", filtro.Vascular.Value);
+
+            if (filtro.Oncologica.HasValue)
+                datos.SetearParametro("@oncologica", filtro.Oncologica.Value);
+
+            if (filtro.Otro.HasValue)
+                datos.SetearParametro("@otro", filtro.Otro.Value);
+        }
+
+        public int ObtenerTotalPacientes(FiltroReporte filtro)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta(
-                    "SELECT COUNT(*) cantidad " +
-                    "FROM PACIENTE");
+                string consulta =
+                    "SELECT COUNT(DISTINCT P.id_paciente) cantidad " +
+                    "FROM PACIENTE P " +
+                    "INNER JOIN INTERNACION I ON P.id_paciente = I.id_paciente ";
+
+                consulta += ArmarWhere(filtro);
+
+                datos.SetearConsulta(consulta);
+
+                CargarParametros(filtro, datos);
 
                 datos.EjecutarLectura();
 
+
                 if (datos.Lector.Read())
-                    return (int)datos.Lector["cantidad"];
+                    return Convert.ToInt32(datos.Lector["cantidad"]);
 
                 return 0;
             }
@@ -33,70 +124,86 @@ namespace Datos
             {
                 datos.CerrarConexion();
             }
-
         }
 
-        public int ObtenerTotalInternaciones()
+        public int ObtenerTotalInternaciones(FiltroReporte filtro)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta(
+                string consulta =
                     "SELECT COUNT(*) cantidad " +
-                    "FROM INTERNACION");
+                    "FROM INTERNACION I ";
+
+                consulta += ArmarWhere(filtro);
+
+                datos.SetearConsulta(consulta);
+
+                CargarParametros(filtro, datos);
 
                 datos.EjecutarLectura();
 
-                if (datos.Lector.Read())
-                    return (int)datos.Lector["cantidad"];
-                return 0;
 
+                if (datos.Lector.Read())
+                    return Convert.ToInt32(datos.Lector["cantidad"]);
+
+                return 0;
             }
             finally
             {
                 datos.CerrarConexion();
             }
-
         }
 
-        public int ObtenerTotalFallecidos()
+        public int ObtenerTotalFallecidos(FiltroReporte filtro)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta(
+                string consulta =
                     "SELECT COUNT(*) cantidad " +
                     "FROM INTERNACION I " +
                     "INNER JOIN DESTINO_EGRESO D " +
-                    "    ON I.id_destino = D.id_destino " +
-                    "WHERE D.descripcion = 'Fallecimiento'; "
-                );
+                    "ON I.id_destino = D.id_destino ";
+
+                consulta += ArmarWhere(filtro);
+
+                consulta += "AND D.descripcion = 'Fallecimiento' ";
+
+                datos.SetearConsulta(consulta);
+
+                CargarParametros(filtro, datos);
 
                 datos.EjecutarLectura();
 
                 if (datos.Lector.Read())
-                    return (int)datos.Lector["cantidad"];
-                return 0;
+                    return Convert.ToInt32(datos.Lector["cantidad"]);
 
+                return 0;
             }
             finally
             {
                 datos.CerrarConexion();
             }
-
         }
 
-        public decimal ObtenerEstadiaPromedio()
+        public decimal ObtenerEstadiaPromedio(FiltroReporte filtro)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta(
-                    "SELECT AVG(DATEDIFF(DAY, fecha_ingreso, fecha_egreso)) promedio " +
-                    "FROM INTERNACION ");
+                string consulta =
+                    "SELECT AVG(DATEDIFF(DAY, I.fecha_ingreso, I.fecha_egreso)) promedio " +
+                    "FROM INTERNACION I ";
+
+                consulta += ArmarWhere(filtro);
+
+                datos.SetearConsulta(consulta);
+
+                CargarParametros(filtro, datos);
 
                 datos.EjecutarLectura();
 
@@ -112,7 +219,9 @@ namespace Datos
         }
 
 
-        public List<ItemGrafico> ObtenerDistribucionEdades()
+        
+
+            public List<ItemGrafico> ObtenerDistribucionEdades(FiltroReporte filtro)
         {
             List<ItemGrafico> lista = new List<ItemGrafico>();
 
@@ -120,8 +229,7 @@ namespace Datos
 
             try
             {
-
-                datos.SetearConsulta(
+                string consulta =
                     "SELECT " +
                     "CASE " +
                     "WHEN DATEDIFF(YEAR, P.fecha_nacimiento, GETDATE()) < 40 THEN 'Menor de 40' " +
@@ -132,16 +240,22 @@ namespace Datos
                     "COUNT(*) AS Cantidad " +
                     "FROM INTERNACION I " +
                     "INNER JOIN PACIENTE P " +
-                    "ON I.id_paciente = P.id_paciente " +
+                    "ON I.id_paciente = P.id_paciente ";
+
+                consulta += ArmarWhere(filtro);
+
+                consulta +=
                     "GROUP BY " +
                     "CASE " +
                     "WHEN DATEDIFF(YEAR, P.fecha_nacimiento, GETDATE()) < 40 THEN 'Menor de 40' " +
                     "WHEN DATEDIFF(YEAR, P.fecha_nacimiento, GETDATE()) BETWEEN 40 AND 59 THEN '40 a 59' " +
                     "WHEN DATEDIFF(YEAR, P.fecha_nacimiento, GETDATE()) BETWEEN 60 AND 79 THEN '60 a 79' " +
                     "ELSE '80 o más' " +
-                    "END");
+                    "END";
 
+                datos.SetearConsulta(consulta);
 
+                CargarParametros(filtro, datos);
 
                 datos.EjecutarLectura();
 
@@ -150,7 +264,7 @@ namespace Datos
                     ItemGrafico aux = new ItemGrafico();
 
                     aux.Categoria = datos.Lector["Categoria"].ToString();
-                    aux.Cantidad = (int)datos.Lector["Cantidad"];
+                    aux.Cantidad = Convert.ToInt32(datos.Lector["Cantidad"]);
 
                     lista.Add(aux);
                 }
@@ -163,7 +277,9 @@ namespace Datos
             }
         }
 
-        public List<ItemGrafico> ObtenerDistribucionSoporte()
+
+
+        public List<ItemGrafico> ObtenerDistribucionSoporte(FiltroReporte filtro)
         {
             List<ItemGrafico> lista = new List<ItemGrafico>();
 
@@ -171,16 +287,22 @@ namespace Datos
 
             try
             {
+                string consulta =
+                    "SELECT S.descripcion AS Categoria, " +
+                    "COUNT(*) AS Cantidad " +
+                    "FROM INTERNACION I " +
+                    "INNER JOIN SOPORTE_RESPIRATORIO S " +
+                    "ON I.id_soporte = S.id_soporte ";
 
-                datos.SetearConsulta(
-                    "SELECT " +
-                     "S.descripcion AS Categoria, " +
-                     "COUNT(*) AS Cantidad " +
-                     "FROM INTERNACION I " +
-                     "INNER JOIN SOPORTE_RESPIRATORIO S " +
-                     "ON I.id_soporte = S.id_soporte " +
-                     "GROUP BY S.descripcion " +
-                     "ORDER BY S.descripcion ");
+                consulta += ArmarWhere(filtro);
+
+                consulta +=
+                    "GROUP BY S.descripcion " +
+                    "ORDER BY S.descripcion ";
+
+                datos.SetearConsulta(consulta);
+
+                CargarParametros(filtro, datos);
 
                 datos.EjecutarLectura();
 
@@ -202,7 +324,7 @@ namespace Datos
             }
         }
 
-        public List<ItemGrafico> ObtenerDiagnosticos()
+        public List<ItemGrafico> ObtenerDiagnosticos(FiltroReporte filtro)
         {
             {
                 List<ItemGrafico> lista = new List<ItemGrafico>();
@@ -255,7 +377,7 @@ namespace Datos
             }
         }
 
-            public List<ItemGrafico> ObtenerComorbilidades()
+            public List<ItemGrafico> ObtenerComorbilidades(FiltroReporte filtro)
         {
             {
                 List<ItemGrafico> lista = new List<ItemGrafico>();

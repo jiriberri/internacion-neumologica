@@ -10,56 +10,56 @@ namespace Negocio
 {
     public class ReporteNegocio
     {
-        public int ObtenerTotalPacientes()
+        public int ObtenerTotalPacientes(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
 
-            return datos.ObtenerTotalPacientes();
+            return datos.ObtenerTotalPacientes(filtro);
         }
 
-        public int ObtenerTotalInternaciones()
+        public int ObtenerTotalInternaciones(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
-            return datos.ObtenerTotalInternaciones();
+            return datos.ObtenerTotalInternaciones(filtro);
         }
 
-        public int ObtenerTotalFallecidos()
+        public int ObtenerTotalFallecidos(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
-            return datos.ObtenerTotalFallecidos();
+            return datos.ObtenerTotalFallecidos(filtro);
         }
 
-        public decimal ObtenerEstadiaPromedio()
+        public decimal ObtenerEstadiaPromedio(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
-            return datos.ObtenerEstadiaPromedio();
+            return datos.ObtenerEstadiaPromedio(filtro);
         }
 
-        public List<ItemGrafico> ObtenerDistribucionEdades()
+        public List<ItemGrafico> ObtenerDistribucionEdades(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
 
-            return datos.ObtenerDistribucionEdades();
+            return datos.ObtenerDistribucionEdades(filtro);
         }
 
-        public List<ItemGrafico> ObtenerDistribucionSoporte()
+        public List<ItemGrafico> ObtenerDistribucionSoporte(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
 
-            return datos.ObtenerDistribucionSoporte();
+            return datos.ObtenerDistribucionSoporte(filtro);
         }
 
-        public List<ItemGrafico> ObtenerDiagnosticos()
+        public List<ItemGrafico> ObtenerDiagnosticos(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
 
-            return datos.ObtenerDiagnosticos();
+            return datos.ObtenerDiagnosticos(filtro);
         }
-        public List<ItemGrafico> ObtenerComorbilidades()
+        public List<ItemGrafico> ObtenerComorbilidades(FiltroReporte filtro)
         {
             ReporteDatos datos = new ReporteDatos();
 
-            return datos.ObtenerComorbilidades();
+            return datos.ObtenerComorbilidades(filtro);
         }
     }
 }
