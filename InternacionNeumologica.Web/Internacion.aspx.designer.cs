@@ -24,6 +24,15 @@ namespace InternacionNeumologica.Web
         protected global::System.Web.UI.WebControls.TextBox txtFechaIngreso;
 
         /// <summary>
+        /// Control lblErrorFechaIng.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorFechaIng;
+
+        /// <summary>
         /// Control txtFechaEgreso.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace InternacionNeumologica.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaEgreso;
+
+        /// <summary>
+        /// Control lblErrorFechaEgr.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorFechaEgr;
 
         /// <summary>
         /// Control ddlOrigen.

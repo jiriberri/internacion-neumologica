@@ -32,7 +32,7 @@ INSERT INTO SOPORTE_RESPIRATORIO (descripcion) VALUES
 ('Oxigeno'),
 ('Alto flujo'),
 ('VNI'),
-('ARM');
+('VNI+Alto flujo');
 
 INSERT INTO ANTECEDENTE_RESPIRATORIO (descripcion) VALUES
 ('EPOC (Enfermedad pulmonar obstructiva cronica)'),
@@ -120,7 +120,9 @@ INSERT INTO DIAGNOSTICO_PLEURA(descripcion) VALUES
 INSERT INTO DIAGNOSTICO_VASCULARES(descripcion) VALUES 
 ('Ninguna'),
 ('TEP'),
-('Hipertension pulmonar'); 
+('Hipertension pulmonar'), 
+('Hemoptisis');
+
 
 INSERT INTO DIAGNOSTICO_ONCOLOGICAS(descripcion) VALUES 
 ('Ninguna'),
