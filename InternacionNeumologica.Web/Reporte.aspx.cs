@@ -111,6 +111,15 @@ namespace InternacionNeumologica.Web
                 lblDiagnostico.Text = "Todos";
         }
 
+        protected void gvDetalle_PageIndexChanging(object sender, GridViewPageEventArgs e)// permite paginado del gridview
+        {
+            gvDetalle.PageIndex = e.NewPageIndex;
+
+            FiltroReporte filtro = Session["FiltroReporte"] as FiltroReporte;
+
+            CargarDetalle(filtro);
+        }
+
 
         //reservado para graficos psoteriores
         /* private void CargarIndicadores(FiltroReporte filtro)

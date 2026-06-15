@@ -155,10 +155,11 @@
 
 
 
-    <!-- ========================================================= -->
-    <!-- TABLA RESUMEN                                             -->
-    <!-- ========================================================= -->
-
+    <!-- =================================================================================== -->
+    <!-- TABLA RESUMEN   //el panel lo envuelve paraf que el paginado no recargue y vaya arriba                                          -->
+    <!-- =================================================================================== -->
+<asp:UpdatePanel ID="upDetalle" runat="server"> 
+<ContentTemplate>
 <div class="card dashboard-card mt-4">
 
     <div class="card-body">
@@ -169,19 +170,74 @@
 
         </h4>
 
-        <asp:GridView
-            ID="gvDetalle"
-            runat="server"
-            CssClass="table table-dark table-striped table-hover"
-            AutoGenerateColumns="true"
-            GridLines="None"
-            Width="100%">
-        </asp:GridView>
+       
+<asp:GridView
+    ID="gvDetalle"
+    runat="server"
+    AutoGenerateColumns="false"
+    AllowPaging="true"
+    PageSize="5"
+    OnPageIndexChanging="gvDetalle_PageIndexChanging"
+    CssClass="table table-dark table-striped table-hover align-middle"
+    GridLines="None"
+    Width="100%"
+    EmptyDataText="No se encontraron registros para los criterios seleccionados.">
+
+    <Columns>
+
+        <asp:BoundField
+            DataField="Internacion"
+            HeaderText="N° Internación" />
+
+        <asp:BoundField
+            DataField="DNI"
+            HeaderText="DNI" />
+
+        <asp:BoundField
+            DataField="Paciente"
+            HeaderText="Paciente" />
+
+        <asp:BoundField
+            DataField="Edad"
+            HeaderText="Edad" />
+
+        <asp:BoundField
+            DataField="Ingreso"
+            HeaderText="Ingreso"
+            DataFormatString="{0:dd/MM/yyyy}" />
+
+        <asp:BoundField
+            DataField="Egreso"
+            HeaderText="Egreso"
+            DataFormatString="{0:dd/MM/yyyy}" />
+
+        <asp:BoundField
+            DataField="Estadia"
+            HeaderText="Estadía (días)" />
+
+        <asp:BoundField
+            DataField="Soporte"
+            HeaderText="Soporte respiratorio" />
+
+        <asp:BoundField
+            DataField="Insuficiencia"
+            HeaderText="Insuficiencia respiratoria" />
+
+        <asp:BoundField
+            DataField="Destino"
+            HeaderText="Destino de egreso" />
+
+    </Columns>
+
+</asp:GridView>
+
+
 
     </div>
 
 </div>
-
+</ContentTemplate> 
+</asp:UpdatePanel>
 
 
 </asp:Content>

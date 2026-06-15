@@ -60,6 +60,15 @@ namespace InternacionNeumologica.Web
         protected global::System.Web.UI.WebControls.Label lblDestino;
 
         /// <summary>
+        /// Control upDetalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDetalle;
+
+        /// <summary>
         /// Control gvDetalle.
         /// </summary>
         /// <remarks>

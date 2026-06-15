@@ -464,29 +464,40 @@ namespace Datos
             try
             { 
                         //esta es la consulta de la gridview
-                        string consulta =
-                            "SELECT " +
-                            "ROW_NUMBER() OVER (PARTITION BY P.id_paciente ORDER BY I.fecha_ingreso) AS Internacion, " +
-                            "P.dni AS DNI, " +
-                            "P.apellido AS Apellido, " +
-                            "P.nombre AS Nombre, " +
-                            "DATEDIFF(YEAR, P.fecha_nacimiento, GETDATE()) AS Edad, " +
-                            "I.fecha_ingreso AS [Ingreso], " +
-                            "I.fecha_egreso AS [Egreso], " +
-                            "DATEDIFF(DAY, I.fecha_ingreso, I.fecha_egreso) AS [Estadía], " +
-                            "S.descripcion AS [Soporte], " +
-                            "IR.descripcion AS [Insuficiencia], " +
-                            "D.descripcion AS [Destino] " +
-                            "FROM INTERNACION I " +
-                            "INNER JOIN PACIENTE P " +
-                            "ON I.id_paciente = P.id_paciente " +
-                            "LEFT JOIN SOPORTE_RESPIRATORIO S " +
-                            "ON I.id_soporte = S.id_soporte " +
-                            "LEFT JOIN INSUFICIENCIA_RESPIRATORIA IR " +
-                            "ON I.id_insuficiencia = IR.id_insuficiencia " +
-                            "LEFT JOIN DESTINO_EGRESO D " +
-                            "ON I.id_destino = D.id_destino ";
-                           
+                        
+                                    string consulta =
+                                        "SELECT " +
+                                        "ROW_NUMBER() OVER (PARTITION BY P.id_paciente ORDER BY I.fecha_ingreso) AS Internacion, " +
+                                        "P.dni AS DNI, " +
+                                        "P.apellido + ', ' + P.nombre AS Paciente, " +
+
+                                        "DATEDIFF(YEAR, P.fecha_nacimiento, I.fecha_ingreso) - " +
+                                        "CASE " +
+                                        "WHEN DATEADD(YEAR, DATEDIFF(YEAR, P.fecha_nacimiento, I.fecha_ingreso), P.fecha_nacimiento) > I.fecha_ingreso " +
+                                        "THEN 1 ELSE 0 END AS Edad, " +
+
+                                        "I.fecha_ingreso AS Ingreso, " +
+                                        "I.fecha_egreso AS Egreso, " +
+
+                                        "DATEDIFF(DAY, I.fecha_ingreso, I.fecha_egreso) AS Estadia, " +
+
+                                        "S.descripcion AS Soporte, " +
+                                        "IR.descripcion AS Insuficiencia, " +
+                                        "D.descripcion AS Destino " +
+
+                                        "FROM INTERNACION I " +
+
+                                        "INNER JOIN PACIENTE P " +
+                                        "ON I.id_paciente = P.id_paciente " +
+
+                                        "LEFT JOIN SOPORTE_RESPIRATORIO S " +
+                                        "ON I.id_soporte = S.id_soporte " +
+
+                                        "LEFT JOIN INSUFICIENCIA_RESPIRATORIA IR " +
+                                        "ON I.id_insuficiencia = IR.id_insuficiencia " +
+
+                                        "LEFT JOIN DESTINO_EGRESO D " +
+                                        "ON I.id_destino = D.id_destino ";
 
 
                 consulta += ArmarWhere(filtro);
