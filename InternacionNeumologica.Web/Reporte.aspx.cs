@@ -32,6 +32,7 @@ namespace InternacionNeumologica.Web
                 CargarGraficoSoporte(filtro);
                 CargarGraficoDiagnosticos(filtro);
                 CargarGraficoComorbilidades(filtro);
+                CargarDetalle(filtro);
             }
 
         }
@@ -98,6 +99,14 @@ namespace InternacionNeumologica.Web
 
             DatosComorbilidades = string.Join(",",
                 comorbilidades.Select(x => x.Cantidad));
-        } 
+        }
+
+        private void CargarDetalle(FiltroReporte filtro)
+        {
+            ReporteNegocio negocio = new ReporteNegocio();
+
+            gvDetalle.DataSource = negocio.ObtenerDetalle(filtro);
+            gvDetalle.DataBind();
+        }
     }
 }

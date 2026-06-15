@@ -146,7 +146,15 @@ INSERT INTO PACIENTE (dni, nombre, apellido, fecha_nacimiento, domicilio, telefo
 ('20111222', 'Juan', 'Perez', '1965-05-10', 'Av. Siempre Viva 123', '11111111'),
 ('22333444', 'Maria', 'Gomez', '1978-08-21', 'Calle Falsa 456', '22222222'),
 ('30123456', 'Carlos', 'Fernandez', '1952-01-15', 'Belgrano 789', '33333333'),
-('28999888', 'Ana', 'Rodriguez', '1985-12-03', 'San Martin 555', '44444444');
+('28999888', 'Ana', 'Rodriguez', '1985-12-03', 'San Martin 555', '44444444'),
+('31555444','Luis','Martinez','1958-07-12','Av Colon 100','5551111'), 
+('28777111','Laura','Suarez','1972-10-05','Mitre 234','5552222'), 
+('33444555','Pedro','Lopez','1949-11-30','Sarmiento 456','5553333'), 
+('29888777','Silvia','Alvarez','1969-01-18','Belgrano 789','5554444'), 
+('35666999','Diego','Ruiz','1980-03-21','Italia 456','5555555'), 
+('27111222','Marta','Sosa','1955-08-14','Roca 123','5556666'), 
+('32222333','Oscar','Torres','1962-06-09','French 456','5557777'), 
+('29999111','Patricia','Acosta','1976-09-28','Brown 222','5558888');
 GO
 
 -- Relaciones de Exposición Ambiental
@@ -300,4 +308,40 @@ VALUES
 (3,1); -- Neoplasia extrapulmonar activa
 
 GO
+
+
+-- ==========================================
+-- REINTERNACIONES PARA PRUEBAS DE REPORTES
+-- ==========================================
+
+INSERT INTO INTERNACION
+(id_paciente,fecha_ingreso,fecha_egreso,id_origen,id_destino,
+id_infeccion,id_obstructiva,id_intersticial,id_pleura,
+id_vascular,id_oncologica,id_otro,id_insuficiencia,
+id_soporte,id_tabaquismo,paquetes_anio)
+VALUES
+
+-- Juan
+(1,'2025-01-15','2025-01-22',1,1,NULL,1,NULL,NULL,NULL,NULL,NULL,1,1,3,40),
+(1,'2025-09-02','2025-09-10',2,5,6,NULL,NULL,NULL,NULL,NULL,NULL,2,4,3,40),
+
+-- Maria
+(2,'2025-02-08','2025-02-14',1,1,1,NULL,NULL,NULL,NULL,NULL,NULL,1,2,2,25),
+(2,'2025-11-18','2025-11-26',1,2,NULL,2,NULL,NULL,NULL,NULL,NULL,2,3,2,25),
+
+-- Carlos
+(3,'2024-07-10','2024-07-18',2,1,NULL,NULL,1,NULL,NULL,NULL,NULL,1,3,1,60),
+(3,'2025-03-03','2025-03-12',3,5,NULL,NULL,NULL,1,NULL,NULL,NULL,2,4,1,60),
+(3,'2025-12-01','2025-12-15',1,1,NULL,NULL,NULL,NULL,1,NULL,NULL,1,2,1,60),
+
+-- Ana
+(4,'2025-05-20','2025-05-28',1,1,NULL,NULL,NULL,NULL,NULL,1,NULL,1,1,3,15),
+(4,'2025-10-10','2025-10-18',2,2,NULL,NULL,NULL,NULL,NULL,NULL,1,2,2,3,15),
+
+-- Luis
+(5,'2025-06-01','2025-06-08',1,1,6,NULL,NULL,NULL,NULL,NULL,NULL,1,2,2,20),
+(5,'2025-12-20','2025-12-29',2,1,NULL,1,NULL,NULL,NULL,NULL,NULL,2,3,2,20);
+GO
+
+
 

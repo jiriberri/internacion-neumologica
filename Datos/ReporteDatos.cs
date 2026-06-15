@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Data;
 
 
 
@@ -452,6 +453,61 @@ namespace Datos
                 {
                     datos.CerrarConexion();
                 }
+            }
+        }
+
+        public DataTable ObtenerDetalle(FiltroReporte filtro) 
+        
+        { 
+            AccesoDatos datos = new AccesoDatos(); 
+            
+            try
+            { 
+                
+                        string consulta =
+                            "SELECT " +
+                            "ROW_NUMBER() OVER (PARTITION BY P.id_paciente ORDER BY I.fecha_ingreso) AS Internacion, " +
+                            "P.dni AS DNI, " +
+                            "P.apellido AS Apellido, " +
+                            "P.nombre AS Nombre, " +
+                            "DATEDIFF(YEAR, P.fecha_nacimiento, GETDATE()) AS Edad, " +
+                            "I.fecha_ingreso AS [Ingreso], " +
+                            "I.fecha_egreso AS [Egreso], " +
+                            "S.descripcion AS [Soporte], " +
+                            "IR.descripcion AS [Insuficiencia], " +
+                            "D.descripcion AS [Destino] " +
+                            "FROM INTERNACION I " +
+                            "INNER JOIN PACIENTE P " +
+                            "ON I.id_paciente = P.id_paciente " +
+                            "LEFT JOIN SOPORTE_RESPIRATORIO S " +
+                            "ON I.id_soporte = S.id_soporte " +
+                            "LEFT JOIN INSUFICIENCIA_RESPIRATORIA IR " +
+                            "ON I.id_insuficiencia = IR.id_insuficiencia " +
+                            "LEFT JOIN DESTINO_EGRESO D " +
+                            "ON I.id_destino = D.id_destino ";
+                           
+
+
+                consulta += ArmarWhere(filtro);
+
+                consulta +=
+                            "ORDER BY " +
+                            "P.apellido, " +
+                            "P.nombre, " +
+                            "I.fecha_ingreso ";
+
+
+
+                datos.SetearConsulta(consulta); 
+                CargarParametros(filtro, datos); 
+                datos.EjecutarLectura(); 
+                DataTable tabla = new DataTable(); 
+                tabla.Load(datos.Lector); 
+                return tabla; 
+            } 
+            finally 
+            { 
+                datos.CerrarConexion(); 
             }
         }
 

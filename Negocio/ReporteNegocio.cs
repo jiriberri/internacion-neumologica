@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Negocio
 {
@@ -60,6 +61,13 @@ namespace Negocio
             ReporteDatos datos = new ReporteDatos();
 
             return datos.ObtenerComorbilidades(filtro);
+        }
+
+        public DataTable ObtenerDetalle(FiltroReporte filtro)
+        {
+            ReporteDatos datos = new ReporteDatos();
+
+            return datos.ObtenerDetalle(filtro);
         }
     }
 }

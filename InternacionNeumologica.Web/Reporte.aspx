@@ -397,6 +397,26 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
     <!-- TABLA RESUMEN                                             -->
     <!-- ========================================================= -->
 
+    <div class="card dashboard-card mt-4">
+
+    <div class="card-body">
+
+        <h5 class="text-white mb-3">
+            Detalle de internaciones
+        </h5>
+
+        <asp:GridView
+            ID="gvDetalle"
+            runat="server"
+            CssClass="table table-dark table-striped table-hover"
+            AutoGenerateColumns="true"
+            GridLines="None">
+        </asp:GridView>
+
+    </div>
+
+</div>
+
     <!-- Próximo paso:
          Tabla estadística -->
 
