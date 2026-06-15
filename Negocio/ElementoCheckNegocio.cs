@@ -76,18 +76,148 @@ namespace Negocio
 
 
 
-        public void guardarOncologiaPaciente(int idPaciente, string stringOncologia)
+        public void guardarOncologiaPaciente(int idPaciente, string Oncologia)
         {
             ElementoCheckDatos datos = new ElementoCheckDatos();
 
             try
             {
-                datos.guardarOpcionesMultiples(idPaciente, stringOncologia, "PACIENTE_COMORBILIDAD_ONCOLOGICA", "id_oncologica"); 
+                datos.guardarOpcionesMultiples(idPaciente, Oncologia, "PACIENTE_COMORBILIDAD_ONCOLOGICA", "id_oncologica");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public void guardarCardiovascularPaciente(int idPaciente, string CardioVascular)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, CardioVascular, "PACIENTE_COMORBILIDAD_CARDIOVASCULAR", "id_cardiovascular");
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+
+        public void guardarNeurologicoPaciente(int idPaciente, string Neurologica)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente,Neurologica, "PACIENTE_COMORBILIDAD_NEUROLOGICA", "id_neurologico");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void guardarMetabolicaPaciente(int idPaciente, string Metabolica)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, Metabolica, "PACIENTE_COMORBILIDAD_METABOLICA", "id_metabolica");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void guardarSueñoPaciente(int idPaciente, string Sueño)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, Sueño, "PACIENTE_COMORBILIDAD_SUEÑO", "id_sueño");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void guardarInmunologPaciente(int idPaciente, string Inmunologica)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, Inmunologica, "PACIENTE_COMORBILIDAD_INMUNOLOGICA", "id_inmunologica");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void guardarRespiratorioPaciente(int idPaciente, string Respiratorio)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, Respiratorio, "PACIENTE_ANTECEDENTE_RESPIRATORIO", "id_antecedente");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void guardarSecuelaPaciente(int idPaciente, string Secuela)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, Secuela, "PACIENTE_SECUELA", "id_secuela");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void guardarCirugiaPaciente(int idPaciente, string Cirugia)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, Cirugia, "PACIENTE_CIRUGIA", "id_cirugia");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void guardarExposicionPaciente(int idPaciente, string Expo)
+        {
+            ElementoCheckDatos datos = new ElementoCheckDatos();
+
+            try
+            {
+                datos.guardarOpcionesMultiples(idPaciente, Expo, "PACIENTE_EXPOSICION_AMBIENTAL", "id_exposicion");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
-}
+    }
+
+

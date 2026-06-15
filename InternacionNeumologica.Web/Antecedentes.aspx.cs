@@ -55,16 +55,23 @@ namespace InternacionNeumologica.Web
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-           
-            
-            
+            string tipoFumador = Request.Form["TipodeFumadores"];
+
             Internaciones auxInternacion = (Internaciones)Session["InternacionEnCurso"];
+           
+            if (string.IsNullOrEmpty(tipoFumador))
+            {
+                lblTipoFumador.Visible = true;
+                return;
+            }
+
             if (auxInternacion.Tabaquismo == null)
             {
                 auxInternacion.Tabaquismo = new Tabaquismo(); 
             }
             auxInternacion.Tabaquismo.IdTabaquismo = int.Parse(Request.Form["TipodeFumadores"]);
 
+            
             if (!string.IsNullOrEmpty(txtPaquetesAnio.Text.Trim()))
             {
                 auxInternacion.Paquetes_anio = int.Parse(txtPaquetesAnio.Text.Trim());
@@ -85,7 +92,7 @@ namespace InternacionNeumologica.Web
 
 
 
-            string seleccionadosResp = Request.Form["chkAntecedentes"]; //Va string porque el internet solo reconoce como texto plano
+            string seleccionadosResp = Request.Form["chkAntecedentes"]; //Va string porque lo reconoce como texto plano
             Session["SeleccionRespiratorios"] = seleccionadosResp;
             
             string seleccionadosSecuela = Request.Form["chkSecuela"];

@@ -95,6 +95,8 @@
                                     <label for="txtPaquetesAnio" class="form-label text-danger-emphasis ms-lg-3 mb-0">Paquetes/año:</label>
                                     <asp:TextBox runat="server" Id="txtPaquetesAnio" CssClass="form-control" Style="width:90px;"/> 
                                 </div>
+                           
+                             <asp:Label ID="lblTipoFumador" runat="server" Text="Debes seleccionar el tipo de fumador." CssClass="text-danger d-block mt-1 fw-semibold fs-6" Visible="false"></asp:Label>    
                             </div>
                         </div>
 

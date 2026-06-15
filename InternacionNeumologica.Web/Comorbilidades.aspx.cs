@@ -35,24 +35,39 @@ namespace InternacionNeumologica.Web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string cardiovasculares = Request.Form["chkCardio"];
-            string oncologiaSel = Request.Form["chkOncologica"];
+            string cardiovasculares = Request.Form["chkCardiovascular"];
+            string NeuroSel = Request.Form["chkNeurologico"];
+            string MetaboSel= Request.Form["chkMetabolica"];
+            string OncologiaSel = Request.Form["chkOncologica"];
+            string SueñoSel = Request.Form["chkSueño"];
+            string InmunologicaSel = Request.Form["chkInmunologica"];
+           
+            string respiratoriosSel = (string)Session["SeleccionRespiratorios"];
+            string secuelasSel = (string)Session["SeleccionSecuelas"];
+            string cirugiasSel = (string)Session["SeleccionCirugias"];
+            string expoSel = (string)Session["SeleccionExpo"];
 
 
             Internaciones internacionFinal = (Internaciones)Session["InternacionEnCurso"];
-            InternacionNegocio negocio = new InternacionNegocio();
-            ElementoCheckNegocio checkboxNegocio = new ElementoCheckNegocio();
-           
+            InternacionNegocio Negocio = new InternacionNegocio();
+            ElementoCheckNegocio CheckboxNegocio = new ElementoCheckNegocio();
+
 
             try
             {
-                negocio.agregar(internacionFinal);
+                CheckboxNegocio.guardarCardiovascularPaciente(internacionFinal.IdPaciente, cardiovasculares);
+                CheckboxNegocio.guardarNeurologicoPaciente(internacionFinal.IdPaciente, NeuroSel);
+                CheckboxNegocio.guardarMetabolicaPaciente(internacionFinal.IdPaciente, MetaboSel);
+                CheckboxNegocio.guardarSueñoPaciente(internacionFinal.IdPaciente, SueñoSel);
+                CheckboxNegocio.guardarInmunologPaciente(internacionFinal.IdPaciente, InmunologicaSel);
+                CheckboxNegocio.guardarOncologiaPaciente(internacionFinal.IdPaciente, OncologiaSel);
+              
+                CheckboxNegocio.guardarRespiratorioPaciente(internacionFinal.IdPaciente, respiratoriosSel);
+                CheckboxNegocio.guardarSecuelaPaciente(internacionFinal.IdPaciente, secuelasSel);
+                CheckboxNegocio.guardarCirugiaPaciente(internacionFinal.IdPaciente, cirugiasSel);
+                CheckboxNegocio.guardarExposicionPaciente(internacionFinal.IdPaciente,expoSel);
 
-                checkboxNegocio.guardarOncologiaPaciente(internacionFinal.IdPaciente, oncologiaSel);
-
-
-
-
+                Negocio.agregar(internacionFinal);
 
                 Session["InternacionEnCurso"] = null;
                 Response.Redirect("BuscarPaciente.aspx?exito=true");
@@ -60,6 +75,7 @@ namespace InternacionNeumologica.Web
             catch (Exception ex)
             {
                 throw ex;
+                
             }
         }
 
