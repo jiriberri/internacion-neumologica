@@ -108,67 +108,74 @@
 
     <div class="card-body">
 
-        <div class="row text-center">
+       <div class="row g-3 text-center">
 
-            <div class="col-md-4">
-                <div class="card bg-dark text-white">
-                    <div class="card-body py-3">
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark text-white h-100">
+            <div class="card-body d-flex flex-column justify-content-center">
 
-                        <h3 class="mb-1">
-                            <asp:Label
-                                ID="lblPacientes"
-                                runat="server"
-                                Text="0" />
-                        </h3>
+                <h2 class="fw-bold">
+                    <asp:Label
+                        ID="lblPacientes"
+                        runat="server"
+                        Text="0" />
+                </h2>
 
-                        <small>
-                            Pacientes registrados
-                        </small>
+                <small>Pacientes registrados</small>
 
-                    </div>
-                </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="card bg-dark text-white">
-                    <div class="card-body py-3">
-
-                        <h3 class="mb-1">
-                            <asp:Label
-                                ID="lblInternaciones"
-                                runat="server"
-                                Text="0" />
-                        </h3>
-
-                        <small>
-                            Internaciones registradas
-                        </small>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card bg-dark text-white">
-                    <div class="card-body py-3">
-
-                        <h3 class="mb-1">
-                            <asp:Label
-                                ID="lblFallecidos"
-                                runat="server"
-                                Text="0" />
-                        </h3>
-
-                        <small>
-                            Fallecidos
-                        </small>
-
-                    </div>
-                </div>
-            </div>
-
         </div>
+    </div>
 
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark text-white h-100">
+            <div class="card-body d-flex flex-column justify-content-center">
+
+                <h2 class="fw-bold">
+                    <asp:Label
+                        ID="lblInternaciones"
+                        runat="server"
+                        Text="0" />
+                </h2>
+
+                <small>Internaciones registradas</small>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark text-white h-100">
+            <div class="card-body d-flex flex-column justify-content-center">
+
+                <h2 class="fw-bold">
+                    <asp:Label
+                        ID="lblFallecidos"
+                        runat="server"
+                        Text="0" />
+                </h2>
+
+                <small>Fallecidos</small>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark text-white h-100">
+            <div class="card-body d-flex flex-column justify-content-center">
+
+                <h2 class="fw-bold">
+                    <asp:Label
+                        ID="lblEstadia"
+                        runat="server"
+                        Text="0" />
+                </h2>
+
+                <small>Estadía promedio (días)</small>
+
+            </div>
+        </div>
     </div>
 
 </div>

@@ -463,7 +463,7 @@ namespace Datos
             
             try
             { 
-                
+                        //esta es la consulta de la gridview
                         string consulta =
                             "SELECT " +
                             "ROW_NUMBER() OVER (PARTITION BY P.id_paciente ORDER BY I.fecha_ingreso) AS Internacion, " +
@@ -473,6 +473,7 @@ namespace Datos
                             "DATEDIFF(YEAR, P.fecha_nacimiento, GETDATE()) AS Edad, " +
                             "I.fecha_ingreso AS [Ingreso], " +
                             "I.fecha_egreso AS [Egreso], " +
+                            "DATEDIFF(DAY, I.fecha_ingreso, I.fecha_egreso) AS [Estadía], " +
                             "S.descripcion AS [Soporte], " +
                             "IR.descripcion AS [Insuficiencia], " +
                             "D.descripcion AS [Destino] " +
