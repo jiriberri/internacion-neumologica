@@ -24,6 +24,15 @@ namespace InternacionNeumologica.Web
         protected global::System.Web.UI.WebControls.HiddenField hfTabActiva;
 
         /// <summary>
+        /// upUsuarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upUsuarios;
+
+        /// <summary>
         /// btnAgregarUsuario control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace InternacionNeumologica.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvUsuarios;
+
+        /// <summary>
+        /// upCorreccionPacientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upCorreccionPacientes;
 
         /// <summary>
         /// pnlCorreccionPacientes control.
@@ -148,6 +166,15 @@ namespace InternacionNeumologica.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajeMod;
+
+        /// <summary>
+        /// upCatalogos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upCatalogos;
 
         /// <summary>
         /// hfIdEditando control.

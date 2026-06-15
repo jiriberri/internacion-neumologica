@@ -47,7 +47,7 @@
         <div class="tab-content" id="adminTabsContent">
 
             <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
-                <asp:UpdatePanel runat="server">
+                <asp:UpdatePanel ID="upUsuarios" runat="server">
                     <ContentTemplate>
                         <div class="card shadow">
                             <div class="card-header d-flex justify-content-between align-items-center bg-light">
@@ -111,7 +111,7 @@
             </div>
 
             <div class="tab-pane fade" id="pacientes" role="tabpanel" aria-labelledby="pacientes-tab">
-                <asp:UpdatePanel runat="server">
+                <asp:UpdatePanel ID="upCorreccionPacientes" runat="server">
                     <ContentTemplate>
                         <div class="card shadow">
                             <div class="card-header">
@@ -243,7 +243,7 @@
             </div>
 
             <div class="tab-pane fade" id="catalogos" role="tabpanel" aria-labelledby="catalogos-tab">
-                <asp:UpdatePanel runat="server">
+                <asp:UpdatePanel ID="upCatalogos" runat="server">
                     <ContentTemplate>
 
                         <asp:HiddenField ID="hfIdEditando" runat="server" />
