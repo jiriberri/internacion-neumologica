@@ -46,5 +46,11 @@ namespace Negocio
             datos.ModificarPaciente(paciente);
         }
 
+        public List<Paciente> ListarPaciente()
+        {
+            PacienteDatos datos = new PacienteDatos();
+            return datos.Listar();
+        }
+
     }
 }

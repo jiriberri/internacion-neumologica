@@ -11,118 +11,52 @@ namespace InternacionNeumologica.Web
 {
     public partial class BuscarPaciente : System.Web.UI.Page
     {
+        private void CargarGrillaCompleta()
+        {
+            PacienteNegocio negocio = new PacienteNegocio();
+            dgvPacientes.DataSource = negocio.ListarPaciente();
+            dgvPacientes.DataBind();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && Request.QueryString["exito"] != null)
+            if (!IsPostBack)
             {
-                pnlMensaje.Visible = true;
+                if (Request.QueryString["exito"] != null)
+                {
+                    pnlMensaje.Visible = true;
+                }
+                CargarGrillaCompleta();
             }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            string filtro = txtBusqueda.Text.Trim();
             PacienteNegocio negocio = new PacienteNegocio();
 
-            if (ddlBusqueda.SelectedValue == "DNI")
+            if (string.IsNullOrEmpty(filtro))
             {
-                Paciente paciente =
-                    negocio.BuscarPorDni(txtBusqueda.Text);
-
-                if (paciente != null)
-                {
-                    Session["IdPacienteActual"] = paciente.IdPaciente;
-                    lblResultado.Text =
-                        "Paciente encontrado: " +
-                        paciente.Apellido + ", " +
-                        paciente.Nombre +
-                        " - DNI: " +
-                        paciente.Dni;
-
-                    btnNuevaInternacion.Visible = true;
-                    btnNuevoPaciente.Visible = false;
-                }
-                else
-                {
-                    lblResultado.Text =
-                        "Paciente no encontrado";
-
-                    btnNuevaInternacion.Visible = false;
-                    btnNuevoPaciente.Visible = true;
-                }
+                CargarGrillaCompleta();
             }
             else
             {
-                foreach (char c in txtBusqueda.Text)
-                {
-                    if (char.IsDigit(c))
-                    {
-                        lblResultado.Text =
-                            "El apellido no puede contener números.";
-
-                        btnNuevaInternacion.Visible = false;
-                        btnNuevoPaciente.Visible = false;
-
-                        return;
-                    }
-                }
-
-                List<Paciente> lista =
-                                 negocio.BuscarPorApellido(txtBusqueda.Text);
-
-                if (lista.Count > 0)
-                { 
-                    
-                    Paciente paciente = lista[0];
-                    Session["IdPacienteActual"] = paciente.IdPaciente;
-                    lblResultado.Text =
-                        "Paciente encontrado: " +
-                        paciente.Apellido + ", " +
-                        paciente.Nombre +
-                        " - DNI: " +
-                        paciente.Dni;
-
-                    btnNuevaInternacion.Visible = true;
-                    btnNuevoPaciente.Visible = false;
-                }
-                else
-                {
-                    lblResultado.Text =
-                        "Paciente no encontrado";
-
-                    btnNuevoPaciente.Visible = true;
-                    btnNuevaInternacion.Visible = false;
-                }
+                dgvPacientes.DataSource = negocio.BuscarPorDNIoApellido(filtro);
+                dgvPacientes.DataBind();
             }
         }
         protected void btnNuevoPaciente_Click(object sender, EventArgs e)
         {
-            string filtro = txtBusqueda.Text;
-
-            if (ddlBusqueda.SelectedValue == "DNI" && filtro != "")
-            {
-                Response.Redirect("RegistrarPaciente.aspx?dni=" + filtro);
-            }
-            else if (ddlBusqueda.SelectedValue == "Apellido" && filtro != "")
-            {
-                Response.Redirect("RegistrarPaciente.aspx?apellido=" + filtro);
-            }
-            else
-            {
                 Response.Redirect("RegistrarPaciente.aspx");
-            }
         }
 
-        protected void btnNuevaInternacion_Click(object sender, EventArgs e) {
-
-
+        protected void btnSeleccionarPaciente_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int idPaciente = int.Parse(btn.CommandArgument);
+            
+            Session["IdPacienteActual"] = idPaciente;
 
             Response.Redirect("Internacion.aspx");
-        
         }
-
-
-
-
-
     }
 }

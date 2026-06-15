@@ -11,11 +11,40 @@ namespace Datos
 {
     public class PacienteDatos
     {
-        public List<Paciente> listar()
+        public List<Paciente> Listar()
         {
             List<Paciente> lista = new List<Paciente>();
+            AccesoDatos datos = new AccesoDatos();
 
-            return lista;
+            try
+            {
+                datos.SetearConsulta("SELECT id_paciente, dni, nombre, apellido, fecha_nacimiento, domicilio, telefono FROM PACIENTE");
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Paciente aux = new Paciente();
+                    aux.IdPaciente = (int)datos.Lector["id_paciente"];
+                    aux.Dni = datos.Lector["dni"].ToString();
+                    aux.Nombre = datos.Lector["nombre"].ToString();
+                    aux.Apellido = datos.Lector["apellido"].ToString();
+                    aux.FechaNacimiento = (DateTime)datos.Lector["fecha_nacimiento"];
+                    aux.Domicilio = datos.Lector["domicilio"].ToString();
+                    aux.Telefono = datos.Lector["telefono"].ToString();
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
         public Paciente BuscarPorDni(string dni)
