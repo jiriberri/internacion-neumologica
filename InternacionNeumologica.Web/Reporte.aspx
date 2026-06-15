@@ -55,207 +55,94 @@
 <div class="container-fluid mt-4">
 
     <!-- ========================================================= -->
-D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
+    <!-- ENCABEZADO DEL DASHBOARD                                 -->
     <!-- ========================================================= -->
 
-    <div class="d-flex justify-content-between align-items-start mb-4">
+    
+<div class="d-flex justify-content-between align-items-start mb-4">
 
-        <div>
+    <div>
 
-            <a href="Estadisticas.aspx"
-                class="btn btn-outline-light btn-sm mb-3">
+        <a href="Estadisticas.aspx"
+            class="btn btn-outline-light btn-sm mb-3">
 
-                ← Modificar criterios
+            ← Modificar criterios
 
-            </a>
+        </a>
 
-            <h2 class="text-white mb-1">
+        <h2 class="text-white mb-1">
 
-                Dashboard de Análisis Clínico
+            Reporte de Internaciones
 
-            </h2>
+        </h2>
 
-            <small class="text-secondary">
+        <small class="text-secondary">
 
-                Reporte generado el 16/09/2026 - 20:15 hs
+            Reporte generado el <%= DateTime.Now.ToString("dd/MM/yyyy HH:mm") %>
 
-            </small>
-
-        </div>
-
-        <div class="d-flex gap-2">
-
-            <button class="btn btn-outline-light">
-
-                🖨️ Imprimir
-
-            </button>
-
-            <button class="btn btn-primary">
-
-                📥 Exportar
-
-            </button>
-
-            <button class="btn btn-success">
-
-                📤 Compartir
-
-            </button>
-
-        </div>
+        </small>
 
     </div>
+
+    <div class="d-flex gap-2">
+
+        <button class="btn btn-outline-light">
+            🖨️ Imprimir
+        </button>
+
+        <button class="btn btn-primary">
+            📥 Exportar
+        </button>
+
+        <button class="btn btn-success">
+            📤 Compartir
+        </button>
+
+    </div>
+
+</div>
+
+
 
     <!-- ========================================================= -->
     <!-- FILTROS APLICADOS                                        -->
     <!-- ========================================================= -->
 
-    <div class="mb-4">
+    
 
-        <span class="badge bg-primary p-2 me-2">
-            📅 01/01/2025 - 31/12/2025
-        </span>
+<div class="card dashboard-card mb-4">
 
-        <span class="badge bg-success p-2 me-2">
-            🫁 EPOC
-        </span>
+    <div class="card-body">
 
-        <span class="badge bg-info text-dark p-2 me-2">
-            💨 VNI
-        </span>
+        <h5 class="text-white mb-3">
+            Filtros aplicados
+        </h5>
 
-        <span class="badge bg-danger p-2 me-2">
-            ❤️ HTA
-        </span>
+        <div class="row g-3">
 
-        <span class="badge bg-secondary p-2 me-2">
-            👤 Ambos sexos
-        </span>
-
-        <span class="badge bg-warning text-dark p-2">
-            🎂 Todas las edades
-        </span>
-
-    </div>
-
-   
-<!-- ========================================================= -->
-<!-- INDICADORES PRINCIPALES (KPIs) Es una clase CSS                           -->
-<!-- ========================================================= -->
-
-<div class="row g-3 mb-4">
-
-    <div class="col-md-3">
-
-        <div class="card dashboard-card h-100">
-
-            <div class="card-body text-center">
-
-                <div style="font-size:2rem;">
-                    👥
-                </div>
-
-               <div class="kpi">
-
-                    <asp:Label
-                        ID="lblPacientes"
-                        runat="server"
-                        Text="0" />
-
-                </div>
-
-                <div class="kpi-label">
-                    Pacientes
-                </div>
-
+            <div class="col-md-4">
+                <strong class="text-white">📅 Período</strong><br />
+                <asp:Label ID="lblPeriodo" runat="server" CssClass="text-light" />
             </div>
 
-        </div>
-
-    </div>
-
-    <div class="col-md-3">
-
-        <div class="card dashboard-card h-100">
-
-            <div class="card-body text-center">
-
-                <div style="font-size:2rem;">
-                    🏥
-                </div>
-
-               <div class="kpi">
-
-                        <asp:Label
-                            ID="lblInternaciones"
-                            runat="server"
-                            Text="0" />
-
-                    </div>
-
-                <div class="kpi-label">
-                    Internaciones
-                </div>
-
+            <div class="col-md-4">
+                <strong class="text-white">🫁 Diagnóstico</strong><br />
+                <asp:Label ID="lblDiagnostico" runat="server" CssClass="text-light" />
             </div>
 
-        </div>
-
-    </div>
-
-    <div class="col-md-3">
-
-        <div class="card dashboard-card h-100">
-
-            <div class="card-body text-center">
-
-                <div style="font-size:2rem;">
-                    ❤️
-                </div>
-
-                <div class="kpi">
-
-                    <asp:Label
-                        ID="lblFallecidos"
-                        runat="server"
-                        Text="0" />
-
-                </div>
-
-                <div class="kpi-label">
-                    Fallecidos
-                </div>
-
+            <div class="col-md-4">
+                <strong class="text-white">💨 Soporte respiratorio</strong><br />
+                <asp:Label ID="lblSoporte" runat="server" CssClass="text-light" />
             </div>
 
-        </div>
+            <div class="col-md-4">
+                <strong class="text-white">❤️ Insuficiencia respiratoria</strong><br />
+                <asp:Label ID="lblInsuficiencia" runat="server" CssClass="text-light" />
+            </div>
 
-    </div>
-
-    <div class="col-md-3">
-
-        <div class="card dashboard-card h-100">
-
-            <div class="card-body text-center">
-
-                <div style="font-size:2rem;">
-                    📅
-                </div>
-
-               <div class="kpi">
-
-                    <asp:Label
-                        ID="lblEstadiaPromedio"
-                        runat="server"
-                        Text="0" />
-
-                </div>
-
-                <div class="kpi-label">
-                    Estadía promedio (días)
-                </div>
-
+            <div class="col-md-4">
+                <strong class="text-white">🏥 Destino de egreso</strong><br />
+                <asp:Label ID="lblDestino" runat="server" CssClass="text-light" />
             </div>
 
         </div>
@@ -265,131 +152,6 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
 </div>
 
 
-   
-<!-- ========================================================= -->
-<!-- GRÁFICOS PRINCIPALES                                      -->
-<!-- ========================================================= -->
-
-<div class="row g-3 mb-4">
-
-    <div class="col-md-6">
-
-        <div class="card dashboard-card">
-
-            <div class="card-body">
-
-                <h5 class="text-white mb-3">
-
-                    Distribución por edad
-
-                </h5>
-
-                <div class="grafico">
-
-                          <!-- Área destinada al gráfico de distribución por edad.
-                            El contenido será dibujado dinámicamente mediante Chart.js. -->
-
-                            <canvas id="graficoEdades"></canvas>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="card dashboard-card">
-
-            <div class="card-body">
-
-                <h5 class="text-white mb-3">
-
-                    Soporte respiratorio
-
-                </h5>
-
-                <div class="grafico">
-
-                    <!-- Área destinada al gráfico de soporte respiratorio. -->
-
-                          <canvas id="graficoSoporte"></canvas>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
- 
-<!-- ========================================================= -->
-<!-- GRÁFICOS SECUNDARIOS                                      -->
-<!-- ========================================================= -->
-
-<div class="row g-3 mb-4">
-
-    <div class="col-md-6">
-
-        <div class="card dashboard-card">
-
-            <div class="card-body">
-
-                <h5 class="text-white mb-3">
-
-                    Grupo diagnóstico
-
-                </h5>
-
-                <div class="grafico">
-
-                    <!-- Área destinada al gráfico de grupos diagnósticos. -->
-
-                           <canvas id="graficoDiagnosticos"></canvas>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="card dashboard-card">
-
-            <div class="card-body">
-
-                <h5 class="text-white mb-3">
-
-                    Comorbilidades
-
-                </h5>
-
-                <div class="grafico">
-
-                    <!-- Área destinada al gráfico de comorbilidades. -->
-
-                           <canvas id="graficoComorbilidades"></canvas>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
 
 
@@ -397,151 +159,30 @@ D    <!-- ENCABEZADO DEL DASHBOARD                                 -->
     <!-- TABLA RESUMEN                                             -->
     <!-- ========================================================= -->
 
-    <div class="card dashboard-card mt-4">
+<div class="card dashboard-card mt-4">
 
     <div class="card-body">
 
-        <h5 class="text-white mb-3">
-            Detalle de internaciones
-        </h5>
+        <h4 class="text-white mb-3">
+
+            Resultado de la consulta
+
+        </h4>
 
         <asp:GridView
             ID="gvDetalle"
             runat="server"
             CssClass="table table-dark table-striped table-hover"
             AutoGenerateColumns="true"
-            GridLines="None">
+            GridLines="None"
+            Width="100%">
         </asp:GridView>
 
     </div>
 
 </div>
 
-    <!-- Próximo paso:
-         Tabla estadística -->
 
-    <!-- ========================================================= -->
-    <!-- NUEVO ANÁLISIS                                            -->
-    <!-- ========================================================= -->
-
-    <!-- Próximo paso:
-         Botón para volver a Estadisticas.aspx -->
-
-</div>
-
-<!-- ========================================================= -->
-<!-- CHART.JS                                                  -->
-<!-- Librería JavaScript utilizada para generar gráficos       -->
-<!-- dinámicos dentro del elemento <canvas>.                   -->
-<!-- ========================================================= -->
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-
-    // Obtiene el elemento <canvas> donde se dibujará el gráfico.
-    const ctxEdades = document.getElementById('graficoEdades');
-
-    // Crea un nuevo gráfico utilizando la librería Chart.js.
-    new Chart(ctxEdades, {
-
-        // Tipo de gráfico.
-        type: 'bar',
-
-        // Datos que se mostrarán.
-        data: {
-
-            // Categorías del eje X.
-            labels: [<%= LabelsEdades %>],
-
-            // Serie de datos.
-            datasets: [{
-
-                // Nombre de la serie.
-                label: 'Pacientes',
-
-                
-                data: [<%= DatosEdades %>]
-
-            }]
-
-        }
-
-    });
-
-
-
-    const ctxSoporte = document.getElementById('graficoSoporte');
-
-    new Chart(ctxSoporte, {
-
-        type: 'pie',
-
-        data: {
-
-            labels: [<%= LabelsSoporte %>],
-
-            datasets: [{
-
-                label: 'Soporte respiratorio',
-
-                data: [<%= DatosSoporte %>]
-
-            }]
-
-        }
-
-    });
-
-
-
-    const ctxDiagnosticos = document.getElementById('graficoDiagnosticos');
-
-    new Chart(ctxDiagnosticos, {
-
-        type: 'bar',
-
-        data: {
-
-            labels: [<%= LabelsDiagnosticos %>],
-
-            datasets: [{
-
-                label: 'Diagnósticos',
-
-                data: [<%= DatosDiagnosticos %>]
-
-            }]
-
-        }
-
-    });
-
-
-
-        const ctxComorbilidades = document.getElementById('graficoComorbilidades');
-
-        new Chart(ctxComorbilidades, {
-
-            type: 'bar',
-
-            data: {
-
-                labels: [<%= LabelsComorbilidades %>],
-
-            datasets: [{
-
-                label: 'Comorbilidades',
-
-                data: [<%= DatosComorbilidades %>]
-
-            }]
-
-        }
-
-    });
-
-    </script>
 
 </asp:Content>
 

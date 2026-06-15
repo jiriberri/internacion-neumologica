@@ -124,5 +124,11 @@ namespace Negocio
             DesplegablesDatos datos = new DesplegablesDatos();
             datos.ReactivarItem(tabla, idColumna, id);
         }
+
+        public string ObtenerDescripcion(string tabla, string columnaId, int id)
+        {
+            DesplegablesDatos datos = new DesplegablesDatos();
+            return datos.ObtenerDescripcion(tabla, columnaId, id);
+        }
     }
 }

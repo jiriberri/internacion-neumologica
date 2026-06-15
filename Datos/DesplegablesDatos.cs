@@ -155,5 +155,31 @@ namespace Datos
                 datos.CerrarConexion();
             }
         }
+
+        public string ObtenerDescripcion(string tabla, string columnaId, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "SELECT descripcion " +
+                    "FROM " + tabla + " " +
+                    "WHERE " + columnaId + " = @id");
+
+                datos.SetearParametro("@id", id);
+
+                datos.EjecutarLectura();
+
+                if (datos.Lector.Read())
+                    return datos.Lector["descripcion"].ToString();
+
+                return "";
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }

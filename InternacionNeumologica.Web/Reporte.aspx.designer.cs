@@ -15,40 +15,49 @@ namespace InternacionNeumologica.Web
     {
 
         /// <summary>
-        /// Control lblPacientes.
+        /// Control lblPeriodo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPacientes;
+        protected global::System.Web.UI.WebControls.Label lblPeriodo;
 
         /// <summary>
-        /// Control lblInternaciones.
+        /// Control lblDiagnostico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInternaciones;
+        protected global::System.Web.UI.WebControls.Label lblDiagnostico;
 
         /// <summary>
-        /// Control lblFallecidos.
+        /// Control lblSoporte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFallecidos;
+        protected global::System.Web.UI.WebControls.Label lblSoporte;
 
         /// <summary>
-        /// Control lblEstadiaPromedio.
+        /// Control lblInsuficiencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEstadiaPromedio;
+        protected global::System.Web.UI.WebControls.Label lblInsuficiencia;
+
+        /// <summary>
+        /// Control lblDestino.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDestino;
 
         /// <summary>
         /// Control gvDetalle.
