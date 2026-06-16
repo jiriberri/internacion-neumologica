@@ -26,6 +26,16 @@
 
             <div class="card-body">
 
+                <div class="alert alert-info d-flex align-items-center shadow-sm mb-4" role="alert">
+                    <div>
+                        <strong>Instrucciones:</strong>
+                        Use el filtro para localizar al paciente. Al hacer clic en el botón verde
+                        <span class="badge bg-success">Seleccionar</span>
+                        dentro de la lista, el sistema lo redirigirá automáticamente para iniciar el registro de una
+                        <strong>nueva internación</strong> para ese paciente específico.
+                    </div>
+                </div>
+
                 <div class="row g-3 align-items-end mb-4">
                     <div class="col-md-9">
                         <label class="form-label fw-bold text-secondary">Filtrar por Apellido o DNI</label>
