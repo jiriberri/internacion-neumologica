@@ -13,20 +13,7 @@ namespace InternacionNeumologica.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                if (Request.QueryString["dni"] != null)
-                {
-                    txtDni.Text = Request.QueryString["dni"].ToString();
-                    txtDni.ReadOnly = true;
-                }
-
-                if (Request.QueryString["apellido"] != null)
-                {
-                    txtApellido.Text = Request.QueryString["apellido"].ToString();
-                    txtApellido.ReadOnly = true;
-                }
-            }
+            
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
