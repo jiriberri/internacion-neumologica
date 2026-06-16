@@ -81,6 +81,14 @@
 
                 <hr />
 
+                <div>
+                    <asp:Label
+                        ID="lblError"
+                        runat="server"
+                        CssClass="text-danger fw-bold">
+                    </asp:Label>
+                </div>
+
                 <div class="d-flex justify-content-end gap-2">
                     <asp:Button
                         ID="btnCancelar"
