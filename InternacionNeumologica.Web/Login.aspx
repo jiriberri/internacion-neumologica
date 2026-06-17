@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="InternacionNeumologica.Web.Login" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -12,8 +13,7 @@
 
                 <div class="card-body">
 
-                    <h2 class="text-center mb-4">
-                        Iniciar Sesión
+                    <h2 class="text-center mb-4">Iniciar Sesión
                     </h2>
 
                     <div class="mb-3">
@@ -38,22 +38,22 @@
 
                         <div class="input-group">
 
-                                <asp:TextBox
-                                    ID="txtPassword"
-                                    runat="server"
-                                    TextMode="Password"
-                                    CssClass="form-control"
-                                    ClientIDMode="Static">
-                                </asp:TextBox>
+                            <asp:TextBox
+                                ID="txtPassword"
+                                runat="server"
+                                TextMode="Password"
+                                CssClass="form-control"
+                                ClientIDMode="Static">
+                            </asp:TextBox>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-secondary"
-                                    onclick="mostrarPassword()">
-                                    👁
-                                </button>
+                            <button
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                onclick="mostrarPassword()">
+                                👁
+                            </button>
 
-                         </div>
+                        </div>
 
                     </div>
 
@@ -82,18 +82,18 @@
 
     </div>
 
-                                <script>
-                                function mostrarPassword() {
+    <script>
+        function mostrarPassword() {
 
-                                    let txt = document.getElementById("txtPassword");
+            let txt = document.getElementById("txtPassword");
 
-                                    if (txt.type === "password") {
-                                        txt.type = "text";
-                                    }
-                                    else {
-                                        txt.type = "password";
-                                    }
-                                }
-                                </script>
+            if (txt.type === "password") {
+                txt.type = "text";
+            }
+            else {
+                txt.type = "password";
+            }
+        }
+    </script>
 
 </asp:Content>

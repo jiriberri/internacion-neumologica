@@ -1,7 +1,7 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Site.Master"
-    autoeventwireup="true"
-    codebehind="Reporte.aspx.cs"
-    inherits="InternacionNeumologica.Web.Reporte" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="Reporte.aspx.cs"
+    Inherits="InternacionNeumologica.Web.Reporte" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -222,7 +222,7 @@
     <!-- TABLA RESUMEN   //el panel lo envuelve paraf que el paginado no recargue y vaya arriba                                          -->
     <!-- =================================================================================== -->
     <asp:UpdatePanel ID="upDetalle" runat="server">
-        <contenttemplate>
+        <ContentTemplate>
             <div class="card dashboard-card mt-4">
 
                 <div class="card-body">
@@ -244,7 +244,7 @@
                         Width="100%"
                         EmptyDataText="No se encontraron registros para los criterios seleccionados.">
 
-                        <columns>
+                        <Columns>
 
                             <asp:BoundField
                                 DataField="Internacion"
@@ -288,7 +288,7 @@
                                 DataField="Destino"
                                 HeaderText="Destino de egreso" />
 
-                        </columns>
+                        </Columns>
 
                     </asp:GridView>
 
@@ -297,7 +297,7 @@
                 </div>
 
             </div>
-        </contenttemplate>
+        </ContentTemplate>
 
     </asp:UpdatePanel>
 

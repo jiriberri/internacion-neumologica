@@ -9,7 +9,7 @@
 
         <asp:Panel ID="pnlMensaje" runat="server" CssClass="alert alert-success alert-dismissible fade show shadow-sm" Visible="false" role="alert">
             <strong>¡El paciente fue registrado con éxito en el sistema!</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </asp:Panel>
 
         <div class="card shadow">

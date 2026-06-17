@@ -51,7 +51,7 @@
 
                     <h3>Reportes y Estadísticas</h3>
 
-                            
+
                     <p>
                         Reportes y análisis histórico de datos clínicos respiratorios.
                     </p>
@@ -102,82 +102,81 @@
 
     <div class="card bg-black text-white shadow mb-4">
 
-    <div class="card-header border-secondary">
-        <h4 class="mb-0">Resumen del Registro</h4>
-    </div>
+        <div class="card-header border-secondary">
+            <h4 class="mb-0">Resumen del Registro</h4>
+        </div>
 
-    <div class="card-body">
+        <div class="card-body">
 
-       <div class="row g-3 text-center">
+            <div class="row g-3 text-center">
 
-    <div class="col-lg-3 col-md-6">
-        <div class="card bg-dark text-white h-100">
-            <div class="card-body d-flex flex-column justify-content-center">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body d-flex flex-column justify-content-center">
 
-                <h2 class="fw-bold">
-                    <asp:Label
-                        ID="lblPacientes"
-                        runat="server"
-                        Text="0" />
-                </h2>
+                            <h2 class="fw-bold">
+                                <asp:Label
+                                    ID="lblPacientes"
+                                    runat="server"
+                                    Text="0" />
+                            </h2>
 
-                <small>Pacientes registrados</small>
+                            <small>Pacientes registrados</small>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body d-flex flex-column justify-content-center">
+
+                            <h2 class="fw-bold">
+                                <asp:Label
+                                    ID="lblInternaciones"
+                                    runat="server"
+                                    Text="0" />
+                            </h2>
+
+                            <small>Internaciones registradas</small>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body d-flex flex-column justify-content-center">
+
+                            <h2 class="fw-bold">
+                                <asp:Label
+                                    ID="lblFallecidos"
+                                    runat="server"
+                                    Text="0" />
+                            </h2>
+
+                            <small>Fallecidos</small>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body d-flex flex-column justify-content-center">
+
+                            <h2 class="fw-bold">
+                                <asp:Label
+                                    ID="lblEstadia"
+                                    runat="server"
+                                    Text="0" />
+                            </h2>
+
+                            <small>Estadía promedio (días)</small>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-        <div class="card bg-dark text-white h-100">
-            <div class="card-body d-flex flex-column justify-content-center">
-
-                <h2 class="fw-bold">
-                    <asp:Label
-                        ID="lblInternaciones"
-                        runat="server"
-                        Text="0" />
-                </h2>
-
-                <small>Internaciones registradas</small>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-        <div class="card bg-dark text-white h-100">
-            <div class="card-body d-flex flex-column justify-content-center">
-
-                <h2 class="fw-bold">
-                    <asp:Label
-                        ID="lblFallecidos"
-                        runat="server"
-                        Text="0" />
-                </h2>
-
-                <small>Fallecidos</small>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-        <div class="card bg-dark text-white h-100">
-            <div class="card-body d-flex flex-column justify-content-center">
-
-                <h2 class="fw-bold">
-                    <asp:Label
-                        ID="lblEstadia"
-                        runat="server"
-                        Text="0" />
-                </h2>
-
-                <small>Estadía promedio (días)</small>
-
-            </div>
-        </div>
-    </div>
-
-</div>
-
 </asp:Content>

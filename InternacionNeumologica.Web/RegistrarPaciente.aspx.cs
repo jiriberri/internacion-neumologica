@@ -22,7 +22,7 @@ namespace InternacionNeumologica.Web
             {
                 return;
             }
-            
+
             try
             {
                 Paciente NuevoPac = new Paciente();
