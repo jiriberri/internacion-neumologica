@@ -43,46 +43,46 @@
 
         @media print {
 
-    /* Oculta todos los botones */
-    .btn {
-        display: none !important;
-    }
+            /* Oculta todos los botones */
+            .btn {
+                display: none !important;
+            }
 
-    /* Oculta los links */
-    a {
-        display: none !important;
-    }
+            /* Oculta los links */
+            a {
+                display: none !important;
+            }
 
-    /* Fondo blanco para imprimir */
-    body {
-        background: white !important;
-    }
+            /* Fondo blanco para imprimir */
+            body {
+                background: white !important;
+            }
 
-    /* Las cards no llevan sombra en papel */
-    .dashboard-card {
-        background: white !important;
-        color: black !important;
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-    }
+            /* Las cards no llevan sombra en papel */
+            .dashboard-card {
+                background: white !important;
+                color: black !important;
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
 
-    /* Todo el texto en negro */
-    .text-white,
-    .text-light,
-    .text-secondary {
-        color: black !important;
-    }
+            /* Todo el texto en negro */
+            .text-white,
+            .text-light,
+            .text-secondary {
+                color: black !important;
+            }
 
-    /* Evita que una card se corte entre dos hojas */
-    .card {
-        page-break-inside: avoid;
-    }
+            /* Evita que una card se corte entre dos hojas */
+            .card {
+                page-break-inside: avoid;
+            }
 
-    /* La tabla ocupa todo el ancho */
-    table {
-        width: 100% !important;
-    }
-}
+            /* La tabla ocupa todo el ancho */
+            table {
+                width: 100% !important;
+            }
+        }
     </style>
 
 </asp:Content>
@@ -123,14 +123,18 @@
                 <button
                     type="button"
                     class="btn btn-outline-light"
-                    onclick="window.open('ReporteImpresion.aspx','_blank');"> <!--Abre reporteimpresion -->
+                    onclick="window.open('ReporteImpresion.aspx','_blank');">
+                    <!--Abre reporteimpresion -->
                     🖨️ Imprimir
 
                 </button>
 
-                <button class="btn btn-primary">
-                    📥 Exportar
-                </button>
+                <asp:Button
+                    ID="btnExportar"
+                    runat="server"
+                    Text="📥 Exportar"
+                    CssClass="btn btn-primary"
+                    OnClick="BtnExportar_Click" />
 
                 <button class="btn btn-success">
                     📤 Compartir

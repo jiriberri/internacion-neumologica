@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace InternacionNeumologica.Web
 {
@@ -197,6 +200,63 @@ namespace InternacionNeumologica.Web
             FiltroReporte filtro = Session["FiltroReporte"] as FiltroReporte;
 
             CargarDetalle(filtro);
+        }
+
+        
+        // Exporta el resultado del reporte a un archivo Excel.
+        protected void BtnExportar_Click(object sender, EventArgs e)
+        {
+            
+            // Recupera el filtro utilizado para generar el reporte.
+            
+            FiltroReporte filtro =
+                Session["FiltroReporte"] as FiltroReporte;
+
+            // Si no existe el filtro, vuelve a la pantalla de búsqueda.
+            if (filtro == null)
+            {
+                Response.Redirect("Estadisticas.aspx");
+                return;
+            }
+
+            
+            // Obtiene el detalle del reporte.
+            // Se reutiliza el mismo método que carga el GridView.
+            
+            ReporteNegocio negocio = new ReporteNegocio();
+
+            DataTable tabla = negocio.ObtenerDetalle(filtro);
+
+            // Crea el libro de Excel y agrega una hoja con los datos.
+            
+            using (XLWorkbook libro = new XLWorkbook())
+            {
+                libro.Worksheets.Add(tabla, "Internaciones");
+
+                // Ajusta automáticamente el ancho de las columnas.
+                libro.Worksheet(1).Columns().AdjustToContents();
+
+                // Guarda el archivo en memoria para enviarlo al navegador.
+              
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    libro.SaveAs(stream);
+
+                    Response.Clear();
+
+                    Response.ContentType =
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+                    Response.AddHeader(
+                        "content-disposition",
+                        "attachment;filename=ReporteInternaciones.xlsx");
+
+                    Response.BinaryWrite(stream.ToArray());
+
+                    Response.End();
+                }
+            }
+
         }
 
 
