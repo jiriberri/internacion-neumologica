@@ -40,6 +40,49 @@
             color: #94a3b8;
             font-size: 1.1rem;
         }
+
+        @media print {
+
+    /* Oculta todos los botones */
+    .btn {
+        display: none !important;
+    }
+
+    /* Oculta los links */
+    a {
+        display: none !important;
+    }
+
+    /* Fondo blanco para imprimir */
+    body {
+        background: white !important;
+    }
+
+    /* Las cards no llevan sombra en papel */
+    .dashboard-card {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+
+    /* Todo el texto en negro */
+    .text-white,
+    .text-light,
+    .text-secondary {
+        color: black !important;
+    }
+
+    /* Evita que una card se corte entre dos hojas */
+    .card {
+        page-break-inside: avoid;
+    }
+
+    /* La tabla ocupa todo el ancho */
+    table {
+        width: 100% !important;
+    }
+}
     </style>
 
 </asp:Content>
@@ -77,8 +120,12 @@
 
             <div class="d-flex gap-2">
 
-                <button class="btn btn-outline-light">
+                <button
+                    type="button"
+                    class="btn btn-outline-light"
+                    onclick="window.open('ReporteImpresion.aspx','_blank');"> <!--Abre reporteimpresion -->
                     🖨️ Imprimir
+
                 </button>
 
                 <button class="btn btn-primary">
@@ -165,7 +212,7 @@
 
     </div>
 
-  
+
 
     <!-- =================================================================================== -->
     <!-- TABLA RESUMEN   //el panel lo envuelve paraf que el paginado no recargue y vaya arriba                                          -->
@@ -247,10 +294,10 @@
 
             </div>
         </contenttemplate>
-       
+
     </asp:UpdatePanel>
 
-  
+
 
 </asp:Content>
 

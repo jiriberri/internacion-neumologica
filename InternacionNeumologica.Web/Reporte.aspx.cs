@@ -183,7 +183,9 @@ namespace InternacionNeumologica.Web
             //Response.Write(string.Join(",", filtro.Cardiovasculares));
             //Response.End();//sirve para verificar si pasan los ids correctamente
 
-            lblComorbilidades.Text = ArmarTextoComorbilidades(filtro);
+            
+
+            lblComorbilidades.Text = negocio.ArmarTextoComorbilidades(filtro);
 
 
         }

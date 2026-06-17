@@ -86,5 +86,83 @@ namespace Negocio
 
             return datos.ObtenerDescripcionesPorIds(ids, tabla, campoId);
         }
+
+        public string ArmarTextoComorbilidades(FiltroReporte filtro)
+        {
+            
+
+            string texto = "";
+
+            if (filtro.Cardiovasculares != null && filtro.Cardiovasculares.Count > 0)
+            {
+                texto += "<b>Cardiovasculares:</b> ";
+                texto += ObtenerDescripcionesPorIds(
+                    filtro.Cardiovasculares,
+                    "COMORBILIDAD_CARDIOVASCULAR",
+                    "id_cardiovascular");
+
+                texto += "<br/>";
+            }
+
+            if (filtro.Metabolicas != null && filtro.Metabolicas.Count > 0)
+            {
+                texto += "<b>Metabólicas:</b> ";
+                texto += ObtenerDescripcionesPorIds(
+                    filtro.Metabolicas,
+                    "COMORBILIDAD_METABOLICA",
+                    "id_metabolica");
+
+                texto += "<br/><br/>";
+            }
+
+            if (filtro.Neurologicas != null && filtro.Neurologicas.Count > 0)
+            {
+                texto += "<b>Neurológicas:</b> ";
+                texto += ObtenerDescripcionesPorIds(
+                    filtro.Neurologicas,
+                    "COMORBILIDAD_NEUROLOGICA",
+                    "id_neurologico");
+
+                texto += "<br/><br/>";
+            }
+
+            if (filtro.Inmunologicas != null && filtro.Inmunologicas.Count > 0)
+            {
+                texto += "<b>Inmunológicas:</b> ";
+                texto += ObtenerDescripcionesPorIds(
+                    filtro.Inmunologicas,
+                    "COMORBILIDAD_INMUNOLOGICA",
+                    "id_inmunologica");
+
+                texto += "<br/><br/>";
+            }
+
+            if (filtro.Oncologicas != null && filtro.Oncologicas.Count > 0)
+            {
+                texto += "<b>Oncológicas:</b> ";
+                texto += ObtenerDescripcionesPorIds(
+                    filtro.Oncologicas,
+                    "COMORBILIDAD_ONCOLOGICA",
+                    "id_oncologica");
+
+                texto += "<br/><br/>";
+            }
+
+            if (filtro.Sueño != null && filtro.Sueño.Count > 0)
+            {
+                texto += "<b>Patología del sueño:</b> ";
+                texto += ObtenerDescripcionesPorIds(
+                    filtro.Sueño,
+                    "COMORBILIDAD_SUEÑO",
+                    "id_sueño");
+
+                texto += "<br/><br/>";
+            }
+
+            if (texto == "")
+                texto = "No se seleccionaron comorbilidades.";
+
+            return texto;
+        }
     }
 }
