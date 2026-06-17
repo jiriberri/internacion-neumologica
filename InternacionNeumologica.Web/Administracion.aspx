@@ -24,17 +24,17 @@
 
         <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab" aria-controls="usuarios" aria-selected="true">
+                <button class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab">
                     Gestión de Usuarios
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pacientes-tab" data-bs-toggle="tab" data-bs-target="#pacientes" type="button" role="tab" aria-controls="pacientes" aria-selected="false">
+                <button class="nav-link" id="pacientes-tab" data-bs-toggle="tab" data-bs-target="#pacientes" type="button" role="tab">
                     Corrección de Pacientes
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="catalogos-tab" data-bs-toggle="tab" data-bs-target="#catalogos" type="button" role="tab" aria-controls="catalogos" aria-selected="false">
+                <button class="nav-link" id="catalogos-tab" data-bs-toggle="tab" data-bs-target="#catalogos" type="button" role="tab">
                     Tablas Maestras
                 </button>
             </li>
@@ -46,7 +46,7 @@
 
         <div class="tab-content" id="adminTabsContent">
 
-            <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+            <div class="tab-pane fade show active" id="usuarios" role="tabpanel">
                 <asp:UpdatePanel ID="upUsuarios" runat="server">
                     <ContentTemplate>
                         <div class="card shadow">
@@ -110,7 +110,7 @@
                 </asp:UpdatePanel>
             </div>
 
-            <div class="tab-pane fade" id="pacientes" role="tabpanel" aria-labelledby="pacientes-tab">
+            <div class="tab-pane fade" id="pacientes" role="tabpanel">
                 <asp:UpdatePanel ID="upCorreccionPacientes" runat="server">
                     <ContentTemplate>
                         <div class="card shadow">
@@ -242,7 +242,7 @@
                 </asp:UpdatePanel>
             </div>
 
-            <div class="tab-pane fade" id="catalogos" role="tabpanel" aria-labelledby="catalogos-tab">
+            <div class="tab-pane fade" id="catalogos" role="tabpanel">
                 <asp:UpdatePanel ID="upCatalogos" runat="server">
                     <ContentTemplate>
 

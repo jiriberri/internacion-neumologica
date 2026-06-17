@@ -19,23 +19,23 @@
 
                 <div class="d-flex justify-content-between w-100">
 
-    <asp:HyperLink
-    ID="hlInicio"
-    runat="server"
-    NavigateUrl="~/Default.aspx"
-    CssClass="navbar-brand text-decoration-none">
+                    <asp:HyperLink
+                        ID="hlInicio"
+                        runat="server"
+                        NavigateUrl="~/Default.aspx"
+                        CssClass="navbar-brand text-decoration-none">
     Internación Neumológica
-</asp:HyperLink>
+                    </asp:HyperLink>
 
-    <asp:LinkButton
-        ID="lnkCerrarSesion"
-        runat="server"
-        CssClass="btn btn-outline-light btn-sm"
-        OnClick="lnkCerrarSesion_Click">
+                    <asp:LinkButton
+                        ID="lnkCerrarSesion"
+                        runat="server"
+                        CssClass="btn btn-outline-light btn-sm"
+                        OnClick="lnkCerrarSesion_Click">
         Cerrar sesión
-    </asp:LinkButton>
+                    </asp:LinkButton>
 
-</div>
+                </div>
 
             </div>
         </nav>

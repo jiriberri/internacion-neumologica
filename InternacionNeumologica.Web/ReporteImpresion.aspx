@@ -1,6 +1,6 @@
-﻿<%@ page language="C#" autoeventwireup="true"
-    codebehind="ReporteImpresion.aspx.cs"
-    inherits="InternacionNeumologica.Web.ReporteImpresion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"
+    CodeBehind="ReporteImpresion.aspx.cs"
+    Inherits="InternacionNeumologica.Web.ReporteImpresion" %>
 
 <!DOCTYPE html>
 

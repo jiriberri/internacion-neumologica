@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Site.Master" autoeventwireup="true" codebehind="Estadisticas.aspx.cs" inherits="InternacionNeumologica.Web.Estadisticas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Estadisticas.aspx.cs" Inherits="InternacionNeumologica.Web.Estadisticas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -210,97 +210,265 @@
                     </div>
 
                 </div>
-               
 
- <!-- ========================================================= -->
-<!-- BLOQUE 2 - COMORBILIDADES                                  -->
-<!-- ========================================================= -->
 
-<div class="col-12">
+                <!-- ========================================================= -->
+                <!-- BLOQUE 2 - COMORBILIDADES                                  -->
+                <!-- ========================================================= -->
 
-    <div class="card card-filtro">
+                <div class="col-12">
 
-        <div class="card-body">
+                    <div class="card card-filtro">
 
-            <div class="titulo-card mb-4">
-                Comorbilidades
-            </div>
+                        <div class="card-body">
 
-            <!-- ====================================== -->
-            <!-- Cardiovasculares - Metabólicas         -->
-            <!-- ====================================== -->
+                            <div class="titulo-card mb-4">
+                                Comorbilidades
+                            </div>
 
-            <div class="card shadow-sm border-0 mb-4">
+                            <!-- ====================================== -->
+                            <!-- Cardiovasculares - Metabólicas         -->
+                            <!-- ====================================== -->
 
-                <div class="card-body">
+                            <div class="card shadow-sm border-0 mb-4">
 
-                    <div class="row">
+                                <div class="card-body">
 
-                        <div class="col-lg-6">
+                                    <div class="row">
 
-                            <h6 class="fw-semibold mb-3">
-                                Cardiovasculares
-                            </h6>
+                                        <div class="col-lg-6">
 
-                            <div class="row">
+                                            <h6 class="fw-semibold mb-3">Cardiovasculares
+                                            </h6>
 
-                                <% foreach (var car in ListaCardioVascular) { %>
+                                            <div class="row">
 
-                                <div class="col-md-6 mb-2">
+                                                <% foreach (var car in ListaCardioVascular)
+                                                { %>
 
-                                    <div class="form-check">
+                                                <div class="col-md-6 mb-2">
 
-                                        <input class="form-check-input"
-                                               type="checkbox"
-                                               name="filtroCardiovascular"
-                                               value="<%= car.Id %>" />
+                                                    <div class="form-check">
 
-                                        <label class="form-check-label">
+                                                        <input class="form-check-input"
+                                                            type="checkbox"
+                                                            name="filtroCardiovascular"
+                                                            value="<%= car.Id %>" />
 
-                                            <%= car.Descripcion %>
+                                                        <label class="form-check-label">
 
-                                        </label>
+                                                            <%= car.Descripcion %>
+                                                        </label>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <% } %>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+
+                                            <h6 class="fw-semibold mb-3">Metabólicas
+                                            </h6>
+
+                                            <div class="row">
+
+                                                <% foreach (var met in ListaMetabolica)
+                                                { %>
+
+                                                <div class="col-md-6 mb-2">
+
+                                                    <div class="form-check">
+
+                                                        <input class="form-check-input"
+                                                            type="checkbox"
+                                                            name="filtroMetabolica"
+                                                            value="<%= met.Id %>" />
+
+                                                        <label class="form-check-label">
+
+                                                            <%= met.Descripcion %>
+                                                        </label>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <% } %>
+                                            </div>
+
+                                        </div>
 
                                     </div>
 
                                 </div>
-
-                                <% } %>
 
                             </div>
 
-                        </div>
+                            <!-- ====================================== -->
+                            <!-- Neurológicas - Sueño                   -->
+                            <!-- ====================================== -->
 
-                        <div class="col-lg-6">
+                            <div class="card shadow-sm border-0 mb-4">
 
-                            <h6 class="fw-semibold mb-3">
-                                Metabólicas
-                            </h6>
+                                <div class="card-body">
 
-                            <div class="row">
+                                    <div class="row">
 
-                                <% foreach (var met in ListaMetabolica) { %>
+                                        <div class="col-lg-6">
 
-                                <div class="col-md-6 mb-2">
+                                            <h6 class="fw-semibold mb-3">Neurológicas
+                                            </h6>
 
-                                    <div class="form-check">
+                                            <div class="row">
 
-                                        <input class="form-check-input"
-                                               type="checkbox"
-                                               name="filtroMetabolica"
-                                               value="<%= met.Id %>" />
+                                                <% foreach (var neu in ListaNeurologico)
+                                                { %>
 
-                                        <label class="form-check-label">
+                                                <div class="col-md-6 mb-2">
 
-                                            <%= met.Descripcion %>
+                                                    <div class="form-check">
 
-                                        </label>
+                                                        <input class="form-check-input"
+                                                            type="checkbox"
+                                                            name="filtroNeurologico"
+                                                            value="<%= neu.Id %>" />
+
+                                                        <label class="form-check-label">
+
+                                                            <%= neu.Descripcion %>
+                                                        </label>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <% } %>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+
+                                            <h6 class="fw-semibold mb-3">Trastornos del sueño
+                                            </h6>
+
+                                            <div class="row">
+
+                                                <% foreach (var sue in ListaSueño)
+                                                { %>
+
+                                                <div class="col-md-6 mb-2">
+
+                                                    <div class="form-check">
+
+                                                        <input class="form-check-input"
+                                                            type="checkbox"
+                                                            name="filtroSueño"
+                                                            value="<%= sue.Id %>" />
+
+                                                        <label class="form-check-label">
+
+                                                            <%= sue.Descripcion %>
+                                                        </label>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <% } %>
+                                            </div>
+
+                                        </div>
 
                                     </div>
 
                                 </div>
 
-                                <% } %>
+                            </div>
+
+                            <!-- ====================================== -->
+                            <!-- Inmunológicas - Oncológicas            -->
+                            <!-- ====================================== -->
+
+                            <div class="card shadow-sm border-0">
+
+                                <div class="card-body">
+
+                                    <div class="row">
+
+                                        <div class="col-lg-6">
+
+                                            <h6 class="fw-semibold mb-3">Inmunológicas
+                                            </h6>
+
+                                            <div class="row">
+
+                                                <% foreach (var inm in ListaInmunologica)
+                                                { %>
+
+                                                <div class="col-md-6 mb-2">
+
+                                                    <div class="form-check">
+
+                                                        <input class="form-check-input"
+                                                            type="checkbox"
+                                                            name="filtroInmunologica"
+                                                            value="<%= inm.Id %>" />
+
+                                                        <label class="form-check-label">
+
+                                                            <%= inm.Descripcion %>
+                                                        </label>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <% } %>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+
+                                            <h6 class="fw-semibold mb-3">Oncológicas
+                                            </h6>
+
+                                            <div class="row">
+
+                                                <% foreach (var onc in ListaOncologica)
+                                                { %>
+
+                                                <div class="col-md-6 mb-2">
+
+                                                    <div class="form-check">
+
+                                                        <input class="form-check-input"
+                                                            type="checkbox"
+                                                            name="filtroOncologica"
+                                                            value="<%= onc.Id %>" />
+
+                                                        <label class="form-check-label">
+
+                                                            <%= onc.Descripcion %>
+                                                        </label>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <% } %>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -309,186 +477,6 @@
                     </div>
 
                 </div>
-
-            </div>
-
-            <!-- ====================================== -->
-            <!-- Neurológicas - Sueño                   -->
-            <!-- ====================================== -->
-
-            <div class="card shadow-sm border-0 mb-4">
-
-                <div class="card-body">
-
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <h6 class="fw-semibold mb-3">
-                                Neurológicas
-                            </h6>
-
-                            <div class="row">
-
-                                <% foreach (var neu in ListaNeurologico) { %>
-
-                                <div class="col-md-6 mb-2">
-
-                                    <div class="form-check">
-
-                                        <input class="form-check-input"
-                                               type="checkbox"
-                                               name="filtroNeurologico"
-                                               value="<%= neu.Id %>" />
-
-                                        <label class="form-check-label">
-
-                                            <%= neu.Descripcion %>
-
-                                        </label>
-
-                                    </div>
-
-                                </div>
-
-                                <% } %>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <h6 class="fw-semibold mb-3">
-                                Trastornos del sueño
-                            </h6>
-
-                            <div class="row">
-
-                                <% foreach (var sue in ListaSueño) { %>
-
-                                <div class="col-md-6 mb-2">
-
-                                    <div class="form-check">
-
-                                        <input class="form-check-input"
-                                               type="checkbox"
-                                               name="filtroSueño"
-                                               value="<%= sue.Id %>" />
-
-                                        <label class="form-check-label">
-
-                                            <%= sue.Descripcion %>
-
-                                        </label>
-
-                                    </div>
-
-                                </div>
-
-                                <% } %>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- ====================================== -->
-            <!-- Inmunológicas - Oncológicas            -->
-            <!-- ====================================== -->
-
-            <div class="card shadow-sm border-0">
-
-                <div class="card-body">
-
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <h6 class="fw-semibold mb-3">
-                                Inmunológicas
-                            </h6>
-
-                            <div class="row">
-
-                                <% foreach (var inm in ListaInmunologica) { %>
-
-                                <div class="col-md-6 mb-2">
-
-                                    <div class="form-check">
-
-                                        <input class="form-check-input"
-                                               type="checkbox"
-                                               name="filtroInmunologica"
-                                               value="<%= inm.Id %>" />
-
-                                        <label class="form-check-label">
-
-                                            <%= inm.Descripcion %>
-
-                                        </label>
-
-                                    </div>
-
-                                </div>
-
-                                <% } %>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <h6 class="fw-semibold mb-3">
-                                Oncológicas
-                            </h6>
-
-                            <div class="row">
-
-                                <% foreach (var onc in ListaOncologica) { %>
-
-                                <div class="col-md-6 mb-2">
-
-                                    <div class="form-check">
-
-                                        <input class="form-check-input"
-                                               type="checkbox"
-                                               name="filtroOncologica"
-                                               value="<%= onc.Id %>" />
-
-                                        <label class="form-check-label">
-
-                                            <%= onc.Descripcion %>
-
-                                        </label>
-
-                                    </div>
-
-                                </div>
-
-                                <% } %>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
                 <!-- BLOQUE 3 - Evolución de la internación -->
 
