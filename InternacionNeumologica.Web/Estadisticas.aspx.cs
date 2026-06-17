@@ -15,11 +15,24 @@ namespace InternacionNeumologica.Web
 {
     public partial class Estadisticas : System.Web.UI.Page
     {
+            public List<Cardiovascular> ListaCardioVascular { get; set; }
+
+            public List<Neurologico> ListaNeurologico { get; set; }
+
+            public List<Metabolica> ListaMetabolica { get; set; }
+
+            public List<Sueño> ListaSueño { get; set; }
+
+            public List<Inmunologica> ListaInmunologica { get; set; }
+
+            public List<OncologicaComorbilidad> ListaOncologica { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
                 CargarCombos();
+                CargarComorbilidades();
             }
         }
         private void CargarCombos()
@@ -89,9 +102,21 @@ namespace InternacionNeumologica.Web
 
         }
 
-       
+        private void CargarComorbilidades()
+        {
+            ElementoCheckNegocio negocio = new ElementoCheckNegocio();
 
-        
+            ListaCardioVascular = negocio.ListarCardioVasActivo();
+            ListaNeurologico = negocio.ListarNeurologicos();
+            ListaMetabolica = negocio.ListarMetabolicas();
+            ListaSueño = negocio.ListarSueños();
+            ListaInmunologica = negocio.ListarInmunologicas();
+            ListaOncologica = negocio.ListarOncologicaComorbilidades();
+        }
+
+
+
+
         protected void btnGenerarReporte_Click(object sender, EventArgs e)
         {
             FiltroReporte filtro = new FiltroReporte();
@@ -152,11 +177,41 @@ namespace InternacionNeumologica.Web
             // Otros
             if (!string.IsNullOrEmpty(ddlOtros.SelectedValue))
                 filtro.Otro = int.Parse(ddlOtros.SelectedValue);
-            
+            // Comorbilidades
+
+            filtro.Cardiovasculares = ObtenerSeleccionados("filtroCardiovascular");
+
+            filtro.Metabolicas = ObtenerSeleccionados("filtroMetabolica");
+
+            filtro.Neurologicas = ObtenerSeleccionados("filtroNeurologico");
+
+            filtro.Inmunologicas = ObtenerSeleccionados("filtroInmunologica");
+
+            filtro.Oncologicas = ObtenerSeleccionados("filtroOncologica");
+
+            filtro.Sueño = ObtenerSeleccionados("filtroSueño");
+
+            //Response.Write(string.Join(",", filtro.Cardiovasculares));
+            //Response.End();//(para ver el resultado de la función ObtenerSeleccionados)
 
             Session["FiltroReporte"] = filtro;
 
             Response.Redirect("Reporte.aspx");
+        }
+
+        private List<int> ObtenerSeleccionados(string nombreControl)
+        {
+            List<int> lista = new List<int>();
+
+            string valores = Request.Form[nombreControl];
+
+            if (string.IsNullOrWhiteSpace(valores))
+                return lista;
+
+            foreach (string item in valores.Split(','))
+                lista.Add(int.Parse(item));
+
+            return lista;
         }
     }
 }

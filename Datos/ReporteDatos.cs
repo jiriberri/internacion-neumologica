@@ -53,6 +53,18 @@ namespace Datos
 
             if (filtro.Otro.HasValue)
                 where += "AND I.id_otro = @otro ";
+            //comorbilidades
+            if (filtro.Cardiovasculares != null && filtro.Cardiovasculares.Count > 0)
+            {
+                where +=
+                    "AND EXISTS (" +
+                    "SELECT 1 " +
+                    "FROM PACIENTE_COMORBILIDAD_CARDIOVASCULAR PC " +
+                    "WHERE PC.id_paciente = P.id_paciente " +
+                    "AND PC.id_cardiovascular IN (" +
+                    string.Join(",", filtro.Cardiovasculares) +
+                    ")) ";
+            }
 
             return where;
         }
@@ -220,9 +232,9 @@ namespace Datos
         }
 
 
-        
 
-            public List<ItemGrafico> ObtenerDistribucionEdades(FiltroReporte filtro)
+
+        public List<ItemGrafico> ObtenerDistribucionEdades(FiltroReporte filtro)
         {
             List<ItemGrafico> lista = new List<ItemGrafico>();
 
@@ -277,6 +289,7 @@ namespace Datos
                 datos.CerrarConexion();
             }
         }
+
 
 
 
@@ -378,7 +391,7 @@ namespace Datos
             }
         }
 
-            public List<ItemGrafico> ObtenerComorbilidades(FiltroReporte filtro)
+        public List<ItemGrafico> ObtenerComorbilidades(FiltroReporte filtro)
         {
             {
                 List<ItemGrafico> lista = new List<ItemGrafico>();
@@ -456,48 +469,48 @@ namespace Datos
             }
         }
 
-        public DataTable ObtenerDetalle(FiltroReporte filtro) 
-        
-        { 
-            AccesoDatos datos = new AccesoDatos(); 
-            
+        public DataTable ObtenerDetalle(FiltroReporte filtro)
+
+        {
+            AccesoDatos datos = new AccesoDatos();
+
             try
-            { 
-                        //esta es la consulta de la gridview
-                        
-                                    string consulta =
-                                        "SELECT " +
-                                        "ROW_NUMBER() OVER (PARTITION BY P.id_paciente ORDER BY I.fecha_ingreso) AS Internacion, " +
-                                        "P.dni AS DNI, " +
-                                        "P.apellido + ', ' + P.nombre AS Paciente, " +
+            {
+                //esta es la consulta de la gridview
 
-                                        "DATEDIFF(YEAR, P.fecha_nacimiento, I.fecha_ingreso) - " +
-                                        "CASE " +
-                                        "WHEN DATEADD(YEAR, DATEDIFF(YEAR, P.fecha_nacimiento, I.fecha_ingreso), P.fecha_nacimiento) > I.fecha_ingreso " +
-                                        "THEN 1 ELSE 0 END AS Edad, " +
+                string consulta =
+                    "SELECT " +
+                    "ROW_NUMBER() OVER (PARTITION BY P.id_paciente ORDER BY I.fecha_ingreso) AS Internacion, " +
+                    "P.dni AS DNI, " +
+                    "P.apellido + ', ' + P.nombre AS Paciente, " +
 
-                                        "I.fecha_ingreso AS Ingreso, " +
-                                        "I.fecha_egreso AS Egreso, " +
+                    "DATEDIFF(YEAR, P.fecha_nacimiento, I.fecha_ingreso) - " +
+                    "CASE " +
+                    "WHEN DATEADD(YEAR, DATEDIFF(YEAR, P.fecha_nacimiento, I.fecha_ingreso), P.fecha_nacimiento) > I.fecha_ingreso " +
+                    "THEN 1 ELSE 0 END AS Edad, " +
 
-                                        "DATEDIFF(DAY, I.fecha_ingreso, I.fecha_egreso) AS Estadia, " +
+                    "I.fecha_ingreso AS Ingreso, " +
+                    "I.fecha_egreso AS Egreso, " +
 
-                                        "S.descripcion AS Soporte, " +
-                                        "IR.descripcion AS Insuficiencia, " +
-                                        "D.descripcion AS Destino " +
+                    "DATEDIFF(DAY, I.fecha_ingreso, I.fecha_egreso) AS Estadia, " +
 
-                                        "FROM INTERNACION I " +
+                    "S.descripcion AS Soporte, " +
+                    "IR.descripcion AS Insuficiencia, " +
+                    "D.descripcion AS Destino " +
 
-                                        "INNER JOIN PACIENTE P " +
-                                        "ON I.id_paciente = P.id_paciente " +
+                    "FROM INTERNACION I " +
 
-                                        "LEFT JOIN SOPORTE_RESPIRATORIO S " +
-                                        "ON I.id_soporte = S.id_soporte " +
+                    "INNER JOIN PACIENTE P " +
+                    "ON I.id_paciente = P.id_paciente " +
 
-                                        "LEFT JOIN INSUFICIENCIA_RESPIRATORIA IR " +
-                                        "ON I.id_insuficiencia = IR.id_insuficiencia " +
+                    "LEFT JOIN SOPORTE_RESPIRATORIO S " +
+                    "ON I.id_soporte = S.id_soporte " +
 
-                                        "LEFT JOIN DESTINO_EGRESO D " +
-                                        "ON I.id_destino = D.id_destino ";
+                    "LEFT JOIN INSUFICIENCIA_RESPIRATORIA IR " +
+                    "ON I.id_insuficiencia = IR.id_insuficiencia " +
+
+                    "LEFT JOIN DESTINO_EGRESO D " +
+                    "ON I.id_destino = D.id_destino ";
 
 
                 consulta += ArmarWhere(filtro);
@@ -510,20 +523,74 @@ namespace Datos
 
 
 
-                datos.SetearConsulta(consulta); 
-                CargarParametros(filtro, datos); 
-                datos.EjecutarLectura(); 
-                DataTable tabla = new DataTable(); 
-                tabla.Load(datos.Lector); 
-                return tabla; 
-            } 
-            finally 
-            { 
-                datos.CerrarConexion(); 
+                datos.SetearConsulta(consulta);
+                CargarParametros(filtro, datos);
+                datos.EjecutarLectura();
+                DataTable tabla = new DataTable();
+                tabla.Load(datos.Lector);
+                return tabla;
+            }
+            finally
+            {
+                datos.CerrarConexion();
             }
         }
 
+        private string ObtenerDescripcion(string tabla, string campoId, List<int> ids)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                string consulta =
+                    $"SELECT descripcion " +
+                    $"FROM {tabla} " +
+                    $"WHERE {campoId} IN ({string.Join(",", ids)})";
+
+                //System.Diagnostics.Debug.WriteLine(consulta);//para ver que consulta arma
+
+                datos.SetearConsulta(consulta);
+
+                datos.EjecutarLectura();
+
+                List<string> descripciones = new List<string>();
+
+                while (datos.Lector.Read())
+                {
+                    descripciones.Add(datos.Lector["descripcion"].ToString());
+                }
+
+                return string.Join(", ", descripciones);
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        // ========================================================== 
+        // Devuelve la descripción correspondiente a un único registro. 
+        // Se utiliza para Soporte, Destino, Insuficiencia y Diagnóstico. 
+        // ==========================================================
+        public string ObtenerTexto(int? id, string tabla, string campoId)
+
+        {
+            if (!id.HasValue)
+                return "Todos";
+            return ObtenerDescripcion(tabla, campoId, new List<int> { id.Value });
+
+        }
+        // ==========================================================
+        // Devuelve la descripción correspondiente a una lista de IDs.
+        //==========================================================
+        public string ObtenerDescripcionesPorIds(List<int> ids, string tabla, string campoId)
+
+        {
+            if (ids == null || ids.Count == 0)
+                return "-";
+
+            return ObtenerDescripcion(tabla, campoId, ids);
+        }
 
     }
 }

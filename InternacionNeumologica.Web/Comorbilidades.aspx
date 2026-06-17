@@ -119,7 +119,7 @@
                  <div class="col-lg-6"> 
              <div class="card card-filtro h-100"> 
                   <div class="card-body">
-                      <div class="mb-4 text-primary-emphasis fw-semibold text-center fs-5">Sueños</div> 
+                      <div class="mb-4 text-primary-emphasis fw-semibold text-center fs-5">Sueño</div> 
                                                   <div class="row">
                     <% foreach (var sue in ListaSueño) { %>
     <div class="col-md-6 mb-3"> 
@@ -206,13 +206,5 @@
             </div>
         </div>
    
-
-
-    
-   
-    
-   
-   
-    
-
+ 
 </asp:Content>

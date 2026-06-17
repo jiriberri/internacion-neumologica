@@ -64,10 +64,27 @@ namespace Negocio
         }
 
         public DataTable ObtenerDetalle(FiltroReporte filtro)
+
+
         {
             ReporteDatos datos = new ReporteDatos();
 
             return datos.ObtenerDetalle(filtro);
+        }
+
+        public string ObtenerTexto(int? id, string tabla, string campoId)
+        {
+            ReporteDatos datos = new ReporteDatos();
+
+            return datos.ObtenerTexto(id, tabla, campoId);
+        }
+
+        public string ObtenerDescripcionesPorIds(List<int> ids,string tabla,string campoId)
+           
+        {
+            ReporteDatos datos = new ReporteDatos();
+
+            return datos.ObtenerDescripcionesPorIds(ids, tabla, campoId);
         }
     }
 }

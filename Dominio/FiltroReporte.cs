@@ -31,13 +31,18 @@ namespace Dominio
         public int? SoporteRespiratorio { get; set; }
         public int? DestinoEgreso { get; set; }
 
-        // Comorbilidades (por ahora)
-        public int? Cardiovascular { get; set; }
-        public int? Metabolica { get; set; }
-        public int? Neurologica { get; set; }
-        public int? Inmunologica { get; set; }
-        public int? OncologicaComorbilidad { get; set; }
-        public int? Sueno { get; set; }
+        // Comorbilidades 
+        public List<int> Cardiovasculares { get; set; }
+
+        public List<int> Metabolicas { get; set; }
+
+        public List<int> Neurologicas { get; set; }
+
+        public List<int> Inmunologicas { get; set; }
+
+        public List<int> Oncologicas { get; set; }
+
+        public List<int> Sueño { get; set; }
     }
 }
 

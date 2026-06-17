@@ -28,21 +28,90 @@ namespace InternacionNeumologica.Web
                     gvDetalle.DataSource = negocio.ObtenerDetalle(filtro);
                     gvDetalle.DataBind();
          }
-        private string ObtenerTexto(int? id,string tabla,string columnaId)//metodo generico para obtener el texto de los filtros
 
+        // ==========================================================
+        // Arma el texto de las comorbilidades seleccionadas.
+        // Solo muestra las categorías que tienen filtros aplicados.
+        // ==========================================================
+        private string ArmarTextoComorbilidades(FiltroReporte filtro)
         {
-            if (id == null)
-                return "No aplicado";
+            ReporteNegocio negocio = new ReporteNegocio();
 
-            DesplegableNegocio negocio = new DesplegableNegocio();
+            List<string> resultado = new List<string>();
 
-            return negocio.ObtenerDescripcion(tabla,columnaId,id.Value);
-                
+            if (filtro.Cardiovasculares != null && filtro.Cardiovasculares.Count > 0)
+            {
+                resultado.Add(
+                    "<b>Cardiovasculares:</b> " +
+                    negocio.ObtenerDescripcionesPorIds(
+                        filtro.Cardiovasculares,
+                        "COMORBILIDAD_CARDIOVASCULAR",
+                        "id_cardiovascular"));
+            }
+
+            if (filtro.Metabolicas != null && filtro.Metabolicas.Count > 0)
+            {
+                resultado.Add(
+                    "<b>Metabólicas:</b> " +
+                    negocio.ObtenerDescripcionesPorIds(
+                        filtro.Metabolicas,
+                        "COMORBILIDAD_METABOLICA",
+                        "id_metabolica"));
+            }
+
+            if (filtro.Neurologicas != null && filtro.Neurologicas.Count > 0)
+            {
+                resultado.Add(
+                    "<b>Neurológicas:</b> " +
+                    negocio.ObtenerDescripcionesPorIds(
+                        filtro.Neurologicas,
+                        "COMORBILIDAD_NEUROLOGICA",
+                        "id_neurologico"));
+            }
+
+            if (filtro.Inmunologicas != null && filtro.Inmunologicas.Count > 0)
+            {
+                resultado.Add(
+                    "<b>Inmunológicas:</b> " +
+                    negocio.ObtenerDescripcionesPorIds(
+                        filtro.Inmunologicas,
+                        "COMORBILIDAD_INMUNOLOGICA",
+                        "id_inmunologica"));
+            }
+
+            if (filtro.Oncologicas != null && filtro.Oncologicas.Count > 0)
+            {
+                resultado.Add(
+                    "<b>Oncológicas:</b> " +
+                    negocio.ObtenerDescripcionesPorIds(
+                        filtro.Oncologicas,
+                        "COMORBILIDAD_ONCOLOGICA",
+                        "id_oncologica"));
+            }
+
+            if (filtro.Sueño != null && filtro.Sueño.Count > 0)
+            {
+                resultado.Add(
+                    "<b>Patología del sueño:</b> " +
+                    negocio.ObtenerDescripcionesPorIds(
+                        filtro.Sueño,
+                        "COMORBILIDAD_SUEÑO",
+                        "id_sueño"));
+            }
+
+            if (resultado.Count == 0)
+                return "Sin filtro";
+
+            return string.Join("<br/><br/>", resultado);
         }
+
+
 
 
         private void CargarFiltros(FiltroReporte filtro)
         {
+
+            ReporteNegocio negocio = new ReporteNegocio();
             lblPeriodo.Text =
                 (filtro.FechaDesde.HasValue && filtro.FechaHasta.HasValue)
                 ? filtro.FechaDesde.Value.ToString("dd/MM/yyyy")
@@ -50,65 +119,73 @@ namespace InternacionNeumologica.Web
                   + filtro.FechaHasta.Value.ToString("dd/MM/yyyy")
                 : "Todos";
 
-            lblSoporte.Text = ObtenerTexto(
+            lblSoporte.Text = negocio.ObtenerTexto(
                 filtro.SoporteRespiratorio,
                 "SOPORTE_RESPIRATORIO",
                 "id_soporte");
 
-            lblInsuficiencia.Text = ObtenerTexto(
+            lblInsuficiencia.Text = negocio.ObtenerTexto(
                 filtro.InsuficienciaRespiratoria,
                 "INSUFICIENCIA_RESPIRATORIA",
                 "id_insuficiencia");
 
-            lblDestino.Text = ObtenerTexto(
+            lblDestino.Text = negocio.ObtenerTexto(
                 filtro.DestinoEgreso,
                 "DESTINO_EGRESO",
                 "id_destino");
 
             if (filtro.Infeccion.HasValue)
-                lblDiagnostico.Text = ObtenerTexto(
+                lblDiagnostico.Text = negocio.ObtenerTexto(
                     filtro.Infeccion,
                     "DIAGNOSTICO_INFECCIONES",
                     "id_infeccion");
 
             else if (filtro.Obstructiva.HasValue)
-                lblDiagnostico.Text = ObtenerTexto(
+                lblDiagnostico.Text = negocio.ObtenerTexto(
                     filtro.Obstructiva,
                     "DIAGNOSTICO_OBSTRUCTIVAS",
                     "id_obstructiva");
 
             else if (filtro.Intersticial.HasValue)
-                lblDiagnostico.Text = ObtenerTexto(
+                lblDiagnostico.Text = negocio.ObtenerTexto(
                     filtro.Intersticial,
                     "DIAGNOSTICO_INTERSTICIALES",
                     "id_intersticial");
 
             else if (filtro.Pleura.HasValue)
-                lblDiagnostico.Text = ObtenerTexto(
+                lblDiagnostico.Text = negocio.ObtenerTexto(
                     filtro.Pleura,
                     "DIAGNOSTICO_PLEURA",
                     "id_pleura");
 
             else if (filtro.Vascular.HasValue)
-                lblDiagnostico.Text = ObtenerTexto(
+                lblDiagnostico.Text = negocio.ObtenerTexto(
                     filtro.Vascular,
                     "DIAGNOSTICO_VASCULARES",
                     "id_vascular");
 
             else if (filtro.Oncologica.HasValue)
-                lblDiagnostico.Text = ObtenerTexto(
+                lblDiagnostico.Text = negocio.ObtenerTexto(
                     filtro.Oncologica,
                     "DIAGNOSTICO_ONCOLOGICAS",
                     "id_oncologica");
 
             else if (filtro.Otro.HasValue)
-                lblDiagnostico.Text = ObtenerTexto(
+                lblDiagnostico.Text = negocio.ObtenerTexto(
                     filtro.Otro,
                     "DIAGNOSTICO_OTROS",
                     "id_otro");
 
             else
                 lblDiagnostico.Text = "Todos";
+            //comorbilidades
+
+            //Response.Write(string.Join(",", filtro.Cardiovasculares));
+            //Response.End();//sirve para verificar si pasan los ids correctamente
+
+            lblComorbilidades.Text = ArmarTextoComorbilidades(filtro);
+
+
         }
 
         protected void gvDetalle_PageIndexChanging(object sender, GridViewPageEventArgs e)// permite paginado del gridview
