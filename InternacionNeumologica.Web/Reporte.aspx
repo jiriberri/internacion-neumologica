@@ -129,12 +129,65 @@
 
                 </button>
 
-                <asp:Button
-                    ID="btnExportar"
+               <div class="dropdown">
+
+        <button class="btn btn-primary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+
+            📤 Exportar
+
+        </button>
+
+        <ul class="dropdown-menu">
+
+            <li>
+
+                <asp:LinkButton
+                    ID="btnExportarExcel"
                     runat="server"
-                    Text="📥 Exportar"
-                    CssClass="btn btn-primary"
-                    OnClick="BtnExportar_Click" />
+                    CssClass="dropdown-item"
+                    OnClick="btnExportarExcel_Click">
+
+                    Excel (.xlsx)
+
+                </asp:LinkButton>
+
+            </li>
+
+            <li>
+
+                <asp:LinkButton
+                    ID="btnExportarCsv"
+                    runat="server"
+                    CssClass="dropdown-item"
+                    OnClick="btnExportarCsv_Click">
+
+                    CSV (.csv)
+
+                </asp:LinkButton>
+
+            </li>
+
+            <li>
+
+                <asp:LinkButton
+                    ID="btnExportarPdf"
+                    runat="server"
+                    CssClass="dropdown-item"
+                    OnClick="btnExportarPdf_Click">
+
+                    PDF (.pdf)
+
+                </asp:LinkButton>
+
+            </li>
+
+        </ul>
+
+    </div>
+
 
                 <button class="btn btn-success">
                     📤 Compartir

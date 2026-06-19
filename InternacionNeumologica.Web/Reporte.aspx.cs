@@ -1,14 +1,15 @@
-﻿using Dominio;
+﻿using ClosedXML.Excel;
+using Dominio;
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using ClosedXML.Excel;
-using System.IO;
 
 namespace InternacionNeumologica.Web
 {
@@ -24,13 +25,32 @@ namespace InternacionNeumologica.Web
                 CargarDetalle(filtro);
             }
         }
-         private void CargarDetalle(FiltroReporte filtro)
+
+        private void CargarDetalle(FiltroReporte filtro)
          {
                     ReporteNegocio negocio = new ReporteNegocio();
 
                     gvDetalle.DataSource = negocio.ObtenerDetalle(filtro);
                     gvDetalle.DataBind();
          }
+
+       
+        // Obtiene el detalle del reporte según el filtro almacenado
+        // en Session.
+        // Se reutiliza para Excel, CSV y PDF.
+        
+        private DataTable ObtenerDatosReporte()
+        {
+            FiltroReporte filtro =
+                Session["FiltroReporte"] as FiltroReporte;
+
+            if (filtro == null)
+                return null;
+
+            ReporteNegocio negocio = new ReporteNegocio();
+
+            return negocio.ObtenerDetalle(filtro);
+        }
 
         // ==========================================================
         // Arma el texto de las comorbilidades seleccionadas.
@@ -204,40 +224,50 @@ namespace InternacionNeumologica.Web
 
         
         // Exporta el resultado del reporte a un archivo Excel.
-        protected void BtnExportar_Click(object sender, EventArgs e)
+        protected void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            
-            // Recupera el filtro utilizado para generar el reporte.
-            
-            FiltroReporte filtro =
-                Session["FiltroReporte"] as FiltroReporte;
+            DataTable tabla = ObtenerDatosReporte();
 
-            // Si no existe el filtro, vuelve a la pantalla de búsqueda.
-            if (filtro == null)
+            if (tabla == null)
             {
                 Response.Redirect("Estadisticas.aspx");
                 return;
             }
 
-            
-            // Obtiene el detalle del reporte.
-            // Se reutiliza el mismo método que carga el GridView.
-            
-            ReporteNegocio negocio = new ReporteNegocio();
-
-            DataTable tabla = negocio.ObtenerDetalle(filtro);
-
             // Crea el libro de Excel y agrega una hoja con los datos.
-            
+
             using (XLWorkbook libro = new XLWorkbook())
             {
-                libro.Worksheets.Add(tabla, "Internaciones");
+                var hoja = libro.Worksheets.Add("Internaciones");
 
-                // Ajusta automáticamente el ancho de las columnas.
-                libro.Worksheet(1).Columns().AdjustToContents();
+                hoja.Cell(1, 1).Value = "Servicio de Clínica Neumonológica";
 
-                // Guarda el archivo en memoria para enviarlo al navegador.
-              
+                hoja.Cell(2, 1).Value = "Reporte de Internaciones";
+
+                hoja.Cell(3, 1).Value = "Fecha de emisión: " +
+                                        DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                // Unimos las celdas del título
+                hoja.Range("A1:J1").Merge();
+                hoja.Range("A2:J2").Merge();
+
+                // Centramos el texto
+                hoja.Cell(1, 1).Style.Alignment.Horizontal =
+                    XLAlignmentHorizontalValues.Center;
+
+                hoja.Cell(2, 1).Style.Alignment.Horizontal =
+                    XLAlignmentHorizontalValues.Center;
+
+                hoja.Cell(1, 1).Style.Font.Bold = true;
+                hoja.Cell(1, 1).Style.Font.FontSize = 18;
+
+                hoja.Cell(2, 1).Style.Font.Bold = true;
+                hoja.Cell(2, 1).Style.Font.FontSize = 14;
+                hoja.Cell(3, 1).Style.Font.Italic = true;
+
+                hoja.Cell(5, 1).InsertTable(tabla);
+
+                hoja.Columns().AdjustToContents();
+
                 using (MemoryStream stream = new MemoryStream())
                 {
                     libro.SaveAs(stream);
@@ -256,6 +286,59 @@ namespace InternacionNeumologica.Web
                     Response.End();
                 }
             }
+
+        }
+
+        protected void btnExportarCsv_Click(object sender, EventArgs e)
+        {
+            DataTable tabla = ObtenerDatosReporte();
+
+            if (tabla == null)
+            {
+                Response.Redirect("Estadisticas.aspx");
+                return;
+            }
+            StringBuilder csv = new StringBuilder();
+            // Escribe los nombres de las columnas
+            for (int i = 0; i < tabla.Columns.Count; i++)
+            {
+                csv.Append(tabla.Columns[i].ColumnName);
+
+                if (i < tabla.Columns.Count - 1)
+                    csv.Append(";");
+            }
+
+            csv.AppendLine();
+            // Escribe los registros
+            foreach (DataRow fila in tabla.Rows)
+            {
+                for (int i = 0; i < tabla.Columns.Count; i++)
+                {
+                    csv.Append(fila[i].ToString());
+
+                    if (i < tabla.Columns.Count - 1)
+                        csv.Append(";");
+                }
+
+                csv.AppendLine();
+            }
+            Response.Clear();
+
+            Response.ContentType = "text/csv";
+
+            Response.AddHeader(
+                "content-disposition",
+                "attachment;filename=ReporteInternaciones.csv");
+
+            Response.ContentEncoding = Encoding.UTF8;
+
+            Response.Write(csv.ToString());
+
+            Response.End();
+        }
+
+        protected void btnExportarPdf_Click(object sender, EventArgs e)
+        {
 
         }
 
