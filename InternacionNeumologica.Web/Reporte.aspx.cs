@@ -337,10 +337,7 @@ namespace InternacionNeumologica.Web
             Response.End();
         }
 
-        protected void btnExportarPdf_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
 
         //reservado para graficos psoteriores

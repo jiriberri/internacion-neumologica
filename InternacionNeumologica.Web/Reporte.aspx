@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master"
-    AutoEventWireup="true"
-    CodeBehind="Reporte.aspx.cs"
-    Inherits="InternacionNeumologica.Web.Reporte" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Site.Master"
+    autoeventwireup="true"
+    codebehind="Reporte.aspx.cs"
+    inherits="InternacionNeumologica.Web.Reporte" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -125,68 +125,54 @@
                     class="btn btn-outline-light"
                     onclick="window.open('ReporteImpresion.aspx','_blank');">
                     <!--Abre reporteimpresion -->
-                    🖨️ Imprimir
+                    🖨️ Vista de impresión
 
                 </button>
 
-               <div class="dropdown">
+                <div class="dropdown">
 
-        <button class="btn btn-primary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        📤 Exportar
 
-            📤 Exportar
+       
+                    </button>
 
-        </button>
+                    <ul class="dropdown-menu">
 
-        <ul class="dropdown-menu">
+                        <li>
 
-            <li>
+                            <asp:LinkButton
+                                ID="btnExportarExcel"
+                                runat="server"
+                                CssClass="dropdown-item"
+                                OnClick="btnExportarExcel_Click">
+                                Excel (.xlsx)
 
-                <asp:LinkButton
-                    ID="btnExportarExcel"
-                    runat="server"
-                    CssClass="dropdown-item"
-                    OnClick="btnExportarExcel_Click">
+               
+                            </asp:LinkButton>
 
-                    Excel (.xlsx)
+                        </li>
 
-                </asp:LinkButton>
+                        <li>
 
-            </li>
+                            <asp:LinkButton
+                                ID="btnExportarCsv"
+                                runat="server"
+                                CssClass="dropdown-item"
+                                OnClick="btnExportarCsv_Click">
+                                CSV (.csv)
 
-            <li>
+               
+                            </asp:LinkButton>
 
-                <asp:LinkButton
-                    ID="btnExportarCsv"
-                    runat="server"
-                    CssClass="dropdown-item"
-                    OnClick="btnExportarCsv_Click">
+                        </li>
 
-                    CSV (.csv)
+                    </ul>
 
-                </asp:LinkButton>
-
-            </li>
-
-            <li>
-
-                <asp:LinkButton
-                    ID="btnExportarPdf"
-                    runat="server"
-                    CssClass="dropdown-item"
-                    OnClick="btnExportarPdf_Click">
-
-                    PDF (.pdf)
-
-                </asp:LinkButton>
-
-            </li>
-
-        </ul>
-
-    </div>
+                </div>
 
 
                 <button class="btn btn-success">
@@ -275,7 +261,7 @@
     <!-- TABLA RESUMEN   //el panel lo envuelve paraf que el paginado no recargue y vaya arriba                                          -->
     <!-- =================================================================================== -->
     <asp:UpdatePanel ID="upDetalle" runat="server">
-        <ContentTemplate>
+        <contenttemplate>
             <div class="card dashboard-card mt-4">
 
                 <div class="card-body">
@@ -297,7 +283,7 @@
                         Width="100%"
                         EmptyDataText="No se encontraron registros para los criterios seleccionados.">
 
-                        <Columns>
+                        <columns>
 
                             <asp:BoundField
                                 DataField="Internacion"
@@ -341,7 +327,7 @@
                                 DataField="Destino"
                                 HeaderText="Destino de egreso" />
 
-                        </Columns>
+                        </columns>
 
                     </asp:GridView>
 
@@ -350,7 +336,7 @@
                 </div>
 
             </div>
-        </ContentTemplate>
+        </contenttemplate>
 
     </asp:UpdatePanel>
 
