@@ -18,9 +18,22 @@ namespace InternacionNeumologica.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
                 FiltroReporte filtro = Session["FiltroReporte"] as FiltroReporte;
+
+                if (filtro == null)
+                {
+                    Response.Redirect("Estadisticas.aspx");
+                    return;
+                }
+
                 CargarFiltros(filtro);
                 CargarDetalle(filtro);
             }
@@ -51,85 +64,6 @@ namespace InternacionNeumologica.Web
 
             return negocio.ObtenerDetalle(filtro);
         }
-
-        // ==========================================================
-        // Arma el texto de las comorbilidades seleccionadas.
-        // Solo muestra las categorías que tienen filtros aplicados.
-        // ==========================================================
-        private string ArmarTextoComorbilidades(FiltroReporte filtro)
-        {
-            ReporteNegocio negocio = new ReporteNegocio();
-
-            List<string> resultado = new List<string>();
-
-            if (filtro.Cardiovasculares != null && filtro.Cardiovasculares.Count > 0)
-            {
-                resultado.Add(
-                    "<b>Cardiovasculares:</b> " +
-                    negocio.ObtenerDescripcionesPorIds(
-                        filtro.Cardiovasculares,
-                        "COMORBILIDAD_CARDIOVASCULAR",
-                        "id_cardiovascular"));
-            }
-
-            if (filtro.Metabolicas != null && filtro.Metabolicas.Count > 0)
-            {
-                resultado.Add(
-                    "<b>Metabólicas:</b> " +
-                    negocio.ObtenerDescripcionesPorIds(
-                        filtro.Metabolicas,
-                        "COMORBILIDAD_METABOLICA",
-                        "id_metabolica"));
-            }
-
-            if (filtro.Neurologicas != null && filtro.Neurologicas.Count > 0)
-            {
-                resultado.Add(
-                    "<b>Neurológicas:</b> " +
-                    negocio.ObtenerDescripcionesPorIds(
-                        filtro.Neurologicas,
-                        "COMORBILIDAD_NEUROLOGICA",
-                        "id_neurologico"));
-            }
-
-            if (filtro.Inmunologicas != null && filtro.Inmunologicas.Count > 0)
-            {
-                resultado.Add(
-                    "<b>Inmunológicas:</b> " +
-                    negocio.ObtenerDescripcionesPorIds(
-                        filtro.Inmunologicas,
-                        "COMORBILIDAD_INMUNOLOGICA",
-                        "id_inmunologica"));
-            }
-
-            if (filtro.Oncologicas != null && filtro.Oncologicas.Count > 0)
-            {
-                resultado.Add(
-                    "<b>Oncológicas:</b> " +
-                    negocio.ObtenerDescripcionesPorIds(
-                        filtro.Oncologicas,
-                        "COMORBILIDAD_ONCOLOGICA",
-                        "id_oncologica"));
-            }
-
-            if (filtro.Sueño != null && filtro.Sueño.Count > 0)
-            {
-                resultado.Add(
-                    "<b>Patología del sueño:</b> " +
-                    negocio.ObtenerDescripcionesPorIds(
-                        filtro.Sueño,
-                        "COMORBILIDAD_SUEÑO",
-                        "id_sueño"));
-            }
-
-            if (resultado.Count == 0)
-                return "Sin filtro";
-
-            return string.Join("<br/><br/>", resultado);
-        }
-
-
-
 
         private void CargarFiltros(FiltroReporte filtro)
         {
@@ -201,16 +135,22 @@ namespace InternacionNeumologica.Web
 
             else
                 lblDiagnostico.Text = "Todos";
-            //comorbilidades
 
-            //Response.Write(string.Join(",", filtro.Cardiovasculares));
-            //Response.End();//sirve para verificar si pasan los ids correctamente
+            if (filtro.EdadMinima.HasValue && filtro.EdadMaxima.HasValue)
+                lblEdad.Text = filtro.EdadMinima.Value + " - " + filtro.EdadMaxima.Value + " años";
+            else if (filtro.EdadMinima.HasValue)
+                lblEdad.Text = "Desde " + filtro.EdadMinima.Value + " años";
+            else if (filtro.EdadMaxima.HasValue)
+                lblEdad.Text = "Hasta " + filtro.EdadMaxima.Value + " años";
+            else
+                lblEdad.Text = "Todos";
 
-            
+            lblSexo.Text = string.IsNullOrEmpty(filtro.Sexo) ? "Todos" : filtro.Sexo;
 
-            lblComorbilidades.Text = negocio.ArmarTextoComorbilidades(filtro);
-
-
+            litComorbilidades.Text =
+                "<span class=\"text-light\">" +
+                negocio.ArmarTextoComorbilidades(filtro) +
+                "</span>";
         }
 
         protected void gvDetalle_PageIndexChanging(object sender, GridViewPageEventArgs e)// permite paginado del gridview
@@ -218,6 +158,12 @@ namespace InternacionNeumologica.Web
             gvDetalle.PageIndex = e.NewPageIndex;
 
             FiltroReporte filtro = Session["FiltroReporte"] as FiltroReporte;
+
+            if (filtro == null)
+            {
+                Response.Redirect("Estadisticas.aspx");
+                return;
+            }
 
             CargarDetalle(filtro);
         }
@@ -302,19 +248,18 @@ namespace InternacionNeumologica.Web
             // Escribe los nombres de las columnas
             for (int i = 0; i < tabla.Columns.Count; i++)
             {
-                csv.Append(tabla.Columns[i].ColumnName);
+                csv.Append(EscaparCsv(tabla.Columns[i].ColumnName));
 
                 if (i < tabla.Columns.Count - 1)
                     csv.Append(";");
             }
 
             csv.AppendLine();
-            // Escribe los registros
             foreach (DataRow fila in tabla.Rows)
             {
                 for (int i = 0; i < tabla.Columns.Count; i++)
                 {
-                    csv.Append(fila[i].ToString());
+                    csv.Append(EscaparCsv(fila[i]));
 
                     if (i < tabla.Columns.Count - 1)
                         csv.Append(";");
@@ -337,7 +282,21 @@ namespace InternacionNeumologica.Web
             Response.End();
         }
 
-       
+        private static string EscaparCsv(object valor)
+        {
+            if (valor == null || valor == DBNull.Value)
+                return "";
+
+            string texto = valor.ToString();
+
+            if (texto.Contains(";") || texto.Contains("\"") ||
+                texto.Contains("\n") || texto.Contains("\r"))
+            {
+                return "\"" + texto.Replace("\"", "\"\"") + "\"";
+            }
+
+            return texto;
+        }
 
 
         //reservado para graficos psoteriores

@@ -78,13 +78,19 @@ namespace InternacionNeumologica.Web
         protected global::System.Web.UI.WebControls.Label lblDestino;
 
         /// <summary>
-        /// Control lblComorbilidades.
+        /// Control lblEdad.
         /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComorbilidades;
+        protected global::System.Web.UI.WebControls.Label lblEdad;
+
+        /// <summary>
+        /// Control lblSexo.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Label lblSexo;
+
+        /// <summary>
+        /// Control litComorbilidades.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Literal litComorbilidades;
 
         /// <summary>
         /// Control upDetalle.

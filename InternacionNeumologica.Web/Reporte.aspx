@@ -174,11 +174,6 @@
 
                 </div>
 
-
-                <button class="btn btn-success">
-                    📤 Compartir
-                </button>
-
             </div>
 
         </div>
@@ -225,44 +220,52 @@
                         <asp:Label ID="lblDestino" runat="server" CssClass="text-light" />
                     </div>
 
+                    <div class="col-md-4">
+                        <strong class="text-white">🎂 Edad</strong><br />
+                        <asp:Label ID="lblEdad" runat="server" CssClass="text-light" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong class="text-white">⚧ Sexo</strong><br />
+                        <asp:Label ID="lblSexo" runat="server" CssClass="text-light" />
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
 
-    </div>
 
 
+        <!-- ========================================================= -->
+        <!-- COMORBILIDADES SELECCIONADAS                              -->
+        <!-- ========================================================= -->
 
-    <!-- ========================================================= -->
-    <!-- COMORBILIDADES SELECCIONADAS                              -->
-    <!-- ========================================================= -->
+        <div class="card dashboard-card mb-4">
 
-    <div class="card dashboard-card mb-4">
+            <div class="card-body">
 
-        <div class="card-body">
+                <h5 class="text-white mb-3">Comorbilidades seleccionadas
+                </h5>
 
-            <h5 class="text-white mb-3">Comorbilidades seleccionadas
-            </h5>
+                <asp:Literal
+                    ID="litComorbilidades"
+                    runat="server"
+                    Mode="PassThrough" />
 
-            <asp:Label
-                ID="lblComorbilidades"
-                runat="server"
-                CssClass="text-light" />
+            </div>
 
         </div>
 
-    </div>
 
 
-
-    <!-- =================================================================================== -->
-    <!-- TABLA RESUMEN   //el panel lo envuelve paraf que el paginado no recargue y vaya arriba                                          -->
-    <!-- =================================================================================== -->
-    <asp:UpdatePanel ID="upDetalle" runat="server">
-        <contenttemplate>
-            <div class="card dashboard-card mt-4">
+        <!-- =================================================================================== -->
+        <!-- TABLA RESUMEN   //el panel lo envuelve paraf que el paginado no recargue y vaya arriba                                          -->
+        <!-- =================================================================================== -->
+        <asp:UpdatePanel ID="upDetalle" runat="server">
+            <contenttemplate>
+                <div class="card dashboard-card mt-4">
 
                 <div class="card-body">
 
@@ -276,7 +279,7 @@
                         runat="server"
                         AutoGenerateColumns="false"
                         AllowPaging="true"
-                        PageSize="5"
+                        PageSize="25"
                         OnPageIndexChanging="gvDetalle_PageIndexChanging"
                         CssClass="table table-dark table-striped table-hover align-middle"
                         GridLines="None"
@@ -336,11 +339,11 @@
                 </div>
 
             </div>
-        </contenttemplate>
+            </contenttemplate>
 
-    </asp:UpdatePanel>
+        </asp:UpdatePanel>
 
-
+    </div>
 
 </asp:Content>
 
