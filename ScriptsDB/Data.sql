@@ -136,9 +136,9 @@ INSERT INTO DIAGNOSTICO_OTROS(descripcion) VALUES
 ('Cuidados paliativos'); 
 
 -- Usuarios
-INSERT INTO USUARIO (usuario, pass, esAdmin, activo ) VALUES
-('admin', 'admin123', 1, 1),
-('usuario', 'usuario123', 0, 1);
+INSERT INTO USUARIO (usuario, pass, email, esAdmin, activo) VALUES
+('admin', 'admin123', 'admin@hospital.com', 1, 1),
+('usuario', 'usuario123', 'usuario@hospital.com', 0, 1);
 GO
 
 -- Pacientes

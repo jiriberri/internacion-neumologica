@@ -12,13 +12,12 @@ GO
 -- 2. TABLAS MAESTRAS / CATÁLOGOS INDEPENDIENTES
 CREATE TABLE USUARIO (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
-    usuario VARCHAR(50) NOT NULL UNIQUE,
-    pass VARCHAR(256) NOT NULL,
-    esAdmin BIT NOT NULL,   -- 1 para Admin, 0 para Usuario limitado
-    activo BIT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
-
+    usuario VARCHAR(50) NOT NULL,
+    pass VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    esAdmin BIT NOT NULL,
+    activo BIT NOT NULL
 );
-GO
 
 CREATE TABLE TABAQUISMO (
     id_tabaquismo INT IDENTITY(1,1) PRIMARY KEY,
