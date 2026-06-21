@@ -168,7 +168,6 @@ namespace InternacionNeumologica.Web
             txtNuevaDescripcion.CssClass = "form-control";
         }
 
-
         protected void btnEliminarItem_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;

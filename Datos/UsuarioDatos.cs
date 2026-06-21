@@ -42,6 +42,9 @@ namespace Datos
                     user.Pass =
                         datos.Lector["pass"].ToString();
 
+                    user.Email =
+                        datos.Lector["email"].ToString();
+
                     user.Admin =
                         (bool)datos.Lector["esAdmin"];
 
@@ -82,6 +85,9 @@ namespace Datos
                     aux.Pass =
                         datos.Lector["pass"].ToString();
 
+                    aux.Email =
+    datos.Lector["email"].ToString();
+
                     aux.Admin =
                         (bool)datos.Lector["esAdmin"];
 
@@ -108,11 +114,12 @@ namespace Datos
             try
             {
                 datos.SetearConsulta(
-                    "INSERT INTO USUARIO (usuario, pass, esAdmin, activo) " +
-                    "VALUES (@usuario, @pass, @admin, @activo)");
+                    "INSERT INTO USUARIO (usuario, pass, email, esAdmin, activo) " +
+                    "VALUES (@usuario, @pass, @email, @admin, @activo)");
 
                 datos.SetearParametro("@usuario", nuevo.User);
                 datos.SetearParametro("@pass", nuevo.Pass);
+                datos.SetearParametro("@email", nuevo.Email);
                 datos.SetearParametro("@admin", nuevo.Admin);
                 datos.SetearParametro("@activo", nuevo.Activo);
 
@@ -153,6 +160,8 @@ namespace Datos
                     usuario.Pass =
                         datos.Lector["pass"].ToString();
 
+                    usuario.Email = datos.Lector["email"].ToString();
+
                     usuario.Admin =
                         (bool)datos.Lector["esAdmin"];
 
@@ -178,12 +187,14 @@ namespace Datos
                         "UPDATE USUARIO " +
                         "SET usuario = @usuario, " +
                         "pass = @pass, " +
+                        "email = @email, " +
                         "esAdmin = @admin, " +
                         "activo = @activo " +
                         "WHERE id_usuario = @id");
 
                 datos.SetearParametro("@usuario", usuario.User);
                 datos.SetearParametro("@pass", usuario.Pass);
+                datos.SetearParametro("@email", usuario.Email);
                 datos.SetearParametro("@admin", usuario.Admin);
                 datos.SetearParametro("@id", usuario.IdUsuario);
                 datos.SetearParametro("@activo", usuario.Activo);

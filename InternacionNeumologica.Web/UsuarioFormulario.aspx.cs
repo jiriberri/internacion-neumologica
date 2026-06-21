@@ -14,19 +14,11 @@ namespace InternacionNeumologica.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-               /* if (!IsPostBack)
-                {
-                    txtUsuario.Text = "";
-                    txtPassword.Text = "";
-
-                    return;
-                }*/
-
+            {               
                 txtUsuario.Text = "";
                 txtPassword.Text = "";
                 chkAdmin.Checked = false;
-                chkActivo.Checked = true;//si es nuevo y alo pone com0a ctivo
+                chkActivo.Checked = true;//si es nuevo y alo pone como activo
 
                 if (Request.QueryString["id"] != null)
                 {
@@ -39,8 +31,12 @@ namespace InternacionNeumologica.Web
 
                     Usuario usuario = negocio.ObtenerPorId(id);
 
+                    Session["PassActual"] = usuario.Pass;
+
                     txtUsuario.Text = usuario.User;
+                    txtEmail.Text = usuario.Email;
                     txtPassword.Text = usuario.Pass;
+                    txtConfirmarPassword.Text = usuario.Pass;
                     chkAdmin.Checked = usuario.Admin;
                     chkActivo.Checked = usuario.Activo;
                 }
@@ -56,12 +52,38 @@ namespace InternacionNeumologica.Web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (txtPassword.Text != txtConfirmarPassword.Text)
+            {
+                lblError.Text =
+                    "Las contraseñas no coinciden.";
 
-            /*throw new Exception("PRUEBA");*/
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                lblError.Text =
+                    "Debe ingresar un email.";
+
+                return;
+            }
+
             Usuario usuario = new Usuario();
 
             usuario.User = txtUsuario.Text;
-            usuario.Pass = txtPassword.Text;
+
+
+            bool esEdicion = Request.QueryString["id"] != null;
+
+            if (esEdicion && string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                usuario.Pass = Session["PassActual"].ToString();
+            }
+            else
+            {
+                usuario.Pass = txtPassword.Text;
+            }
+            usuario.Email = txtEmail.Text;
             usuario.Admin = chkAdmin.Checked;
             usuario.Activo = chkActivo.Checked;
 
@@ -77,9 +99,6 @@ namespace InternacionNeumologica.Web
                     int.Parse(Request.QueryString["id"]);
 
                 negocio.Modificar(usuario);
-
-                /*Response.Write("ENTRO EN MODIFICAR");
-                return;*/
             }
 
             Response.Redirect("Administracion.aspx");

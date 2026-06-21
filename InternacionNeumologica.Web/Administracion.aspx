@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Administracion.aspx.cs" Inherits="InternacionNeumologica.Web.Administracion" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Site.Master" autoeventwireup="true" codebehind="Administracion.aspx.cs" inherits="InternacionNeumologica.Web.Administracion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -48,7 +48,7 @@
 
             <div class="tab-pane fade show active" id="usuarios" role="tabpanel">
                 <asp:UpdatePanel ID="upUsuarios" runat="server">
-                    <ContentTemplate>
+                    <contenttemplate>
                         <div class="card shadow">
                             <div class="card-header d-flex justify-content-between align-items-center bg-light">
                                 <h4 class="mb-0">Lista de Usuarios</h4>
@@ -66,7 +66,7 @@
                                         runat="server"
                                         AutoGenerateColumns="false"
                                         CssClass="table table-striped table-hover align-middle mb-0">
-                                        <Columns>
+                                        <columns>
 
                                             <asp:BoundField
                                                 DataField="IdUsuario"
@@ -75,6 +75,10 @@
                                             <asp:BoundField
                                                 DataField="User"
                                                 HeaderText="Usuario" />
+
+                                            <asp:BoundField
+                                                DataField="Email"
+                                                HeaderText="Email" />
 
                                             <asp:CheckBoxField
                                                 DataField="Admin"
@@ -85,7 +89,7 @@
                                                 HeaderText="Activo" />
 
                                             <asp:TemplateField HeaderText="Acciones">
-                                                <ItemTemplate>
+                                                <itemtemplate>
 
                                                     <asp:Button
                                                         ID="btnEditar"
@@ -97,22 +101,22 @@
 
 
 
-                                                </ItemTemplate>
+                                                </itemtemplate>
                                             </asp:TemplateField>
 
-                                        </Columns>
+                                        </columns>
                                     </asp:GridView>
                                 </div>
                             </div>
                         </div>
 
-                    </ContentTemplate>
+                    </contenttemplate>
                 </asp:UpdatePanel>
             </div>
 
             <div class="tab-pane fade" id="pacientes" role="tabpanel">
                 <asp:UpdatePanel ID="upCorreccionPacientes" runat="server">
-                    <ContentTemplate>
+                    <contenttemplate>
                         <div class="card shadow">
                             <div class="card-header">
                                 <h4 class="mb-0">Modificar Datos de Paciente</h4>
@@ -232,19 +236,18 @@
                                     <asp:Label
                                         ID="lblMensajeMod"
                                         runat="server"
-                                        CssClass="text-success fw-bold">
-                                    </asp:Label>
+                                        CssClass="text-success fw-bold"></asp:Label>
                                 </div>
 
                             </div>
                         </div>
-                    </ContentTemplate>
+                    </contenttemplate>
                 </asp:UpdatePanel>
             </div>
 
             <div class="tab-pane fade" id="catalogos" role="tabpanel">
                 <asp:UpdatePanel ID="upCatalogos" runat="server">
-                    <ContentTemplate>
+                    <contenttemplate>
 
                         <asp:HiddenField ID="hfIdEditando" runat="server" />
 
@@ -322,12 +325,12 @@
                                             AutoGenerateColumns="false"
                                             CssClass="table table-striped table-hover align-middle mb-0"
                                             EmptyDataText="La tabla seleccionada no contiene registros.">
-                                            <Columns>
+                                            <columns>
                                                 <asp:BoundField DataField="Id" HeaderText="ID Interno" ItemStyle-Width="10%" />
                                                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción Registrada" />
 
                                                 <asp:TemplateField HeaderText="Acciones" ItemStyle-Width="25%">
-                                                    <ItemTemplate>
+                                                    <itemtemplate>
                                                         <asp:Button
                                                             ID="btnEditarItemTabla"
                                                             runat="server"
@@ -355,17 +358,17 @@
                                                             CommandArgument='<%# Eval("Id") %>'
                                                             OnClick="btnReactivarItem_Click"
                                                             Visible='<%# chkMostrarDeshabilitados.Checked %>' />
-                                                    </ItemTemplate>
+                                                    </itemtemplate>
                                                 </asp:TemplateField>
 
-                                            </Columns>
+                                            </columns>
                                         </asp:GridView>
                                     </div>
                                 </asp:PlaceHolder>
 
                             </div>
                         </div>
-                    </ContentTemplate>
+                    </contenttemplate>
                 </asp:UpdatePanel>
             </div>
         </div>

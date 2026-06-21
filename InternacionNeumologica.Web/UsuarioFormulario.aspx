@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UsuarioFormulario.aspx.cs" Inherits="InternacionNeumologica.Web.UsuarioFormulario" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Site.Master" autoeventwireup="true" codebehind="UsuarioFormulario.aspx.cs" inherits="InternacionNeumologica.Web.UsuarioFormulario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -15,8 +15,7 @@
                     <asp:Label
                         ID="lblTitulo"
                         runat="server"
-                        Text="Nuevo Usuario">
-                    </asp:Label>
+                        Text="Nuevo Usuario"></asp:Label>
                 </h3>
             </div>
 
@@ -36,6 +35,18 @@
 
                 <div class="mb-3">
                     <label class="form-label">
+                        Email
+                    </label>
+
+                    <asp:TextBox
+                        ID="txtEmail"
+                        runat="server"
+                        CssClass="form-control"
+                        TextMode="Email" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
                         Contraseña
                     </label>
 
@@ -46,6 +57,20 @@
                         CssClass="form-control"
                         autocomplete="new-password" />
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Confirmar contraseña
+                    </label>
+
+                    <asp:TextBox
+                        ID="txtConfirmarPassword"
+                        runat="server"
+                        TextMode="Password"
+                        CssClass="form-control" />
+                </div>
+
+
 
                 <div class="form-check mb-3">
 
@@ -70,8 +95,14 @@
                     <label class="form-check-label">
                         Activo
                     </label>
+                    </label>
 
                 </div>
+
+                <asp:Label
+                    ID="lblError"
+                    runat="server"
+                    CssClass="text-danger fw-bold d-block mb-3"></asp:Label>
 
                 <asp:Button
                     ID="btnGuardar"
