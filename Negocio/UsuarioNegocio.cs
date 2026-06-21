@@ -16,9 +16,9 @@ namespace Negocio
 
             return datos.Loguear(usuario, pass);
         }
-    
 
-          public List<Usuario> Listar()// Puente entre web y dtos
+
+        public List<Usuario> Listar()// Puente entre web y dtos
         {
             UsuarioDatos datos = new UsuarioDatos();
 
@@ -46,6 +46,11 @@ namespace Negocio
             datos.Modificar(usuario);
         }
 
-       
+        public Usuario ObtenerPorEmail(string email)
+        {
+            UsuarioDatos datos = new UsuarioDatos();
+
+            return datos.ObtenerPorEmail(email);
+        }
     }
 }

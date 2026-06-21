@@ -48,7 +48,7 @@ namespace Datos
                     user.Admin =
                         (bool)datos.Lector["esAdmin"];
 
-                    user.Activo =(bool)datos.Lector["activo"];
+                    user.Activo = (bool)datos.Lector["activo"];
                 }
 
                 return user;
@@ -165,7 +165,7 @@ namespace Datos
                     usuario.Admin =
                         (bool)datos.Lector["esAdmin"];
 
-                    usuario.Activo =(bool)datos.Lector["activo"];
+                    usuario.Activo = (bool)datos.Lector["activo"];
                 }
 
                 return usuario;
@@ -207,6 +207,55 @@ namespace Datos
             }
         }
 
-       
+        public Usuario ObtenerPorEmail(string email)
+        {
+            Usuario usuario = null;
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(
+                    "SELECT * FROM USUARIO " +
+                    "WHERE email = @email");
+
+                datos.SetearParametro("@email", email);
+
+                datos.EjecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    usuario = new Usuario();
+
+                    usuario.IdUsuario =
+                        (int)datos.Lector["id_usuario"];
+
+                    usuario.User =
+                        datos.Lector["usuario"].ToString();
+
+                    usuario.Pass =
+                        datos.Lector["pass"].ToString();
+
+                    usuario.Email = datos.Lector["email"].ToString();
+
+                    usuario.Admin =
+                        (bool)datos.Lector["esAdmin"];
+
+                    usuario.Activo = (bool)datos.Lector["activo"];
+                }
+
+                return usuario;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+
+
     }
+
+
 }
+

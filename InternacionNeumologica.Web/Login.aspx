@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="InternacionNeumologica.Web.Login" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Site.Master" autoeventwireup="true" codebehind="Login.aspx.cs" inherits="InternacionNeumologica.Web.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -68,19 +68,33 @@
 
                     </div>
 
-                    <asp:Label
-                        ID="lblError"
+                </div>
+
+
+                <div class="text-center mt-3">
+
+                    <asp:LinkButton
+                        ID="lnkRecuperarPassword"
                         runat="server"
-                        CssClass="text-danger mt-3 d-block">
-                    </asp:Label>
+                        PostBackUrl="~/RecuperarPassword.aspx">
+                        ¿Olvidó su contraseña?
+
+                    </asp:LinkButton>
 
                 </div>
+
+                <asp:Label
+                    ID="lblError"
+                    runat="server"
+                    CssClass="text-danger mt-3 d-block"></asp:Label>
+
+            </div>
 
             </div>
 
         </div>
 
-    </div>
+    
 
     <script>
         function mostrarPassword() {

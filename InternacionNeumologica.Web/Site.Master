@@ -24,7 +24,7 @@
                         runat="server"
                         NavigateUrl="~/Default.aspx"
                         CssClass="navbar-brand text-decoration-none">
-    Internación Neumológica
+    Internación Neumonológica
                     </asp:HyperLink>
 
                     <asp:LinkButton
