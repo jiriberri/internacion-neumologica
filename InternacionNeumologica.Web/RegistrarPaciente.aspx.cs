@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DocumentFormat.OpenXml.InkML;
 using Dominio;
 using Negocio;
 
@@ -81,6 +82,11 @@ namespace InternacionNeumologica.Web
                 valido = false;
             }
 
+            if (!valido)
+            {
+                lblError.Text = "Los campos marcados en rojo son obligatorios!";
+                return false;
+            }
 
             PacienteNegocio negocio = new PacienteNegocio();
             string dniIngresado = txtDni.Text.Trim();
