@@ -13,6 +13,14 @@ namespace InternacionNeumologica.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuarioLog = (Usuario)Session["usuario"];
+
+            if (usuarioLog == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {               
                 txtUsuario.Text = "";

@@ -20,6 +20,14 @@ namespace InternacionNeumologica.Web
         public List<ExposicionAmbiental> ListaExpoAmb { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (usuario == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
             ElementoCheckNegocio negociocheck = new ElementoCheckNegocio();
             ListaAntecedentesRespiratorios = negociocheck.ListarAntecedentesRespActivo();
             ListaSecuela = negociocheck.ListarSecuelaActivo();

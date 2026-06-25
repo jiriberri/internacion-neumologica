@@ -15,6 +15,14 @@ namespace InternacionNeumologica.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (usuario == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
                 FiltroReporte filtro =

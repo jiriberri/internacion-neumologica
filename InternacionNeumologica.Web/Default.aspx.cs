@@ -13,7 +13,7 @@ namespace InternacionNeumologica.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = (Usuario)Session["usuario"];//el usuario esta guardado en sesion y si no es admin enonces no se muestra el panel de administracion
+            Usuario usuario = (Usuario)Session["usuario"];
 
             if (usuario == null)
             {

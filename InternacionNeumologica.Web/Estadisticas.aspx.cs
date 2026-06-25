@@ -28,7 +28,14 @@ namespace InternacionNeumologica.Web
             public List<OncologicaComorbilidad> ListaOncologica { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (usuario == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
                 CargarCombos();
