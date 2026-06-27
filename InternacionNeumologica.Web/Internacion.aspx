@@ -55,7 +55,9 @@
                             <label for="txtEgreso" class="mb-1">Fecha egreso</label>
                             <asp:TextBox runat="server" ID="txtFechaEgreso" TextMode="Date" CssClass="form-control" />
                             <asp:Label ID="lblErrorFechaEgr" runat="server" Text="Debes ingresar una fecha para poder continuar." CssClass="text-danger d-block mt-1 fw-semibold fs-6" Visible="false"></asp:Label>
-                        </div>
+                            <asp:Label ID="lblErrorFechas" runat="server" Text="Ingresaste una fecha de ingreso mayor a la de egreso." CssClass="text-danger d-block mt-1 fw-semibold fs-6" Visible="false"></asp:Label>
+                           
+                            </div>
 
                     </div>
                 </div>

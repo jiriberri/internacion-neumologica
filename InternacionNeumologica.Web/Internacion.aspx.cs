@@ -108,6 +108,16 @@ namespace InternacionNeumologica.Web
             }
             lblErrorFechaEgr.Visible = false;
 
+            DateTime fechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
+            DateTime fechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
+
+            if (fechaIngreso > fechaEgreso)
+            {
+                lblErrorFechas.Visible = true;
+                return;
+            }
+            lblErrorFechas.Visible = false;
+
 
             Internaciones auxInternacion = (Internaciones)Session["InternacionEnCurso"];
 

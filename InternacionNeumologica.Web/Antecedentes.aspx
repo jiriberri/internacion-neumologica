@@ -91,12 +91,14 @@
                                     <input class="form-check-input" type="radio" name="TipodeFumadores" value="2" id="radioExfumador">
                                     <label class="form-check-label ms-2" for="radioExfumador">Exfumador</label>
                                 </div>
-                                <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="TipodeFumadores" value="3" id="RadioFumadoractivo">
-                                        <label class="form-check-label ms-2" for="RadioFumadoractivo">Fumador Activo</label>
-                                    </div>
-                                    <label for="txtPaquetesAnio" class="form-label text-danger-emphasis ms-lg-3 mb-0">Paquetes/año:</label>
+                               <div class="form-check mb-2">
+                                 
+                             <input class="form-check-input" type="radio" name="TipodeFumadores" value="3" id="RadioFumadoractivo">
+                              <label class="form-check-label ms-2" for="RadioFumadoractivo">Fumador Activo</label>
+                           </div>
+                                
+                                <div class="d-flex align-items-center flex-wrap gap-2 mb-2">
+                                    <label for="txtPaquetesAnio" class="form-label text-danger-emphasis ms-lg-4 mb-1">Paquetes/año:</label>
                                     <asp:TextBox runat="server" ID="txtPaquetesAnio" CssClass="form-control" Style="width: 90px;" />
                                 </div>
 
