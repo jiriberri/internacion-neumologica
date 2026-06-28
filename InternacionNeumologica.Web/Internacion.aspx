@@ -124,7 +124,7 @@
 
                         <div class="mb-3">
 
-                            <label for="txtObstrucciones" class="mb-1">Obstrucciones</label>
+                            <label for="txtObstrucciones" class="mb-1">Obstrucctivas</label>
                             <asp:DropDownList ID="ddlObtrucciones" runat="server" CssClass="form-select">
                                 <asp:ListItem Text="Seleccione una opción." Value="" />
                             </asp:DropDownList>

@@ -283,7 +283,7 @@ VALUES
 (1,1), -- Juan: HTA
 (2,2), -- María: Insuficiencia cardíaca
 (3,1), -- Carlos: HTA
-(4,3); -- Ana: Fibrilación auricular
+(4,3); -- Ana: arritmias
 
 
 INSERT INTO PACIENTE_COMORBILIDAD_METABOLICA
