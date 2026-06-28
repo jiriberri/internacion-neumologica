@@ -108,6 +108,7 @@
     <Content Include="Comorbilidades.aspx" />
     <Content Include="Estadisticas.aspx" />
     <Content Include="Antecedentes.aspx" />
+    <Content Include="Imagenes\logo-cetrangolo.png" />
     <Content Include="Internacion.aspx" />
     <Content Include="RecuperarPassword.aspx" />
     <Content Include="RegistrarPaciente.aspx" />

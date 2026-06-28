@@ -36,8 +36,41 @@ namespace InternacionNeumologica.Web
 
                 ReporteNegocio negocio = new ReporteNegocio();
 
-                gvDetalle.DataSource = negocio.ObtenerDetalle(filtro);
+                DataTable dt = negocio.ObtenerDetalle(filtro);
+
+                // Formatear fechas
+                foreach (DataRow fila in dt.Rows)
+                {
+                    fila["Ingreso"] = Convert.ToDateTime(fila["Ingreso"]).ToString("dd/MM/yyyy");
+                    fila["Egreso"] = Convert.ToDateTime(fila["Egreso"]).ToString("dd/MM/yyyy");
+                }
+
+                gvDetalle.DataSource = dt;
                 gvDetalle.DataBind();
+                lblCantidad.Text = dt.Rows.Count.ToString();
+
+                if (gvDetalle.Rows.Count > 0)
+                {
+                    gvDetalle.UseAccessibleHeader = true;
+                    gvDetalle.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+
+                // Centrar algunas columnas
+                foreach (GridViewRow fila in gvDetalle.Rows)
+                {
+                    fila.Cells[0].HorizontalAlign = HorizontalAlign.Center;
+                    fila.Cells[3].HorizontalAlign = HorizontalAlign.Center;
+                    fila.Cells[4].HorizontalAlign = HorizontalAlign.Center;
+                    fila.Cells[5].HorizontalAlign = HorizontalAlign.Center;
+                    fila.Cells[6].HorizontalAlign = HorizontalAlign.Center;
+                }
+
+                if (gvDetalle.Rows.Count > 0)// para repetir el encabezado
+                {
+                    gvDetalle.UseAccessibleHeader = true;
+                    gvDetalle.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+
                 CargarFiltrosImpresion(filtro);
             }
         }
