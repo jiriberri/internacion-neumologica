@@ -51,25 +51,30 @@ INSERT INTO SECUELA (descripcion) values
 ('Otra secuela pulmonar');
 
 INSERT INTO CIRUGIA (descripcion) VALUES
-('Lobectomia'),
-('Segmentectomia'),
-('Neumonectomia'),
-('Otra reseccion pulmonar');
+('Lobectomía'),
+('Segmentectomía'),
+('Neumonectomía'),
+('Tubo de avenamiento pleural'),
+('Toracotomía'),
+('Toracoscopía'),
+('Otra resección pulmonar');
 
 INSERT INTO EXPOSICION_AMBIENTAL (descripcion) VALUES
 ('Humo de leña'),
+('Biomasa'),
 ('Aves'),
 ('Silice / Marmol / Granito'),
 ('Asbesto'),
 ('Otra exposicion relevante');
 
 INSERT INTO COMORBILIDAD_CARDIOVASCULAR (descripcion) VALUES
-('HTA (Hipertension arterial)'),
-('Insuficiencia cardiaca'),
-('Fibrilacion auricular'),
-('Cardiopatia isquemica'),
-('Hipertension pulmonar'),
+('HTA (Hipertensión arterial)'),
+('Insuficiencia cardíaca'),
+('Arritmias'),
+('Cardiopatía isquémica'),
+('Hipertensión pulmonar'),
 ('TEP previo');
+
 INSERT INTO COMORBILIDAD_METABOLICA (descripcion) VALUES
 ('Diabetes'),
 ('Obesidad'); 
@@ -101,13 +106,15 @@ INSERT INTO DIAGNOSTICO_INFECCIONES(descripcion) VALUES
 
 INSERT INTO DIAGNOSTICO_OBSTRUCTIVAS(descripcion) VALUES 
 ('Ninguna'),
-('Exacerbacion de EPOC'),
-('Exacerbacion de asma'),
-('Exacerbacion de bronquiectasias'); 
+('Exacerbación de EPOC'),
+('Exacerbación de asma'),
+('Exacerbación de bronquiectasias'),
+('Exacerbación de patología obstructiva de la vía aérea'); 
 
 INSERT INTO DIAGNOSTICO_INTERSTICIALES(descripcion) VALUES 
 ('Ninguna'),
-('Exacerbacion aguda de EPD'),
+('Exacerbación aguda de EPD'),
+('EPD sobreinfectada'),
 ('EPD progresiva'),
 ('Hemorragia alveolar');
 
@@ -126,11 +133,13 @@ INSERT INTO DIAGNOSTICO_VASCULARES(descripcion) VALUES
 
 INSERT INTO DIAGNOSTICO_ONCOLOGICAS(descripcion) VALUES 
 ('Ninguna'),
+('Neoplasia pulmonar activa'),
 ('Masa pulmonar en estudio'),
 ('Complicacion oncologica'); 
 
 INSERT INTO DIAGNOSTICO_OTROS(descripcion) VALUES 
 ('Ninguna'),
+('Neumomediastino'),
 ('Estudio diagnostico'),
 ('Manejo del dolor'),
 ('Cuidados paliativos'); 
