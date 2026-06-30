@@ -99,7 +99,8 @@ namespace InternacionNeumologica.Web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex.ToString());
+                Session["ErrorActual"] = "Ocurrió un error al guardar el item: " + ex.Message;
+                Response.Redirect("Error.aspx");
             }
         }
         private void CargarGrillaCatalogo()
@@ -192,8 +193,8 @@ namespace InternacionNeumologica.Web
             }
             catch (Exception ex)
             {
-
-                Session.Add("error", ex.ToString());
+                Session["ErrorActual"] = "Ocurrió un error al eliminar el item: " + ex.Message;
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -221,8 +222,8 @@ namespace InternacionNeumologica.Web
             }
             catch (Exception ex)
             {
-
-                Session.Add("error", ex.ToString());
+                Session["ErrorActual"] = "Ocurrió un error al reactivar el item: " + ex.Message;
+                Response.Redirect("Error.aspx");
             }
         }
         protected void btnBuscarPacienteAdmin_Click(object sender, EventArgs e)

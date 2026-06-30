@@ -82,8 +82,8 @@ namespace InternacionNeumologica.Web
             }
             catch (Exception ex)
             {
-                throw ex;
-                
+                Session["ErrorActual"] = "Ocurrió un error al guardar la internación: " + ex.Message;
+                Response.Redirect("Error.aspx");
             }
         }
 

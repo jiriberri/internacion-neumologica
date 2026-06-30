@@ -47,7 +47,8 @@ namespace InternacionNeumologica.Web
             }
             catch (Exception ex)
             {
-                lblError.Text = "Ocurrió un error inesperado al guardar: " + ex.Message;
+                Session["ErrorActual"] = "Ocurrió un error al guardar el paciente: " + ex.Message;
+                Response.Redirect("Error.aspx");
             }
         }
 
