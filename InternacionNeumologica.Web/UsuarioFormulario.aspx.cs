@@ -22,7 +22,7 @@ namespace InternacionNeumologica.Web
             }
 
             if (!IsPostBack)
-            {               
+            {
                 txtUsuario.Text = "";
                 txtPassword.Text = "";
                 chkAdmin.Checked = false;
@@ -53,7 +53,7 @@ namespace InternacionNeumologica.Web
 
         }
 
-        protected void btnCancelar_Click(object sender,EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Administracion.aspx");
         }
@@ -67,7 +67,6 @@ namespace InternacionNeumologica.Web
 
                 return;
             }
-
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 lblError.Text =
@@ -76,40 +75,46 @@ namespace InternacionNeumologica.Web
                 return;
             }
 
-            Usuario usuario = new Usuario();
-
-            usuario.User = txtUsuario.Text;
-
-
-            bool esEdicion = Request.QueryString["id"] != null;
-
-            if (esEdicion && string.IsNullOrWhiteSpace(txtPassword.Text))
+            try
             {
-                usuario.Pass = Session["PassActual"].ToString();
+                Usuario usuario = new Usuario();
+                usuario.User = txtUsuario.Text;
+
+                bool esEdicion = Request.QueryString["id"] != null;
+
+                if (esEdicion && string.IsNullOrWhiteSpace(txtPassword.Text))
+                {
+                    usuario.Pass = Session["PassActual"].ToString();
+                }
+                else
+                {
+                    usuario.Pass = txtPassword.Text;
+                }
+                usuario.Email = txtEmail.Text;
+                usuario.Admin = chkAdmin.Checked;
+                usuario.Activo = chkActivo.Checked;
+
+                UsuarioNegocio negocio = new UsuarioNegocio();
+
+                if (Request.QueryString["id"] == null)
+                {
+                    negocio.Agregar(usuario);
+                }
+                else
+                {
+                    usuario.IdUsuario =
+                        int.Parse(Request.QueryString["id"]);
+
+                    negocio.Modificar(usuario);
+                }
+
+                Response.Redirect("Administracion.aspx");
             }
-            else
+            catch (Exception ex)
             {
-                usuario.Pass = txtPassword.Text;
+                Session["ErrorActual"] = "Ocurrió un error al intentar guardar el usuario: " + ex.Message;
+                Response.Redirect("Error.aspx", false);
             }
-            usuario.Email = txtEmail.Text;
-            usuario.Admin = chkAdmin.Checked;
-            usuario.Activo = chkActivo.Checked;
-
-            UsuarioNegocio negocio = new UsuarioNegocio();
-
-            if (Request.QueryString["id"] == null)
-            {
-                negocio.Agregar(usuario);
-            }
-            else
-            {
-                usuario.IdUsuario =
-                    int.Parse(Request.QueryString["id"]);
-
-                negocio.Modificar(usuario);
-            }
-
-            Response.Redirect("Administracion.aspx");
         }
     }
 }
