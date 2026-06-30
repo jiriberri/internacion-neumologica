@@ -17,7 +17,7 @@
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44352</IISExpressSSLPort>
+    <IISExpressSSLPort>44360</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -106,6 +106,7 @@
   <ItemGroup>
     <Content Include="Administracion.aspx" />
     <Content Include="Comorbilidades.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Estadisticas.aspx" />
     <Content Include="Antecedentes.aspx" />
     <Content Include="Imagenes\logo-cetrangolo.png" />
@@ -135,6 +136,13 @@
     </Compile>
     <Compile Include="Comorbilidades.aspx.designer.cs">
       <DependentUpon>Comorbilidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Estadisticas.aspx.cs">
       <DependentUpon>Estadisticas.aspx</DependentUpon>
