@@ -43,13 +43,15 @@ namespace InternacionNeumologica.Web
                 PacienteNegocio negocio = new PacienteNegocio();
                 negocio.agregar(NuevoPac);
 
-                Response.Redirect("BuscarPaciente.aspx?exito=1");
             }
             catch (Exception ex)
             {
                 Session["ErrorActual"] = "Ocurrió un error al guardar el paciente: " + ex.Message;
                 Response.Redirect("Error.aspx");
+                return;
             }
+
+            Response.Redirect("BuscarPaciente.aspx?exito=1");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

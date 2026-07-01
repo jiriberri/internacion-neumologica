@@ -111,7 +111,7 @@ namespace InternacionNeumologica.Web
             catch (Exception ex)
             {
                 Session["ErrorActual"] = "Ocurrió un error al intentar guardar el usuario: " + ex.Message;
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Error.aspx");
                 return;
             }
                 Response.Redirect("Administracion.aspx");

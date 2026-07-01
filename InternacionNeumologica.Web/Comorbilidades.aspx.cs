@@ -78,13 +78,14 @@ namespace InternacionNeumologica.Web
                 Negocio.agregar(internacionFinal);
 
                 Session["InternacionEnCurso"] = null;
-                Response.Redirect("BuscarPaciente.aspx?exito=true");
             }
             catch (Exception ex)
             {
                 Session["ErrorActual"] = "Ocurrió un error al guardar la internación: " + ex.Message;
                 Response.Redirect("Error.aspx");
+                return;
             }
+            Response.Redirect("BuscarPaciente.aspx?exito=true");
         }
 
 
