@@ -107,14 +107,14 @@ namespace InternacionNeumologica.Web
 
                     negocio.Modificar(usuario);
                 }
-
-                Response.Redirect("Administracion.aspx");
             }
             catch (Exception ex)
             {
                 Session["ErrorActual"] = "Ocurrió un error al intentar guardar el usuario: " + ex.Message;
                 Response.Redirect("Error.aspx", false);
+                return;
             }
+                Response.Redirect("Administracion.aspx");
         }
     }
 }
